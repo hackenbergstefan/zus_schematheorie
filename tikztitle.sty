@@ -1,0 +1,138 @@
+%% tikztitle %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{tikztitle}
+\RequirePackage{titlesec}
+\RequirePackage{kvoptions}
+\RequirePackage{ifthen}
+\RequirePackage{tikz}
+\RequirePackage{calc}
+\usetikzlibrary{calc}
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+% Declare Keys
+\DeclareStringOption[blue]{color}
+\DeclareBoolOption[true]{withsectioning}
+\DeclareBoolOption[true]{withtitle}
+
+% setup style elegant
+\DeclareStringOption[elegant]{style}
+
+% process options
+\ProcessKeyvalOptions*
+
+% do it
+%%
+\iftikztitle@withsectioning
+	\ifthenelse{\equal{\tikztitle@style}{elegant}}{
+		\ifcolors@
+			\colorlet{maincolor}{\tikztitle@color!95!black}
+			\colorlet{shadecolor}{\tikztitle@color!20}
+			\colorlet{shadecolori}{\tikztitle@color!30}
+		\else
+			\colorlet{maincolor}{black}
+			\colorlet{shadecolor}{black!20}
+			\colorlet{shadecolori}{black!30}
+		\fi
+		\titleformat{\section}[display]
+		  {\pagebreak\normalfont\sffamily%
+		  	\Huge\bfseries\color{maincolor}%
+		  	\begin{minipage}{\linewidth-\widthof{\thesection}*3-5pt}}%
+		  {}{0pt}{}[\end{minipage}\vspace{-0.5ex}\newline
+			  \tikz{
+			  	\path[use as bounding box] (0,0) rectangle (\linewidth, 0.1);
+			  	\node[anchor=south east,
+			  		text=shadecolori,
+			  		scale=2,
+			  		transform shape,
+			  		inner sep=0pt,
+			  		align=right]
+			  	(numbernode)
+				at (\linewidth,-2pt)
+				{\ifthenelse{\value{section}=0}{}{\thesection}};
+			   \draw[very thick, maincolor] 
+			  		let \p1 = (numbernode.south west) in (0,0) -- ++(\x1, 0.0);
+			}]%
+		%
+		\titleformat{\subsection}
+			{\normalfont\sffamily\Large\bfseries%
+				\color{maincolor}}
+			{\color{shadecolori}\thesubsection}{1ex}{}
+		\titlespacing{\subsection}
+			{0pt}{*3}{0pt}
+		%	
+		\titleformat{\subsubsection}
+			{\normalfont\sffamily\large\bfseries%
+				\color{maincolor}}
+			{\color{shadecolori}\thesubsubsection}{1ex}{}
+		\titlespacing{\subsubsection}
+			{0pt}{*2}{0pt}
+		%	
+		\titleformat{\paragraph}[runin]
+			{\normalfont\sffamily\bfseries\color{maincolor}}
+			{}{}{}
+	}{}
+\else
+\fi
+
+\iftikztitle@withtitle
+	\let\authorold\author
+	\renewcommand*{\author}[2][von]{\def\@authorpre{#1}\authorold{#2}}
+	\let\dateold\date
+	\renewcommand*{\date}[2][Stand]{\def\@datepre{#1}\dateold{#2}}
+	\let\publishersold\publishers
+	\renewcommand*{\publishers}[2][herausgegeben von]
+		{\def\@publisherspre{#1}\publishersold{#2}}
+	\ifthenelse{\equal{\tikztitle@style}{elegant}}{
+		\ifcolors@
+			\colorlet{precolor}{\tikztitle@color!95!black!60!white}
+			\colorlet{maincolor}{\tikztitle@color!95!black}
+			\colorlet{shadecolor}{\tikztitle@color!5}
+		\else
+			\colorlet{precolor}{black!60!white}
+			\colorlet{maincolor}{black}
+			\colorlet{shadecolor}{black!5}
+		\fi
+		\renewcommand{\maketitle}{
+			\begin{titlepage}
+			\thispagestyle{empty}
+			\textcolor{precolor}{\@titlehead}
+			~\vfill
+			\begin{center}\sffamily\bfseries
+			\LARGE\textcolor{precolor}{\@subject}
+			\par
+			\vspace*{1cm}
+			\tikz[baseline]{
+				\node[anchor=base, minimum width=\textwidth,
+					text=maincolor,
+					inner xsep=5pt,
+					inner ysep=20pt,
+					align=center,
+					fill=shadecolor,
+					font=\Huge]
+					(main title)
+					{\@title};
+				\draw[overlay, line width=1mm, maincolor,
+					line cap=round]
+					(main title.south west)
+					++(0,-10pt) -- +(\textwidth,0)
+					(main title.north west)
+					++(0,10pt) -- +(\textwidth,0);
+			}
+			\vfill
+			\normalfont\sffamily\large\textcolor{precolor}{\@authorpre}\par
+			\bfseries\LARGE\textcolor{maincolor}{
+			\begin{tabular}{c}\@author\end{tabular}}
+			\vfill
+			\normalfont\sffamily\large\textcolor{precolor}{\@publisherspre}\par
+			\bfseries\LARGE\textcolor{maincolor}{\@publishers}
+			\vfill
+			\normalfont\sffamily\large\textcolor{precolor}{\@datepre} \\
+			\bfseries\Large\textcolor{maincolor}{\@date}
+			\vfill~
+			\vfill
+			\end{center}
+			\end{titlepage}
+		}		
+	}{}
+\else
+\fi

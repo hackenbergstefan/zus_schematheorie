@@ -1,0 +1,652 @@
+\RequirePackage{ifthen}
+\RequirePackage{xcolor}
+\RequirePackage[thref, hyperref, thmmarks]{ntheorem}
+\RequirePackage{tikz}
+\RequirePackage{calc}
+\usetikzlibrary{calc}
+
+\makeatletter
+% %% Improve key handling ------------------------------------------------------
+% \newcommand{\createpgfvaluekey}[1]{
+% 	\pgfkeys{/ttm/#1/.code={\pgfkeyssetvalue{/ttm/#1}{##1}}}
+% }
+% 
+% % Provide \thekey command
+% \newcommand{\ifkeynotnull}[3]{
+% 	\pgfkeys{#1/.get=\thekey}
+% 	\ifthenelse{\equal{\thekey}{}}{#3}{#2}
+% }
+% %% ---------------------------------------------------------------------------
+
+%% Define toks ---------------------------------------------------------------
+\newtoks\theoremcounterzero
+\newtoks\theoremcounterparent
+%% ---------------------------------------------------------------------------
+
+%% Define Keys ---------------------------------------------------------------
+\pgfkeys{/ttm/.is family}
+
+% color
+\pgfkeys{/ttm/color/.code={\theoremcolor{#1}}}
+\pgfkeys{/ttm/color/.default=black}
+% header font
+\pgfkeys{/ttm/font header/.code={
+	%\expandafter\theoremheaderfont\expandafter{\expandafter\color\expandafter{\the\theoremcolor!50!black} #1} }}
+	\theoremheaderfont{#1}}}
+\pgfkeys{/ttm/font header/.default={\normalfont\sffamily\bfseries}}
+% body font
+\pgfkeys{/ttm/font body/.code={\theorembodyfont{#1}}}
+\pgfkeys{/ttm/font body/.default=\itshape}
+
+% indent
+\pgfkeys{/ttm/tikz/indent/.code={\def\ttm@indent{#1}}}
+\pgfkeys{/ttm/tikz/indent/.default=0pt}
+
+% indent right
+\pgfkeys{/ttm/tikz/indent right/.code={\def\ttm@indent@right{#1}}}
+\pgfkeys{/ttm/tikz/indent right/.default=0pt}
+
+% xsep
+\pgfkeys{/ttm/tikz/xsep/.code={\def\ttm@xsep{#1}}}
+\pgfkeys{/ttm/tikz/xsep/.default=0pt}
+
+% ysep
+\pgfkeys{/ttm/tikz/ysep/.code={\def\ttm@ysep{#1}}}
+\pgfkeys{/ttm/tikz/ysep/.default=5pt}
+
+% preskip
+\pgfkeys{/ttm/tikz/preskip/.code={\def\ttm@preskip{#1}}}
+\pgfkeys{/ttm/tikz/preskip/.default=\topsep}
+
+% postskip
+\pgfkeys{/ttm/tikz/postskip/.code={\def\ttm@postskip{#1}}}
+\pgfkeys{/ttm/tikz/postskip/.default=\topsep}
+
+% inner indent
+\pgfkeys{/ttm/inner indent/.code={\theoremindent#1}}
+\pgfkeys{/ttm/inner indent/.default=0pt}
+
+% numbering
+\pgfkeys{/ttm/numbering/.code={\theoremnumbering{#1}}}
+\pgfkeys{/ttm/numbering/.default=arabic}
+
+% theoremsymbol
+\pgfkeys{/ttm/symbol/.code={\theoremsymbol{#1}}}
+\pgfkeys{/ttm/symbol/.default=}
+
+% separator
+\pgfkeys{/ttm/separator/.code={\theoremseparator{#1}}}
+\pgfkeys{/ttm/separator/.default={.}}
+
+
+% styles
+\pgfkeys{/ttm/style/.code={\csname ttmstyle#1\endcsname}} 
+	%predefined styles are
+	%elegantbreak, elegantinline, 
+	%hienbreak, hieninline,
+	%curvybreak, curvyinline,
+	%roundbreak, roundinline
+	%plain
+\pgfkeys{/ttm/style/.default=plain}
+
+
+%counter
+\pgfkeys{/ttm/counter zero/.code={\global\theoremcounterzero{#1}}}
+\pgfkeys{/ttm/counter zero/.default={}}
+\pgfkeys{/ttm/counter parent/.code={\global\theoremcounterparent{#1}}}
+\pgfkeys{/ttm/counter parent/.default={}}
+
+
+%handle 'unknown' keys
+\pgfkeys{/ttm/.unknown/.code=%
+	{%
+	  \let\currname\pgfkeyscurrentname%
+	  \let\currval\pgfkeyscurrentvalue%
+	  \ifx#1\pgfkeysnovalue%
+	   \@ifundefined{ttm@remain}{
+	   	\edef\ttm@remain{\currname, }
+	   }{
+	   	\edef\ttm@remain{\ttm@remain\currname, }
+	   }
+	  \else%
+	   	\@ifundefined{ttm@remain}{
+	     \edef\ttm@remain{\currname=\currval, }
+	    }{
+	     \edef\ttm@remain{\ttm@remain\currname=\currval, }
+	    }
+	  \fi%
+	}
+}
+%% ---------------------------------------------------------------------------
+
+% \def\ttm@remain{}
+
+\newcommand{\newtikztheorem}[3][]{
+	% kill command
+	\let\ttm@remain\@undefined
+	%set defaults
+	\pgfqkeys{/ttm}{style, font header, color, numbering, font body, symbol, 
+		separator, counter parent, counter zero, inner indent}
+	%set values
+	\pgfqkeys{/ttm}{#1}
+	
+%    	def of #2 ttmremain = \meaning\ttm@remain, \\
+ 	
+	
+	\def\pretok{}
+	\@ifundefined{#2}{}{\def\pretok{re}}
+	
+	\edef\tocall{\noexpand\csname\pretok newtheorem\noexpand\endcsname}
+	
+	
+	%if counter zero is set
+	\ifthenelse{\equal{\the\theoremcounterzero}{}}{
+		%if counter parent is set
+		\ifthenelse{\equal{\the\theoremcounterparent}{}}{
+			\expandafter\tocall{#2}{#3}
+		}{
+			\edef\args{{#2}[\the\theoremcounterparent]{#3}}
+			\expandafter\tocall\args
+		}	
+	}{
+		\edef\args{{#2}{#3}[\the\theoremcounterzero]}
+		\expandafter\tocall\args
+	}
+}
+
+
+%% define help node ----------------------------------------------------------
+\newcommand{\createtikzbaselinenode}[1]{
+{\tikz[remember picture,baseline]{\useasboundingbox (0,0) rectangle (0,0);
+	\node[anchor=base] (#1) {};}}}
+%% ---------------------------------------------------------------------------
+
+
+
+%% define new theorem styles -------------------------------------------------
+
+
+% define global tikz styles
+\tikzstyle{ttm picture}=[baseline, remember picture]
+\tikzstyle{ttm picture overlay}=[overlay, remember picture]
+\tikzstyle{ttm thmbox inline}=[anchor=base,
+	outer sep=0pt,inner xsep=\ttm@xsep, inner ysep=\ttm@ysep]
+\tikzstyle{ttm thmbox break}=[anchor=base,
+	outer sep=0pt,
+	inner xsep=\ttm@xsep, inner ysep=\ttm@ysep]
+\tikzstyle{ttm thmtitle break}=
+	[anchor=south west, inner sep=0pt, align=left, outer sep=0pt]
+
+% define ttm styles
+
+\newtheoremstyle{tikzbreak}
+	{\item[\gdef\theoremheadertext{\color{\theorem@color!95!black}
+		\theorem@headerfont 
+		##1\ ##2\theorem@separator}]}%
+	{\item[\gdef\theoremheadertext{\color{\theorem@color!95!black}
+		\theorem@headerfont 
+		##1\ ##2\ (##3)\theorem@separator}]}
+	
+\newtheoremstyle{tikzhien}
+	{\item[\hskip\labelsep\hskip\ttm@indent\hskip-\theorem@indent % 
+		\createtikzbaselinenode{thm title begin}%
+		\color{\theorem@color!95!black}\theorem@headerfont 
+			##1\ ##2\theorem@separator%
+		\createtikzbaselinenode{thm title end}]}%
+	{\item[\hskip\labelsep\hskip\ttm@indent\hskip-\theorem@indent % 
+		\createtikzbaselinenode{thm title begin}%
+		\color{\theorem@color!95!black}\theorem@headerfont 
+			##1\ ##2\ (##3)\theorem@separator%
+		\createtikzbaselinenode{thm title end}]}%
+		
+\newtheoremstyle{tikzplain}
+	{\item[\hskip\labelsep%
+		\createtikzbaselinenode{thm title begin}%
+		\color{\theorem@color!95!black}\theorem@headerfont 
+			##1\ ##2\theorem@separator%
+		\createtikzbaselinenode{thm title end}]}%
+	{\item[\hskip\labelsep%
+		\createtikzbaselinenode{thm title begin}%
+		\color{\theorem@color!95!black} \theorem@headerfont 
+			##1\ ##2\ (##3)\theorem@separator%
+		\createtikzbaselinenode{thm title end}]}%
+
+% the original plain style
+% 		
+\renewtheoremstyle{plain}%
+	{\item[\hskip\labelsep\color{\theorem@color!95!black} %
+		\theorem@headerfont ##1\ ##2\theorem@separator]}%
+	{\item[\hskip\labelsep\color{\theorem@color!95!black} %
+		\theorem@headerfont ##1\ ##2\ (##3)\theorem@separator]}
+
+%% ---------------------------------------------------------------------------
+
+
+
+%% Create predefined styles --------------------------------------------------
+\newsavebox{\mythbox}
+
+\newcommand{\ttmprework}[2]{
+	\theoremprework{%
+		#1%
+		\vskip\ttm@preskip%
+		\begin{lrbox}{\mythbox}%
+		\begin{minipage}{\textwidth-\ttm@indent-
+			\ttm@indent@right-\ttm@xsep-\ttm@xsep}%
+		#2%
+	}%
+}%
+\newcommand{\ttmpostworkbreak}[2][]{
+	\theorempostwork{
+		\end{minipage}%
+		\end{lrbox}%
+		\hskip\ttm@indent%
+		\begin{tikzpicture}[ttm picture]
+			\node[ttm thmbox break, #1]
+				(thm) {\usebox{\mythbox}};
+			\node[ttm thmtitle break]
+				(thm title)
+				at (thm.north west) {{\theoremheadertext}};
+		\end{tikzpicture}%
+		#2%
+		\vskip\ttm@postskip
+	}
+}
+\newcommand{\ttmpostworkinline}[2][]{
+	\theorempostwork{
+		\end{minipage}
+		\end{lrbox}
+		\hskip\ttm@indent%
+		\begin{tikzpicture}[ttm picture]
+		\node[ttm thmbox inline,#1]
+			(thm) {\usebox{\mythbox}};
+		\end{tikzpicture}
+		#2%
+		\vskip\ttm@postskip
+	}
+}
+%% ---------------------------------------------------------------------------
+
+%% Create predefined styles --------------------------------------------------
+%%%% Elegant Style %%%%
+\def\ttmstyleelegantbreak{
+	\theoremstyle{tikzbreak}
+ 	\ttmprework{}{}
+	\ttmpostworkbreak[fill=\theorem@color!5]{
+		\begin{tikzpicture}[ttm picture overlay]
+		\tikzstyle{line}=[\theorem@color!90, thick, cap=rounded]
+		\draw[line]
+			([xshift=5pt] thm title.east) -- (thm title.east -| thm.north east);
+		\draw[line]
+			([yshift=-5pt] thm.south west) -- ([yshift=-5pt] thm.south east);
+		\end{tikzpicture}
+	}
+	\pgfqkeys{/ttm}{xsep=8pt}
+}
+\def\ttmstyleelegantinline{
+	\theoremstyle{tikzplain}
+	\ttmprework{}{}
+	\ttmpostworkinline[fill=\theorem@color!5]{
+		\begin{tikzpicture}[ttm picture overlay]
+		\tikzstyle{line}=[\theorem@color!90, thin, cap=rounded]
+		\draw[line]
+			(thm.south west) -- (thm.south east);
+		\end{tikzpicture}
+	}
+
+	\pgfqkeys{/ttm}{xsep=8pt}
+}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Hien Style %%%%
+\def\ttmstylehieninline{
+	\theoremstyle{tikzhien}
+	\ttmprework{}{}
+	\ttmpostworkinline{
+		\begin{tikzpicture}[ttm picture overlay]
+		\tikzstyle{line}=[\theorem@color!50!gray, thin]
+		\draw[line, very thin]
+			([yshift=2pt] thm title begin.south) --
+			([yshift=2pt] thm title end.south west);
+		\draw[line]
+			([xshift=4pt,yshift=2pt] thm title begin.south west 
+				-| thm.north west)
+			-- ([xshift=4pt] thm.south west);
+		\draw[line, line cap=round] ([xshift=4pt] thm.south west)
+			++(-4pt,0) -- +(8pt,0)
+			++(0,-1pt) -- +(8pt,0);
+
+		\end{tikzpicture}
+	}
+
+	\pgfqkeys{/ttm}{inner indent=3ex}
+}
+
+\def\ttmstylehienbreak{
+	\theoremstyle{tikzbreak}
+	\ttmprework{}{}
+	\ttmpostworkbreak{
+		\begin{tikzpicture}[ttm picture overlay]
+		\tikzstyle{line}=[\theorem@color!50!gray, semithick]
+		\draw[line, very thick, line cap=round]
+			([yshift=-2pt] thm title.south west) --
+			([yshift=-2pt] thm title.south east);
+		\draw[line]
+			([xshift=4pt,yshift=-2pt] thm title.south west -| thm.north west)
+			-- ([xshift=4pt] thm.south west);
+		\draw[line, line cap=round] ([xshift=4pt] thm.south west)
+			++(-4pt,0) -- +(8pt,0)
+			++(0,-1pt) -- +(8pt,0);
+
+		\end{tikzpicture}
+	}
+
+
+	\pgfqkeys{/ttm}{inner indent=3ex}
+}
+
+
+%%%% Curvy Style %%%%
+\def\ttmstylecurvybreak{
+	\theoremstyle{tikzbreak}
+	\ttmprework{}{}
+	\ttmpostworkbreak{
+		\begin{tikzpicture}[ttm picture overlay]
+		\tikzstyle{line}=[\theorem@color!50!gray, thick]
+
+		%% line at header
+		\fill[line] ($(thm title.east) + (3pt,0pt)$)--
+	 		(thm.south east|-thm title.east)--
+	 		($(thm title.east) + (3pt,0pt) - (0pt,1pt)$);
+
+		%% line below
+		\path let \p1 = (thm title.north west), \p2 = (thm.south west)
+			in \pgfextra{\pgfmathsetmacro\ydist{10^(-1)*(\y1-\y2)}}
+				(\ydist pt,0)
+				coordinate (thm mid only y);
+
+		\coordinate (thm mid1) at
+			($(thm title.north west)!0.5!(thm.south west)$);
+		\coordinate (thm mid2) at
+			($(thm title.north west)!0.7!(thm.south west)$);
+
+	% 	\draw[line]
+	%  		($(thm.north west) - (3pt,5pt)$)
+	%  		.. controls  ($(thm mid1) - (3pt,0) + (thm mid only y)$)
+	%  			and ($(thm mid2) - (3pt,0) + (thm mid only y)$)..
+	% 		($(thm.south west) - (4pt,4pt)$);
+	%  	\fill[line] ($(thm.south west) - (3pt,3pt)$)
+	%  		.. controls ($(thm.south) + (0,3pt)$) ..
+	%  		(thm.south east)
+	%  		.. controls ($(thm.south) + (0,2.5pt)$) ..
+	%  		($(thm.south west) - (4pt,4pt)$);
+		\fill[line, very thin]
+	 		($(thm title.north west) - (4pt,0pt)$)
+	 		.. controls  ($(thm mid1) - (3pt,0) + (thm mid only y)$)
+	 			and ($(thm mid2) - (3pt,0) + (thm mid only y)$)..
+			($(thm.south west) - (3pt,0pt)$)--
+	%  	\draw[line,green, very thin]
+		($(thm.south west) - (4pt,1pt)$)
+			.. controls
+				($(thm mid2) - (3pt,0pt) - (1pt,0) + (thm mid only y)$)
+	 			and
+	 			($(thm mid1) - (3pt,0pt)  - (1pt,0) + (thm mid only y)$)
+	 		..
+			($(thm title.north west) - (4pt,0pt) - (0.5pt,0.5pt)$);
+
+		\fill[line] ($(thm.south west) - (3pt,0)$)--
+	 		(thm.south east)--
+	 		($(thm.south west) - (4pt,1pt)$);
+
+		\end{tikzpicture}
+	}
+
+
+	\pgfqkeys{/ttm}{xsep=8pt}
+}
+
+\def\ttmstylecurvyinline{
+	\theoremstyle{tikzplain}
+	\ttmprework{}{}
+	\ttmpostworkinline{
+		\begin{tikzpicture}[ttm picture overlay]
+		\tikzstyle{line}=[\theorem@color!50!gray, thick]
+
+		\path let \p1 = (thm.north west), \p2 = (thm.south west)
+			in \pgfextra{\pgfmathsetmacro\ydist{10^(-1)*(\y1-\y2)}}
+				(\ydist pt,0)
+				coordinate (thm mid only y);
+
+		\coordinate (thm mid1) at ($(thm.north west)!0.5!(thm.south west)$);
+		\coordinate (thm mid2) at ($(thm.north west)!0.7!(thm.south west)$);
+
+	% 	\draw[line]
+	%  		($(thm.north west) - (3pt,5pt)$)
+	%  		.. controls  ($(thm mid1) - (3pt,0) + (thm mid only y)$)
+	%  			and ($(thm mid2) - (3pt,0) + (thm mid only y)$)..
+	% 		($(thm.south west) - (4pt,4pt)$);
+	%  	\fill[line] ($(thm.south west) - (3pt,3pt)$)
+	%  		.. controls ($(thm.south) + (0,3pt)$) ..
+	%  		(thm.south east)
+	%  		.. controls ($(thm.south) + (0,2.5pt)$) ..
+	%  		($(thm.south west) - (4pt,4pt)$);
+		\fill[line, very thin]
+	 		($(thm.north west) - (4pt,5pt)$)
+	 		.. controls  ($(thm mid1) - (4pt,0) + (thm mid only y)$)
+	 			and ($(thm mid2) - (4pt,0) + (thm mid only y)$)..
+			($(thm.south west) - (4pt,0pt)$)--
+	%  	\draw[line,green, very thin]
+		($(thm.south west) - (5pt,1pt)$)
+			.. controls
+				($(thm mid2) - (4pt,0pt) - (1pt,0) + (thm mid only y)$)
+	 			and
+	 			($(thm mid1) - (4pt,0pt)  - (1pt,0) + (thm mid only y)$)
+	 		..
+			($(thm.north west) - (4pt,5pt) - (0.5pt,0.5pt)$);
+
+		\fill[line] ($(thm.south west) - (3pt,0)$)--
+	 		(thm.south east)--
+	 		($(thm.south west) - (4pt,1pt)$);
+
+		\end{tikzpicture}
+	}
+
+	\pgfqkeys{/ttm}{xsep=0pt}
+}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Round %%%%%%%%%%%%%%
+\def\ttmstyleroundinline{
+	\theoremstyle{tikzplain}
+	\ttmprework{}{}
+	\ttmpostworkinline{%
+		\begin{tikzpicture}[overlay, remember picture]
+		\tikzstyle{line}=[\theorem@color!50!gray, line width=1pt, cap=round,
+			rounded corners=10pt]
+
+		\draw[line]
+			($(thm.north west) - (3pt,1pt)$) |- ($(thm.south east) - (0,3pt)$);
+
+		\end{tikzpicture}
+	}
+
+	\pgfqkeys{/ttm}{ysep=0pt}
+}
+
+\def\ttmstyleroundbreak{
+	\theoremstyle{tikzbreak}
+	\ttmprework{}{}
+	\ttmpostworkbreak{%
+		\begin{tikzpicture}[ttm picture overlay]
+		\tikzstyle{line}=[\theorem@color!50!gray, line width=1pt, cap=round,
+			rounded corners=10pt]
+
+		\coordinate (start at) at
+			($(thm.north west) + (-3pt,5pt)$);
+		
+		\draw[\theorem@color!50!gray,rounded corners=2pt, line width=1pt]
+			($(thm title.south east) + (3pt,-3pt)$)
+			--
+			($(thm title.north east) + (3pt,3pt)$)
+			-|
+			(start at);
+
+
+		\draw[line]
+			(start at|-thm title.north west)
+			|- (thm.south east);
+
+
+		\end{tikzpicture}
+	}
+
+
+	\pgfqkeys{/ttm}{xsep=8pt}
+}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Plain style %%%%%%%
+\def\ttmstyleplain{
+	\theoremstyle{plain}
+	\theoremindent0pt
+}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%% Preconfig ntheorem ---------------------------------------------------------
+\theoremstyle{nonumberplain}
+\theoremindent0pt
+\theoremheaderfont{\sffamily\itshape}
+\theorembodyfont{\normalfont}
+\theoremseparator{.}
+\theoremsymbol{\ensuremath{_\square}}
+\RequirePackage{amssymb}
+\newtheorem{proof}{Beweis}
+\qedsymbol{\ensuremath{_\square}}
+%% ----------------------------------------------------------------------------
+
+
+%% Hacking ntheorem, i.e. redefine some commands ------------------------------
+\makeatletter
+\newtoks\theoremcolor
+\global\theoremcolor{black}
+\def\theorem@color{black}
+
+
+\gdef\th@class@LaTeX{%
+     \theoremstyle{plain}%
+     \theoremheaderfont{\normalfont\bfseries}%
+%% edited by Stefan Hackenberg
+	 \theoremcolor{black}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     \theorembodyfont{\itshape}%
+     \theoremseparator{}%
+     \theoremprework{\relax}%
+     \theorempostwork{\relax}%
+     \ifuse@newframeskips
+       \theorempreskip{0cm}%
+       \theorempostskip{0cm}%
+       \theoremframepreskip{0cm}%
+       \theoremframepostskip{0cm}%
+       \theoreminframepreskip{0cm}%
+       \theoreminframepostskip{0cm}%
+     \fi
+     \theoremindent0cm
+     \theoremrightindent0cm
+     \theoremnumbering{arabic}%
+     \theoremsymbol{}}
+
+
+\gdef\@newtheorem#1{%
+  \thm@tempiffalse
+  \expandafter\@ifdefinable\csname #1\endcsname
+  {\expandafter\@ifdefinable\csname #1*\endcsname
+   {\thm@tempiftrue
+    \thm@definelthm{#1}% for lists
+    \if@thmmarks
+      \expandafter\@ifundefined{c@curr#1ctr}%
+        {\newcounter{curr#1ctr}}{}%
+      \expandafter\@ifundefined{c@end#1ctr}%
+        {\newcounter{end#1ctr}}{}%
+    \fi
+    \expandafter\protected@xdef\csname #1Symbol\endcsname{\the\theoremsymbol}%
+    \expandafter\protected@xdef\csname #1@postwork\endcsname{%
+       \the\theorempostwork}%
+    \expandafter\gdef\csname#1\endcsname{%
+       \let\thm@starredenv\@undefined
+       \csname mkheader@#1\endcsname}%
+    \expandafter\gdef\csname#1*\endcsname{%
+       \let\thm@starredenv\relax
+       \csname mkheader@#1\endcsname}%
+    \def\@tempa{\expandafter\noexpand\csname end#1\endcsname}%
+    \expandafter\xdef\csname end#1*\endcsname{\@tempa}%
+    \expandafter\xdef\csname setparms@#1\endcsname
+     {\noexpand \def \noexpand \theorem@headerfont
+        {\the\theoremheaderfont\noexpand\theorem@checkbold}%
+      %% edited by Stefan Hackenberg
+      \noexpand \def \noexpand \theorem@color
+        {\the\theoremcolor}
+	  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \noexpand \def \noexpand \theorem@separator
+        {\the\theoremseparator}%
+      \noexpand \def \noexpand \theorem@prework
+        {\the\theoremprework}%
+      \noexpand\ifuse@newframeskips
+        \noexpand \theorempreskipamount \the\theorem@preskip
+        \noexpand \theoremframepreskipamount \the\theorem@framepreskip
+        \noexpand \theoreminframepreskipamount \the\theorem@inframepreskip
+        \noexpand \theorempostskipamount \the\theorem@postskip
+        \noexpand \theoremframepostskipamount \the\theorem@framepostskip
+        \noexpand \theoreminframepostskipamount \the\theorem@inframepostskip
+      \noexpand\fi
+      \noexpand \def \noexpand \theorem@indent
+        {\the\theoremindent}%
+      \noexpand \def \noexpand \theorem@rightindent
+       {\the\theoremrightindent}%
+      \the \theorembodyfont
+      \noexpand\csname th@\the \theorem@@style \endcsname
+      %% edited by Stefan Hackenberg
+	   %set defaults
+	   \noexpand\pgfqkeys{/ttm/tikz}{indent, indent right, xsep,
+	  		 ysep, preskip, postskip}
+  	   %set keys
+	   \@ifundefined{ttm@remain}{}{
+       	\noexpand\pgfqkeys{/ttm/tikz}{\ttm@remain}
+       }
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     }%
+    \expandafter\xdef\csname th@class@#1\endcsname
+     {\noexpand\theoremstyle{\the\theorem@style}%
+      \noexpand\theoremheaderfont{\the\theoremheaderfont}%
+      %% edited by Stefan Hackenberg
+      \noexpand\theoremcolor{\the\theoremcolor}
+	  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \noexpand\theorembodyfont{\the \theorembodyfont}%
+      \noexpand\theoremseparator{\the\theoremseparator}%
+      \noexpand\theoremprework{\the\theoremprework}%
+      \noexpand\theorempostwork{\the\theorempostwork}%
+      \noexpand\ifuse@newframeskips
+        \noexpand\theorempreskip {\the\theorem@preskip}%
+        \noexpand\theoremframepreskip {\the\theorem@framepreskip}%
+        \noexpand\theoreminframepreskip {\the\theorem@inframepreskip}%
+        \noexpand\theorempostskip {\the\theorem@postskip}%
+        \noexpand\theoremframepostskip {\the\theorem@framepostskip}%
+        \noexpand\theoreminframepostskip {\the\theorem@inframepostskip}%
+      \noexpand\fi
+      \noexpand\theoremindent\the\theoremindent%
+      \noexpand\theoremrightindent\the\theoremrightindent%
+      \noexpand\theoremnumbering{\the\theoremnumbering}%
+      \noexpand\theoremsymbol{\the\theoremsymbol}}%
+    }}%
+  \theoremprework{\relax}%
+  \theorempostwork{\relax}%
+  \@ifnextchar[{\@othm{#1}}{\@nthm{#1}}}% MUST NOT BE IN ANY IF !!!
+\makeatother
+%% ---------------------------------------------------------------------------

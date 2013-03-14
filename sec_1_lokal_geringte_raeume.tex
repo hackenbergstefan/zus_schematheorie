@@ -1,0 +1,29 @@
+\section{Lokal geringte Räume}
+
+\subsection{Garben}
+
+\begin{definition}[Prägarbe]
+	Sei $X$ ein topologischer Raum. Eine \emph{Prägarbe} $\F$ auf $X$
+	ist eine Zuordnung
+	$$\F: U\mapsto \F(U) \,,$$
+	die jedem offenen $U\subset X$ eine abelsche Gruppe
+	$\F(U)$ zuordnet, zusammen mit Homomorphismen
+	$$\tikzmark{$\rho_{UV}$}: \F(U) \to \F(V)$$
+	für jedes Paar $U\subset V$, so dass
+	\[
+	\begin{tikzcd}
+		\F(U) \arrow{r}{\rho_{UV}}& \F(V) \arrow{r}{\rho_{VW}}& \F(W)
+	\end{tikzcd}
+	\]
+\end{definition}
+
+\tikzmargin{south}{Wir nennen $\rho_{UV}$ \emph{Restriktion}, schreiben
+	meist $s\mid$}
+
+
+\begin{beispiel}
+	$$\cal C_X^\circ: U \mapsto \cal C_X^\circ (U) := 
+		\{f: U\to \R \mid \text{ $f$ stetig}\} $$
+	mit $\rho_{UV}: \cal C_X^\circ(V) \mapsto \cal C_X^\circ(U)$,
+	$f \mapsto f\mid_U$.
+\end{beispiel}
