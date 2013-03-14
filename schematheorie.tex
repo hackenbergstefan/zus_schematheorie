@@ -29,7 +29,7 @@ halfparskip*,				% Absatzformatierung s. scrguide 3.1
 %fleqn,								% Ausgabe von Gleichungen linksbündig
 %draft								% überlangen Zeilen in Ausgabe gekennzeichnet
 DIV = 14,
-monochrome						% schwarz weiß output
+%monochrome						% schwarz weiß output
 ]
 {scrartcl}
 
@@ -49,6 +49,10 @@ monochrome						% schwarz weiß output
 \usepackage{tikz}
 \usetikzlibrary{matrix,arrows}
 \usepackage{tikz-cd}
+
+
+\usepackage[automark]{scrpage2} % Headline styles
+
 
 %% Packages tikztitle and tikztheorem %%%%%%%%%%%%%%%%%%%%%%%
 \colorlet{mycolor}{blue!80!black}
@@ -84,8 +88,8 @@ monochrome						% schwarz weiß output
 	]{beispiel}{Beispiel}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{tikzmargin}
 
+\usepackage{tikzmargin}
 
 %% Packages für Grafiken & Abbildungen %%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx} %%Zum Laden von Grafiken
@@ -106,8 +110,7 @@ monochrome						% schwarz weiß output
 %\usepackage{natbib}
 
 \begin{document}
-
-
+\pagestyle{empty}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Ihr Artikel                                                       %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -123,7 +126,7 @@ monochrome						% schwarz weiß output
 \title{Schematheorie}
 \author[erstellt von]{Stefan Hackenberg \and Maximilian Huber}
 %\thanks{Fußnote}			% entspr. \footnote im Fließtext
-\date{11.03.2013}				% falls anderes, als das aktuelle gewünscht
+\date{\today}				% falls anderes, als das aktuelle gewünscht
 \publishers[gehalten von]{Prof. Dr. Marco Hien}
 
 %% Widmungsseite %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,6 +140,8 @@ monochrome						% schwarz weiß output
 % Für die Überschrift s. \documentclass[abstracton].
 %\end{abstract}
 
+\KOMAoptions{twoside}
+
 %% Erzeugung von Verzeichnissen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \tableofcontents			% Inhaltsverzeichnis
 %\listoftables				% Tabellenverzeichnis
@@ -144,6 +149,8 @@ monochrome						% schwarz weiß output
 
 
 %% Der Text %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{scrheadings}
 
 \input{sec_1_lokal_geringte_raeume}
 
