@@ -1,4 +1,5 @@
 \RequirePackage{ifthen}
+\RequirePackage{minipage-marginpar}
 \RequirePackage{xcolor}
 \RequirePackage[thref, hyperref, thmmarks]{ntheorem}
 \RequirePackage{tikz}
@@ -225,14 +226,18 @@
 
 %% Create predefined styles --------------------------------------------------
 \newsavebox{\mythbox}
-
+\newlength{\currentparskip}
+	
 \newcommand{\ttmprework}[2]{
 	\theoremprework{%
 		#1%
 		\vskip\ttm@preskip%
+		\setlength{\currentparskip}{\parskip}% save the value
 		\begin{lrbox}{\mythbox}%
 		\begin{minipage}{\textwidth-\ttm@indent-
 			\ttm@indent@right-\ttm@xsep-\ttm@xsep}%
+		\setlength{\parskip}{\currentparskip}% restore the value
+		\mpgmpar@savemarginpars%
 		#2%
 	}%
 }%
@@ -249,6 +254,7 @@
 				at (thm.north west) {{\theoremheadertext}};
 		\end{tikzpicture}%
 		#2%
+		\mpgmpar@restoremarginpars%
 		\vskip\ttm@postskip
 	}
 }
@@ -262,6 +268,7 @@
 			(thm) {\usebox{\mythbox}};
 		\end{tikzpicture}
 		#2%
+		\mpgmpar@restoremarginpars%
 		\vskip\ttm@postskip
 	}
 }

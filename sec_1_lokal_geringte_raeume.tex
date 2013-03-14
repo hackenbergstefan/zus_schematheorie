@@ -8,28 +8,70 @@
 	$$\F: U\mapsto \F(U) \,,$$
 	die jedem offenen $U\subset X$ eine abelsche Gruppe
 	$\F(U)$ zuordnet, zusammen mit Homomorphismen
-	$$\tikzmark{$\rho_{UV}$}: \F(U) \to \F(V)$$
-	für jedes Paar $U\subset V$, so dass
+	$$\rho_{UV}: \F(U) \to \F(V)$$
+	für jedes Paar $V\subset U$, so dass
 	\[
 	\begin{tikzcd}
 		\F(U) \arrow{r}{\rho_{UV}}
 			\arrow[bend right]{rr}{\rho_{UW}}& \F(V) \arrow{r}{\rho_{VW}}& \F(W)
 	\end{tikzcd}
 	\]
+	kommutiert.
+	
+	Wir nennen $\rho_{UV}$ \emph{Restriktion}, schreiben
+	meist $\tikzmark{s\rest V} := \rho_{UV}(s)$.
+	
+	Man nennt $s\in \F(U)$ auch \emph{Schnitt über $U$}.
 \end{definition}
-
-\tikzmargin{south}{Wir nennen $\rho_{UV}$ \emph{Restriktion}, schreiben
-	meist $s\rest U := \rho_{UV}(s)$.\\
-	Man nennt $s\in \F(U)$ \emph{Schnitt über $U$}.}
-
+	
+\tikzmargin{south}{\color{red}
+Bei mir steht hier im Srkipt $s\rest U$. Offenbar ein Fehler!?}
 
 \begin{beispiel}
 	$$\cal C_X^\circ: U \mapsto \cal C_X^\circ (U) := 
 		\{f: U\to \R \mid \text{ $f$ stetig}\} $$
-	mit $\rho_{UV}: \cal C_X^\circ(V) \mapsto \cal C_X^\circ(U)$,
+	mit $\rho_{VU}: \cal C_X^\circ(V) \mapsto \cal C_X^\circ(U)$,
 	$f \mapsto f\rest U$.
 \end{beispiel}
 
-\pagebreak
+\begin{bemerkung}
+	Ist $\kat{Ab}$ die Kategorie der abelschen Gruppen und
+	\[
+		\kat{Top}_X := 
+		\begin{cases}
+		\Obj: U\subset X \text{ offen}\\
+		\Morph: \Hom(U,V) = 
+			\begin{cases}
+				\emptyset & U\not\subset V,\\
+				U\to V & U\subset V,
+			\end{cases}
+		\end{cases}
+	\]
+	dann ist eine Prägarbe gerade ein kontravarianter Funktor
+	\[
+		\F: \funcdef{\kat{Top}_X & \to & \kat{Ab}\\
+			U & \mapsto & \F(U)\\
+			(U\to V) & \mapsto & (\F(V)\to \F(U)).}
+	\]
+	Oder anders ausgedrückt: Es ist
+	\[
+		\F: \funcdef{\kat{Top}_X\op & \to & \kat{Ab}\\
+			U & \mapsto & \F(U)\\
+			(V\to U) & \mapsto & (\F(V)\to \F(U)).}
+	\]
+	ein kovarianter Funktor.
+\end{bemerkung}
 
-blabla
+\begin{definition}[Morphismus von Prägarben]
+	Ein \emph{Morphismus von Prägarben} $\F \xto{\phi} \G$ auf $X$ ist
+	eine natürliche Transformation der Funktoren $\F$ und $\G$, d.h.
+	für alle $U\subset X$ offen gibt es einen Morphismus
+	$\F(U) \xto{\phi_U} \G(U)$, so dass für $U\subset V$
+	\[
+		\begin{tikzcd}
+			\F(U) \arrow{r}{\phi_U} & \G(U)\\
+			\F(V) \arrow{r}{\phi_U} \arrow{u} & \G(V) \arrow{u}
+		\end{tikzcd}
+	\] 
+	kommutiert.
+\end{definition}

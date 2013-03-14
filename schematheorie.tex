@@ -84,12 +84,23 @@ DIV = 14,
 	style=plain,
 	color=mycolor,
 	font header=\normalfont\sffamily\bfseries,
+	font body=\normalfont,
 	counter parent=satz
 	]{beispiel}{Beispiel}
+	
+\newtikztheorem[
+	style=plain,
+	color=mycolor,
+	font header=\normalfont\sffamily\bfseries,
+	font body=\normalfont,
+	counter parent=satz
+	]{bemerkung}{Bemerkung}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \usepackage{tikzmargin}
+
+\usepackage{array}
 
 %% Packages für Grafiken & Abbildungen %%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx} %%Zum Laden von Grafiken
@@ -101,8 +112,18 @@ DIV = 14,
 \let\bb\mathbb
 \let\cal\mathcal
 \newcommand{\F}{\cal{F}}
+\newcommand{\G}{\cal{G}}
 \newcommand{\R}{\bb{R}}
 \newcommand{\rest}[1]{\big|_{#1}}
+\newcommand{\kat}[1]{\mathbf{#1}}
+\newcommand{\op}{^\mathrm{op}}
+\DeclareMathOperator{\Obj}{Obj}
+\DeclareMathOperator{\Morph}{Morph}
+\DeclareMathOperator{\Hom}{Hom}
+\newcommand{\funcdef}[1]{%
+	\begin{array}[t]{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}
+	#1\end{array}}
+\let\xto\xrightarrow
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -141,6 +162,7 @@ DIV = 14,
 %\end{abstract}
 
 \KOMAoptions{twoside}
+\cleardoublepage
 
 %% Erzeugung von Verzeichnissen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \tableofcontents			% Inhaltsverzeichnis
