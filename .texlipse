@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Thu Mar 14 14:41:22 CET 2013
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=schematheorie.tex
+outputFile=Schematheorie.pdf
+langSpell=de
+markDer=true
+srcDir=
