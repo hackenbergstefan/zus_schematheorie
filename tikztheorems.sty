@@ -592,7 +592,11 @@
         {\the\theoremheaderfont\noexpand\theorem@checkbold}%
       %% edited by Stefan Hackenberg
       \noexpand \def \noexpand \theorem@color
-        {\the\theoremcolor}
+        {\ifcolors@
+        	\the\theoremcolor
+         \else
+         	black
+         \fi}
 	  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       \noexpand \def \noexpand \theorem@separator
         {\the\theoremseparator}%
