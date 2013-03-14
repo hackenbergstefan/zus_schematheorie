@@ -12,13 +12,15 @@
 	für jedes Paar $U\subset V$, so dass
 	\[
 	\begin{tikzcd}
-		\F(U) \arrow{r}{\rho_{UV}}& \F(V) \arrow{r}{\rho_{VW}}& \F(W)
+		\F(U) \arrow{r}{\rho_{UV}}
+			\arrow[bend right]{rr}{\rho_{UW}}& \F(V) \arrow{r}{\rho_{VW}}& \F(W)
 	\end{tikzcd}
 	\]
 \end{definition}
 
 \tikzmargin{south}{Wir nennen $\rho_{UV}$ \emph{Restriktion}, schreiben
-	meist $s\mid$}
+	meist $s\mid_U := \rho_{UV}(s)$.\\
+	Man nennt $s\in \F(U)$ \emph{Schnitt über $U$}.}
 
 
 \begin{beispiel}
