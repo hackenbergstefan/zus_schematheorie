@@ -42,22 +42,44 @@
 		%draw arrow
 		\ifthenelse{\isodd{\thepage}}
 		{
-			\draw[gray!30] (tikzmargin#1.north west) +(3pt,3pt)
-				-| ($(tikzmargin#1.south west)-(3pt,0)$) |- +(3pt,-3pt); 
+			\draw[gray!30, thick] (tikzmargin#1.north west) +(3pt,3pt)
+				-| ($(tikzmargin#1.south west)-(3pt,0)$) |- +(6pt,-3pt); 
 			\path[->, line width=1.5pt, gray, opacity=0.3, 
-				shorten <=1pt, shorten >=5pt]
+				shorten <=4pt, shorten >=5pt]
 				(tikzmargin#1) 
 				edge[in=\tikzmargin@inangle, out=180, looseness=0.7] 
 				(tikzmark#1);
 		}
 		{
-			\draw[gray!30] (tikzmargin#1.north east) +(-3pt,3pt)
-				-| ($(tikzmargin#1.south east)-(0pt,0)$) |- +(-3pt,-3pt); 
+			\draw[gray!30, thick] (tikzmargin#1.north east) +(-3pt,3pt)
+				-| ($(tikzmargin#1.south east)+(3pt,0)$) |- +(-6pt,-3pt); 
 			\path[->, line width=1.5pt, gray, opacity=0.3, 
-				shorten <=2pt, shorten >=5pt]
+				shorten <=4pt, shorten >=5pt]
 				(tikzmargin#1) 
 				edge[in=\tikzmargin@inangle, out=0, looseness=0.7]
 				(tikzmark#1);
 		}
 	\end{tikzpicture}
 }
+
+
+
+%tikzarrow
+\def\tikzmargin@outangle{0}
+\pgfkeys{/tikzmargin/outangle/.code={\def\tikzmargin@outangle{#1}}}
+\pgfkeys{/tikzmargin/mark above/.style={/tikzmargin/outangle=90}}
+\pgfkeys{/tikzmargin/mark below/.style={/tikzmargin/outangle=-90}}
+
+\newcommand{\tikzarrow}[3][]{%
+	\pgfqkeys{/tikzmargin}{#2}%
+	\tikz[baseline, remember picture]{
+		\node[anchor=base, inner sep=0pt, outer sep=0pt] (arrow start) {#3};
+	}%
+	\begin{tikzpicture}[overlay, remember picture]
+		\path[overlay, ->, line width=1.5pt, gray, opacity=0.3, 
+			shorten <=4pt, shorten >=5pt]
+			(arrow start) 
+			edge[in=\tikzmargin@inangle, out=\tikzmargin@outangle, 
+				looseness=0.7]
+			(tikzmark#1);
+	\end{tikzpicture}}

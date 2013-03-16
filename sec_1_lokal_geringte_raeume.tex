@@ -75,3 +75,38 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
 	\] 
 	kommutiert.
 \end{definition}
+
+
+\begin{definition}[Garbe]
+	Eine Prägarbe $\F$ auf $X$ heißt \emph{Garbe}, falls gilt:
+	Ist $U\subset X$ offen und $U=\bigcup_{i\in I} U_i$ für 
+	offene $U_i\subset X$, so gilt
+	\begin{enumerate}
+	  \item Ist $s\in \F(U)$ und $s\rest{U_i} = 0$ für alle $i\in I$,
+	  	so ist $s=0\in \F(U)$.
+	  \item Sind $s_i \in \F(U_i)$ gegeben, mit
+	  	$$s_i \rest{U_i\cap U_j} = s_j \rest{U_i\cap U_j}\qquad \forall i,j,$$
+	  	so existiert ein $s\in \F(U)$ mit
+	  	$$s_i = s \rest{U_i}\qquad\forall i.$$
+	\end{enumerate}
+\end{definition}
+
+\begin{bemerkung}
+	$\F$ ist eine Garbe, genau dann, wenn die folgende Sequenz abelscher
+	Gruppen exakt ist:
+	\[	\everymath{\displaystyle}
+		\begin{tikzcd}[row sep=tiny, column sep=small]
+		0 \rar & \tikzmark[1]{\F(U)} \rar & 
+			\tikzmark[2]{\prod_{i\in I} \F(U_i)} \rar
+			& \prod_{(i,j)\in I^2} \F(U_i\cap U_j)\\
+		& s \rar[mapsto] & \left(s\rest{U_i}\right)_{i\in I}\\
+		&& (s_i)_{i\in I} \rar[mapsto] &
+			\left(s_i\rest{U_i\cap U_j} - 
+			s_j\rest{U_i\cap U_j}\right)_{(i,j)\in I^2}  
+		\end{tikzcd}
+	\]
+	
+	Exaktheit an \tikzarrow[1]{south, mark above}{dieser} Stelle ist äquivalent 
+	zu Eigenschaft 1.
+	Exaktheit \tikzarrow[2]{south, mark above}{hier} zu Eigenschaft 2.
+\end{bemerkung}
