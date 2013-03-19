@@ -110,3 +110,31 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
 	zu Eigenschaft 1.
 	Exaktheit \tikzarrow[2]{south, mark above}{hier} zu Eigenschaft 2.
 \end{bemerkung}
+
+\begin{beispiel}
+	Sei $M$ eine $\mathrm C^\infty$ Mannigfaltigkeit, so ist
+  	\[ \cal C^\infty_M: U \mapsto
+  		\cal C^\infty_M(U) := \{f:U\to \R \mid f\in \mathrm C^\infty(U)\}
+  	\]
+  	eine Garbe.
+\end{beispiel}
+
+\begin{beispiel}
+	Sei $M$ eine $\C$ Mannigfaltigkeit, so ist
+  	\[ \cal O_M: U \mapsto
+  		\cal O_M(U) := \{f:U\to \C \mid f \text{ holomorph}\}
+  	\]
+  	eine Garbe. Für $M = \C$ haben wir zusätzlich die Garbe
+  	\[ \cal O_\C^\times: U \mapsto
+  		\cal O_\C^\times(U) := \{f:U\to \C^\times \mid f \text{ holomorph}\},
+  	\]
+  	(wobei die Gruppenverknüpfung multiplikativ zu lesen ist).
+  	Dies liefert uns einen Morphismus von (Prä)garben
+  	\[ \O \to \O_C^\times,\ f \mapsto \exp(f).\]
+  	Betrachte nun die Prägarbe
+  	\[\cal H := \tikzmark{\im^\text{naiv}}(\exp): U \mapsto \im(\exp_U) = 
+  		\{\exp \circ f: U\to \C \mid f:U\to \C \text{ holomorph}\}.\]
+  	Dies ist \emph{keine} Garbe:
+\end{beispiel}
+
+\tikzmargin{north}{Warum steht hier naiv??}

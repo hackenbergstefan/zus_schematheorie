@@ -11,10 +11,11 @@
 % margin positioning styles
 \def\tikzmargin@yshift{0cm}
 \pgfkeys{/tikzmargin/yshift/.code={\def\tikzmargin@yshift{#1}}}
-\def\tikzmargin@inangle{0}
-\pgfkeys{/tikzmargin/inangle/.code={\def\tikzmargin@inangle{#1}}}
 \pgfkeys{/tikzmargin/below/.style={/tikzmargin/yshift=-#1}}
 \pgfkeys{/tikzmargin/above/.style={/tikzmargin/yshift=#1}}
+
+\def\tikzmargin@inangle{0}
+\pgfkeys{/tikzmargin/inangle/.code={\def\tikzmargin@inangle{#1}}}
 
 
 % tikzmark
@@ -27,6 +28,8 @@
 
 % tikzmargin
 \newcommand{\tikzmargin}[3][]{
+	%reset keys
+	\pgfqkeys{/tikzmargin}{yshift=0cm, inangle=0}
 	\pgfqkeys{/tikzmargin}{#2}
 	\begin{tikzpicture}[overlay, remember picture]
 		%draw node
@@ -61,7 +64,6 @@
 		}
 	\end{tikzpicture}
 }
-
 
 
 %tikzarrow
