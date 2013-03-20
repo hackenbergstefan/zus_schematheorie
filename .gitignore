@@ -24,3 +24,5 @@
 *.fls
 *.fdb_latexmk
 *.inp
+*.sh
+*.thm
