@@ -6,13 +6,16 @@
 \RequirePackage{tikz}
 \RequirePackage{calc}
 \usetikzlibrary{calc}
+\pgfdeclarelayer{very back}
 \pgfdeclarelayer{background}
-\pgfsetlayers{background,main}
+\pgfsetlayers{very back,background,main}
 
 % Declare Keys
 \DeclareStringOption[blue]{color}
 \DeclareBoolOption[true]{withsectioning}
 \DeclareBoolOption[true]{withtitle}
+\DeclareBoolOption[true]{printauthor}
+\DeclareStringOption[]{backgroundcmd}
 
 % setup style elegant
 \DeclareStringOption[elegant]{style}
@@ -78,6 +81,7 @@
 	\let\authorold\author
 	\renewcommand*{\author}[2][von]{\def\@authorpre{#1}\authorold{#2}}
 	\let\dateold\date
+	\def\@datepre{}
 	\renewcommand*{\date}[2][Stand]{\def\@datepre{#1}\dateold{#2}}
 	\let\publishersold\publishers
 	\renewcommand*{\publishers}[2][herausgegeben von]
@@ -95,6 +99,12 @@
 		\renewcommand{\maketitle}{
 			\begin{titlepage}
 			\thispagestyle{empty}
+			%very background
+			\begin{tikzpicture}[remember picture, overlay]
+ 			\begin{pgfonlayer}{very back}
+				\expandafter\csname\tikztitle@backgroundcmd\endcsname
+ 			\end{pgfonlayer}
+			\end{tikzpicture}%
 			\textcolor{precolor}{\@titlehead}
 			~\vfill
 			\begin{center}\sffamily\bfseries
@@ -118,14 +128,20 @@
 					(main title.north west)
 					++(0,10pt) -- +(\textwidth,0);
 			}
-			\vfill
-			\normalfont\sffamily\large\textcolor{precolor}{\@authorpre}\par
-			\bfseries\LARGE\textcolor{maincolor}{
-			\begin{tabular}{c}\@author\end{tabular}}
-			\vfill
-			\normalfont\sffamily\large\textcolor{precolor}{\@publisherspre}\par
-			\bfseries\LARGE\textcolor{maincolor}{\@publishers}
-			\vfill
+			\vfill%
+			\iftikztitle@printauthor
+				\normalfont\sffamily\large\textcolor{precolor}{\@authorpre}\par
+				\bfseries\LARGE\textcolor{maincolor}{
+				\begin{tabular}{c}\@author\end{tabular}}
+				\vfill
+			\fi
+			\ifx\@publishers\@empty
+			\else
+				\normalfont\sffamily\large\textcolor{precolor}%
+					{\@publisherspre}\par
+				\bfseries\LARGE\textcolor{maincolor}{\@publishers}
+				\vfill
+			\fi
 			\normalfont\sffamily\large\textcolor{precolor}{\@datepre} \\
 			\bfseries\Large\textcolor{maincolor}{\@date}
 			\vfill~

@@ -56,7 +56,10 @@ DIV = 14,
 
 %% Packages tikztitle and tikztheorem %%%%%%%%%%%%%%%%%%%%%%%
 \colorlet{mycolor}{blue!80!black}
-\usepackage[color=mycolor, style=elegant]{tikztitle}
+\usepackage[color=mycolor, style=elegant, 
+	backgroundcmd=titlepagebackground]{tikztitle}
+
+
 \usepackage{tikztheorems}
 \newtikztheorem[
 	style=elegantbreak,
@@ -134,6 +137,33 @@ DIV = 14,
 %\usepackage{natbib}
 
 \begin{document}
+
+%% Titlepage Background cmd (lrbox must be after begin{document}) %%%%%
+\def\titlepagebackground{
+ 	\begin{scope}[transform shape, rotate=40, scale=5, opacity=0.2]
+ 		\node at (current page.center)
+		{\usebox{\diagbox}};
+ 	\end{scope}
+}
+\newsavebox{\diagbox}
+\begin{lrbox}{\diagbox}
+\begin{minipage}{\textwidth}
+\begin{equation}
+	\everymath{\displaystyle}
+	\begin{tikzcd}[row sep=tiny, column sep=small]
+	0 \rar & \tikzmark[1]{\F(U)} \rar & 
+		\tikzmark[2]{\prod_{i\in I} \F(U_i)} \rar
+		& \prod_{(i,j)\in I^2} \F(U_i\cap U_j)\\
+	& s \rar[mapsto] & \left(s\rest{U_i}\right)_{i\in I}\\
+	&& (s_i)_{i\in I} \rar[mapsto] &
+		\left(s_i\rest{U_i\cap U_j} - 
+		s_j\rest{U_i\cap U_j}\right)_{(i,j)\in I^2}  
+	\end{tikzcd}
+\end{equation}
+\end{minipage}
+\end{lrbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \pagestyle{empty}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Ihr Artikel                                                       %%
