@@ -89,7 +89,7 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
 	  	so existiert ein $s\in \F(U)$ mit
 	  	$$s_i = s \rest{U_i}\qquad\forall i.$$
 	\end{enumerate}
-\end{definition}
+\end{definition} 
 
 \begin{bemerkung}
 	$\F$ ist eine Garbe, genau dann, wenn die folgende Sequenz abelscher
@@ -135,6 +135,137 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
   	\[\cal H := \tikzmark{\im^\text{naiv}}(\exp): U \mapsto \im(\exp_U) = 
   		\{\exp \circ f: U\to \C \mid f:U\to \C \text{ holomorph}\}.\]
   	Dies ist \emph{keine} Garbe:
+  	Betrachte die Scheibe 
+  	\[U = \{z\in \C \mid \tfrac{1}{2} < |z| < \tfrac{3}{2}\}\]
+  	zerlegt in die beiden offenen Teilmengen
+  	\begin{align*}
+  		U_1 &= \{z \in U \mid \Re z > -\varepsilon\}\\
+  		U_2 &= \{z \in U \mid \Re z < \varepsilon\}
+  	\end{align*}
+  	mit $U = U_1 \cup U_2$ für ein $\varepsilon > 0$ beliebig. Für $i=1,2$
+  	ist 
+  	$(z: U_i \to \C, z\mapsto z) \in \cal H(U_i)$,
+  	da sich der komplexe Logarithmus auf beiden $U_i$ problemlos definieren
+  	lässt.
+  	Ferner ist auch
+ 	\[ (z: U_1 \to \C) \rest{U_1\cap U_2} = 
+ 		(z: U_2 \to \C) \rest{U_1 \cap U_2},\]
+ 	erfüllt, jedoch kommen diese nicht von einem gemeinsamen Schnitt
+ 	da
+ 	\[ (z: U\to \C) \notin \cal H(U). \]
 \end{beispiel}
 
 \tikzmargin{north}{Warum steht hier naiv??}
+
+
+\begin{definition}
+	Für einen topologischen Raum $X$ bezeichne
+	\begin{align*}
+		\PSh_X & := \text{die Kategorie der Prägarben auf $X$},\\
+		\Sh_X & := \text{die Kategorie der Garben auf $X$, wobei
+			} \Hom_{\Sh_X}(\F,\G) := \Hom_{\PSh_X}(\F,\G)
+	\end{align*} 
+\end{definition}
+
+\begin{bemerkung}
+	Man hat den Inklusionsfunktor
+	\[ \iota: \Sh_X \to \PSh_X,\ \F \mapsto \F\]
+\end{bemerkung}
+
+\begin{definition}[Halm]
+	Ist $\F$ eine (Prä)Garbe auf $X$ und $x_0 \in X$, so heißt
+	\[ \F_{x_0} := \varinjlim_{x_0 \in U \subset X\text{ offen}} \F(U)
+		 = \coprod_{U\subset X\text{ offen}} \F(U) \Big/ \sim\] 
+	mit 
+	\[ s \sim t \  :\Leftrightarrow \  
+		\exists W \subset X \text{ offen}:\ x_0 \in W \subset U \cap U'
+		\text{ und } s\rest W = t \rest W
+	\]
+	für $s \in \F(U)$, $t \in \F(U')$ der \emph{Halm von $\F$ bei $x_0$}.
+	
+	Die Elemente $[s] \in \F_{x_0}$ heißen \emph{Keime von Schnitten bei $x_0$}.  
+\end{definition}
+
+\begin{beispiel}
+	$(\cal C^\infty_M)_{x_0} = \{ [f: U \xto{C^\infty} \R]\mid
+  	f\sim g \Leftrightarrow \exists W\subset M\text{ offen}, x_0 \in W
+  	\text{ mit } f\rest W = g\rest W\}$
+\end{beispiel}
+\begin{beispiel}
+	\begin{align*}
+	  	O_{\C,x_0} &= \{[f:U \xto{\text{hol}} \C] \mid x_0 \in U\}\\
+	  	&= \{\sum_{n=0}^\infty a_n(x-x_0)^n \mid \text{Reihe hat positiven 
+	  	Konvergenzradius}\}\\
+	  	&:= \C\{x-x_0\}
+	\end{align*}
+\end{beispiel}
+
+\begin{definition}[push-forward]
+	Ist $f:X \to Y$ stetig und $\F$ eine Garbe auf $X$, so ist durch
+	\[ f_\ast \F: V \subset Y \text{ offen} \mapsto \F(f^{-1}(V))\]
+	eine Garbe definiert, der \emph{push-forward von $\F$}.
+\end{definition}
+
+
+
+\subsection{Lokal geringte Räume}
+Betrachte nun 
+\[\Ring := \text{ Kategorie der kommuativen Ringe mit $1$}\]
+und entsprechend Garben
+\[\F:\Top_X\op \to \Ring.\]
+
+\begin{definition}[lokaler Ring]
+	Sei  $R$ ein Ring. Dann heißt $R$ \emph{lokal}, wenn $R$ genau ein
+	maximales Ideal besitzt.
+\end{definition}
+
+\begin{beispiel}
+	$\Z_{(p)} := \left\{\frac{a}{b} \in \Q \mid p \nmid b\right\}$
+\end{beispiel}
+
+\begin{bemerkung}
+	Ist $R$ lokaler Ring und $\m \ideal R$ das maximale Ideal,
+	so ist $R \setminus \m = R^\times$.
+\end{bemerkung}
+
+\begin{beispiel}
+	Sei $M$ eine $C^\infty$ Mannigfaltigkeit und $x_0 \in M$.
+	Dann ist $\cal C^\infty_{M,x_0}$ ein lokaler Ring, denn
+	\[
+		\cal C^\infty_{M,x_0} \setminus \big(\cal C^\infty_{M,x_0}\big)^\times
+		= \{[f:U\xto{C^\infty} \R] \mid x_0 \in U\text{ mit } f(x_0) = 0\}
+		=: \m,
+	\]
+	da $[f]$ eine Einheit ist, genau dann, wenn $f(x_0) \neq 0$: 
+	Ist $f: U\xto{C^\infty} \R$ mit $f(x_0) \neq 0$, so existiert
+	$W\subset U$ offen, $x_0\in W$ mit $f(x) \neq 0$ für alle $x\in W$.
+	Damit folgt
+	\[
+		\left[\frac{1}{f}: W \to \R,\ x\mapsto \frac{1}{f(x)}\right]
+		\in \cal C^\infty_{M,x_0}
+	\]
+	ist Inverses zu $[f]$.
+	Zudem ist $\m$ ein Ideal.
+\end{beispiel}
+
+\begin{definition}[lokal geringter Raum]
+	Ein \emph{lokal geringter Raum} ist ein Paar $(X, \O_X)$ bestehend aus:
+	\begin{itemize}
+	  \item einem topologischen Raum $X$ und
+	  \item einer Garbe $\O_X$ auf $X$ von Ringen,
+	\end{itemize}
+	so dass $\O_{X,x_0}$ für alle $x_0\in X$ ein lokaler Ring ist.
+	
+	Man nennt $\O_X$ die \emph{Strukturgarbe von $(X,\O_X)$}. Ist
+	$x_0\in X$, so hat man das maximale Ideal
+	$\m_{x_0} \ideal \O_{X,x_0}$.
+	
+	Der Körper 
+	\[\kappa(x_0) := \O_{X,x_0} \big/ \m_{x_0} \]
+	heißt \emph{Restklassenkörper von $x_0$ in $(X,\O_X)$}.
+\end{definition}
+
+\begin{beispiel}
+	Sei $M$ eine $C^\infty$-Mannigfaltigkeit und $x_0 \in M$,
+	so ist $\kappa(x_0) = \R$.
+\end{beispiel}

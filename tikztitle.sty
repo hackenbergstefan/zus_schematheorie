@@ -3,9 +3,11 @@
 \RequirePackage{titlesec}
 \RequirePackage{kvoptions}
 \RequirePackage{ifthen}
+\RequirePackage{scrpage2}
 \RequirePackage{tikz}
+\RequirePackage{tikzpagenodes}
 \RequirePackage{calc}
-\usetikzlibrary{calc}
+\usetikzlibrary{calc, fadings}
 \pgfdeclarelayer{very back}
 \pgfdeclarelayer{background}
 \pgfsetlayers{very back,background,main}
@@ -14,6 +16,7 @@
 \DeclareStringOption[blue]{color}
 \DeclareBoolOption[true]{withsectioning}
 \DeclareBoolOption[true]{withtitle}
+\DeclareBoolOption[false]{withheadings}
 \DeclareBoolOption[true]{printauthor}
 \DeclareStringOption[]{backgroundcmd}
 
@@ -149,6 +152,45 @@
 			\end{center}
 			\end{titlepage}
 		}		
+	}{}
+\else
+\fi
+
+%headings
+
+\iftikztitle@withheadings
+	\renewcommand*{\headfont}{%
+		\normalfont\sffamily}
+	\ifthenelse{\equal{\tikztitle@style}{elegant}}{
+		\ifcolors@
+			\colorlet{precolor}{\tikztitle@color!95!black!60!white}
+			\colorlet{maincolor}{\tikztitle@color!95!black}
+			\colorlet{shadecolor2}{\tikztitle@color!50!black!20!white}
+		\else
+			\colorlet{precolor}{black!60!white}
+			\colorlet{maincolor}{black}
+			\colorlet{shadecolor2}{black!20!white}
+		\fi
+		\renewcommand{\sectionmark}[1]{\markleft{\thesection\ #1}}
+		\renewcommand{\subsectionmark}[1]{\markright{\thesubsection\ #1}}
+% 		\lehead{%
+% 			\begin{tikzpicture}[remember picture, overlay]
+% 				\fill[shadecolor2, path fading=east]
+% 					(current page header area.north west)
+% 					rectangle
+% 					(current page header area.south east);
+% 			\end{tikzpicture}%
+% 			\hspace{5pt}\textcolor{white}{\leftmark}
+% 		}
+% 		\rohead{%
+% 			\begin{tikzpicture}[remember picture, overlay]
+% 				\fill[shadecolor2, path fading=west]
+% 					(current page header area.north west)
+% 					rectangle
+% 					(current page header area.south east);
+% 			\end{tikzpicture}%
+% 			\hfill\textcolor{white}{\rightmark}\hspace{5pt}
+% 		}
 	}{}
 \else
 \fi

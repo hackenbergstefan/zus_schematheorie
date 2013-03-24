@@ -38,7 +38,7 @@ DIV = 14,
 
 
 %% Deutsche Anpassungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{amsmath}
+\usepackage{amsmath,amssymb}
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[ansinew]{inputenc}
@@ -47,16 +47,14 @@ DIV = 14,
 
 \usepackage{xcolor}
 \usepackage{tikz}
-\usetikzlibrary{matrix,arrows}
+\usetikzlibrary{matrix,arrows,fadings}
 \usepackage{tikz-cd}
 
-
-\usepackage[automark]{scrpage2} % Headline styles
 
 
 %% Packages tikztitle and tikztheorem %%%%%%%%%%%%%%%%%%%%%%%
 \colorlet{mycolor}{blue!80!black}
-\usepackage[color=mycolor, style=elegant, 
+\usepackage[color=mycolor, style=elegant, withheadings=true,
 	backgroundcmd=titlepagebackground]{tikztitle}
 
 
@@ -114,14 +112,23 @@ DIV = 14,
 %% Math abbreviations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \let\bb\mathbb
 \let\cal\mathcal
+\let\fr\mathfrak
 \newcommand{\F}{\cal{F}}
 \newcommand{\G}{\cal{G}}
 \renewcommand{\O}{\cal{O}}
 \newcommand{\R}{\bb{R}}
 \newcommand{\C}{\bb{C}}
+\newcommand{\Q}{\bb{Q}}
+\newcommand{\Z}{\bb{Z}}
 \newcommand{\rest}[1]{\big|_{#1}}
 \newcommand{\kat}[1]{\mathbf{#1}}
+\newcommand{\PSh}{\kat{PSh}}
+\newcommand{\Sh}{\kat{Sh}}
+\newcommand{\Ring}{\kat{Ring}}
+\newcommand{\Top}{\kat{Top}}
 \newcommand{\op}{^\mathrm{op}}
+\newcommand{\m}{\fr{m}}
+\newcommand{\ideal}{\vartriangleleft}
 \DeclareMathOperator{\Obj}{Obj}
 \DeclareMathOperator{\Morph}{Morph}
 \DeclareMathOperator{\Hom}{Hom}
@@ -139,16 +146,20 @@ DIV = 14,
 \begin{document}
 
 %% Titlepage Background cmd (lrbox must be after begin{document}) %%%%%
+\tikzfading[name=fade down,
+	top color=transparent!90,
+	bottom color=transparent!0]
 \def\titlepagebackground{
- 	\begin{scope}[transform shape, rotate=40, scale=5, opacity=0.2]
- 		\node at (current page.center)
+   	\begin{scope}[transform shape, rotate=40, scale=5, opacity=0.5,
+   		]
+ 		\node[scope fading=fade down] at (current page.center)
 		{\usebox{\diagbox}};
- 	\end{scope}
+   	\end{scope}
 }
 \newsavebox{\diagbox}
 \begin{lrbox}{\diagbox}
 \begin{minipage}{\textwidth}
-\begin{equation}
+\[
 	\everymath{\displaystyle}
 	\begin{tikzcd}[row sep=tiny, column sep=small]
 	0 \rar & \tikzmark[1]{\F(U)} \rar & 
@@ -159,7 +170,7 @@ DIV = 14,
 		\left(s_i\rest{U_i\cap U_j} - 
 		s_j\rest{U_i\cap U_j}\right)_{(i,j)\in I^2}  
 	\end{tikzcd}
-\end{equation}
+\]
 \end{minipage}
 \end{lrbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -198,6 +209,7 @@ DIV = 14,
 \cleardoublepage
 
 %% Erzeugung von Verzeichnissen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{plain}
 \tableofcontents			% Inhaltsverzeichnis
 %\listoftables				% Tabellenverzeichnis
 %\listoffigures				% Abbildungsverzeichnis
