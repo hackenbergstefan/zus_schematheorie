@@ -173,24 +173,24 @@
 		\fi
 		\renewcommand{\sectionmark}[1]{\markleft{\thesection\ #1}}
 		\renewcommand{\subsectionmark}[1]{\markright{\thesubsection\ #1}}
-% 		\lehead{%
-% 			\begin{tikzpicture}[remember picture, overlay]
-% 				\fill[shadecolor2, path fading=east]
-% 					(current page header area.north west)
-% 					rectangle
-% 					(current page header area.south east);
-% 			\end{tikzpicture}%
-% 			\hspace{5pt}\textcolor{white}{\leftmark}
-% 		}
-% 		\rohead{%
-% 			\begin{tikzpicture}[remember picture, overlay]
-% 				\fill[shadecolor2, path fading=west]
-% 					(current page header area.north west)
-% 					rectangle
-% 					(current page header area.south east);
-% 			\end{tikzpicture}%
-% 			\hfill\textcolor{white}{\rightmark}\hspace{5pt}
-% 		}
+		\lehead{%
+			\begin{tikzpicture}[remember picture, overlay]
+				\fill[shadecolor2, path fading=east]
+					(current page header area.north west)
+					rectangle
+					(current page header area.south east);
+			\end{tikzpicture}%
+			\hspace{5pt}\textcolor{white}{\leftmark}
+		}
+		\rohead{%
+			\begin{tikzpicture}[remember picture, overlay]
+				\fill[shadecolor2, path fading=west]
+					(current page header area.north west)
+					rectangle
+					(current page header area.south east);
+			\end{tikzpicture}%
+			\hfill\textcolor{white}{\rightmark}\hspace{5pt}
+		}
 	}{}
 \else
 \fi
