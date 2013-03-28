@@ -1,0 +1,11 @@
+\RequirePackage{tikz-cd}
+
+\pgfkeys{/tikz/commutative diagrams/empty/.style={
+	/tikz/commutative diagrams/description,
+	/tikz/draw=\pgfkeysvalueof{/tikz/commutative diagrams/background color},
+	}
+}
+
+\newcommand{\symb}[2][]{%
+	\rar[empty][description,#1]{#2}
+}
