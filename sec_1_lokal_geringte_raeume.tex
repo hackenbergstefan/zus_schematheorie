@@ -202,8 +202,9 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
 
 \begin{definition}[push-forward]
 	Ist $f:X \to Y$ stetig und $\F$ eine Garbe auf $X$, so ist durch
-	\[ f_\ast \F: V \subset Y \text{ offen} \mapsto \F(f^{-1}(V))\]
-	eine Garbe definiert, der \emph{push-forward von $\F$}.
+	\[ f_\ast \F: V \mapsto \F(f^{-1}(V))\]
+	für $V\subset Y \text{ offen}$ eine Garbe definiert, 
+	der \emph{push-forward von $\F$}.
 \end{definition}
 
 
@@ -269,3 +270,89 @@ und entsprechend Garben
 	Sei $M$ eine $C^\infty$-Mannigfaltigkeit und $x_0 \in M$,
 	so ist $\kappa(x_0) = \R$.
 \end{beispiel}
+
+\begin{definition}[lokale Ringhomomorphismen]
+	Sind $R,S$ lokale Ringe mit den maximalen Idealen
+	$\m_R \ideal R$, $\m_S \ideal S$, so heißt der Ringhomomorphismus
+	$\varphi: R\to S$ \emph{lokal},
+	falls
+	\[\varphi\inv (\m_S) = \m_R .\]
+	Äquivalent lässt sich fordern, dass
+	\[\varphi(\m_R) \subset \m_S.\]
+\end{definition}
+
+\begin{definition}[Morphismus lokal geringter Räume]
+	\label{def:morphismus lokal geringter raume}
+	Ein \emph{Morphismus $f:(X,\O_X) \to (Y,\O_Y)$ lokal geringter Räume}
+	ist ein Paar $(f,f\fis)$ bestehend aus
+	\begin{align*}
+		f:  X &\to Y \text{ stetig},\\
+		f\fis:  \O_Y &\to f_\ast\O_X \text{ Morphismus von Garben auf $Y$},
+	\end{align*}
+	so dass der von $f\fis$ induzierte Ringhomomorphismus für
+	$x_0 \in X$, $y_0:= f(x_0) \in Y$
+	\[f_{x_0}\fis:
+		\funcdef{ \O_{Y,y_0} & \to & \O_{X,x_0}\\~ 
+			[s] & \mapsto & [f_U\fis(s)]
+		}
+	\]
+	für $s\in \O_Y(U)$ und $y_0\in U$  ein lokaler Ringhomomorphismus ist.
+\end{definition}
+
+\begin{bemerkung}
+	In \cref{def:morphismus lokal geringter raume} ist $f_{x_0}\fis$
+	wohldefiniert:
+	
+	Sei $[s] = [t] \in \O_{Y,y_0}$, d.h. es existiert $W\subset Y$ offen mit
+	$y_0\in W$ und $s\rest W = t\rest W \in \O_Y(W)$.
+	Betrachte nun $f_U\fis (s) \in \O_X(f\inv(U))$ für 
+	$s\in \O_Y(U)$, $U\subset Y$, $y_0\in U$ und analog 
+	$f_V\fis (t) \in \O_X(f\inv(V))$ für 
+	$t\in \O_Y(V)$, $V\subset Y$, $y_0\in V$.
+	Da $f\fis$ ein Garbenmorphismus ist, kommutiert damit folgendes Diagramm:
+	\[
+		\begin{tikzcd}[row sep=large, column sep=large]
+		s \dar[mapsto] \symb{\in}
+			&[-1cm] \O_Y(U) \rar{f_U\fis} \dar[swap]{\rest W} 
+			& \O_X(f\inv(U)) \dar{\rest{f\inv(W)}} \symb{\ni}
+			& \dar[mapsto] f_U\fis(s)\\
+		s\rest W = t\rest W \symb{\in}
+			& \O_Y(W) \rar{f_W\fis}				
+			& \O_X(f\inv(W)) \symb{\ni}
+			& f_U\fis(s)\rest{f\inv(W)} = f_V\fis(t)\rest{f\inv(W)}\\
+		t \uar[mapsto] \symb{\in}
+			& \O_Y(V) \rar{f_W\fis} \uar{\rest W} 
+			& \O_X(f\inv(V)) \uar[swap]{\rest{f\inv(W)}} \symb{\ni}
+			& \uar[mapsto] f_V\fis(t)\\
+		\end{tikzcd}
+	\]
+\end{bemerkung}
+
+\section{Affine Schemata}
+
+\subsection{$\Spec A$ als topologischer Raum}
+
+Sei im Folgenden $A$ ein kommuativer Ring mit $1$ und 
+$\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
+
+\begin{definition}[Zariski Topologie]
+	Ist $\a \ideal A$, ein Ideal, setze
+	\[
+		V(\a) := \{\p \in \Spec A \mid \a \subseteq \p \} \subseteq \Spec A\,.
+	\]
+	Dann ist durch
+	\[
+		\cal T := \{ U \subseteq \Spec A \mid
+			\exists\ \a \ideal A:\ U = \Spec A \setminus V(\a)\}
+	\]
+	eine Topologie auf $\Spec A$ definiert. Sie heißt \emph{Zariski-Topologie}.
+\end{definition}
+
+\begin{bemerkung}
+	Die abgeschlossenen Teilmengen $M \subset \Spec A$ sind genau die 
+	$M = V(\a)$ für ein $\a \ideal A$.
+\end{bemerkung}
+
+
+
+\pagebreak
