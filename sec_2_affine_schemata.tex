@@ -1,0 +1,322 @@
+\section{Affine Schemata}
+
+\subsection{$\Spec A$ als topologischer Raum}
+
+Sei im Folgenden $A$ ein kommuativer Ring mit $1$ und 
+$\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
+
+\begin{definition}[Zariski Topologie]
+	Ist $\a \ideal A$, ein Ideal, setze
+	\[
+		V(\a) := \{\p \in \Spec A \mid \a \subseteq \p \} \subseteq \Spec A\,.
+	\]
+	Dann ist durch
+	\[
+		\cal T := \{ U \subseteq \Spec A \mid
+			\exists\ \a \ideal A:\ U = \Spec A \setminus V(\a)\}
+	\]
+	eine Topologie auf $\Spec A$ definiert. Sie heißt \emph{Zariski-Topologie}.
+\end{definition}
+
+\begin{proof}[der Topologie-Eigenschaften]
+	\begin{enumerate}
+	  \item Zeige: $\emptyset$, $\Spec A$ offen $\Longleftrightarrow$ 
+	  	$\Spec A$, $\emptyset$ abgeschlossen.\\
+	  	Dazu: $V(A) = \emptyset$, $V((0)) = \Spec A$
+	  \item Zeige: $U_1, U_2$ offen $\Rightarrow$ $U_1 \cap U_2$ offen
+	  	$\Longleftrightarrow$ $M_1,M_2$ abgeschlossen $\Rightarrow$
+	  	$M_1 \cup M_2$ abgeschlossen.\\
+	  	Dazu:
+	  	$V(\a) \cup V(\fr b) = V(\a \cap \fr b)$
+	  \item $(U_i)_{i\in I}$ offen $\Rightarrow$ $\cup_{i\in I} U_i$ offen
+	  	$\Longleftrightarrow$ $(M_i)_{i\in I}$ abgeschlossen
+	  	$\Rightarrow$ $\cap_{i\in I} M_i$ abgeschlossen.\\
+	  	Dazu:
+	  	$\cap_{i\in I} V(\a_i) = V(\sum_{i\in I} \a_i)$
+	\end{enumerate}
+\end{proof}
+
+\begin{bemerkung}
+	Die abgeschlossenen Teilmengen $M \subset \Spec A$ sind genau die 
+	$M = V(\a)$ für ein $\a \ideal A$.
+\end{bemerkung}
+
+\begin{beispiel}[$\Spec \Z$]
+	Für $\a \ideal \Z$ ist $\a = (a)$. Falls $a \neq 0,1,-1$ sei
+	$a = \pm p_1^{\nu_1} \cdot \dots \cdot p_r^{\nu_r}$ die 
+	Primfaktorzerlegung. Für $p$ Primzahl ist
+	\[
+		(p) \in V((a)) \Leftrightarrow
+		(a) \subseteq (p) \Leftrightarrow
+		p \mid a \Leftrightarrow
+		p \in \{p_1,\ldots, p_r\}
+	\]
+	Das bedeutet, die abgeschlossenen Mengen in $\Spec \Z$ sind genau die 
+	Mengen $\emptyset$, $\Spec \Z$ und
+	$\{(p_1), \ldots, (p_r)\}$ für eine endliche Anzahl an Primzahlen.
+	
+	Insbesondere gilt
+	\begin{itemize}
+	  \item $\Spec\Z$ ist nicht hausdorffsch.
+	  \item $(0) =: \eta \in \Spec\Z$ liegt in \emph{jeder} nichtleeren 
+	  	offenen Teilmenge.
+	\end{itemize}
+\end{beispiel}
+
+\begin{lemma}
+	Sei $x \in \Spec A$, so ist der Abschluss $\overline{\{x\}}$ der
+	Menge $\{x\}$ in $\Spec A$ gleich
+	\[\overline{\{x\}} = V(x).\]
+\end{lemma}
+\begin{proof}
+	\[
+		\overline{\{x\}} = 
+		\bigcap_{B\subseteq \Spec A \text{ abg.}\atop x\in B} B
+		= \bigcap_{\a\ideal A\atop \a \subseteq x}
+		= V(x)
+	\]
+\end{proof}
+
+\begin{bemerkung}
+	Beachte, dass
+	\[
+		\a \subseteq \fr b \quad \Rightarrow\quad
+		V(\fr b) \subseteq V(\a)
+	\]
+\end{bemerkung}
+
+\begin{definition}[abgeschlossener Punkt, generischer Punkt]
+	Sei $X$ ein topologischer Raum.
+	Ein $x\in X$ heißt \emph{abgeschlossener Punkt}, wenn
+	$\overline{\{x\}} = \{x\}$.
+	
+	Er heißt \emph{generischer Punkt}, wenn $\overline{\{x\}} = X$ gilt.
+	
+	Die Menge der abgeschlossenen Punkte bezeichnen wir mit
+	$|X|$.
+\end{definition}
+
+\begin{beispiel}
+	Sei $A = \C[X,Y]$. 
+	\begin{itemize}
+	  \item $x = (0) \in \Spec A$ ist generisch.
+	  \item $x = (X-\alpha, Y-\beta) \ideal A$ ist abgeschlossen,
+	  	da aus $x \ideal A$ maximal $V(x) = \{x\}$ und somit $x$ abgeschlossen
+	  	folgt.
+	  \item $x = (X) \ideal A$ ist weder abgeschlossen noch generisch.
+	\end{itemize}
+	Wir können die bisherigen Ergebnisse in
+	\cref{fig:spec c xy} zusammenfassen. 
+\end{beispiel}
+
+\begin{figure}
+	\caption{$\Spec \C[X,Y]$}
+	\label{fig:spec c xy}
+	\centering
+	\begin{tikzpicture}
+		\fill[col1shade1] (-3,-2) rectangle (3,2);
+		\node[right, text=col1] 
+			at (-2.8,-1.5)
+			{$|\Spec\C[X,Y]|$};
+		\draw[very thick]
+			(-3,0) -- (3,0) node[near end, auto]{$\alpha$}
+			(0,-2) -- (0,2) node[near end, auto]{$\beta$};
+		\fill[col1]
+			(1,1) circle[radius=2pt]
+			node[above right] {$(X-\alpha, Y-\beta)$};
+		\node[generic point=10pt, fill=black!60,
+			label={above right:$(0)$}]
+			at (4,0)
+			{};
+		\draw[line width=4pt, col2shade2, opacity=0.5]
+			(0,-2) -- (0,2);
+		\node[generic point=5pt, fill=col2shade2,
+			label={[text=col2]below:$(X)$}]
+			at (0,-2.1)
+			{};
+	\end{tikzpicture}
+\end{figure}
+
+
+\begin{definition}[basisoffene Menge]
+	Für $f\in A$ nennt man
+	\[ D(f) := \Spec A \setminus V((f)) = \{ \p \in \Spec A \mid f \notin \p\}
+	\]
+	die \emph{zu $f$ gehörige basisoffene Menge}.
+\end{definition}
+
+\begin{lemma}
+	\label{lemma:basisoffene mengen sind basis}
+	Die Menge $\fr B := \{D(f) \mid f \in A\}$ ist eine Basis der
+	Topologie, d.h. jedes offene $U\subseteq \Spec A$ ist eine Vereinigung
+	von $D(f) \in \fr B$ und $\fr B$ ist unter endlichen Schnitten 
+	abgeschlossen.  
+\end{lemma}
+\begin{proof}
+	Sei $U = \Spec A \setminus V(\a)$ offen und $\p \in U$, so ist
+	$\p \notin V(\a)$, also $\a \not\subseteq \p$. Damit existiert
+	$f \in \a \setminus \p$ mit $f \notin \p$, also $\p \in D(f)$
+	und $f \in \a$. Also $(f) \subseteq \a$ und
+	$V(\a) \subseteq V((f))$. Damit folgt $D(f) \subseteq U$.
+	
+	Zusammenfassend gilt für $U\subseteq \Spec A$ offen: $\forall \p \in U$
+	$\exists f\p \in A$: $\p \in D(f\p) \subseteq U$.
+	Also
+	\[ U = \bigcup_{\p \in U} D(f\p)\]
+	Ferner folgt mit \cref{lemma:vereinigungen von v sind produkt}
+	$D(f) \cap D(g) = D(fg)$.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma:vereinigungen von v sind produkt}
+	Für $\a, \fr b\ideal A$ gilt
+	\[
+		V(\a) \cup V(\fr b) = V(\a \cap \fr b) = V(\a \cdot \fr b).
+	\]
+\end{lemma}
+\begin{proof}
+	Es ist 
+	$\a\fr b \subseteq \a \cap \fr b \subseteq \a, \fr b$.
+	Also 
+	\[V(\a) \cup V(\fr b) \subseteq V(\a \cap \fr b) 
+	\subseteq V(\a\fr b).\]
+	Angenommen $V(\a) \cup V(\fr b) \subsetneq V(\a\fr b)$, 
+	d.h. $\exists \p \in V(\a \fr b) \setminus \big(V(\a) \cup V(\fr b)\big)$,
+	also $\a\fr b \subseteq \p$ aber nicht
+	$\a,\fr b \not \subseteq \p$.
+	Also existiert $s \in \a \setminus \p$ und $t\in\fr b\setminus \p$.
+	Damit ist $st \in \a\fr b \setminus \p$.
+	Dies ist ein Widerspruch, da $\p$ ein Primideal ist.
+	Folglich herrscht Gleichheit in obiger Inklusionskette.
+\end{proof}
+
+\begin{definition}[Radikal]
+	Für $\a \ideal A$ heißt
+	\[
+		\sqrt \a := \{ f\in A \mid \exists n \in \N:\ f^n\in \a\}
+	\]
+	\emph{Radikal} von $\a$.
+\end{definition}
+
+\begin{lemma}
+	\label{lemma:radikal ist ideal}
+	$\sqrt a \ideal A$.
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+	  \item $0\in \sqrt{\a}$ \checkmark
+	  \item Sei $f \in \sqrt \a$, $r\in A$. Dann
+	  	$f^n \in \a$, $r\in A$. Also 
+	  	$(rf)^n \in \a$ und damit $rf\in \sqrt\a$.
+	  \item $f,g\in \sqrt\a$ mit $f^n \in \a$, $g^m \in \a$.
+	  	\begin{align*}
+	  		(f+g)^{n+m-1} &= \sum_{i=0}^{n-1} \binom{n+m-1}{i} f^i g^{n+m-1-i}
+	  			+ \sum_{i=n}^{n+m-1} \binom{n+m-1}{i}
+	  				f^i g^{n+m-1-i}\\
+  				&= \left( \sum_{i=0}^{n-1} \binom{n+m-1}{i} 
+  					f^i g^{n-1-i}\right) g^m
+  					+  \left(\sum_{i=n}^{n+m-1} \binom{n+m-1}{i}
+  						f^i g^{m-1-i}\right) f^n
+	  	\end{align*}
+	  	Da $g^m$ und $f^n$ jeweils in $\a$ liegen, ist auch die Summe dort.
+	\end{itemize}
+\end{proof} 
+
+\begin{definition}[Radikalideal (radiziell)]
+	Ein Ideal $\fr b \ideal A$ heißt \emph{Radikalideal (radiziell)},
+	falls
+	\[\sqrt \fr b = \fr b.\]
+\end{definition}
+
+\begin{bemerkung}
+	Es gilt $\sqrt{\sqrt \a} = \sqrt\a$.
+\end{bemerkung}
+
+\begin{lemma}
+	\label{lemma:radikal ist schnitt}
+	Für $\a \ideal A$ gilt
+	\[
+		\sqrt\a = \bigcap_{\p\in V(\a)} \p
+	\]
+\end{lemma}
+\begin{proof}
+	  \newcommand{\bmax}{\b_\text{max}}
+	\begin{itemize}
+	  \item["`$\subseteq$"']
+	  	Sei $f \in \sqrt\a$, $f^n \in \a$. Ist $\p \in V(\a)$, d.h.
+	  	$\a \subseteq\p$. Also
+	  	$f^n \in \p$ und da $\p$ prim, folgt $f\in \p$.
+	  \item["`$\supseteq$"']
+	  	Ist $f\notin \sqrt\a$, so zu zeigen, dass 
+	  	$f \notin \cap_{\p\in V(\a)} \p$.
+	  	Sei also 
+	  	$f^n \notin \a$ für alle $n\in \N$.
+	  	
+	  	Betrachte
+	  	\[ M := \{\b \ideal A\mid a\subseteq \b,
+	  		f^n \notin \b \forall n\in \N\},
+	  	\]
+	  	so gilt
+	  	\begin{itemize}
+	  	  \item $\a \in M$,
+	  	  \item $M$ ist angeordnet durch "`$\subseteq$"',
+	  	  \item ist $(\b_i)_{i\in I}$ eine total geordnete Teilmenge,
+	  	  	so ist $\b:= \cup_{i\in I} \b_i \ideal A$ mit $\b \in M$.
+	  	\end{itemize}
+	  	Damit hat $M$ mit dem Lemma von Zorn ein maximales Element
+	  	$\bmax \in M$.
+	\end{itemize}
+	Nun sei behauptet, dass $\bmax \ideal A$ ein Primideal ist.
+	Dazu sei $xy \in \bmax$, wobei wir annehmen, dass 
+	$x,y \notin \bmax$.
+	Betrachte
+	$\bmax \subsetneq (x) + \bmax$, was ein Ideal in $A$ ist, aber nicht 
+	in $M$ liegt. Analog können wir dies von $(y) + \bmax$ sagen. Damit
+	existieren $n,m \in \N$ mit
+	\[
+		f^n \in (x) + \bmax
+		\qquad
+		f^m \in (y) + \bmax.
+	\]
+	Ergo ist
+	\[
+		f^{n+m} \in
+			(x)\bmax + (y)\bmax + \bmax\bmax + (xy),
+	\]
+	wobei jeder Summand Teilmenge von $\bmax$ ist und wir folgern
+	$f^{n+m} \in \bmax \in M$, wodurch man den Widerspruch erhält.
+	
+	Damit ist $\bmax \in V(\a)$ und $f\notin \bmax$. 
+\end{proof}
+
+\begin{satz}
+	\label{satz:v und radikal}
+	Für $\a, \b \ideal A$ gilt
+	\[ V(\a) \subseteq V(\b) \quad\Leftrightarrow\quad
+		\b \subseteq \sqrt\a.
+	\]
+	Insbesondere gilt
+	\[ V(\a) = V(\b) \quad\Leftrightarrow\quad
+		\b = \sqrt\a.
+	\]
+\end{satz}
+\begin{proof}
+	\begin{itemize}
+	  \item["`$\Leftarrow$"']
+	  	Aus $V(\a) \subseteq V(\b)$ folgt
+	  	\[
+	  		\bigcap_{\p \in V(\a)} \p 
+	  		\supseteq \bigcap_{\p\in V(\b)} \p
+	  	\]
+	  	und mit \cref{lemma:radikal ist schnitt}
+	  	folgt $\sqrt \a \supseteq \sqrt\b \supseteq \b$.
+	  \item["`$\Rightarrow$"']
+	  	Aus $\b \subseteq \sqrt\a$, d.h.
+	  	$\b \subseteq \cap_{\p\in V(\a)} \p$, folgt
+	  	$\b \subseteq \p$ für alle $\p\in V(\a)$.
+	  	Also $\p \in V(\a)$.
+	\end{itemize}
+\end{proof}
+
+
+\pagebreak
