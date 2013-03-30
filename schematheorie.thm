@@ -22,4 +22,15 @@
 \contentsline {definition}{{Definition}{1.{10}}{Morphismus lokal geringter Räume}}{8}{definition.1.10}
 \contentsline {bemerkung}{{Bemerkung}{1.{13}}{}}{8}{satz.1.13}
 \contentsline {definition}{{Definition}{2.{1}}{Zariski Topologie}}{10}{definition.2.1}
+\contentsline {proof}{{Beweis}{1}{der Topologie-Eigenschaften}}{10}{proof.1}
 \contentsline {bemerkung}{{Bemerkung}{2.{1}}{}}{10}{satz.2.1}
+\contentsline {beispiel}{{Beispiel}{2.{2}}{$\Spec \Z $}}{10}{satz.2.2}
+\contentsline {lemma}{{Lemma}{2.{3}}{}}{10}{satz.2.3}
+\contentsline {proof}{{Beweis}{2}{}}{11}{proof.2}
+\contentsline {bemerkung}{{Bemerkung}{2.{4}}{}}{11}{satz.2.4}
+\contentsline {definition}{{Definition}{2.{2}}{abgeschlossener Punkt, generischer Punkt}}{11}{definition.2.2}
+\contentsline {beispiel}{{Beispiel}{2.{5}}{}}{11}{satz.2.5}
+\contentsline {definition}{{Definition}{2.{3}}{basisoffene Menge}}{11}{definition.2.3}
+\contentsline {lemma}{{Lemma}{2.{6}}{}}{11}{satz.2.6}
+\contentsline {proof}{{Beweis}{3}{}}{12}{proof.3}
+\contentsline {lemma}{{Lemma}{2.{7}}{}}{12}{satz.2.7}

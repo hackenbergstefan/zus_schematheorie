@@ -51,10 +51,23 @@ DIV = 14,
 \usetikzlibrary{matrix,arrows,fadings}
 \usepackage{tikz-cd2}
 
+%% define colors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\colorlet{mycolor}{blue!80!black}
+\colorlet{col1}{mycolor}
+\colorlet{col1shade1}{mycolor!5}
+\colorlet{col1shade2}{mycolor!50}
+\colorlet{col2}{purple!80}
+\colorlet{col2shade1}{col2!5}
+\colorlet{col2shade2}{col2!50}
+
+%% tikz setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetikzlibrary{decorations.shapes, shapes.geometric}
+\tikzset{generic point/.style=
+	{star, star points=20, minimum size=#1, inner sep=0pt, outer sep=0pt}
+}
 
 
 %% Packages tikztitle and tikztheorem %%%%%%%%%%%%%%%%%%%%%%%
-\colorlet{mycolor}{blue!80!black}
 \usepackage[color=mycolor, style=elegant, withheadings=true,
 	backgroundcmd=titlepagebackground]{tikztitle}
 
