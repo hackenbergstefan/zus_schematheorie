@@ -45,10 +45,14 @@ DIV = 14,
 
 \usepackage{lmodern} %Type1-Schriftart für nicht-englische Texte
 
+\usepackage{hyperref}
+
+\usepackage{xspace}
+
 
 \usepackage{xcolor}
 \usepackage{tikz}
-\usetikzlibrary{matrix,arrows,fadings}
+\usetikzlibrary{matrix,arrows,fadings,decorations.markings}
 \usepackage{tikz-cd2}
 
 %% define colors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -85,7 +89,7 @@ DIV = 14,
 	color=mycolor,
 	font header=\normalfont\sffamily\bfseries,
 	font body=\normalfont,
-	counter zero=section
+	counter parent=satz
 	]{definition}{Definition}
  
 \newtikztheorem[
@@ -94,6 +98,13 @@ DIV = 14,
 	font header=\normalfont\sffamily\bfseries,
 	counter parent=satz
 	]{lemma}{Lemma}
+	
+\newtikztheorem[
+	style=elegantinline,
+	color=mycolor,
+	font header=\normalfont\sffamily\bfseries,
+	counter parent=satz
+	]{korollar}{Korollar}
 	
 \newtikztheorem[
 	style=plain,
@@ -115,13 +126,11 @@ DIV = 14,
 
 \usepackage{tikzmargin}
 
-\usepackage{array}
+\usepackage{array, enumitem}
 
 %% Packages für Grafiken & Abbildungen %%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx} %%Zum Laden von Grafiken
 %\usepackage{subfig} %%Teilabbildungen in einer Abbildung
-\usepackage{hyperref}
-
 \usepackage[ngerman, nameinlink]{cleveref}
 
 %% Math abbreviations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -136,6 +145,7 @@ DIV = 14,
 \newcommand{\C}{\bb{C}}
 \newcommand{\Q}{\bb{Q}}
 \newcommand{\Z}{\bb{Z}}
+\newcommand{\A}{\bb{A}}
 \newcommand{\rest}[1]{\big|_{#1}}
 \newcommand{\inv}{^{-1}}
 \newcommand{\fis}{^{\#}}
@@ -156,10 +166,22 @@ DIV = 14,
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Nil}{Nil}
 \newcommand{\funcdef}[1]{%
 	\begin{array}[t]{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}
 	#1\end{array}}
 \let\xto\xrightarrow
+
+\newcommand{\obda}{{\small oBdA}\xspace}
+\newcommand{\Obda}{{\small OBdA}\xspace}
+
+\newenvironment{description sf}{%
+	\begin{description}[font=\normalfont\sffamily]}
+	{\end{description}}
+\newenvironment{description mathquote}{%
+	\renewcommand{\descriptionlabel}[1]{\glqq$##1$\grqq}
+	\begin{description}[font=\normalfont]}
+	{\end{description}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

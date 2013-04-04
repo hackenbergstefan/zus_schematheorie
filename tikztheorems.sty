@@ -153,6 +153,10 @@
 		\edef\args{{#2}{#3}[\the\theoremcounterzero]}
 		\expandafter\tocall\args
 	}
+	%if cleveref loaded
+	\@ifpackageloaded{cleveref}{
+ 		\crefname{#2}{#3}{#3}
+	}{}
 }
 
 

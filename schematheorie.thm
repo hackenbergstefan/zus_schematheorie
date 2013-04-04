@@ -1,46 +1,63 @@
-\contentsline {definition}{{Definition}{1.{1}}{Prägarbe}}{4}{definition.1.1}
-\contentsline {beispiel}{{Beispiel}{1.{1}}{}}{4}{satz.1.1}
-\contentsline {bemerkung}{{Bemerkung}{1.{2}}{}}{4}{satz.1.2}
-\contentsline {definition}{{Definition}{1.{2}}{Morphismus von Prägarben}}{5}{definition.1.2}
-\contentsline {definition}{{Definition}{1.{3}}{Garbe}}{5}{definition.1.3}
-\contentsline {bemerkung}{{Bemerkung}{1.{3}}{}}{5}{satz.1.3}
-\contentsline {beispiel}{{Beispiel}{1.{4}}{}}{5}{satz.1.4}
-\contentsline {beispiel}{{Beispiel}{1.{5}}{}}{5}{satz.1.5}
-\contentsline {definition}{{Definition}{1.{4}}{}}{6}{definition.1.4}
-\contentsline {bemerkung}{{Bemerkung}{1.{6}}{}}{6}{satz.1.6}
-\contentsline {definition}{{Definition}{1.{5}}{Halm}}{6}{definition.1.5}
-\contentsline {beispiel}{{Beispiel}{1.{7}}{}}{6}{satz.1.7}
-\contentsline {beispiel}{{Beispiel}{1.{8}}{}}{6}{satz.1.8}
-\contentsline {definition}{{Definition}{1.{6}}{push-forward}}{7}{definition.1.6}
-\contentsline {definition}{{Definition}{1.{7}}{lokaler Ring}}{7}{definition.1.7}
-\contentsline {beispiel}{{Beispiel}{1.{9}}{}}{7}{satz.1.9}
-\contentsline {bemerkung}{{Bemerkung}{1.{10}}{}}{7}{satz.1.10}
-\contentsline {beispiel}{{Beispiel}{1.{11}}{}}{7}{satz.1.11}
-\contentsline {definition}{{Definition}{1.{8}}{lokal geringter Raum}}{7}{definition.1.8}
-\contentsline {beispiel}{{Beispiel}{1.{12}}{}}{7}{satz.1.12}
-\contentsline {definition}{{Definition}{1.{9}}{lokale Ringhomomorphismen}}{8}{definition.1.9}
-\contentsline {definition}{{Definition}{1.{10}}{Morphismus lokal geringter Räume}}{8}{definition.1.10}
-\contentsline {bemerkung}{{Bemerkung}{1.{13}}{}}{8}{satz.1.13}
-\contentsline {definition}{{Definition}{2.{1}}{Zariski Topologie}}{9}{definition.2.1}
+\contentsline {definition}{{Definition}{1.{1}}{Prägarbe}}{4}{satz.1.1}
+\contentsline {beispiel}{{Beispiel}{1.{2}}{}}{4}{satz.1.2}
+\contentsline {bemerkung}{{Bemerkung}{1.{3}}{}}{4}{satz.1.3}
+\contentsline {definition}{{Definition}{1.{4}}{Morphismus von Prägarben}}{5}{satz.1.4}
+\contentsline {definition}{{Definition}{1.{5}}{Garbe}}{5}{satz.1.5}
+\contentsline {bemerkung}{{Bemerkung}{1.{6}}{}}{5}{satz.1.6}
+\contentsline {beispiel}{{Beispiel}{1.{7}}{}}{5}{satz.1.7}
+\contentsline {beispiel}{{Beispiel}{1.{8}}{}}{5}{satz.1.8}
+\contentsline {definition}{{Definition}{1.{9}}{}}{6}{satz.1.9}
+\contentsline {bemerkung}{{Bemerkung}{1.{10}}{}}{6}{satz.1.10}
+\contentsline {definition}{{Definition}{1.{11}}{Halm}}{6}{satz.1.11}
+\contentsline {beispiel}{{Beispiel}{1.{12}}{}}{6}{satz.1.12}
+\contentsline {beispiel}{{Beispiel}{1.{13}}{}}{6}{satz.1.13}
+\contentsline {definition}{{Definition}{1.{14}}{push-forward}}{7}{satz.1.14}
+\contentsline {definition}{{Definition}{1.{15}}{lokaler Ring}}{7}{satz.1.15}
+\contentsline {beispiel}{{Beispiel}{1.{16}}{}}{7}{satz.1.16}
+\contentsline {bemerkung}{{Bemerkung}{1.{17}}{}}{7}{satz.1.17}
+\contentsline {beispiel}{{Beispiel}{1.{18}}{}}{7}{satz.1.18}
+\contentsline {definition}{{Definition}{1.{19}}{lokal geringter Raum}}{7}{satz.1.19}
+\contentsline {beispiel}{{Beispiel}{1.{20}}{}}{7}{satz.1.20}
+\contentsline {definition}{{Definition}{1.{21}}{lokale Ringhomomorphismen}}{8}{satz.1.21}
+\contentsline {definition}{{Definition}{1.{22}}{Morphismus lokal geringter Räume}}{8}{satz.1.22}
+\contentsline {bemerkung}{{Bemerkung}{1.{23}}{}}{8}{satz.1.23}
+\contentsline {definition}{{Definition}{2.{1}}{Zariski Topologie}}{9}{satz.2.1}
 \contentsline {proof}{{Beweis}{1}{der Topologie-Eigenschaften}}{9}{proof.1}
-\contentsline {bemerkung}{{Bemerkung}{2.{1}}{}}{9}{satz.2.1}
-\contentsline {beispiel}{{Beispiel}{2.{2}}{$\Spec \Z $}}{9}{satz.2.2}
-\contentsline {lemma}{{Lemma}{2.{3}}{}}{9}{satz.2.3}
+\contentsline {bemerkung}{{Bemerkung}{2.{2}}{}}{9}{satz.2.2}
+\contentsline {beispiel}{{Beispiel}{2.{3}}{$\Spec \Z $}}{9}{satz.2.3}
+\contentsline {lemma}{{Lemma}{2.{4}}{}}{9}{satz.2.4}
 \contentsline {proof}{{Beweis}{2}{}}{9}{proof.2}
-\contentsline {bemerkung}{{Bemerkung}{2.{4}}{}}{9}{satz.2.4}
-\contentsline {definition}{{Definition}{2.{2}}{abgeschlossener Punkt, generischer Punkt}}{10}{definition.2.2}
-\contentsline {beispiel}{{Beispiel}{2.{5}}{}}{10}{satz.2.5}
-\contentsline {definition}{{Definition}{2.{3}}{basisoffene Menge}}{10}{definition.2.3}
-\contentsline {lemma}{{Lemma}{2.{6}}{}}{10}{satz.2.6}
+\contentsline {bemerkung}{{Bemerkung}{2.{5}}{}}{9}{satz.2.5}
+\contentsline {definition}{{Definition}{2.{6}}{abgeschlossener Punkt, generischer Punkt}}{10}{satz.2.6}
+\contentsline {beispiel}{{Beispiel}{2.{7}}{}}{10}{satz.2.7}
+\contentsline {definition}{{Definition}{2.{8}}{basisoffene Menge}}{10}{satz.2.8}
+\contentsline {lemma}{{Lemma}{2.{9}}{}}{10}{satz.2.9}
 \contentsline {proof}{{Beweis}{3}{}}{10}{proof.3}
-\contentsline {lemma}{{Lemma}{2.{7}}{}}{10}{satz.2.7}
+\contentsline {lemma}{{Lemma}{2.{10}}{}}{10}{satz.2.10}
 \contentsline {proof}{{Beweis}{4}{}}{11}{proof.4}
-\contentsline {definition}{{Definition}{2.{4}}{Radikal}}{11}{definition.2.4}
-\contentsline {lemma}{{Lemma}{2.{8}}{}}{11}{satz.2.8}
+\contentsline {definition}{{Definition}{2.{11}}{Radikal}}{11}{satz.2.11}
+\contentsline {lemma}{{Lemma}{2.{12}}{}}{11}{satz.2.12}
 \contentsline {proof}{{Beweis}{5}{}}{11}{proof.5}
-\contentsline {definition}{{Definition}{2.{5}}{Radikalideal (radiziell)}}{11}{definition.2.5}
-\contentsline {bemerkung}{{Bemerkung}{2.{9}}{}}{11}{satz.2.9}
-\contentsline {lemma}{{Lemma}{2.{10}}{}}{11}{satz.2.10}
+\contentsline {definition}{{Definition}{2.{13}}{Radikalideal (radiziell)}}{11}{satz.2.13}
+\contentsline {bemerkung}{{Bemerkung}{2.{14}}{}}{11}{satz.2.14}
+\contentsline {lemma}{{Lemma}{2.{15}}{}}{11}{satz.2.15}
 \contentsline {proof}{{Beweis}{6}{}}{11}{proof.6}
-\contentsline {satz}{{Satz}{2.{11}}{}}{12}{satz.2.11}
+\contentsline {satz}{{Satz}{2.{16}}{}}{12}{satz.2.16}
 \contentsline {proof}{{Beweis}{7}{}}{12}{proof.7}
+\contentsline {definition}{{Definition}{2.{17}}{irreduzibel}}{12}{satz.2.17}
+\contentsline {beispiel}{{Beispiel}{2.{18}}{}}{12}{satz.2.18}
+\contentsline {lemma}{{Lemma}{2.{19}}{}}{12}{satz.2.19}
+\contentsline {proof}{{Beweis}{8}{}}{12}{proof.8}
+\contentsline {definition}{{Definition}{2.{20}}{Nilradikal}}{13}{satz.2.20}
+\contentsline {korollar}{{Korollar}{2.{21}}{}}{13}{satz.2.21}
+\contentsline {proof}{{Beweis}{9}{}}{13}{proof.9}
+\contentsline {definition}{{Definition}{2.{22}}{noethersch}}{13}{satz.2.22}
+\contentsline {lemma}{{Lemma}{2.{23}}{}}{13}{satz.2.23}
+\contentsline {proof}{{Beweis}{10}{}}{13}{proof.10}
+\contentsline {satz}{{Satz}{2.{24}}{}}{13}{satz.2.24}
+\contentsline {proof}{{Beweis}{11}{}}{14}{proof.11}
+\contentsline {beispiel}{{Beispiel}{2.{25}}{}}{14}{satz.2.25}
+\contentsline {beispiel}{{Beispiel}{2.{26}}{}}{14}{satz.2.26}
+\contentsline {lemma}{{Lemma}{2.{27}}{}}{15}{satz.2.27}
+\contentsline {proof}{{Beweis}{12}{}}{15}{proof.12}
+\contentsline {definition}{{Definition}{2.{28}}{(quasi)-kompakt}}{15}{satz.2.28}

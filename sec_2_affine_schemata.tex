@@ -163,7 +163,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	$\exists f\p \in A$: $\p \in D(f\p) \subseteq U$.
 	Also
 	\[ U = \bigcup_{\p \in U} D(f\p)\]
-	Ferner folgt mit \cref{lemma:vereinigungen von v sind produkt}
+	Ferner folgt mit \thref{lemma:vereinigungen von v sind produkt}
 	$D(f) \cap D(g) = D(fg)$.
 \end{proof}
 
@@ -308,7 +308,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	  		\bigcap_{\p \in V(\a)} \p 
 	  		\supseteq \bigcap_{\p\in V(\b)} \p
 	  	\]
-	  	und mit \cref{lemma:radikal ist schnitt}
+	  	und mit \thref{lemma:radikal ist schnitt}
 	  	folgt $\sqrt \a \supseteq \sqrt\b \supseteq \b$.
 	  \item["`$\Rightarrow$"']
 	  	Aus $\b \subseteq \sqrt\a$, d.h.
@@ -318,5 +318,310 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	\end{itemize}
 \end{proof}
 
+\begin{definition}[irreduzibel]
+	Ein topologischer Raum $X$ heißt \emph{irreduzibel}, wenn gilt:
+	Ist $X = A_1 \cup A_2$, $A_{1,2}\subseteq X$ abgeschlossen, so ist
+	$X = A_1$ oder $X = A_2$.
+	
+	Eine Teilmenge $Z\subseteq X$ heißt \emph{irreduzibel}, wenn $Z$ mit der
+	Teilraumtopologie irreduzibel ist.
+\end{definition}
+
+\begin{beispiel}
+	$\Spec\Z$ ist irreduzibel. Ist nämlich $A_1 \subsetneq \Spec\Z$ 
+	abgeschlossen, so ist $A_1 = \{(p_1), \ldots, (p_r)\}$ für
+	irgendwelche Primzahlen $p_i$. 
+\end{beispiel}
+
+\begin{lemma}
+	\label{lemma:v irreduzibel <=> radikal prim}
+	In $\Spec A$ gilt:
+	\[
+		V(\a) \text{ irreduzibel} \quad\Leftrightarrow\quad
+		\sqrt\a \text{ Primideal}.
+	\]
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+	  \item["`$\Rightarrow$"']
+	  	Sei $xy \in \sqrt\a$, so ist $(xy) \subseteq \sqrt\a$ und mit
+	  	\thref{satz:v und radikal} $V(\a) \subseteq V((xy))$.
+	  	
+	  	Für $\p\in V(\a) \subseteq V((xy))$, gilt:
+	  	Ist $xy \in \p$, so folgt $x \in \p$ oder $y\in \p$. Damit
+	  	\[
+	  		V(\a) \subseteq V((x)) \cup V((y))
+	  		\ \Rightarrow\ 
+	  		V(\a) = \big(V(\a) \cap V((x))\big) \cup 
+	  				\big(V(\a) \cap V((y))\big).
+	  	\]
+	  	Da $V(\a)$ irreduzibel nach Voraussetzung, folgt
+	  	\obda $V(\a) = V(\a) \cap V((x))$, also $V(\a) \subseteq V((x))$.
+	  	Wieder mit \thref{satz:v und radikal} folgt
+	  	$(x) \subseteq \sqrt\a$ und damit $x \in \sqrt\a$. 
+	 \item["`$\Leftarrow$"']
+	 	Schreibe $V(\a) = V(\b) \cup V(\fr c) = V(\b\cap \fr c)$.
+	 	Dann folgt wiederum mit \thref{satz:v und radikal}
+	 	$\sqrt\a = \sqrt{\b \cap \fr c}$.
+	 	
+	 	Ist $V(\a) \neq V(\b)$, also $V(\b) \subsetneq V(\a)$, also
+	 	$\sqrt\a \subsetneq \sqrt\b$, so existiert 
+	 	$x\in \sqrt\b \setminus \sqrt\a$. Für $y \in \fr c$, ist 
+	 	\[
+	 		xy \in \sqrt{\b\fr c} \subseteq \sqrt{\b \cap \fr c} = \sqrt\a.
+	 	\]
+	 	Nach Voraussetzung ist $\sqrt\a$ Primideal, also 
+	 	nach Wahl von $x$ ist $y\in \sqrt\a$.
+	 	Insgesamt ist $\fr c \subseteq \sqrt\a$, also
+	 	$V(\a) \subseteq V(\fr c)$	und damit $V(\a) = V(\fr c)$.
+	\end{itemize}
+\end{proof}
+
+\begin{definition}[Nilradikal]
+	\[
+		\Nil(A) := \sqrt{(0)}
+	\]
+	heißt \emph{Nilradikal} von $A$.
+\end{definition}
+
+\begin{korollar}
+	Es gilt
+	\[
+		\Spec A \text{ irreduzibel}
+		\quad\Leftrightarrow\quad
+		\Nil(A) \text{ Primideal}.
+	\]
+\end{korollar}
+\begin{proof}
+	\thref{lemma:v irreduzibel <=> radikal prim} mit $\a = (0)$.
+\end{proof}
+
+\begin{definition}[noethersch]
+	Ein topologischer Raum heißt \emph{noethersch}, wenn gilt:
+	Ist 
+	\[
+		A_1 \supseteq A_2 \supseteq A_3 \supseteq\ldots
+	\]
+	eine Folge abgeschlosser Teilmengen, so existiert
+	$n_0\in \N$ mit $A_i = A_{i+1}$ für alle $i\geq n_0$. 
+\end{definition}
+
+\begin{lemma}
+	\label{lemma:A noethersch => Spec A noethersch}
+	Ist $A$ noethersch, so ist auch $\Spec A$ noethersch.
+\end{lemma}
+\begin{proof}
+	Sei 
+	\[
+		A_1 \supseteq A_2 \supseteq \ldots
+	\]
+	eine Folge abgeschlossener Teilmengen, also
+	\[
+		V(\a_1) \supseteq V(\a_2) \supseteq \ldots
+	\]
+	mit $A_i = V(\a_i)$ für geeignete $\a_i \in \Spec A$, so ist
+	\[
+		\sqrt{\a_1} \subseteq \sqrt{\a_2} \subseteq \ldots
+	\]
+	eine aufsteigende Idealkette in $A$.
+\end{proof}
+
+\begin{satz}
+	Ist $X$ noetherschscher topologischer Raum und 
+	$\emptyset \neq A \subseteq X$ abgeschlossen, so zerlegt sich
+	\[
+		A = A_1 \cup \ldots \cup A_r
+	\]
+	in abgeschlosse irreduzible Teilmengen $A_i \subseteq A$.
+	Nimmt man $A_i \not\subseteq A_j$ für $i\neq j$, so ist die Zerlegung
+	bis auf Reihenfolge eindeutig.
+	
+	Die $A_i$ heißen \emph{Komponenten} von $A$.
+\end{satz}
+\begin{proof}
+	\begin{description sf}
+	\item[Existenz.]
+		Sei 
+		\[
+			\cal V := \{ A\subseteq X \mid \emptyset \neq A 
+				\text{ abgeschlossen, $A$ hat keine solche Zerlegung} \}. 
+		\]
+		Angenommen $\cal V \neq\emptyset$, so hätte man
+		ein inklusionsminimales $A \in \cal V$, denn falls nicht gäbe es
+		\[
+			A_1 \supsetneq A_2 \supsetneq \ldots
+		\]
+		mit $A_i \in \cal V$. Da $X$ noethersch, müsste diese Folge
+		stationär werden, wodurch man einen Widerspruch erhält.
+		
+		Dieses $A \in \cal V$ hat keine solche Zerlegung, ist also
+		insbesondere nicht irreduzibel. Damit gibt es
+		\[
+			A = A_1 \cup A_2\quad A_i \subseteq X \text{ abgeschlossen, }
+			A_i \neq A
+		\]
+		Da $A \in \cal V$ minimal sind $A_1, A_2 \notin \cal V$.
+		Aber damit ist
+		$A = A_1 \cup A_2 \notin \cal V$. Ein Widerspruch, der wie gewünscht
+		$\cal V = \emptyset$ liefert.
+	\item[Eindeutigkeit.]
+		Sind 
+		\[
+			A = A_1 \cup \ldots \cup A_r = 
+				A_1' \cup \ldots \cup A_s'
+		\]
+		zwei solcher Zerlegungen, so ist
+		$A_1 \subseteq A_1' \cup \ldots \cup A_s'$, also
+		$A_1 = (A_1' \cap A_1) \cup \ldots \cup (A_s' \cap A_1)$.
+		Da $A_1$ irreduzibel können wir \obda $A_1 = A_1 \cap A_1'$ 
+		annehmen. Also ist $A_1 \subseteq A_1'$.
+		
+		Analog ist $A_1' \subseteq A_k$ für ein $k=1,\ldots,r$.
+		Zusammenfassend gilt
+		\[
+			A_1 \subseteq A_1' \subseteq A_k,
+		\]
+		was nach Voraussetzung $k = 1$ impliziert. Also $A_1 = A_1'$.
+		
+		Nun sukzessive weiter. 
+	\end{description sf}
+\end{proof}
+
+\begin{beispiel}
+	In $\Spec k[X,Y]$ zerfällt
+	\[
+		V((XY)) = V((X)) \cup V((Y)).
+	\]
+	Im Bild
+	\tikz[baseline, scale=0.8]{
+		\draw (-1,0) -- (1,0) node[right,auto]{$V((Y))$}
+			(0,-1) -- (0,1) node[above,auto]{$V((X))$};
+	}
+\end{beispiel}
+
+\begin{beispiel}
+	Sei $k$ algebraisch abgeschlossen. Betrachte $\Spec k[X,Y]$.
+	Die \tikzmark[1]{maximalen Ideale} sind gerade 
+	$\m = (X-\alpha, Y-\beta)$ für $\alpha,\beta \in k$.
+	Ein abgeschlosser Punkt $\m \in \Spec k[X,Y]$ wird eindeutig durch
+	$(\alpha, \beta) \in k^2$ gegeben.
+	\tikzmargin[1]{north}{Quelle suchen!}
+	
+	$\A_k^2 := \Spec k[X,Y]$ wird der 
+	\emph{2 dimensionale affine Raum über $k$} genannt.
+	Man hat die Bijektion
+	\[
+		|\A_k^2| \xto{\phi} k^2.
+	\]
+	Eine abgeschlossene Teilmenge $A = V(\a) \subseteq \A_k^2$ liefert
+	\[
+		A \cap |\A_k^2| \cong_\phi \{ (\alpha,\beta) \in k^2 \mid 
+			f(\alpha,\beta) = 0\ \forall f\in \a\},
+	\]
+	denn
+	\begin{align*}
+		A \cap |\A_k^2| &= V(\a) \cap |\A_k^2| = |V(\a)| \\
+		&= \{ \m \in \Spec k[X,Y] \mid \a \subseteq \m,\ \m
+			\text{ maximal}\}
+			= 
+			\{(X-\alpha, Y-\beta) \ideal k[X,Y] \mid \a \subseteq
+				(X-\alpha, Y-\beta) \} \\
+		&= \{(X-\alpha, Y-\beta) \mid f(X,Y) \in \alpha\ \Rightarrow\ 
+			f(X,Y) \in (X-\alpha, Y-\beta)\}\\
+		&\ \tikzmark[2]{=}\  
+			\{(X-\alpha, Y-\beta) \mid f(X,Y) \in \alpha\ \Rightarrow\ 
+			f(X,Y) = (X-\alpha)g(X,Y) + (Y-\beta)h(X,Y)\} \\
+%ich weiß, das ist unschön, aber nach dem align wird der rand der nächsten
+%seite benutzt :-(
+\tikzmargin[2]{north, above=2cm}{
+	"`$\Rightarrow$"' ist klar. Also zu "`$\Leftarrow$"'.\\
+	Es ist $f(\alpha,\beta) = 0$, also
+	$f(X,Y) = (X-\beta) h(X,Y)$ für gewisses $h$.
+	Es ist 
+	$f(X,Y) - f(\alpha,Y) = (X-\alpha) g(X,Y)$,
+	da die linke Seite $X = \alpha$ als Nullstelle hat.
+}
+		&= \{(X-\alpha, Y-\beta) \mid f(\alpha,\beta) = 0
+			\ \forall f\in \a\}\\
+		&\xto{\phi}
+			\{(\alpha,\beta) \in k^2 \mid f(\alpha, \beta) = 0\ 
+			\forall f\in \a\}.
+	\end{align*}
+	
+	In $\A_k^2$ hat man aber noch mehr Punkte:
+	Sei $\p \ideal k[X,Y]$ Primideal, aber nicht maximal, so ist
+	$\p \in \A_k^2$ kein abgeschlossener Punkt.
+	Ist beispielsweise $\p = (f(X,Y))$ für $f\in k[X,Y]$ irreduzibel, 
+	so liegen alle $(\alpha,\beta) \in k^2$ mit $f(\alpha,\beta) = 0$
+	auf der entsprechenden Menge in $k^2$, d.h.
+	\[
+		\p = (f(X,Y)) \subseteq 
+		\m_{\alpha,\beta} := (X-\alpha, Y-\beta)
+		\quad \Rightarrow\quad
+		\m_{\alpha,\beta} \in \overline{\{\p\}}.
+	\]
+	\cref{fig:spec k xy} verdeutlicht dies.
+\end{beispiel}
+
+\begin{figure}\centering
+	\caption{$\Spec k[X,Y]$}
+	\label{fig:spec k xy}
+	\begin{tikzpicture}
+		\draw[very thick] 
+			(-3,0) -- (3,0) node[near end, above] {$X$}
+			(0,-2) -- (0,2) node[near end, right] {$Y$};
+		
+% 		\draw[col1,thick] 
+% 			(-3,1) to[out=-5, in=135]  (0.2,-0.2) 
+% 			to[out=-45, in=225, looseness=2] (-1,0) 
+% 			to[out=45, in=180, looseness=0.5] (3,1.5)
+% 			node[pos=0.9] {$f(X,Y) = 0$};
+		\draw[col1, thick]
+			(-3,1) 
+			.. controls (5,-2) and (-8,-2) .. 
+			(3,1.5)
+			node[pos=0.98, above, sloped] {$f(X,Y) = 0$}
+			coordinate[pos=0.05] (a);
+		
+		\fill[col1shade2] (a) circle[radius=2pt]
+			node[above right, col1] {$(\alpha,\beta)$};
+		
+		\path (-3,1)
+			node[generic point=10pt, fill=col1shade2] {}
+			node[above left, col1] {$(f(X,Y))$};
+			
+		\path (4,0)
+			node[generic point=10pt, fill=col2shade2] {}
+			node[above right, col2] {$(0)$};
+	\end{tikzpicture}
+\end{figure}
+
+\begin{lemma}
+	\label{lemma:pi inv ist homöo auf bild}
+	Ist $A$ ein Ring, $\a \in \Spec A$ und 
+	$\pi: A \twoheadrightarrow A\big/ \a$ die Projektion, so ist
+	\[
+		\varphi := \pi\inv: 
+			\funcdef{\Spec A\big/\a & \to & \Spec A \\
+				\overline{\p} & \mapsto & \pi\inv(\overline{\p})}
+	\]
+	ein Homöomorphismus auf sein Bild
+	\[
+		\Spec A\big/\a \xto[\approx]{\pi\inv} V(\a) \subseteq \Spec A.
+	\]
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+
+
+\begin{definition}[(quasi)-kompakt]
+	Ein topologischer Raum $X$ heißt \emph{quasi-kompakt}, wenn gilt:
+	Ist $X = \cap_{i\in I} U_i$, $U_i$ offen, so existiert eine endliche
+	Teilmenge $F\subset I$ mit
+	$X = \cap_{i\in F} U_i$.
+	
+	$X$ heißt \emph{kompakt}, wenn $X$ hausdorffsch und quasi-kompakt ist.
+\end{definition}
 
 \pagebreak
