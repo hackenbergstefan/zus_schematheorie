@@ -69,8 +69,10 @@
 %tikzarrow
 \def\tikzmargin@outangle{0}
 \pgfkeys{/tikzmargin/outangle/.code={\def\tikzmargin@outangle{#1}}}
-\pgfkeys{/tikzmargin/mark above/.style={/tikzmargin/outangle=90}}
-\pgfkeys{/tikzmargin/mark below/.style={/tikzmargin/outangle=-90}}
+\pgfkeys{/tikzmargin/mark above/.style=
+	{/tikzmargin/outangle=90,/tikzmargin/inangle=-90}}
+\pgfkeys{/tikzmargin/mark below/.style=
+	{/tikzmargin/outangle=-90, /tikzmargin/inangle=90}}
 
 \newcommand{\tikzarrow}[3][]{%
 	\pgfqkeys{/tikzmargin}{#2}%

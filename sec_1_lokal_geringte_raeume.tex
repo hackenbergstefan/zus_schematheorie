@@ -106,9 +106,9 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
 		\end{tikzcd}
 	\]
 	
-	Exaktheit an \tikzarrow[1]{south, mark above}{dieser} Stelle ist äquivalent 
+	Exaktheit an \tikzarrow[1]{mark above}{dieser} Stelle ist äquivalent 
 	zu Eigenschaft 1.
-	Exaktheit \tikzarrow[2]{south, mark above}{hier} zu Eigenschaft 2.
+	Exaktheit \tikzarrow[2]{mark above}{hier} zu Eigenschaft 2.
 \end{bemerkung}
 
 \begin{beispiel}
@@ -172,7 +172,7 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
 	\[ \iota: \Sh_X \to \PSh_X,\ \F \mapsto \F\]
 \end{bemerkung}
 
-\begin{definition}[Halm]
+\begin{definition}[Halm, Keim]
 	Ist $\F$ eine (Prä)Garbe auf $X$ und $x_0 \in X$, so heißt
 	\[ \F_{x_0} := \varinjlim_{x_0 \in U \subset X\text{ offen}} \F(U)
 		 = \coprod_{U\subset X\text{ offen}} \F(U) \Big/ \sim\] 
@@ -199,6 +199,37 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
 	  	&:= \C\{x-x_0\}
 	\end{align*}
 \end{beispiel}
+
+
+
+\begin{uebung}[Übungsblatt 1 Aufgabe 3]
+	\begin{enumerate}
+	  \item Es sei $\F$ eine Garbe auf einen topologischen Raum $X$.
+	  Es sei $U\subset X$ eine offene Teilmenge. Für $r\in \F(U)$, $x_0 \in U$
+	  bezeichne $r_{x_0}$ den Keim $[r]$ von $\F$ bei $x_0$. Es seien
+	  nun $s,t \in \F(U)$, für die $\forall x_0 \in U: s_{x_0} = t_{x_0}$ 
+	  gelte. Zeige, dass $s=t$.
+	  \item Gib ein Beispiel einer Prägarbe an, die nicht separiert ist,
+	  die also nicht die erste Garbenbedingung erfüllt.
+	\end{enumerate}
+\end{uebung}
+\begin{proof}
+	\begin{enumerate}
+	  \item Für alle $x_0 \in U$ existieren offene $U_{x_0}$ mit
+	  	$s \rest{U_{x_0} \cap U} = t\rest{U_{x_0} \cap U}$ nach Definition
+	  	der Keime. Es ist $U = \cap_{x_0 \in U} U_{x_0} \cap U$, also
+	  	folgt nach erster Garbenbedingung $s=t$.
+	  \item Wähle $X = \{0,1\}$ mit diskreter Topologie.
+	  	Definiere die Prägarbe
+	  	\[\F(X) := \Z \qquad \F(\emptyset) = \F(\{1\}) = \F(\{0\}) := 1\]
+	  	Nun ist
+	  	\begin{align*}
+	  		2\rest{\{0\}} &= 5\rest{\{0\}} \\
+	  		2\rest{\{1\}} &= 5\rest{\{1\}}
+	  	\end{align*}
+	  	aber $2\neq 5 \in \Z$.
+	\end{enumerate}
+\end{proof}
 
 \begin{definition}[push-forward]
 	Ist $f:X \to Y$ stetig und $\F$ eine Garbe auf $X$, so ist durch
@@ -228,6 +259,60 @@ und entsprechend Garben
 	Ist $R$ lokaler Ring und $\m \ideal R$ das maximale Ideal,
 	so ist $R \setminus \m = R^\times$.
 \end{bemerkung}
+
+\begin{uebung}[Übungsblatt 1 Aufgabe 1]
+	\begin{enumerate}
+	  \item Es sei $R$ ein kommutativer Ring und $R^\times$ seine 
+	  	Einheitengruppe. Zeige, dass $R$ genau dann lokal ist, wenn
+	  	$R\setminus R^\times \ideal R$ gilt, d.h. wenn die Nichteinheiten
+	  	$R\setminus R^\times$ ein Ideal in $R$ bilden.
+	  \item Es sei $R$ ein kommutativer nullteilerfreier Ring. Den 
+	  	Quotientenkörper zu $R$ bezeichen wir mit $\Quot(R)$. Lokalisieren wir
+	  	$R$ nach $\p$, so erhalten wir den Ring
+	  	$R_\p = \{\tfrac{a}{b} \in \Quot(R) \mid a \in R,\ b \notin \p\}$.
+	  	Zeige, dass $R_\p$ ein lokaler Ring ist.
+	\end{enumerate}
+\end{uebung}
+\begin{proof}
+	\begin{enumerate}
+	  \item
+	  \begin{description mathquote}
+	  \item[\Rightarrow]
+	  	Ist $R$ lokal, so ist $R\setminus R^\times = \m$ das maximale Ideal
+	  	von $R$.
+	  \item[\Leftarrow]
+	  	Ist $R\setminus R^\times$ ein Ideal, so ist dies maximal (klar).
+	  	Sei $\m \ideal R$ ein maximales Ideal, so gilt offenbar schon
+	  	$R\setminus R^\times = \m$. 
+	  \end{description mathquote}
+	  \item
+	  Wir zeigen $\p R_\p = R_\p \setminus R_\p^\times$, dann folgt die
+	  Behauptung mit 1.
+	  \begin{description mathquote}
+	  \item[\subseteq]
+	  	Es sei 
+	  	\[
+	  		h = p_1 \frac{s_1}{t_1} + \ldots + p_n \frac{s_n}{t_n}.
+	  	\]
+	  	Setze
+	  	\begin{align*}
+	  		z_1 &:= p_1 s_1 t_2 \ldots t_n + 
+	  			p_2 s_2 t_1 t_3 \ldots t_n +
+	  			p_n s_n t_1 \ldots t_{n-1}\\
+	  		z_0 &:= t_1 \ldots t_n,
+	  	\end{align*}
+	  	so ist $h = \frac{z_1}{z_0}$. Wäre
+	  	$h \in R_\p^\times$, sagen wir $\frac{s}{t}$ sein Inverses, so müsste
+	  	gelten
+	  	$z_1 s = z_0 t$. Die linke Seite jedoch ist in $\p$, die rechte
+	  	nicht. Damit ist
+	  	$h\in R_\p \setminus R_\p^\times$.
+	  \item[\supseteq]
+	  	Sei $\frac s t \in R_\p \setminus R_\p^\times$,
+	  	so ist $s \frac{1}{t} \in \p R_\p$.
+	  \end{description mathquote}
+	\end{enumerate}
+\end{proof}
 
 \begin{beispiel}
 	Sei $M$ eine $C^\infty$ Mannigfaltigkeit und $x_0 \in M$.
@@ -270,6 +355,48 @@ und entsprechend Garben
 	Sei $M$ eine $C^\infty$-Mannigfaltigkeit und $x_0 \in M$,
 	so ist $\kappa(x_0) = \R$.
 \end{beispiel}
+
+\begin{uebung}[Übungsblatt 1 Aufgabe 2]
+	\begin{enumerate}
+	  \item Zeige, dass das Tupel $(\R, C_\R^\infty)$ bestehend aus $\R$
+	  	und der Garbe der $C^\infty$-Funktionen einen lokal geringten Raum
+	  	bilden. Zeige also, dass $C_{\R,x_0}^\infty$ für beliebiges
+	  	$x_0 \in \R$ ein lokaler Ring ist, indem Du sein maximales Ideal
+	  	$\m_{x_0}$ angiebst. Warum ist es das einzige maximale Ideal?
+	  \item Zeige, dass $\forall x_0 \in \R:$ 
+	  	$C_{\R,x_0}^\infty \big/ \m_{x_0} \cong\R$.
+	  \item Zeige nun auf gleiche Weise, dass $\C$ mit der Garbe der 
+	 	holomorphen Funktionen $\O_\C$ eine lokal gerinter Raum ist
+	 	und dass $\O_{\C,z_0} \big/ \m_{z_0} \cong \C$ für alle
+	 	$z_0 \in \C$ gilt.
+	\end{enumerate}
+\end{uebung}
+\begin{proof}
+	\begin{enumerate}
+	  \item Es gilt
+	  \begin{align*}
+	  	[f:U\to \R] \in (C_{\R,x_0}^\infty)^\times
+		  	\quad &\Leftrightarrow\quad
+		  	\exists \text{ offene Umgebung $V$ um $x_0$ mit}
+		  	f\rest{U\cap V} \neq 0 \ \forall x \in U\cap V\\
+	  	&\Leftrightarrow\quad
+	  		f(x_0) \neq 0.
+	  \end{align*}
+	  Also $[f] \in C_{\R,x_0}^\infty \setminus (C_{\R,x_0}^\infty)^\times$
+	  genau dann, wenn $f(x_0) = 0$.
+	  Damit ist $C_{\R,x_0}^\infty \setminus (C_{\R,x_0}^\infty)^\times$
+	  ein Ideal. Es ist klar, dass dies das einzige maximale ist.
+	  \item 
+	  Wir definieren den surjektiven Gruppenhomomorphismus
+	  \[
+	  	\varphi: \funcdef{ C_{\R,x_0}^\infty & \to & \R\\
+	  		{[f]} & \mapsto & f(x_0),}
+	  \]
+	  so folgt die Aussage aus dem Homomorphiesatz.
+	  \item
+	  Analog zu den vorherigen beiden.
+	\end{enumerate}
+\end{proof}
 
 \begin{definition}[lokale Ringhomomorphismen]
 	Sind $R,S$ lokale Ringe mit den maximalen Idealen

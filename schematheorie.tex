@@ -121,6 +121,23 @@ DIV = 14,
 	font body=\normalfont,
 	counter parent=satz
 	]{bemerkung}{Bemerkung}
+	
+	
+\newtikztheorem[
+	style=plain,
+	color=mycolor,
+	font header=\normalfont\sffamily\bfseries,
+	font body=\normalfont,
+	counter parent=satz
+	]{hilfslemma}{Hilfslemma}
+	
+\newtikztheorem[
+	style=elegantbreak,
+	color=col2,
+	font header=\normalfont\sffamily\bfseries,
+	font body=\normalfont,
+	nocounter=true
+	]{uebung}{Übung}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -131,7 +148,7 @@ DIV = 14,
 %% Packages für Grafiken & Abbildungen %%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx} %%Zum Laden von Grafiken
 %\usepackage{subfig} %%Teilabbildungen in einer Abbildung
-\usepackage[ngerman, nameinlink]{cleveref}
+% \usepackage[ngerman, nameinlink]{cleveref}
 
 %% Math abbreviations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \let\bb\mathbb
@@ -154,6 +171,8 @@ DIV = 14,
 \newcommand{\Sh}{\kat{Sh}}
 \newcommand{\Ring}{\kat{Ring}}
 \newcommand{\Top}{\kat{Top}}
+\newcommand{\Sch}{\kat{Sch}}
+\newcommand{\AffSch}{\kat{Sch}^\kat{aff}}
 \newcommand{\op}{^\mathrm{op}}
 \newcommand{\m}{\fr{m}}
 \newcommand{\p}{\fr{p}}
@@ -167,6 +186,7 @@ DIV = 14,
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Nil}{Nil}
+\DeclareMathOperator{\Quot}{Quot}
 \newcommand{\funcdef}[1]{%
 	\begin{array}[t]{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}
 	#1\end{array}}

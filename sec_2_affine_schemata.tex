@@ -106,7 +106,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	  \item $x = (X) \ideal A$ ist weder abgeschlossen noch generisch.
 	\end{itemize}
 	Wir können die bisherigen Ergebnisse in
-	\cref{fig:spec c xy} zusammenfassen. 
+	\thref{fig:spec c xy} zusammenfassen. 
 \end{beispiel}
 
 \begin{figure}
@@ -560,7 +560,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 		\quad \Rightarrow\quad
 		\m_{\alpha,\beta} \in \overline{\{\p\}}.
 	\]
-	\cref{fig:spec k xy} verdeutlicht dies.
+	\thref{fig:spec k xy} verdeutlicht dies.
 \end{beispiel}
 
 \begin{figure}\centering
@@ -624,4 +624,241 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	$X$ heißt \emph{kompakt}, wenn $X$ hausdorffsch und quasi-kompakt ist.
 \end{definition}
 
+
+\begin{satz}
+	Ist $A$ ein Ring, so ist $\Spec A$ quasi-kompakt.
+\end{satz}
+\begin{proof}
+	Wir zeigen: Ist $\emptyset = \cap_{i\in I} Z_i$ für abgeschlossene
+	$Z_i$, so existiert $F\subset I$ endlich mit
+	$\emptyset = \cap_{i\in F} Z_i$.
+	
+	Sei also $Z_i = V(\a_i)$, $\a_i \ideal A$ und
+	\[
+		V(A) = \emptyset = \bigcap_{i\in I} V(\a_i)
+		= V\left(\sum_{i\in I} \a_i\right)
+	\]
+	Nach \thref{satz:v und radikal} ist damit
+	\[
+		A = \sqrt{\sum_{i\in I} \a_i},
+	\]
+	also insbesondere $1 \in \sqrt{\sum_{i\in I} \a_i}$ und
+	$1 \in \sum_{i\in I} \a_i$. Ergo
+	\[
+		1 = a_{i_1} + \ldots + a_{i_r},
+	\]
+	für $F:= \{i_1, \ldots, i_r\} \subset I$.
+	Nun ist
+	$1 \in \a_{i_1} + \ldots + \a_{i_r}$,
+	also 
+	\[
+		(1) = A \subseteq \a_{i_1} + \ldots + \a_{i_r}.
+	\]
+	Wiederum mit \thref{satz:v und radikal} ist
+	\[
+		\emptyset = V(A) \supseteq \bigcap_{k=1}^r V(\a_{i_k}).
+	\] 
+\end{proof}
+
+\subsection{$\Spec A$ als lokal geringter Raum}
+
+Wir wollen $\O_{\Spec A}$ als die "`guten Funktionen"' auf $\Spec A$ auffassen,
+aber dazu müssen wir es besser verstehen. 
+
+\begin{definition}[multiplikative Teilmenge, Lokalisierung]
+	\label{def:lokalisierung}
+	Sei $A$ ein Ring, dann heißt $S\subseteq A$ \emph{multiplikative Teilmenge},
+	wenn $1\in S$ und aus $a,b\in S$ auch $ab\in S$ folgt.
+	
+	Die \emph{Lokalisierung} $A_S$ oder $A[S\inv]$ von $A$ bezüglich $S$ ist
+	der Ring
+	\[
+		A_S := \big(A \times S \big) \big/ \sim
+	\]
+	mit
+	\[
+		(a,s) \sim (b,t) \quad\Leftrightarrow\quad
+		\exists u \in S:\ u(at - bs) = 0.
+	\]
+	Schreibe $\frac a s := [(a,s)]$ und definiere eine Ringstruktur auf
+	$A_S$ durch Bruchrechnen.
+\end{definition}
+
+\begin{lemma}[Universelle Eigenschaft der Lokalisierung]
+	\label{lemma:universelle eigenschaft lokalisierung}
+	Wir haben die folgende universelle Eigenschaft: Ist
+	$S\subseteq A$ wie in \thref{def:lokalisierung}, $\varphi: A \to R$
+	ein Ringhomomorphismus, so dass $\varphi(S) \subseteq R^\times$, so
+	existiert ein eindeutiger Ringhomomorphismus, der das
+	Diagramm
+	\[\begin{tikzcd}
+		A \rar{\iota} \arrow{dr}{\varphi} & A_S \dar{\exists!} \\
+		& R
+	\end{tikzcd}\]
+	kommutativ macht, wobei
+	$\iota: A \to A_S,\ a \mapsto \frac a 1$.
+\end{lemma}
+\begin{proof}
+	Klar, weil dieses $\psi: A_S \to R$ durch
+	\[
+		\psi\left(\frac a s\right) = 
+		\psi\left(\frac a 1\right) \psi\left(\frac 1 s\right) =
+		\varphi(a) \varphi(s)\inv
+	\]
+	eindeutig festgelegt ist.
+\end{proof}
+
+\begin{beispiel}
+	\begin{itemize}
+	  \item $S = \{f^n \mid n \in \N_0\}$, $f \in A$ fest.
+	  	\[ A_S =: A_f := \left\{ \frac{a}{f^n} \mid n\in \N_0\right\}\]
+	  \item $S = A \setminus \p$, $\p \in \Spec A$.
+	  	\[ A_\p := \left\{ \frac a b \mid a \in A,\ b\notin \p \right\}\]
+	  	ist ein lokaler Ring mit dem maximalen Ideal $\p A_\p$.
+	\end{itemize}
+\end{beispiel}
+
+
+\begin{satz}
+	\label{satz:spec a hat eindeutige ringgarbe}
+	Sei $X = \Spec A$. Dann existiert auf $X$ eine bis auf Isomorphie 
+	eindeutige Ringgarbe $\O_X$ mit:
+	\begin{enumerate}[label=\roman{*})]
+	  \item Es existiert ein Ringhomomorphismus
+	  	$\varphi: A \xto{\cong} \O_X(X)$.
+	  \item Für $f\in A$ betrachte 
+	  	\[\funcdef{ \O_X(X) & \to & \O_X(D(f)) \\
+	  		\varphi(f) & \mapsto & \varphi(f) \rest{D(f)}.}\]
+	  	Dann ist $\varphi(f)\rest{D(f)} \in \O_X(D(f))^\times$ eine Einheit
+	  	und der eindeutig durch 
+	  	\[
+	  	\begin{tikzcd}
+	  		A \rar{\iota} \dar{\varphi}[swap]{\cong}
+	  			\drar & A_f \dar{\exists!}[swap]{\varphi_f}\\
+	  		\O_X(X) \rar{\cdot\rest{D(f)}} & \O_X(D(f))\\
+	  	\end{tikzcd}
+	  	\]
+	  	gegebene Ringhomomorphismus $\varphi_f$ ist ein Isomorphismus.
+	  \item Für $\p\in \Spec A$ hat man das koanonische Diagramm
+	  	\[\begin{tikzcd}
+	  		A \rar{\varphi}[swap]{\cong}  \dar{\iota} 
+	  			& \O_X(X) \dar \\
+	  		A_\p \rar{\varphi_\p} & \O_{X,\p}
+	  	\end{tikzcd}\]
+	  	und $\varphi_\p: A_\p \to \O_{X,\p}$ ist ein Isomorphismus.
+	\end{enumerate}
+\end{satz}
+
+\subsubsection{Beweis von \autoref{satz:spec a hat eindeutige ringgarbe}}
+
+Für den Beweis benötigen wir noch eine Definition.
+
+\begin{definition}[$\cal B$-(Prä)Garbe]
+	$\F:D(f) \mapsto A_f$ heißt \emph{$\fr B$-Prägarbe} auf
+	$X = \Spec A$, wenn 
+	$\F$ eine Prägarbe auf 
+	\[
+		\fr B := \{D(f) \subset X \mid f \in A\}
+	\]
+	ist.
+	
+	$\F$ heißt \emph{$\fr B$-Garbe}, wenn $\F$ eine $\fr B$-Prägarbe ist
+	und die Garbenbedingungen für die $D(f)$ erfüllt sind.
+\end{definition}
+
+\begin{hilfslemma}
+	\label{hilfslemma:1}
+	Es gilt:
+	\begin{enumerate}
+	  \item $\O_X: D(f) \mapsto A_f$ ist eine $\fr B$-Garbe.
+	  \item Ist $\F$ eine $\fr B$-Garbe, so existiert eine bis auf
+	  	Isomorphie eindeutige Garbe $\bar \F$ auf $X$ mit
+	  	$\bar\F(D(f)) = \F(D(f))$ für alle $D(f) \in \fr B$.
+	\end{enumerate}
+\end{hilfslemma}
+\begin{proof}
+	\begin{enumerate}
+	  \item 
+	\end{enumerate}
+\end{proof}
+
+
+ TODO
+ 
+ 
+\begin{definition}[(affines) Schema]
+	Ein \emph{affines Schema} ist ein lokal geringter Raum
+	$(X,\O_X)$, der zu einem $(\Spec A, \O_{\Spec A})$ als lokal geringter
+	Raum isomorph ist.
+	
+	Ein \emph{Schema} ist ein lokal geringter Raum $(X,\O_X)$, der eine
+	offene Überdeckung durch affine Schemata besitzt, d.h.
+	$X = \cup_{i\in I} U_i$ mit $U_i \subseteq X$ offen und 
+	$(U_i, \O_X\rest{U_i})$ ist ein affines Schema.
+\end{definition}
+
+\begin{bemerkung}
+	Beachte dabei: Ist $X$ ein topologischer Raum, $\F$ eine Garbe auf $X$,
+	$U\subseteq X$ offen, so ist durch
+	\[
+		\F\rest U:\ V \mapsto \F\rest U (V) := \F(V)
+	\]
+	eine Garbe $\F\rest U$ auf $U$ definiert.
+\end{bemerkung}
+
+\begin{definition}[Morphismus von Schemata]
+	Ein \emph{Morphismus von Schemata} ist ein
+	Morphismus der lokal geringten Räume
+	\[
+		(f,f\fis): (X, \O_X)  \to  (Y, \O_Y).
+	\]
+\end{definition}
+
+\begin{bemerkung}
+	Man hat einen kontravarianten Funktor
+	\[
+		\funcdef{ \Ring & \to & \AffSch \\
+			A & \mapsto & (\Spec A, \O_{\Spec A}) \\
+			A \xto{\varphi} B & \mapsto & 
+			(f,f\fis): (\Spec B, \O_{\Spec B}) \to (\Spec A, \O_{\Spec A})}
+	\]
+	durch 
+	\[
+		f: \funcdef{\Spec B & \to & \Spec A\\
+			\q & \mapsto & \varphi\inv(\q)},
+	\]
+	wobei die Stetigkeit hier klar ist, und
+	\[
+		f\fis: \O_{\Spec A} \to f_\ast \O_{\Spec B}.
+	\]
+	Letzterer ist für $g\in A$ gegeben durch
+	\[
+		f\fis_{D(g)}: \funcdef{\O_{\Spec A}(D(g)) = A_g & \to &  
+			\big(f_\ast\O_{\Spec B}\big)(D(g))
+			 \tikzmark{=} B_{\varphi(g)}\\
+			 \frac{a}{g^n} & \mapsto & \frac{\varphi(a)}{\varphi(g)^n}}
+	\]
+	wobei \tikzarrow{mark above}{} durch
+	\[
+		f\inv(D(g)) = \{\q\in \Spec B \mid f(\q) \in D(g) \}
+			= \{\q\in \Spec B \mid \varphi\inv(\q) \not\ni g\}\\
+			= \{\q \in \Spec B \mid \q \not\ni \varphi(g) \}
+	\]
+	erhalten.
+	Diese Abbildung ist funktoriell und lokal, da für $\p\in \Spec A$
+	\[
+		f\fis_\p: \funcdef{ A_\p & \to & \O_{\Spec B, \q} \\
+			\frac a \gamma & \mapsto & \frac{\varphi(a)}{\varphi(\gamma)}}
+	\]
+	für $\p = \varphi\inv(\q)$, $\gamma \notin \p$ 
+	(also $\varphi(\gamma) \notin \q$) ein lokaler Ringhomomorphismus ist. 	
+\end{bemerkung}
 \pagebreak
+
+
+
+
+
+
+
+
