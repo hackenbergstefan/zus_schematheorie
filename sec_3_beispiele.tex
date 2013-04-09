@@ -1,1 +1,43 @@
+\section{Beispiele}
+
+\subsection{$\Spec \Z$}
+
+Jeder Ring $A$ hat einen eindeutigen Homomorphismus
+\[
+	\funcdef{
+		\Z & \to & A\\
+		 1 & \mapsto & 1\\
+		 z & \mapsto & \begin{cases} 1 + 1 + \ldots + 1 & z > 0\\
+		 	0 & z = 0\\
+		 	-1 -1 - \ldots- 1 & z < 0
+		 \end{cases}.}
+\]
+$\Z$ ist daher ein \emph{initiales Objekt} in der Kategorie $\Ring$.
+
+Wir haben daher einen eindeutigen Morphismus $\Spec A \to \Spec \Z$ von
+affinen Schemata. $\Spec \Z$ ist ein \emph{finales Objekt} in
+der Kategorie $\affSch$.
+
+Ferner können wir zusammenfassen
+\paragraph{Offene Mengen}
+	$\emptyset \neq U\subseteq \Spec \Z$ offen 
+	$\Leftrightarrow$ $U = \Spec \Z \setminus \{(p_1),\ldots,(p_r)\}$
+	
+\paragraph{Basisoffene Mengen}
+	$D(f) = \{\p \in \Spec\Z \mid f \notin \p\} = 
+	\Spec\Z \setminus \{(p_1),\ldots,(p_r)\}$ für 
+	$f = p_1^{\nu_1}\ldots p_r^{\nu_r}$.
+	
+\paragraph{Strukturgarbe}
+	\begin{align*}
+		\O_{\Spec\Z} (D(f)) &= \Z_f  = 
+			\left\{ \frac{a}{f^n} \mid n\in \N_0, a\in \Z\right\} \\
+		\O_{\Spec\Z, (p)} &= \Z_{(p)} = 
+			\left\{ \frac{a}{b} \mid p\nmid b, a\in \Z\right\} 
+ 	\end{align*}
+
+\subsection{$\Spec k$ für einen Körper $k$}
+
+\pagebreak
+
 % vim: set ft=tex :

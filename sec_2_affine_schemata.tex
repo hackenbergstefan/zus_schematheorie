@@ -15,7 +15,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 		\cal T := \{ U \subseteq \Spec A \mid
 			\exists\ \a \ideal A:\ U = \Spec A \setminus V(\a)\}
 	\]
-	eine Topologie auf $\Spec A$ definiert. Sie heißt \emph{Zariski-Topologie}.
+	eine Topologie auf $\Spec A$ definiert. Sie heiÃ¼t \emph{Zariski-Topologie}.
 \end{definition}
 
 \begin{proof}[der Topologie-Eigenschaften]
@@ -38,13 +38,13 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 
 \begin{bemerkung}
 	Die abgeschlossenen Teilmengen $M \subset \Spec A$ sind genau die 
-	$M = V(\a)$ für ein $\a \ideal A$.
+	$M = V(\a)$ fÃ¼r ein $\a \ideal A$.
 \end{bemerkung}
 
 \begin{beispiel}[$\Spec \Z$]
-	Für $\a \ideal \Z$ ist $\a = (a)$. Falls $a \neq 0,1,-1$ sei
+	FÃ¼r $\a \ideal \Z$ ist $\a = (a)$. Falls $a \neq 0,1,-1$ sei
 	$a = \pm p_1^{\nu_1} \cdot \dots \cdot p_r^{\nu_r}$ die 
-	Primfaktorzerlegung. Für $p$ Primzahl ist
+	Primfaktorzerlegung. FÃ¼r $p$ Primzahl ist
 	\[
 		(p) \in V((a)) \Leftrightarrow
 		(a) \subseteq (p) \Leftrightarrow
@@ -53,7 +53,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	\]
 	Das bedeutet, die abgeschlossenen Mengen in $\Spec \Z$ sind genau die 
 	Mengen $\emptyset$, $\Spec \Z$ und
-	$\{(p_1), \ldots, (p_r)\}$ für eine endliche Anzahl an Primzahlen.
+	$\{(p_1), \ldots, (p_r)\}$ fÃ¼r eine endliche Anzahl an Primzahlen.
 	
 	Insbesondere gilt
 	\begin{itemize}
@@ -87,10 +87,10 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 
 \begin{definition}[abgeschlossener Punkt, generischer Punkt]
 	Sei $X$ ein topologischer Raum.
-	Ein $x\in X$ heißt \emph{abgeschlossener Punkt}, wenn
+	Ein $x\in X$ heiÃ¼t \emph{abgeschlossener Punkt}, wenn
 	$\overline{\{x\}} = \{x\}$.
 	
-	Er heißt \emph{generischer Punkt}, wenn $\overline{\{x\}} = X$ gilt.
+	Er heiÃ¼t \emph{generischer Punkt}, wenn $\overline{\{x\}} = X$ gilt.
 	
 	Die Menge der abgeschlossenen Punkte bezeichnen wir mit
 	$|X|$.
@@ -105,7 +105,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	  	folgt.
 	  \item $x = (X) \ideal A$ ist weder abgeschlossen noch generisch.
 	\end{itemize}
-	Wir können die bisherigen Ergebnisse in
+	Wir kÃ¼nnen die bisherigen Ergebnisse in
 	\thref{fig:spec c xy} zusammenfassen. 
 \end{beispiel}
 
@@ -139,10 +139,10 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 
 
 \begin{definition}[basisoffene Menge]
-	Für $f\in A$ nennt man
+	FÃ¼r $f\in A$ nennt man
 	\[ D(f) := \Spec A \setminus V((f)) = \{ \p \in \Spec A \mid f \notin \p\}
 	\]
-	die \emph{zu $f$ gehörige basisoffene Menge}.
+	die \emph{zu $f$ gehÃ¼rige basisoffene Menge}.
 \end{definition}
 
 \begin{lemma}
@@ -159,7 +159,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	und $f \in \a$. Also $(f) \subseteq \a$ und
 	$V(\a) \subseteq V((f))$. Damit folgt $D(f) \subseteq U$.
 	
-	Zusammenfassend gilt für $U\subseteq \Spec A$ offen: $\forall \p \in U$
+	Zusammenfassend gilt fÃ¼r $U\subseteq \Spec A$ offen: $\forall \p \in U$
 	$\exists f\p \in A$: $\p \in D(f\p) \subseteq U$.
 	Also
 	\[ U = \bigcup_{\p \in U} D(f\p)\]
@@ -169,7 +169,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 
 \begin{lemma}
 	\label{lemma:vereinigungen von v sind produkt}
-	Für $\a, \fr b\ideal A$ gilt
+	FÃ¼r $\a, \fr b\ideal A$ gilt
 	\[
 		V(\a) \cup V(\fr b) = V(\a \cap \fr b) = V(\a \cdot \fr b).
 	\]
@@ -191,7 +191,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{proof}
 
 \begin{definition}[Radikal]
-	Für $\a \ideal A$ heißt
+	FÃ¼r $\a \ideal A$ heiÃ¼t
 	\[
 		\sqrt \a := \{ f\in A \mid \exists n \in \N:\ f^n\in \a\}
 	\]
@@ -223,7 +223,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{proof} 
 
 \begin{definition}[Radikalideal (radiziell)]
-	Ein Ideal $\fr b \ideal A$ heißt \emph{Radikalideal (radiziell)},
+	Ein Ideal $\fr b \ideal A$ heiÃ¼t \emph{Radikalideal (radiziell)},
 	falls
 	\[\sqrt \fr b = \fr b.\]
 \end{definition}
@@ -234,7 +234,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 
 \begin{lemma}
 	\label{lemma:radikal ist schnitt}
-	Für $\a \ideal A$ gilt
+	FÃ¼r $\a \ideal A$ gilt
 	\[
 		\sqrt\a = \bigcap_{\p\in V(\a)} \p
 	\]
@@ -250,7 +250,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	  	Ist $f\notin \sqrt\a$, so zu zeigen, dass 
 	  	$f \notin \cap_{\p\in V(\a)} \p$.
 	  	Sei also 
-	  	$f^n \notin \a$ für alle $n\in \N$.
+	  	$f^n \notin \a$ fÃ¼r alle $n\in \N$.
 	  	
 	  	Betrachte
 	  	\[ M := \{\b \ideal A\mid a\subseteq \b,
@@ -271,7 +271,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	$x,y \notin \bmax$.
 	Betrachte
 	$\bmax \subsetneq (x) + \bmax$, was ein Ideal in $A$ ist, aber nicht 
-	in $M$ liegt. Analog können wir dies von $(y) + \bmax$ sagen. Damit
+	in $M$ liegt. Analog kÃ¼nnen wir dies von $(y) + \bmax$ sagen. Damit
 	existieren $n,m \in \N$ mit
 	\[
 		f^n \in (x) + \bmax
@@ -284,14 +284,14 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 			(x)\bmax + (y)\bmax + \bmax\bmax + (xy),
 	\]
 	wobei jeder Summand Teilmenge von $\bmax$ ist und wir folgern
-	$f^{n+m} \in \bmax \in M$, wodurch man den Widerspruch erhält.
+	$f^{n+m} \in \bmax \in M$, wodurch man den Widerspruch erhÃ¼lt.
 	
 	Damit ist $\bmax \in V(\a)$ und $f\notin \bmax$. 
 \end{proof}
 
 \begin{satz}
 	\label{satz:v und radikal}
-	Für $\a, \b \ideal A$ gilt
+	FÃ¼r $\a, \b \ideal A$ gilt
 	\[ V(\a) \subseteq V(\b) \quad\Leftrightarrow\quad
 		\b \subseteq \sqrt\a.
 	\]
@@ -313,23 +313,23 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	  \item["`$\Rightarrow$"']
 	  	Aus $\b \subseteq \sqrt\a$, d.h.
 	  	$\b \subseteq \cap_{\p\in V(\a)} \p$, folgt
-	  	$\b \subseteq \p$ für alle $\p\in V(\a)$.
+	  	$\b \subseteq \p$ fÃ¼r alle $\p\in V(\a)$.
 	  	Also $\p \in V(\a)$.
 	\end{itemize}
 \end{proof}
 
 \begin{definition}[irreduzibel]
-	Ein topologischer Raum $X$ heißt \emph{irreduzibel}, wenn gilt:
+	Ein topologischer Raum $X$ heiÃ¼t \emph{irreduzibel}, wenn gilt:
 	Ist $X = A_1 \cup A_2$, $A_{1,2}\subseteq X$ abgeschlossen, so ist
 	$X = A_1$ oder $X = A_2$.
 	
-	Eine Teilmenge $Z\subseteq X$ heißt \emph{irreduzibel}, wenn $Z$ mit der
+	Eine Teilmenge $Z\subseteq X$ heiÃ¼t \emph{irreduzibel}, wenn $Z$ mit der
 	Teilraumtopologie irreduzibel ist.
 \end{definition}
 
 \begin{beispiel}
-	$\Spec\Z$ ist irreduzibel. Ist nämlich $A_1 \subsetneq \Spec\Z$ 
-	abgeschlossen, so ist $A_1 = \{(p_1), \ldots, (p_r)\}$ für
+	$\Spec\Z$ ist irreduzibel. Ist nÃ¼mlich $A_1 \subsetneq \Spec\Z$ 
+	abgeschlossen, so ist $A_1 = \{(p_1), \ldots, (p_r)\}$ fÃ¼r
 	irgendwelche Primzahlen $p_i$. 
 \end{beispiel}
 
@@ -347,7 +347,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	  	Sei $xy \in \sqrt\a$, so ist $(xy) \subseteq \sqrt\a$ und mit
 	  	\thref{satz:v und radikal} $V(\a) \subseteq V((xy))$.
 	  	
-	  	Für $\p\in V(\a) \subseteq V((xy))$, gilt:
+	  	FÃ¼r $\p\in V(\a) \subseteq V((xy))$, gilt:
 	  	Ist $xy \in \p$, so folgt $x \in \p$ oder $y\in \p$. Damit
 	  	\[
 	  		V(\a) \subseteq V((x)) \cup V((y))
@@ -366,7 +366,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	 	
 	 	Ist $V(\a) \neq V(\b)$, also $V(\b) \subsetneq V(\a)$, also
 	 	$\sqrt\a \subsetneq \sqrt\b$, so existiert 
-	 	$x\in \sqrt\b \setminus \sqrt\a$. Für $y \in \fr c$, ist 
+	 	$x\in \sqrt\b \setminus \sqrt\a$. FÃ¼r $y \in \fr c$, ist 
 	 	\[
 	 		xy \in \sqrt{\b\fr c} \subseteq \sqrt{\b \cap \fr c} = \sqrt\a.
 	 	\]
@@ -381,7 +381,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	\[
 		\Nil(A) := \sqrt{(0)}
 	\]
-	heißt \emph{Nilradikal} von $A$.
+	heiÃ¼t \emph{Nilradikal} von $A$.
 \end{definition}
 
 \begin{korollar}
@@ -397,13 +397,13 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{proof}
 
 \begin{definition}[noethersch]
-	Ein topologischer Raum heißt \emph{noethersch}, wenn gilt:
+	Ein topologischer Raum heiÃ¼t \emph{noethersch}, wenn gilt:
 	Ist 
 	\[
 		A_1 \supseteq A_2 \supseteq A_3 \supseteq\ldots
 	\]
 	eine Folge abgeschlosser Teilmengen, so existiert
-	$n_0\in \N$ mit $A_i = A_{i+1}$ für alle $i\geq n_0$. 
+	$n_0\in \N$ mit $A_i = A_{i+1}$ fÃ¼r alle $i\geq n_0$. 
 \end{definition}
 
 \begin{lemma}
@@ -419,7 +419,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	\[
 		V(\a_1) \supseteq V(\a_2) \supseteq \ldots
 	\]
-	mit $A_i = V(\a_i)$ für geeignete $\a_i \in \Spec A$, so ist
+	mit $A_i = V(\a_i)$ fÃ¼r geeignete $\a_i \in \Spec A$, so ist
 	\[
 		\sqrt{\a_1} \subseteq \sqrt{\a_2} \subseteq \ldots
 	\]
@@ -433,10 +433,10 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 		A = A_1 \cup \ldots \cup A_r
 	\]
 	in abgeschlosse irreduzible Teilmengen $A_i \subseteq A$.
-	Nimmt man $A_i \not\subseteq A_j$ für $i\neq j$, so ist die Zerlegung
+	Nimmt man $A_i \not\subseteq A_j$ fÃ¼r $i\neq j$, so ist die Zerlegung
 	bis auf Reihenfolge eindeutig.
 	
-	Die $A_i$ heißen \emph{Komponenten} von $A$.
+	Die $A_i$ heiÃ¼en \emph{Komponenten} von $A$.
 \end{satz}
 \begin{proof}
 	\begin{description sf}
@@ -446,13 +446,13 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 			\cal V := \{ A\subseteq X \mid \emptyset \neq A 
 				\text{ abgeschlossen, $A$ hat keine solche Zerlegung} \}. 
 		\]
-		Angenommen $\cal V \neq\emptyset$, so hätte man
-		ein inklusionsminimales $A \in \cal V$, denn falls nicht gäbe es
+		Angenommen $\cal V \neq\emptyset$, so hÃ¼tte man
+		ein inklusionsminimales $A \in \cal V$, denn falls nicht gÃ¼be es
 		\[
 			A_1 \supsetneq A_2 \supsetneq \ldots
 		\]
-		mit $A_i \in \cal V$. Da $X$ noethersch, müsste diese Folge
-		stationär werden, wodurch man einen Widerspruch erhält.
+		mit $A_i \in \cal V$. Da $X$ noethersch, mÃ¼sste diese Folge
+		stationÃ¼r werden, wodurch man einen Widerspruch erhÃ¼lt.
 		
 		Dieses $A \in \cal V$ hat keine solche Zerlegung, ist also
 		insbesondere nicht irreduzibel. Damit gibt es
@@ -462,7 +462,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 		\]
 		Da $A \in \cal V$ minimal sind $A_1, A_2 \notin \cal V$.
 		Aber damit ist
-		$A = A_1 \cup A_2 \notin \cal V$. Ein Widerspruch, der wie gewünscht
+		$A = A_1 \cup A_2 \notin \cal V$. Ein Widerspruch, der wie gewÃ¼nscht
 		$\cal V = \emptyset$ liefert.
 	\item[Eindeutigkeit.]
 		Sind 
@@ -473,10 +473,10 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 		zwei solcher Zerlegungen, so ist
 		$A_1 \subseteq A_1' \cup \ldots \cup A_s'$, also
 		$A_1 = (A_1' \cap A_1) \cup \ldots \cup (A_s' \cap A_1)$.
-		Da $A_1$ irreduzibel können wir \obda $A_1 = A_1 \cap A_1'$ 
+		Da $A_1$ irreduzibel kÃ¼nnen wir \obda $A_1 = A_1 \cap A_1'$ 
 		annehmen. Also ist $A_1 \subseteq A_1'$.
 		
-		Analog ist $A_1' \subseteq A_k$ für ein $k=1,\ldots,r$.
+		Analog ist $A_1' \subseteq A_k$ fÃ¼r ein $k=1,\ldots,r$.
 		Zusammenfassend gilt
 		\[
 			A_1 \subseteq A_1' \subseteq A_k,
@@ -488,7 +488,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{proof}
 
 \begin{beispiel}
-	In $\Spec k[X,Y]$ zerfällt
+	In $\Spec k[X,Y]$ zerfÃ¼llt
 	\[
 		V((XY)) = V((X)) \cup V((Y)).
 	\]
@@ -502,13 +502,13 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \begin{beispiel}
 	Sei $k$ algebraisch abgeschlossen. Betrachte $\Spec k[X,Y]$.
 	Die \tikzmark[1]{maximalen Ideale} sind gerade 
-	$\m = (X-\alpha, Y-\beta)$ für $\alpha,\beta \in k$.
+	$\m = (X-\alpha, Y-\beta)$ fÃ¼r $\alpha,\beta \in k$.
 	Ein abgeschlosser Punkt $\m \in \Spec k[X,Y]$ wird eindeutig durch
 	$(\alpha, \beta) \in k^2$ gegeben.
 	\tikzmargin[1]{north}{Quelle suchen!}
 	
 	$\A_k^2 := \Spec k[X,Y]$ wird der 
-	\emph{2 dimensionale affine Raum über $k$} genannt.
+	\emph{2 dimensionale affine Raum Ã¼ber $k$} genannt.
 	Man hat die Bijektion
 	\[
 		|\A_k^2| \xto{\phi} k^2.
@@ -531,12 +531,12 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 		&\ \tikzmark[2]{=}\  
 			\{(X-\alpha, Y-\beta) \mid f(X,Y) \in \alpha\ \Rightarrow\ 
 			f(X,Y) = (X-\alpha)g(X,Y) + (Y-\beta)h(X,Y)\} \\
-%ich weiß, das ist unschön, aber nach dem align wird der rand der nächsten
+%ich weiÃ¼, das ist unschÃ¼n, aber nach dem align wird der rand der nÃ¼chsten
 %seite benutzt :-(
 \tikzmargin[2]{north, above=2cm}{
 	"`$\Rightarrow$"' ist klar. Also zu "`$\Leftarrow$"'.\\
 	Es ist $f(\alpha,\beta) = 0$, also
-	$f(X,Y) = (X-\beta) h(X,Y)$ für gewisses $h$.
+	$f(X,Y) = (X-\beta) h(X,Y)$ fÃ¼r gewisses $h$.
 	Es ist 
 	$f(X,Y) - f(\alpha,Y) = (X-\alpha) g(X,Y)$,
 	da die linke Seite $X = \alpha$ als Nullstelle hat.
@@ -551,7 +551,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	In $\A_k^2$ hat man aber noch mehr Punkte:
 	Sei $\p \ideal k[X,Y]$ Primideal, aber nicht maximal, so ist
 	$\p \in \A_k^2$ kein abgeschlossener Punkt.
-	Ist beispielsweise $\p = (f(X,Y))$ für $f\in k[X,Y]$ irreduzibel, 
+	Ist beispielsweise $\p = (f(X,Y))$ fÃ¼r $f\in k[X,Y]$ irreduzibel, 
 	so liegen alle $(\alpha,\beta) \in k^2$ mit $f(\alpha,\beta) = 0$
 	auf der entsprechenden Menge in $k^2$, d.h.
 	\[
@@ -597,7 +597,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{figure}
 
 \begin{lemma}
-	\label{lemma:pi inv ist homöo auf bild}
+	\label{lemma:pi inv ist homÃ¼o auf bild}
 	Ist $A$ ein Ring, $\a \in \Spec A$ und 
 	$\pi: A \twoheadrightarrow A\big/ \a$ die Projektion, so ist
 	\[
@@ -605,7 +605,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 			\funcdef{\Spec A\big/\a & \to & \Spec A \\
 				\overline{\p} & \mapsto & \pi\inv(\overline{\p})}
 	\]
-	ein Homöomorphismus auf sein Bild
+	ein HomÃ¼omorphismus auf sein Bild
 	\[
 		\Spec A\big/\a \xto[\approx]{\pi\inv} V(\a) \subseteq \Spec A.
 	\]
@@ -616,12 +616,12 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 
 
 \begin{definition}[(quasi)-kompakt]
-	Ein topologischer Raum $X$ heißt \emph{quasi-kompakt}, wenn gilt:
+	Ein topologischer Raum $X$ heiÃ¼t \emph{quasi-kompakt}, wenn gilt:
 	Ist $X = \cap_{i\in I} U_i$, $U_i$ offen, so existiert eine endliche
 	Teilmenge $F\subset I$ mit
 	$X = \cap_{i\in F} U_i$.
 	
-	$X$ heißt \emph{kompakt}, wenn $X$ hausdorffsch und quasi-kompakt ist.
+	$X$ heiÃ¼t \emph{kompakt}, wenn $X$ hausdorffsch und quasi-kompakt ist.
 \end{definition}
 
 
@@ -629,7 +629,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	Ist $A$ ein Ring, so ist $\Spec A$ quasi-kompakt.
 \end{satz}
 \begin{proof}
-	Wir zeigen: Ist $\emptyset = \cap_{i\in I} Z_i$ für abgeschlossene
+	Wir zeigen: Ist $\emptyset = \cap_{i\in I} Z_i$ fÃ¼r abgeschlossene
 	$Z_i$, so existiert $F\subset I$ endlich mit
 	$\emptyset = \cap_{i\in F} Z_i$.
 	
@@ -647,7 +647,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	\[
 		1 = a_{i_1} + \ldots + a_{i_r},
 	\]
-	für $F:= \{i_1, \ldots, i_r\} \subset I$.
+	fÃ¼r $F:= \{i_1, \ldots, i_r\} \subset I$.
 	Nun ist
 	$1 \in \a_{i_1} + \ldots + \a_{i_r}$,
 	also 
@@ -663,14 +663,14 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \subsection{$\Spec A$ als lokal geringter Raum}
 
 Wir wollen $\O_{\Spec A}$ als die "`guten Funktionen"' auf $\Spec A$ auffassen,
-aber dazu müssen wir es besser verstehen. 
+aber dazu mÃ¼ssen wir es besser verstehen. 
 
 \begin{definition}[multiplikative Teilmenge, Lokalisierung]
 	\label{def:lokalisierung}
-	Sei $A$ ein Ring, dann heißt $S\subseteq A$ \emph{multiplikative Teilmenge},
+	Sei $A$ ein Ring, dann heiÃ¼t $S\subseteq A$ \emph{multiplikative Teilmenge},
 	wenn $1\in S$ und aus $a,b\in S$ auch $ab\in S$ folgt.
 	
-	Die \emph{Lokalisierung} $A_S$ oder $A[S\inv]$ von $A$ bezüglich $S$ ist
+	Die \emph{Lokalisierung} $A_S$ oder $A[S\inv]$ von $A$ bezÃ¼glich $S$ ist
 	der Ring
 	\[
 		A_S := \big(A \times S \big) \big/ \sim
@@ -726,7 +726,7 @@ aber dazu müssen wir es besser verstehen.
 	\begin{enumerate}[label=\roman{*})]
 	  \item Es existiert ein Ringhomomorphismus
 	  	$\varphi: A \xto{\cong} \O_X(X)$.
-	  \item Für $f\in A$ betrachte 
+	  \item FÃ¼r $f\in A$ betrachte 
 	  	\[\funcdef{ \O_X(X) & \to & \O_X(D(f)) \\
 	  		\varphi(f) & \mapsto & \varphi(f) \rest{D(f)}.}\]
 	  	Dann ist $\varphi(f)\rest{D(f)} \in \O_X(D(f))^\times$ eine Einheit
@@ -739,7 +739,7 @@ aber dazu müssen wir es besser verstehen.
 	  	\end{tikzcd}
 	  	\]
 	  	gegebene Ringhomomorphismus $\varphi_f$ ist ein Isomorphismus.
-	  \item Für $\p\in \Spec A$ hat man das koanonische Diagramm
+	  \item FÃ¼r $\p\in \Spec A$ hat man das koanonische Diagramm
 	  	\[\begin{tikzcd}
 	  		A \rar{\varphi}[swap]{\cong}  \dar{\iota} 
 	  			& \O_X(X) \dar \\
@@ -751,19 +751,19 @@ aber dazu müssen wir es besser verstehen.
 
 \subsubsection{Beweis von \autoref{satz:spec a hat eindeutige ringgarbe}}
 
-Für den Beweis benötigen wir noch eine Definition.
+FÃ¼r den Beweis benÃ¼tigen wir noch eine Definition.
 
-\begin{definition}[$\cal B$-(Prä)Garbe]
-	$\F:D(f) \mapsto A_f$ heißt \emph{$\fr B$-Prägarbe} auf
+\begin{definition}[$\cal B$-(PrÃ¼)Garbe]
+	$\F:D(f) \mapsto A_f$ heiÃ¼t \emph{$\fr B$-PrÃ¼garbe} auf
 	$X = \Spec A$, wenn 
-	$\F$ eine Prägarbe auf 
+	$\F$ eine PrÃ¼garbe auf 
 	\[
 		\fr B := \{D(f) \subset X \mid f \in A\}
 	\]
 	ist.
 	
-	$\F$ heißt \emph{$\fr B$-Garbe}, wenn $\F$ eine $\fr B$-Prägarbe ist
-	und die Garbenbedingungen für die $D(f)$ erfüllt sind.
+	$\F$ heiÃ¼t \emph{$\fr B$-Garbe}, wenn $\F$ eine $\fr B$-PrÃ¼garbe ist
+	und die Garbenbedingungen fÃ¼r die $D(f)$ erfÃ¼llt sind.
 \end{definition}
 
 \begin{hilfslemma}
@@ -773,7 +773,7 @@ Für den Beweis benötigen wir noch eine Definition.
 	  \item $\O_X: D(f) \mapsto A_f$ ist eine $\fr B$-Garbe.
 	  \item Ist $\F$ eine $\fr B$-Garbe, so existiert eine bis auf
 	  	Isomorphie eindeutige Garbe $\bar \F$ auf $X$ mit
-	  	$\bar\F(D(f)) = \F(D(f))$ für alle $D(f) \in \fr B$.
+	  	$\bar\F(D(f)) = \F(D(f))$ fÃ¼r alle $D(f) \in \fr B$.
 	\end{enumerate}
 \end{hilfslemma}
 \begin{proof}
@@ -792,7 +792,7 @@ Für den Beweis benötigen wir noch eine Definition.
 	Raum isomorph ist.
 	
 	Ein \emph{Schema} ist ein lokal geringter Raum $(X,\O_X)$, der eine
-	offene Überdeckung durch affine Schemata besitzt, d.h.
+	offene Ã¼berdeckung durch affine Schemata besitzt, d.h.
 	$X = \cup_{i\in I} U_i$ mit $U_i \subseteq X$ offen und 
 	$(U_i, \O_X\rest{U_i})$ ist ein affines Schema.
 \end{definition}
@@ -808,7 +808,7 @@ Für den Beweis benötigen wir noch eine Definition.
 
 \begin{definition}[Morphismus von Schemata]
 	Ein \emph{Morphismus von Schemata} ist ein
-	Morphismus der lokal geringten Räume
+	Morphismus der lokal geringten RÃ¼ume
 	\[
 		(f,f\fis): (X, \O_X)  \to  (Y, \O_Y).
 	\]
@@ -831,7 +831,7 @@ Für den Beweis benötigen wir noch eine Definition.
 	\[
 		f\fis: \O_{\Spec A} \to f_\ast \O_{\Spec B}.
 	\]
-	Letzterer ist für $g\in A$ gegeben durch
+	Letzterer ist fÃ¼r $g\in A$ gegeben durch
 	\[
 		f\fis_{D(g)}: \funcdef{\O_{\Spec A}(D(g)) = A_g & \to &  
 			\big(f_\ast\O_{\Spec B}\big)(D(g))
@@ -845,12 +845,12 @@ Für den Beweis benötigen wir noch eine Definition.
 			= \{\q \in \Spec B \mid \q \not\ni \varphi(g) \}
 	\]
 	erhalten.
-	Diese Abbildung ist funktoriell und lokal, da für $\p\in \Spec A$
+	Diese Abbildung ist funktoriell und lokal, da fÃ¼r $\p\in \Spec A$
 	\[
 		f\fis_\p: \funcdef{ A_\p & \to & \O_{\Spec B, \q} \\
 			\frac a \gamma & \mapsto & \frac{\varphi(a)}{\varphi(\gamma)}}
 	\]
-	für $\p = \varphi\inv(\q)$, $\gamma \notin \p$ 
+	fÃ¼r $\p = \varphi\inv(\q)$, $\gamma \notin \p$ 
 	(also $\varphi(\gamma) \notin \q$) ein lokaler Ringhomomorphismus ist. 	
 \end{bemerkung}
 \pagebreak
