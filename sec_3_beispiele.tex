@@ -37,6 +37,172 @@ Ferner können wir zusammenfassen
  	\end{align*}
 
 \subsection{$\Spec k$ für einen Körper $k$}
+\paragraph{Als topologischer Raum}
+	$\Spec k = \{(0)\}$.
+
+\paragraph{Strukturgarbe}
+	$\O_{\Spec k}(\{(0)\}) = k$.
+
+\begin{bemerkung}
+   Sei $A$ ein Ring. Angenommen wir haben 
+  	$\Spec A \xto{(f,f\fis)} \Spec k$ für einen Körper $k$, so haben wir
+  	\[
+  		f\fis_{\Spec k}: k = \O_{\Spec k} \to f_\ast\O_{\Spec A}(\Spec k)
+  			\tikzmark{=} A,
+  	\]
+  	wobei \tikzarrow{mark above}{} aus 
+  	$\O_{\Spec A}(f\inv(\{(0)\})) = \O_{\Spec A}(\Spec A)$ resultiert.
+  	Insgesamt ist $A$ also eine $k$-Algebra (d.h. ein Ring zusammen mit
+  	$k\to A$).
+  	
+  	Bemerke hierbei "`Grothendiecks Gesamtphilosophie"':
+  	\begin{quote}\itshape
+  		Alles relativ lesen!
+  	\end{quote}
+\end{bemerkung}
+
+\begin{definition}[$S$-Schema]
+	Sei $S$ ein Schema. Dann ist ein \emph{$S$-Schema} ein Schema $X$
+	zusammen mit einem Strukturmorphismus $X \xto{\varphi} S$.
+	Dies ergibt die Kategorie $\Sch_S$, wenn man
+	\[
+		\Hom( X\xto{\varphi}S, Y\xto{\varphi} S) := 
+		\left\{ 
+		\begin{tikzcd}
+		X \arrow{rr}{f} \drar{\varphi} & & Y \dlar{\psi} \\ & S &
+		\end{tikzcd}
+		\right\}
+	\]
+	setzt.
+\end{definition}
+
+\begin{beispiel}
+	$\Sch_k := \Sch_{\Spec k}$ sind die sog. \emph{$k$-Schemata}.
+	Ein Beispiel hierfür ist
+	$\Spec k[X_1,\ldots,X_n] \to \Spec k$ via 
+	$k \hookrightarrow k[X_1,\ldots,X_n]$.
+\end{beispiel}
+
+
+\begin{bemerkung}
+	Sei $X$ ein Schema und $x\in X$ und weiter $\m_x \ideal \O_{X,x}$ das
+	maximale Ideal.
+	Dann ist 
+	\[
+		\kappa(x) := k(x) := \O_{X,x} \big/ \m_x
+	\]
+	der \emph{Restklassenkörper von $x$}.
+	
+	Betrachte nun $(f,f\fis): \Spec k \to X$ mit
+	\[
+		f: \funcdef{\Spec k(x) & \to & X \\
+			\eta_x & \mapsto & x,}
+	\]
+	wobei topologisch gesehen $\eta_x \in \Spec k(x)$ der einzige Punkt 
+	dieses Schemas ist.
+	Für $U\subseteq X$ offen haben wir:
+	\[
+		f\fis_U : \O_X \to 
+			f_\ast \O_{\Spec k(x)}(U) = 
+			\begin{cases} 0 & x\notin U \\ k(x) & x \in U. \end{cases}
+	\]
+	Im Fall $x \in U$ geht dies via
+	\[
+		\O_X(U) \to \O_{X,x} = \varinjlim_{x\in V} \O_X(V)
+			\overset\pi\twoheadrightarrow  \O_{X,x}\big/ \m_x = k(x). 
+	\]
+	
+	Ist umgekehrt $(f,f\fis):\Spec k \to X$ ein Schemamorphismus, so
+	setze $x := f((0)) \in X$ und
+	$f\fis: \O_X \to f_\ast \O_{\Spec k}$ liefert einen Ringhomomorphismus der
+	Halme:
+	\[
+		f_x\fis: \O_{X,x} \to \O_{\Spec k, (0)} = k.
+	\]
+	Dieser ist lokal (also $f\fis_x (\m_x) = (0)$). Damit ist
+	\[
+		\begin{tikzcd}
+		k(x) = \O_{X,x} \big/ \m_x \rar[hookrightarrow]{f_x\fis \mod \m_x} 
+		&[7ex]  {f_x\fis \mod \m_x} k
+		\end{tikzcd}
+	\]
+	wohldefiniert und somit ist $k \mid k(x)$ eine Körpererweiterung.
+	
+	Zusammengefasst haben wir:
+	\[	\fbox{\parbox{5cm}{
+			Einen Punkt $x\in X$ wählen mit Restklassenkörper
+			$k(x)$ und eine Körpererweiterung $k\mid k(x)$.}}
+		\Longleftrightarrow
+		\fbox{\parbox{5cm}{
+			Einen Schemamorphismus $\Spec k \to X$ wählen
+			für eine Körpererweiterung $k\mid k(x)$.}}
+	\]
+\end{bemerkung}
+
+\subsection{Der Affine $n$-dimensionale Raum über $k$}
+Sei $k$ wieder ein Körper. Der affine $n$-dimensionale Raum über $k$ ist
+$\A_k^n := \Spec k[X_1,\ldots, X_n]$.
+
+Wir erinnern an den Hilbertschen Nullstellensatz:
+\begin{satz}[Hilbertscher Nullstellensatz]
+	\label{satz:hilbertscher nullstellensatz}
+	Sei $k$ algebraisch abgeschlossen. Dann ist jedes maximale Ideal
+	in $k[X_1,\ldots, X_n]$ von der Form
+	$(X_1-a_1, \ldots, X_n - a_n)$.
+\end{satz}
+\begin{proof}
+	ohne Beweis.
+\end{proof}
+
+Wir haben bereits gezeigt:
+\[
+	|\A_k^n| = k^n, \qquad\text{via } 
+		(X_1-a_1,\ldots,X_n-a_n) \mapsto (a_1,\ldots,a_n).
+\]
+Sei $\p = (f_1, \ldots, f_r)$ ein nicht maximales Ideal in $k[X_1,\ldots,X_n]$
+(die Darstellung ist nach \thref{satz:hilbertscher nullstellensatz}) möglich,
+so gilt
+\[
+	\p \subseteq (X_1 - a_1, \ldots, X_n - a_n)
+	\quad\Leftrightarrow\quad
+	f_1(a_1,\ldots,a_n) = 0, \ldots,
+	f_r(a_1,\ldots,a_n) = 0
+\]
+Wir können dies in \autoref{fig:spec k xy 2} "`sehen"'.
+
+\begin{figure}\centering
+	\caption{$\Spec k[X_1,\ldots,X_n]$}
+	\label{fig:spec k xy 2}
+	\begin{tikzpicture}
+		\draw[very thick] 
+			(-3,0) -- (3,0) node[near end, above] {$X_1$}
+			(0,-2) -- (0,2) node[near end, right] {$X_2$};
+		
+% 		\draw[col1,thick] 
+% 			(-3,1) to[out=-5, in=135]  (0.2,-0.2) 
+% 			to[out=-45, in=225, looseness=2] (-1,0) 
+% 			to[out=45, in=180, looseness=0.5] (3,1.5)
+% 			node[pos=0.9] {$f(X,Y) = 0$};
+		\draw[col1, thick]
+			(-3,1) 
+			.. controls (5,-2) and (-8,-2) .. 
+			(3,1.5)
+			node[pos=1, right, text width=2.9cm, font=\scriptsize] 
+				{$\{(a_1,\ldots,a_n) \mid f_j(a_1,\ldots,a_n) = 0,$\\ 
+					$j=1\ldots r\}$}
+			coordinate[pos=0.05] (a);
+		
+		\fill[col1shade2] (a) circle[radius=2pt]
+			node[above right, col1] {$(\alpha,\beta)$};
+		
+		\path (-3,1)
+			node[generic point=10pt, fill=col1shade2] {}
+			node[above left, col1] {$\p$};
+	\end{tikzpicture}
+\end{figure}
+
+\section{}
+
 
 \pagebreak
 
