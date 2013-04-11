@@ -523,6 +523,220 @@ Dargestellt ist dies wieder in \autoref{fig:A 1 Z to Spec Z 2}.
 			node[right] {\ $\in D(f)$}; 
 	\end{tikzpicture}
 \end{figure}
+
+
+\subsection{Diskrete Bewertungsringe}
+
+\begin{definition}[Diskrete Bewertung]
+	\label{def:diskrete Bewertung}
+	Eine \emph{diskrete Bewertung} auf einem Körper $k$ ist eine Abbildung
+	\[ v: k\to \Z \cup \{\infty\}, \]
+	so dass
+	\begin{enumerate}
+	  \item $v(0) = \infty$, $v(x)\in \Z$ für $x \neq 0$,
+	  \item $v(xy) = v(x) + v(y)$ für alle $x,y$ und
+	  \item $v(x+y) \geq \min\{v(x), v(y)\}$ für alle $x,y$.
+	\end{enumerate}
+\end{definition}
+
+\begin{bemerkung}
+	Wählt man $q > 1$ (in $\R$), so ist
+	\[
+		|\cdot |: k \to \R,\ x\mapsto |x| := q^{-v(x)}
+	\]
+	eine Betragsfunktion mit
+	\begin{enumerate}
+	  \item $|x| = 0 \ \Leftrightarrow\ x = 0$,
+	  \item $|xy| = |x||y|$.
+	  \item $|x+y| \leq \max \{ |x|,|y|\} \leq |x| + |y|$.
+	   Die erste Ungleichung wird auch nicht-archimedische
+	   Dreiecksungleichung genannt.
+	\end{enumerate}
+\end{bemerkung}
+
+
+\begin{definition}[Bewertungsring]
+	\label{def:bewertungsring}
+	Ist $(k,v)$ ein diskret bewerteter Körper, so ist
+	\[
+		\O:= \{x\in k\mid v(x) \geq 0 \} = \{ x \in k \mid |x|\leq 1\}
+	\]
+	ein lokaler Ring mit maximalem Ideal
+	\[
+		\m := \{x\in k\mid v(x) > 0\} = \{ x \in k\mid |x|< 1\} \ideal \O,
+	\]
+	der \emph{Bewertungsring} zu $k$.
+	
+	Ein diskreter Bewertungsring (dvr) ist ein Integritätsbereich $R$,
+	zusammen mit diskreter Bewertung $v: K = \Quot(R) \to \Z \cup \{\infty\}$,
+	so dass $R = \O$ gilt.
+	
+	Ferner gilt $\O$ ist ein Hauptidealbereich (PID), $k = \Quot(\O)$.
+	
+	Ist $\pi\in \O$ mit $v(\pi) = 1$, so ist 
+	$\m = (\pi)$ und $\O$ hat genau die Ideale $(\pi^k)$ für $k\in \N_0$.
+\end{definition}
+
+
+\begin{bemerkung}
+	Der Wertebereich $v(k\setminus \{0\}) \subseteq \Z$ ist eine Untergruppe,
+	also $v(k\setminus \{0\}) = d \Z$ für ein $d$. 
+	Wir können meistens \obda $d = 1$ annehmen.	
+\end{bemerkung}
+
+\begin{bemerkung}
+	Beachte: Für $x\in \O$ gilt
+	\[ v(x) = n \ \Leftrightarrow \ x \in \m^n \setminus \m^{n+1}. \]
+	
+	Für $\xi = \frac x y \in K = \Quot(\O)$ ist $v(\xi) = v(x) - v(y)$.
+\end{bemerkung}
+
+
+\begin{proof}[von \thref{def:bewertungsring}]
+	TODO.
+\end{proof}
+
+\begin{bemerkung}
+	\[\Spec \O = \{(0), (\pi) = \m \},\]
+	da in Hauptidealbereichen jedes Primideal $\neq (0)$ auch maximal ist.
+\end{bemerkung}
+
+\begin{definition}
+	Ist $\O$ ein diskreter Bewertungsring, so heißt 
+	\[ \O\big/ \m =: k\]
+	der \emph{Restklassenkörper} von $\O$.
+	
+	$\O$ heißt von \emph{verschiedener Charakteristik}, wenn
+	für $K = \Quot(\O)$, $\charak K = 0$ und $\charak k \neq 0$ ist;
+	von \emph{gleicher Charakteristik}, wenn $\charak K = \charak k$.
+\end{definition}
+
+\subsubsection{Beispiele}
+
+\paragraph{1.} Sei $k$ ein Körper, 
+\[K := k \dr t := \Quot k \dk t = \left\{f(t) = \sum_{l=-N}^\infty a_t t^l \mid 
+	a_l \in k \right\}\]
+und
+\[
+	v: \funcdef{ k\dk t &\to& \N_0 \cup\{\infty\} \\
+		f(t) = \sum a_l t^l  & \mapsto & 
+			\max\{ k\in \N_0 \mid t^{-k} f(t) \in k\dk t\}
+			= \min\{ l\in \N_0 \mid a_l \neq 0 \}.}
+\]
+Auf $k\dr t$ Dies ist eine diskrete Bewertung mit $\O = k\dk t$:
+\[
+	v: \funcdef{ k\dr t &\to& \Z_0 \cup\{\infty\} \\
+		f(t) = \sum a_l t^l  & \mapsto & 
+			= \min\{ l\in \Z_0 \mid a_l \neq 0 \}.}
+\]
+$k\dr t$ trägt damit $|\cdot | := q^{-v(\cdot)}$, also ist $k\dr t$ ein
+metrischer Raum mit $d(x,y) := |x-y|$, dieser ist vollständig.
+
+Für den Restklassenkörper gilt
+\[ \O \big/ \m = k\dk t \big/ t k \dr t \cong k, \]
+da $\m = t k\dk t = (t)$. $t$ heißt dabei \emph{Uniformierende}.
+
+
+\paragraph{2.}
+Betrachte
+\[ \nu_p: \funcdef{ \Q & \to & \Z \cup \{\infty\}\\
+	\frac a b & \mapsto & v(a) - v(b)}
+\]
+mit $v(a) = \max\{ k:\ p^k \mid a \}$ für eine Primzahl $p$. 
+
+$\nu_p$ ist eine diskrete Bewertung, die \emph{$p$-adische Bewertung}.
+Ferner ist
+\[
+	\O = \left\{ \frac a b \in \Q \mid \nu_p\left(\frac a b\right) > 0
+		\right\}
+		=
+		\left\{ \frac a b \in \Q \text{ in gekürzter Form} \mid 
+			p\nmid b \right\}
+		= \Z_{(p)}
+\]
+und $\m = p \Z_{(p)}$ und 
+\[
+	\O\big/ \m = \Z_{(p)} \big/ p\Z_{(p)} \cong
+		\Z \big/ p\Z = \fr F_p.
+\]
+
+$|\cdot|_p := p^{-\nu_p(\cdot)}: \Q \to \R_{\geq 0}$ heißt
+\emph{$p$-adischer Betrag}.
+$(\Q, |\cdot|_p)$ ist jedoch nicht vollständig, da
+z.B. $\sum_{n=0}^\infty p^n$ ein Cauchyfolge bildet.
+
+Man erhält die Vervollständigungen
+\begin{align*}
+	(\Q, |\cdot|) &\leadsto \R\\
+	(\Q, |\cdot|_p) & \leadsto \Q_p.
+\end{align*}
+
+\paragraph{Zurück zu Schemata}
+Sei $\O$ ein dvr, so ist $\Spec \O = \{(0), (\pi)\}$. Dabei ist
+$(0)$ der generische Punkt mit $\overline{\{(0)\}} = V((0)) = \Spec \O$
+und $(\pi)$ ein abgeschlossener Punkt, genannt der \emph{spezielle Punkt}
+in $\Spec \O$.
+
+\begin{beispiel}
+	Sei $k$ ein Körper mit $\charak k \neq 2,3$ und $k$ algebraisch 
+	abgeschlossen. Wir betrachten
+	\[
+		E := \Spec A \quad \text{mit } 
+			A := k[X,Y] \big/ (Y^2 - (X^3 + aX + b)).
+	\]
+	Dies ist der affine Teil einer \emph{elliptischen Kurve}, wenn
+	$4a^3 + 27b^2 \neq 0 \in k$.
+	
+	Wir haben
+	\[ |E| \cong \{ (x_0,y_0) \in k^2 \mid y_0^2 - (x_0^3 + ax_0 + b) = 0\}.
+	\]
+	Sei $(x_0,y_0) \in |E|$, oder besser $\p := (X-x_0, Y - y_0) \in E$.
+	Es ist $\O_{E,\p}$ ein dvr.
+	
+	Dazu:
+	\begin{description}
+	\item[1. Fall $y_0 \neq 0$.], so ist
+		$\O_{E,y} = A_\p$. Betrachten wir
+		$\frac{\bar f(X,Y)}{\bar g(X,Y)} \in A_\p$, also
+		$\bar f, \bar g \in A$ und $\bar g \notin (X-x_0, Y-y_0)$, d.h.
+		$\bar g(x_0, y_0) \neq 0$. Ferner ist
+		\[
+			Y^2 - (X^3 + aX + b) = 
+			(Y + y_0)(Y-y_0) + (X^2 x_0X + (x+x_0^2))(X-x_0)
+		\]
+		und wenn $y_0 \neq 0$, so ist
+		$(Y+y_0) \notin (X-x_0, Y-y_0)$. Demnach ist
+		$Y+y_0 \in A_\p^\times$, also gilt in $A_\p$:
+		\[
+			Y-y_0 = \frac{X^2 + x_0 X + (a+x_0^2)}{Y + y_0}(X-x_0)
+		\]
+		und
+		$(X-x_0, Y-y_0) A_\p = \p A_\p = (X-x_0)A_\p$ ist 
+		ein Hauptideal.
+		
+		Also ist
+		\[
+			v: \funcdef{ A_\p & \to & \N_0 \cup \{\infty\}\\
+				a & \mapsto & \max\{k \in \N_0 \mid a \in (X-x_0)^k \}}
+		\]
+		eine diskrete Bewertung!
+	\item[2. Fall $y_0 = 0$.] Dies geht analog und man sieht, dass
+		\[
+			X^2 + x_0 X + (a + x_0^2) \notin (X-x_0,Y),
+		\]
+		da nach Voraussetzung $4a^2 + 27b^2 \neq 0$. Also ist
+		$\p A_\p = (Y - y_0) A_\p$.
+	\end{description} 
+\end{beispiel}
+
+\begin{bemerkung}
+	Sei $K(E) := \O_{E,(0)} = \Quot(A) = A_{(0)}$ der 
+	\emph{Funktionenkörper} von $E$.
+	Für $\p \in E$ hat man die \emph{Null-/Polstellenordnung}
+	\[
+		v_\p: K(E) \to \Quot(A_\p) = \Quot(\O_{E,\p}) \xto v \Z\cup\{\infty\}.
+	\]
+\end{bemerkung}
 \pagebreak
 
 % vim: set ft=tex :
