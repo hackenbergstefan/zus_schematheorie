@@ -145,6 +145,9 @@ DIV = 14,
 
 \usepackage{array, enumitem}
 
+%Buchstaben durchstreichen
+\usepackage{cancel}
+
 %% Packages für Grafiken & Abbildungen %%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx} %%Zum Laden von Grafiken
 %\usepackage{subfig} %%Teilabbildungen in einer Abbildung
@@ -163,6 +166,7 @@ DIV = 14,
 \newcommand{\Q}{\bb{Q}}
 \newcommand{\Z}{\bb{Z}}
 \newcommand{\A}{\bb{A}}
+\renewcommand{\P}{\bb{P}}
 \newcommand{\rest}[1]{\big|_{#1}}
 \newcommand{\inv}{^{-1}}
 \newcommand{\fis}{^{\#}}
@@ -187,6 +191,7 @@ DIV = 14,
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Nil}{Nil}
 \DeclareMathOperator{\Quot}{Quot}
+\DeclareMathOperator{\charak}{char}
 \newcommand{\funcdef}[1]{%
 	\begin{array}[t]{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}
 	#1\end{array}}
@@ -194,6 +199,11 @@ DIV = 14,
 
 \newcommand{\obda}{{\small oBdA}\xspace}
 \newcommand{\Obda}{{\small OBdA}\xspace}
+
+%für doppelklammer
+\newcommand{\dk}[1]{\ensuremath\ldbrack #1\rdbrack}
+% für doppelrund
+\newcommand{\dr}[1]{\ensuremath(\!( #1 )\!)}
 
 \newenvironment{description sf}{%
 	\begin{description}[font=\normalfont\sffamily]}

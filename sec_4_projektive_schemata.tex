@@ -1,2 +1,66 @@
 \section{Projektive Schemata}
+
+\subsection{Eine kurze Einführung in klassische projektive Geometrie}
+\ldots
+
+\subsection{$\P^n(k)$ als Schema}
+Statt einem Körper $k$ können wir einen Ring $A$ betrachten.
+
+\subsubsection{1. Variante}
+Betrachte $U_i := \Spec A[x_0,\ldots,\cancel i,\ldots,x_n] = \A_A^n$.
+
+In $\R\P^n$ würden wir diese mit dem Kartenwechsel verkleben:
+\[\everymath{\displaystyle}\begin{tikzcd}
+	& [] [y_0,\ldots,\underset{i\text{-te}}{1},\ldots,y_n] & U_i \cap U_j & \\
+	(y_0,\ldots,\cancel i,\ldots,y_n) \urar[mapsto] & h_i(U_i \cap U_j)
+		\ar{rr}{\text{Kartenwechsel}} \urar 
+		&& h_j(U_i \cap U_j) \ular \\
+	&\{(y_0,\ldots,\cancel i,\ldots,y_n) \mid y_j \neq 0\} \ar{rr}
+	\uar[empty]{\rotatebox{90}{=}}
+	&&
+	\{(z_0,\ldots,\cancel j,\ldots,z_n) \mid z_i \neq 0\}
+	\uar[empty]{\rotatebox{90}{=}}\\
+	& (y_0,\ldots,\cancel i,\ldots,y_n) \ar[mapsto]{rr} &&
+		\left(\frac{y_0}{y_j},\ldots,\underset{i\text{-te}}{\frac{1}{y_j}},
+		\ldots,\cancel j,\ldots,\frac{y_n}{y_j}\right)
+\end{tikzcd}\]
+Betrachte also
+\begin{align*}
+	U_{ij} := \Spec A[x_0,\ldots,\cancel i,\ldots,x_n][x_j\inv]
+		&\hookrightarrow \Spec A[x_0,\ldots,\cancel i,\ldots,x_n] = U_i\\
+	U_{ji} := \Spec A[x_0,\ldots,\cancel j,\ldots,x_n][x_i\inv]
+		&\hookrightarrow \Spec A[x_0,\ldots,\cancel j,\ldots,x_n] = U_j\\
+\end{align*}
+und wähle einen Isomorphismus
+\[
+	\phi_{ij}: \funcdef{U_{ij} & \to & U_{ji}\\
+		x_k &\mapsto& \frac{x_k}{x_j} \quad \text{für $k\neq i$}\\
+		x_i & \mapsto& \frac{1}{x_j}.}
+\]
+Es gilt nun
+$\phi_{ij}(U_{ij} \cap U_{ik}) = U_{ji} \cap U_{jk}$, denn
+\begin{align*}
+	U_{ij} \cap U_{ik} &= D(x_j x_k) \subseteq U_i\\
+	U_{ji} \cap U_{jk} &= D(x_i x_k) \subseteq U_j
+\end{align*}
+sowie
+\[
+	\phi_{ik} \rest{U_{ij} \cap U_{ik}} = 
+	\phi_{jk} \circ \phi_{ij} \rest{U_{ij} \cap U_{ik}}
+\]
+
+\paragraph{Wir haben also}
+eine Familie $(U_i)_{i=0,\ldots,n}$ von (affinen) Schemata. Für jedes Paar
+$(i,j)$ eine offene Imersion $U_{ij} \hookrightarrow U_i$ mit
+(affinen) Schemata
+und Isomorphismen
+$\phi_{ij}: U_{ij} \xto{\cong} U_{ji}$, so dass
+$\phi_{ik} \rest{U_{ij} \cap U_{ik}} = 
+	\phi_{jk} \circ \phi_{ij} \rest{U_{ij} \cap U_{ik}}$.
+
+Bleibt zur Übung lediglich zu zeigen, dass ein (bist auf Isomorphie) 
+eindeutiges Schema
+$\P_A^n$ mit Überdeckung $\P_A^n = \bigcup_{i=0}^n V_i$ für 
+$V_i \subseteq \P_A^n$ offen und Isomorphismen
+$V_i \xto\cong U_i$ von (affinen) Schemata existiert.
 % vim: set ft=tex :
