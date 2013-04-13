@@ -75,8 +75,7 @@ DIV = 14,
 
 %% Packages tikztitle and tikztheorem %%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[color=mycolor, style=elegant, withheadings=true,
-	backgroundcmd=titlepagebackground]{tikztitle}
-
+  backgroundcmd=titlepagebackground]{tikztitle}
 
 \ifnum\myDevelopVariable=1 
   \usepackage{amsthm}
@@ -107,6 +106,7 @@ DIV = 14,
   \newtheorem{uebung}[thm]{Übung}
   %\newtheorem{note}[thm]{Notiz}
   %\newtheorem{case}{Fall}
+  \def\thref{\ref}
 \else
   \usepackage{tikztheorems}
   \newtikztheorem[
