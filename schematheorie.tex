@@ -39,7 +39,7 @@ DIV = 14,
 
 
 %% Deutsche Anpassungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{amsmath,amssymb,mathabx}
+\usepackage{amsmath,amssymb,mathabx,mathtools,stmaryrd}
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
 %\usepackage[ansinew]{inputenc}
@@ -78,7 +78,7 @@ DIV = 14,
   backgroundcmd=titlepagebackground]{tikztitle}
 
 \ifnum\myDevelopVariable=1 
-  \usepackage{amsthm}
+  \RequirePackage[thref, hyperref, thmmarks]{ntheorem}
   \usepackage{thmbox}
   \theoremstyle{plain}% default
   \newtheorem{thm}{Satz}[section]
@@ -221,6 +221,7 @@ DIV = 14,
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
 \DeclareMathOperator{\Nil}{Nil}
 \DeclareMathOperator{\Quot}{Quot}
 \DeclareMathOperator{\charak}{char}

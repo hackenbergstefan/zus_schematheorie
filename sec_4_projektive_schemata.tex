@@ -63,4 +63,221 @@ eindeutiges Schema
 $\P_A^n$ mit Überdeckung $\P_A^n = \bigcup_{i=0}^n V_i$ für 
 $V_i \subseteq \P_A^n$ offen und Isomorphismen
 $V_i \xto\cong U_i$ von (affinen) Schemata existiert.
+
+
+\subsubsection{2. Variante (Die $\Proj$-Konstruktion)}
+
+\begin{definition}[graduierte $A$-Algebra]
+	Sei $A$ ein Ring, dann heißt
+	\[ S:= \oplus_{n\in\N_0} S_n\]
+	eine \emph{graduierte $A$-Algebra}, wenn
+	\begin{itemize}
+	  \item $S$ ein Ring,
+	  \item $S_n \subset S$ ein $\Z$-Untermodul,
+	  \item $S_n S_m \subseteq S_{n+m}$ ist,
+	  \item wir einen Ringhomomorphismus $A \xto \varphi S$ haben und
+	  \item die $S_n$ $A$-Untermoduln sind.
+	\end{itemize}
+	
+	Ein $s \in S_n$ heißt \emph{homogen vom Grad $n$}.
+\end{definition}
+
+\begin{definition}[homogenes Ideal]
+	\label{def:homogenes ideal}
+	Ein Ideal $\a \ideal S$ heißt \emph{homogen}, wenn
+	\[
+		\a = \oplus_{n\in\N_0} \a \cap S_n.
+	\]
+\end{definition}
+
+\begin{lemma}
+	\label{lemma:ideal homogen <=> von homogenen elementen erzeugt}
+	Es ist äquivalent
+	\begin{itemize}
+		\item $\a$ homogen,
+		\item $\a$ wird von homogenen Elementen erzeugt
+		\item Aus $a \in \a$ mit $a = \sum_{n\in \N_0} a_n$ für
+			$a_n\in S_n$ folgt $a_n \in \a$.
+	\end{itemize}
+\end{lemma}
+\begin{proof}
+	leicht.
+\end{proof}
+
+
+\begin{beispiel}
+	$S = A[x_0,\ldots,x_n] = \oplus_{m\geq 0} S_m$ mit
+	\[
+		S_m = \{f(x_0,\ldots,x_n) \mid f\text{ homogen von Grad $m$}\},
+	\]
+	d.h. 
+	\[
+		f\in S_m \quad\Leftrightarrow\quad
+			f = \sum_{\nu \in \N_0^{n+1}} \alpha_\nu X_0^{\nu_0} 
+				\ldots X_n^{\nu_n} \quad\text{mit }
+				\nu_0 + \ldots+\nu_n = m.
+	\]
+\end{beispiel}
+
+
+\begin{definition}[$\Proj(S)$]
+	Setze $S_+ := \oplus_{n\geq 1} S_n$, dann ist das
+	\emph{projektive Spektrum $\Proj S$ von $S$} definiert als
+	\[
+		\Proj(S) := \{ \p \in \Spec S\text{ homogen} \mid
+			S_+ \subsetneq \p\}.
+	\]
+\end{definition}
+
+\begin{definition}[Zariski Topologie auf $\Proj(S)$]
+	Für ein homogenes Ideal $\a \ideal S$ setze
+	\[
+		V_+(\a) := \{ \p \in \Proj(S)\mid \a\subseteq \p\} \subseteq 
+			\Proj(S).
+	\]
+	Dann bilden diese $V_+(\a)$ die abgeschlossenen Mengen einer Topologie,
+	der \emph{Zariski-Topologie auf $\Proj(S)$}.
+\end{definition}
+\begin{proof}
+	Wie im inhomogenen Fall.
+\end{proof}
+
+\begin{bemerkung}
+	Ein homogenes $\a \ideal S$, $\a\neq S$, ist prim genau dann, wenn
+	gilt:
+	\[ xy \in \a \quad \Rightarrow\quad x\in\a \text{ oder } y\in\a\]
+	für alle homogenen $x,y$.
+\end{bemerkung}
+
+\begin{definition}[basisoffenen Mengen auf $\Proj(S)$]
+	Analog zu $\Spec A$ bilden für $f\in S$ 
+	die \emph{basisoffenen Mengen in $\Proj(S)$}
+	\[
+		D_+(f) := \{ \p \in \Proj(S) \mid f\notin \p\}\subseteq \Proj(S)
+	\]
+	eine Basis der Topologie auf $\Proj(S)$.
+\end{definition}
+
+\begin{definition}[homogene Lokalisierung]
+	\begin{itemize}
+	  \item Für $\p\in \Proj(S)$ heißt
+		  \[
+		  	S_{(\p)} := \left\{ \frac s t \mid s,t \in S,\ t\notin \p,\ 
+		  		s,t \text{ homogen von gleichem Grad}\right\}
+		  \]
+		  \emph{homogene Lokalisierung von $\p$}.
+	  \item Für $f \in S $ homogen von Grad $m$ heißt
+	  	\[ 
+	  		S_{(f)} := \left\{ \frac{s}{f^k} \mid s\in S,\ k\in \N_0,\ 
+	  			s\text{ homogen von Grad } k\deg f\right\}
+	  	\]
+	  	\emph{homogene Lokalisierung bezüglich $f$}.	  	
+	\end{itemize}
+\end{definition}
+
+\begin{lemma}
+	Es gilt:
+	$S_{(\p)}$ ist ein lokaler Ring mit maximalem Ideal 
+	\[
+		\p_{(\p)} := \left\{\frac s t \mid s\in \p\right\}.
+	\]
+\end{lemma}
+\begin{proof}
+\end{proof}
+
+\begin{satz}
+	Auf $\Proj(S)$ gibt es eine (bis auf Isomorphie) eindeutige Ringgarbe
+	$\O_{\Proj(S)}$ mit:
+	\begin{enumerate}
+	  \item Für alle homogenen $f\in S_+$ hat man den Isomorphismus
+	  	\[
+	  		(\varphi, \varphi\fis): 
+	  			\left(D_+(f), \O_{\Proj(S)}\rest{D_+(f)}\right)
+	  			\to 
+	  			\Spec(S_{(f)}, \O_{S_{(f)}})
+	  	\]
+	  \item
+	  	Diese induzieren Isomorphismen
+	  	\[
+	  		\O_{\Proj(S), \p} \xto\cong S_{(\p)}.
+	  	\]
+	\end{enumerate}
+	Damit wird $(\Proj(S), \O_{\Proj(S)})$ zu einem Schema.
+\end{satz}
+\begin{proof}
+"`analog"' zum Beweis für $\Spec$ mit nachfolgendem Lemma.
+\end{proof}
+
+\begin{lemma}
+	Ist $f\in S_+$ homogen, so ist
+	\[
+		\phi: \funcdef{D_+(f) & \to & \Spec(S_{(f)}) \\
+			\p & \mapsto & \p S_f \cap S_{(f)}}
+	\]
+	ein Homöomorphismus.
+\end{lemma}
+\begin{proof}
+	\newcommand{\Sf}{S_{(f)}}
+	Sei $S \xto \lambda S_f \xhookleftarrow\iota \Sf$, so haben wir
+	\[\begin{tikzcd}
+		\Spec S & \Spec S_f \lar{\lambda^\ast} \ar{dd}{\iota^\ast}
+		%\arrow[shift left=2pt]{dl}{(\lambda^\ast)\inv}
+		\\
+		D(f) \arrow{ur}{\lambda^\ast}[swap]{\approx}& \\
+		D_+(f) \uar[hook]{\text{stetig}} \rar{\phi} & \Spec(\Sf)
+	\end{tikzcd}\qquad
+	\begin{tikzcd}
+		& \p S_f \ar{dd}\\
+		\p \urar[mapsto] & \\
+		\p \uar[mapsto] \rar[mapsto] 
+		& \p S_f \cap \Sf
+	\end{tikzcd}
+	\]
+	Die Stetigkeit im linken Diagramm folgt aus der Tatsache, dass
+	$V_+(\a) = V(\a) \cap \Proj(S)$ und $\Proj(S)$ trägt die Teilraumtopologie
+	von $\Spec S$.
+	Damit ist $\phi$ stetig.
+	
+	Wir wollen die Umkehrabbildung von $\phi$ angeben:
+	\[
+		\funcdef{D_+(f) & \xto\phi & \Spec(\Sf) \\
+			\lambda\inv(\sqrt{\q S_f}) & \mapsfrom & \q.}
+	\]
+	Den Rest zeigen nachstehende Hilfslemmata. 
+\end{proof}
+
+\begin{hilfslemma}
+	$\p := \lambda\inv(\sqrt{\q S_f})$ ist homogenes Primideal in $S$.
+\end{hilfslemma}
+\begin{proof}
+	\[
+		\q S_f = \left\{ \frac{b}{f^l} \frac{c}{f^n} \in S_f \left|
+			\begin{array}{l}
+				b\text{ homogen, } \deg b = l\deg f\\
+				\frac{b}{f^n} \in \q,\ c\in S,n\in \N_0
+			\end{array}\right. \right\}
+	\]
+	Bemerke, dass $\p$ ein homogenes Ideal ist, weil $\q S_f$ es ist.
+	Genauer:
+	$S_f = \oplus_{n\geq 0} S_{f,n}$ mit
+	\[
+		S_{f,n} := \left\{\frac{c}{f^m} \mid c\text{ homogen, }
+			\deg c - m\deg f = n\right\}.
+	\]
+	Es bleibt also zu zeigen: Sind $a,a' \in S$ homogen und 
+	$aa' \in \p$, so folgt $a\in \p$ oder $a'\in \p$.
+	
+	Sei dazu  $r = \deg a$, $s = \deg a'$.
+	Aus $aa'\in \p$ folgt $\lambda(aa') = \frac{aa'}{1} \in \sqrt{\q S_f}$.
+	Also existiert ein $k\in \N$ mit
+	$\left(\frac{aa'}{1}\right)^k \in \q S_f$, also
+	$\left( \frac{aa'}{1}\right)^k = \frac{b}{f^l} \frac{c}{f^n}$
+	wie oben. Potenzieren mit $\deg f$ ergibt
+	\[
+		\frac{a^{k\deg f} a'^{k\deg f}}{f^{kr} f^{ks}} = 
+		\frac{b^{\deg g}}{f^{l\deg f}} \frac{c^{\deg f}}{f^{n\deg f}}
+		\frac{1}{f^{kr} f^{ks}} \in S_f.
+	\]
+\end{proof}
+
 % vim: set ft=tex :
