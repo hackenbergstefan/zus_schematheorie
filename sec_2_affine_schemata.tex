@@ -15,7 +15,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 		\cal T := \{ U \subseteq \Spec A \mid
 			\exists\ \a \ideal A:\ U = \Spec A \setminus V(\a)\}
 	\]
-	eine Topologie auf $\Spec A$ definiert. Sie heiüt \emph{Zariski-Topologie}.
+	eine Topologie auf $\Spec A$ definiert. Sie heißt \emph{Zariski-Topologie}.
 \end{definition}
 
 \begin{proof}[der Topologie-Eigenschaften]
@@ -80,14 +80,15 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \begin{bemerkung}
 	Beachte, dass
 	\[
-		\a \subseteq \fr b \quad \Rightarrow\quad
-		V(\fr b) \subseteq V(\a)
+		\textcolor{purple}{\a} \subseteq \textcolor{blue}{\fr b} \quad 
+    \Rightarrow\quad
+		V(\textcolor{blue}{\fr b}) \subseteq V(\textcolor{purple}{\a})
 	\]
 \end{bemerkung}
 
 \begin{definition}[abgeschlossener Punkt, generischer Punkt]
 	Sei $X$ ein topologischer Raum.
-	Ein $x\in X$ heiüt \emph{abgeschlossener Punkt}, wenn
+	Ein $x\in X$ heißt \emph{abgeschlossener Punkt}, wenn
 	$\overline{\{x\}} = \{x\}$.
 	
 	Er heiüt \emph{generischer Punkt}, wenn $\overline{\{x\}} = X$ gilt.
@@ -104,9 +105,10 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	  	da aus $x \ideal A$ maximal $V(x) = \{x\}$ und somit $x$ abgeschlossen
 	  	folgt.
 	  \item $x = (X) \ideal A$ ist weder abgeschlossen noch generisch.
+    \item $x = (XY-1) \ideal A$ ist ebenfalls weder abgeschlossen noch
+      generisch.
 	\end{itemize}
-	Wir künnen die bisherigen Ergebnisse in
-	\thref{fig:spec c xy} zusammenfassen. 
+  Wir künnen die bisherigen Ergebnisse in \thref{fig:spec c xy} zusammenfassen. 
 \end{beispiel}
 
 \begin{figure}
@@ -114,19 +116,19 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	\label{fig:spec c xy}
 	\centering
 	\begin{tikzpicture}
-		\fill[col1shade1] (-3,-2) rectangle (3,2);
+		\fill[col1shade1] (-4,-2) rectangle (4,2);
 		\node[right, text=col1] 
-			at (-2.8,-1.5)
+			at (-3.8,-1.5)
 			{$|\Spec\C[X,Y]|$};
 		\draw[very thick]
-			(-3,0) -- (3,0) node[near end, auto]{$\alpha$}
+			(-4,0) -- (4,0) node[near end, auto]{$\alpha$}
 			(0,-2) -- (0,2) node[near end, auto]{$\beta$};
 		\fill[col1]
-			(1,1) circle[radius=2pt]
+			(-2.8,1) circle[radius=2pt]
 			node[above right] {$(X-\alpha, Y-\beta)$};
 		\node[generic point=10pt, fill=black!60,
 			label={above right:$(0)$}]
-			at (4,0)
+			at (5,0)
 			{};
 		\draw[line width=4pt, col2shade2, opacity=0.5]
 			(0,-2) -- (0,2);
@@ -134,6 +136,13 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 			label={[text=col2]below:$(X)$}]
 			at (0,-2.1)
 			{};
+    \draw[scale=1,domain=.25:2,smooth,variable=\t,green] 
+      plot ({1/\t},{\t});
+    \draw[scale=1,domain=.25:2,smooth,variable=\t,green] 
+      plot ({-1/\t},{-\t});
+		\fill[green]
+			(1,1) circle[radius=2pt]
+			node[above right] {$(XY-1)$};
 	\end{tikzpicture}
 \end{figure}
 
@@ -142,7 +151,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	Für $f\in A$ nennt man
 	\[ D(f) := \Spec A \setminus V((f)) = \{ \p \in \Spec A \mid f \notin \p\}
 	\]
-	die \emph{zu $f$ gehürige basisoffene Menge}.
+	die \emph{zu $f$ gehörige basisoffene Menge}.
 \end{definition}
 
 \begin{lemma}
@@ -191,7 +200,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{proof}
 
 \begin{definition}[Radikal]
-	Für $\a \ideal A$ heiüt
+	Für $\a \ideal A$ heißt
 	\[
 		\sqrt \a := \{ f\in A \mid \exists n \in \N:\ f^n\in \a\}
 	\]
@@ -223,7 +232,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{proof} 
 
 \begin{definition}[Radikalideal (radiziell)]
-	Ein Ideal $\fr b \ideal A$ heiüt \emph{Radikalideal (radiziell)},
+	Ein Ideal $\fr b \ideal A$ heißt \emph{Radikalideal (radiziell)},
 	falls
 	\[\sqrt \fr b = \fr b.\]
 \end{definition}
@@ -295,7 +304,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	\[ V(\a) \subseteq V(\b) \quad\Leftrightarrow\quad
 		\b \subseteq \sqrt\a.
 	\]
-	Insbesondere gilt
+	Insbesondere gilt sogar
 	\[ V(\a) = V(\b) \quad\Leftrightarrow\quad
 		\b = \sqrt\a.
 	\]
@@ -319,16 +328,16 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{proof}
 
 \begin{definition}[irreduzibel]
-	Ein topologischer Raum $X$ heiüt \emph{irreduzibel}, wenn gilt:
-	Ist $X = A_1 \cup A_2$, $A_{1,2}\subseteq X$ abgeschlossen, so ist
+	Ein topologischer Raum $X$ heißt \emph{irreduzibel}, wenn gilt:
+	Ist $X = A_1 \cup A_2$ mit $A_{1,2}\subseteq X$ abgeschlossen, so ist
 	$X = A_1$ oder $X = A_2$.
 	
-	Eine Teilmenge $Z\subseteq X$ heiüt \emph{irreduzibel}, wenn $Z$ mit der
+	Eine Teilmenge $Z\subseteq X$ heißt \emph{irreduzibel}, wenn $Z$ mit der
 	Teilraumtopologie irreduzibel ist.
 \end{definition}
 
 \begin{beispiel}
-	$\Spec\Z$ ist irreduzibel. Ist nümlich $A_1 \subsetneq \Spec\Z$ 
+	$\Spec\Z$ ist irreduzibel. Ist nämlich $A_1 \subsetneq \Spec\Z$ 
 	abgeschlossen, so ist $A_1 = \{(p_1), \ldots, (p_r)\}$ für
 	irgendwelche Primzahlen $p_i$. 
 \end{beispiel}
@@ -381,7 +390,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	\[
 		\Nil(A) := \sqrt{(0)}
 	\]
-	heiüt \emph{Nilradikal} von $A$.
+	heißt \emph{Nilradikal} von $A$.
 \end{definition}
 
 \begin{korollar}
@@ -397,7 +406,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{proof}
 
 \begin{definition}[noethersch]
-	Ein topologischer Raum heiüt \emph{noethersch}, wenn gilt:
+	Ein topologischer Raum heißt \emph{noethersch}, wenn gilt:
 	Ist 
 	\[
 		A_1 \supseteq A_2 \supseteq A_3 \supseteq\ldots
