@@ -801,8 +801,8 @@ Für den Beweis benötigen wir noch eine Definition.
 	Raum isomorph ist.
 	
 	Ein \emph{Schema} ist ein lokal geringter Raum $(X,\O_X)$, der eine
-	offene überdeckung durch affine Schemata besitzt, d.h.
-	$X = \cup_{i\in I} U_i$ mit $U_i \subseteq X$ offen und 
+	offene Überdeckung durch affine Schemata besitzt, d.h.
+	$X = \bigcup_{i\in I} U_i$ mit $U_i \subseteq X$ offen und 
 	$(U_i, \O_X\rest{U_i})$ ist ein affines Schema.
 \end{definition}
 
@@ -817,10 +817,12 @@ Für den Beweis benötigen wir noch eine Definition.
 
 \begin{definition}[Morphismus von Schemata]
 	Ein \emph{Morphismus von Schemata} ist ein
-	Morphismus der lokal geringten Räume
+	Morphismus von lokal geringten Räumen
 	\[
 		(f,f\fis): (X, \O_X)  \to  (Y, \O_Y).
 	\]
+  mit $f:X \to Y$ stetig und $f^{\fis} : \O_Y \to f_*\O_X$ Garbenmorphismus
+  auf $Y$ so dass $\O_{Y,f(x)}\to\O_{X,x}$ lokaler Ringhomomorphismus
 \end{definition}
 
 \begin{bemerkung}
@@ -847,7 +849,7 @@ Für den Beweis benötigen wir noch eine Definition.
 			 \tikzmark{=} B_{\varphi(g)}\\
 			 \frac{a}{g^n} & \mapsto & \frac{\varphi(a)}{\varphi(g)^n}}
 	\]
-	wobei \tikzarrow{mark above}{} durch
+	wobei wir \tikzarrow{mark above}{$\textcolor{lightgray}{\bullet}$} durch
 	\[
 		f\inv(D(g)) = \{\q\in \Spec B \mid f(\q) \in D(g) \}
 			= \{\q\in \Spec B \mid \varphi\inv(\q) \not\ni g\}\\
@@ -863,12 +865,5 @@ Für den Beweis benötigen wir noch eine Definition.
 	(also $\varphi(\gamma) \notin \q$) ein lokaler Ringhomomorphismus ist. 	
 \end{bemerkung}
 \pagebreak
-
-
-
-
-
-
-
 
 % vim: set ft=tex :
