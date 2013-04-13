@@ -70,7 +70,7 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
 	\[
 		\begin{tikzcd}
 			\F(U) \arrow{r}{\phi_U} & \G(U)\\
-			\F(V) \arrow{r}{\phi_U} \arrow{u} & \G(V) \arrow{u}
+			\F(V) \arrow{r}{\phi_V} \arrow{u} & \G(V) \arrow{u}
 		\end{tikzcd}
 	\] 
 	kommutiert.
@@ -78,8 +78,8 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
 
 
 \begin{definition}[Garbe]
-	Eine Prägarbe $\F$ auf $X$ heißt \emph{Garbe}, falls gilt:
-	Ist $U\subset X$ offen und $U=\bigcup_{i\in I} U_i$ für 
+  Eine Prägarbe $\F$ auf $X$ heißt \emph{Garbe} (engl. sheaf), falls
+  gilt: Ist $U\subset X$ offen und $U=\bigcup_{i\in I} U_i$ für 
 	offene $U_i\subset X$, so gilt
 	\begin{enumerate}
 	  \item Ist $s\in \F(U)$ und $s\rest{U_i} = 0$ für alle $i\in I$,
