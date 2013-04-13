@@ -79,7 +79,7 @@ DIV = 14,
 
 
 \ifnum\myDevelopVariable=1 
-  \usepackage{amsthm}
+  \RequirePackage[thref, hyperref, thmmarks]{ntheorem}
   \usepackage{thmbox}
   \theoremstyle{plain}% default
   \newtheorem{thm}{Satz}[section]
