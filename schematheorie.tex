@@ -32,7 +32,7 @@ DIV = 14,
 ]
 {scrartcl}
 
-\xdef\myDevelopVariable{1}
+\xdef\myDevelopVariable{0}
 
 %\pagestyle{empty}		% keine Kopf und Fußzeile (k. Seitenzahl)
 %\pagestyle{headings}	% lebender Kolumnentitel  
@@ -232,9 +232,9 @@ DIV = 14,
 \newcommand{\obda}{{\small oBdA}\xspace}
 \newcommand{\Obda}{{\small OBdA}\xspace}
 
-%für doppelklammer
+%für doppelklammer eckig
 \newcommand{\dk}[1]{\ensuremath\ldbrack #1\rdbrack}
-% für doppelrund
+% für doppelklammer rund
 \newcommand{\dr}[1]{\ensuremath(\!( #1 )\!)}
 
 \newenvironment{description sf}{%
@@ -244,6 +244,9 @@ DIV = 14,
 	\renewcommand{\descriptionlabel}[1]{\glqq$##1$\grqq}
 	\begin{description}[font=\normalfont]}
 	{\end{description}}
+	
+\newcommand{\TODO}{\textcolor{red}{\sffamily\bfseries 
+    Leider noch nicht fertig :-(}}    
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
