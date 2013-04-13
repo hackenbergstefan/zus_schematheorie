@@ -15,13 +15,18 @@ Jeder Ring $A$ hat einen eindeutigen Homomorphismus
 $\Z$ ist daher ein \emph{initiales Objekt} in der Kategorie $\Ring$.
 
 Wir haben daher einen eindeutigen Morphismus $\Spec A \to \Spec \Z$ von
-affinen Schemata. $\Spec \Z$ ist ein \emph{finales Objekt} in
+affinen Schemata. $\Spec \Z$ ist somit ein \emph{finales Objekt} in
 der Kategorie $\affSch$.
 
 Ferner können wir zusammenfassen
 \paragraph{Offene Mengen}
 	$\emptyset \neq U\subseteq \Spec \Z$ offen 
-	$\Leftrightarrow$ $U = \Spec \Z \setminus \{(p_1),\ldots,(p_r)\}$
+	$\Leftrightarrow$ $U = 
+\begin{cases}
+  \Spec \Z \setminus \{(p_1),\ldots,(p_r)\} &, r\in \N_0\\
+  \emptyset
+\end{cases}
+$
 	
 \paragraph{Basisoffene Mengen}
 	$D(f) = \{\p \in \Spec\Z \mid f \notin \p\} = 
