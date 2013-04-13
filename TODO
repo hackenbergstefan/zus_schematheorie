@@ -2,3 +2,8 @@ runlatexmk.sh:touch TODO
 runlatexmk.sh:grep -r --exclude='TODO' "TODO" * > TODO
 sec_2_affine_schemata.tex: TODO
 sec_3_beispiele.tex:	TODO.
+
+Probleme:
+
+Linien des elegant-style bei satz-Umgebungen werden auf die nächste Seite 
+gesetzt, falls der Satz das letzte auf der vorherigen Seite ist.
