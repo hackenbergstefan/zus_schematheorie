@@ -393,7 +393,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	heißt \emph{Nilradikal} von $A$.
 \end{definition}
 
-\begin{korollar}
+\begin{korollar}8[]
 	Es gilt
 	\[
 		\Spec A \text{ irreduzibel}
@@ -445,7 +445,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	Nimmt man $A_i \not\subseteq A_j$ für $i\neq j$, so ist die Zerlegung
 	bis auf Reihenfolge eindeutig.
 	
-	Die $A_i$ heiüen \emph{Komponenten} von $A$.
+	Die $A_i$ heißen \emph{(irreduzible) Komponenten} von $A$.
 \end{satz}
 \begin{proof}
 	\begin{description sf}
@@ -606,7 +606,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{figure}
 
 \begin{lemma}
-	\label{lemma:pi inv ist homüo auf bild}
+	\label{lemma:pi inv ist homöo auf bild}
 	Ist $A$ ein Ring, $\a \in \Spec A$ und 
 	$\pi: A \twoheadrightarrow A\big/ \a$ die Projektion, so ist
 	\[
@@ -614,7 +614,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 			\funcdef{\Spec A\big/\a & \to & \Spec A \\
 				\overline{\p} & \mapsto & \pi\inv(\overline{\p})}
 	\]
-	ein Homüomorphismus auf sein Bild
+	ein Homöomorphismus auf sein Bild
 	\[
 		\Spec A\big/\a \xto[\approx]{\pi\inv} V(\a) \subseteq \Spec A.
 	\]
@@ -625,12 +625,12 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 
 
 \begin{definition}[(quasi)-kompakt]
-	Ein topologischer Raum $X$ heiüt \emph{quasi-kompakt}, wenn gilt:
-	Ist $X = \cap_{i\in I} U_i$, $U_i$ offen, so existiert eine endliche
+	Ein topologischer Raum $X$ heißt \emph{quasi-kompakt}, wenn gilt:
+	Ist $X = \bigcap_{i\in I} U_i$ mit $U_i$ offen, so existiert eine endliche
 	Teilmenge $F\subset I$ mit
-	$X = \cap_{i\in F} U_i$.
+	$X = \bigcap_{i\in F} U_i$.
 	
-	$X$ heiüt \emph{kompakt}, wenn $X$ hausdorffsch und quasi-kompakt ist.
+	$X$ heißt \emph{kompakt}, wenn $X$ hausdorffsch und quasi-kompakt ist.
 \end{definition}
 
 
@@ -638,9 +638,9 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 	Ist $A$ ein Ring, so ist $\Spec A$ quasi-kompakt.
 \end{satz}
 \begin{proof}
-	Wir zeigen: Ist $\emptyset = \cap_{i\in I} Z_i$ für abgeschlossene
+	Wir zeigen: Ist $\emptyset = \bigcap_{i\in I} Z_i$ für abgeschlossene
 	$Z_i$, so existiert $F\subset I$ endlich mit
-	$\emptyset = \cap_{i\in F} Z_i$.
+	$\emptyset = \bigcap_{i\in F} Z_i$.
 	
 	Sei also $Z_i = V(\a_i)$, $\a_i \ideal A$ und
 	\[
@@ -676,8 +676,8 @@ aber dazu müssen wir es besser verstehen.
 
 \begin{definition}[multiplikative Teilmenge, Lokalisierung]
 	\label{def:lokalisierung}
-	Sei $A$ ein Ring, dann heiüt $S\subseteq A$ \emph{multiplikative Teilmenge},
-	wenn $1\in S$ und aus $a,b\in S$ auch $ab\in S$ folgt.
+	Sei $A$ ein Ring, dann heißt $S\subseteq A$ \emph{multiplikative Teilmenge},
+	wenn $1\in S$ ist und aus $a,b\in S$ auch $ab\in S$ folgt.
 	
 	Die \emph{Lokalisierung} $A_S$ oder $A[S\inv]$ von $A$ bezüglich $S$ ist
 	der Ring
@@ -760,18 +760,18 @@ aber dazu müssen wir es besser verstehen.
 
 \subsubsection{Beweis von \autoref{satz:spec a hat eindeutige ringgarbe}}
 
-Für den Beweis benütigen wir noch eine Definition.
+Für den Beweis benötigen wir noch eine Definition.
 
-\begin{definition}[$\cal B$-(Prü)Garbe]
-	$\F:D(f) \mapsto A_f$ heiüt \emph{$\fr B$-Prügarbe} auf
+\begin{definition}[$\cal B$-(Prä)Garbe]
+	$\F:D(f) \mapsto A_f$ heißt \emph{$\fr B$-Prügarbe} auf
 	$X = \Spec A$, wenn 
-	$\F$ eine Prügarbe auf 
+	$\F$ eine Prägarbe auf 
 	\[
 		\fr B := \{D(f) \subset X \mid f \in A\}
 	\]
 	ist.
 	
-	$\F$ heiüt \emph{$\fr B$-Garbe}, wenn $\F$ eine $\fr B$-Prügarbe ist
+	$\F$ heißt \emph{$\fr B$-Garbe}, wenn $\F$ eine $\fr B$-Prägarbe ist
 	und die Garbenbedingungen für die $D(f)$ erfüllt sind.
 \end{definition}
 
@@ -817,7 +817,7 @@ Für den Beweis benütigen wir noch eine Definition.
 
 \begin{definition}[Morphismus von Schemata]
 	Ein \emph{Morphismus von Schemata} ist ein
-	Morphismus der lokal geringten Rüume
+	Morphismus der lokal geringten Räume
 	\[
 		(f,f\fis): (X, \O_X)  \to  (Y, \O_Y).
 	\]
