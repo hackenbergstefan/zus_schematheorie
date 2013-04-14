@@ -247,8 +247,31 @@ DIV = 14,
 	
 \newcommand{\TODO}{\textcolor{red}{\sffamily\bfseries 
     Leider noch nicht fertig :-(}}    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%  comment boxen  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{verbatim}
+\ifnum\myDevelopVariable=1 
+  \usepackage{xcolor}
+  \usepackage{color}
+  \usepackage{framed}
+
+  \newenvironment{fshaded}{%
+  \def\FrameCommand{\fcolorbox{framecolor}{shadecolor}}%
+  \MakeFramed {\FrameRestore}}%
+  {\endMakeFramed}
+
+  %\renewcommand{\comment}{\definecolor{shadecolor}{rgb}{.8,.8,.8}%
+  %\definecolor{framecolor}{rgb}{0,0,0}%
+  %\fshaded}
+  %\renewcommand{\endcomment}{\endfshaded}
+
+  \renewcommand{\comment}{\color{gray}%
+  \definecolor{shadecolor}{rgb}{.95,.95,.95}%
+  \definecolor{framecolor}{rgb}{.8,.8,.8}%
+  \fshaded%
+  \textbf{\tiny Kommentar: } }
+  \renewcommand{\endcomment}{\endfshaded}
+\fi
 
 %% Bibliographiestil %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\usepackage{natbib}
