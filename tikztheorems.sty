@@ -327,29 +327,29 @@
 \def\ttmstyleelegantbreak{
 	\theoremstyle{tikzbreak}
  	\ttmprework{}{}
-	\ttmpostworkbreak[fill=\theorem@color!5]{
+	\ttmpostworkbreak[fill=\theorem@color!5]{%
 		\begin{tikzpicture}[ttm picture overlay]
 		\tikzstyle{line}=[\theorem@color!90, thick, cap=rounded]
 		\draw[line]
 			([xshift=5pt] thm title.east) -- (thm title.east -| thm.north east);
 		\draw[line]
 			([yshift=-5pt] thm.south west) -- ([yshift=-5pt] thm.south east);
-		\end{tikzpicture}
-	}
-	\pgfqkeys{/ttm}{xsep=8pt}
+		\end{tikzpicture}%
+	}%
+	\pgfqkeys{/ttm}{xsep=8pt}%
 }
 \def\ttmstyleelegantinline{
 	\theoremstyle{tikzplain}
 	\ttmprework{}{}
-	\ttmpostworkinline[fill=\theorem@color!5]{
+	\ttmpostworkinline[fill=\theorem@color!5]{%
 		\begin{tikzpicture}[ttm picture overlay]
 		\tikzstyle{line}=[\theorem@color!90, thin, cap=rounded]
 		\draw[line]
 			(thm.south west) -- (thm.south east);
-		\end{tikzpicture}
-	}
-
-	\pgfqkeys{/ttm}{xsep=8pt}
+		\end{tikzpicture}%
+	}%
+    %
+	\pgfqkeys{/ttm}{xsep=8pt}%
 }
 %%%%%%%%%%%%%%%%%%%%%%%
 
