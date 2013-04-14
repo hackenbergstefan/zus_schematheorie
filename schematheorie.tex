@@ -224,6 +224,8 @@ DIV = 14,
 \DeclareMathOperator{\Nil}{Nil}
 \DeclareMathOperator{\Quot}{Quot}
 \DeclareMathOperator{\charak}{char}
+\DeclareMathOperator{\dim}{dim}
+\DeclareMathOperator{\span}{span}
 \newcommand{\funcdef}[1]{%
 	\begin{array}[t]{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}
 	#1\end{array}}
@@ -249,7 +251,6 @@ DIV = 14,
     Leider noch nicht fertig :-(}}    
 
 %%  comment boxen  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{verbatim}
 \ifnum\myDevelopVariable=1 
   \usepackage{xcolor}
   \usepackage{color}
@@ -260,17 +261,14 @@ DIV = 14,
   \MakeFramed {\FrameRestore}}%
   {\endMakeFramed}
 
-  %\renewcommand{\comment}{\definecolor{shadecolor}{rgb}{.8,.8,.8}%
-  %\definecolor{framecolor}{rgb}{0,0,0}%
-  %\fshaded}
-  %\renewcommand{\endcomment}{\endfshaded}
-
   \renewcommand{\comment}{\color{gray}%
   \definecolor{shadecolor}{rgb}{.95,.95,.95}%
   \definecolor{framecolor}{rgb}{.8,.8,.8}%
   \fshaded%
   \textbf{\tiny Kommentar: } }
   \renewcommand{\endcomment}{\endfshaded}
+\else
+  \usepackage{verbatim}
 \fi
 
 %% Bibliographiestil %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
