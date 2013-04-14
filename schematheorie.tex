@@ -1,0 +1,376 @@
+%% Basierend auf einer TeXnicCenter-Vorlage von Mark Müller
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Wählen Sie die Optionen aus, indem Sie % vor der Option entfernen  
+% Dokumentation des KOMA-Script-Packets: scrguide
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Optionen zum Layout des Artikels                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[%
+%a5paper,							% alle weiteren Papierformat einstellbar
+%landscape,						% Querformat
+10pt,								% Schriftgröße (12pt, 11pt (Standard))
+%BCOR1cm,							% Bindekorrektur, bspw. 1 cm
+%DIVcalc,							% führt die Satzspiegelberechnung neu aus
+%											  s. scrguide 2.4
+%twoside,							% Doppelseiten
+%twocolumn,						% zweispaltiger Satz
+halfparskip*,				% Absatzformatierung s. scrguide 3.1
+%headsepline,					% Trennline zum Seitenkopf	
+%footsepline,					% Trennline zum Seitenfuß
+%titlepage,						% Titelei auf eigener Seite
+%normalheadings,			% Überschriften etwas kleiner (smallheadings)
+%idxtotoc,						% Index im Inhaltsverzeichnis
+%liststotoc,					% Abb.- und Tab.verzeichnis im Inhalt
+%bibtotoc,						% Literaturverzeichnis im Inhalt
+%abstracton,					% Überschrift über der Zusammenfassung an	
+%leqno,   						% Nummerierung von Gleichungen links
+%fleqn,								% Ausgabe von Gleichungen linksbündig
+%draft								% Überlangen Zeilen in Ausgabe gekennzeichnet
+DIV = 14,
+%monochrome,						% schwarz weiß output
+]
+{scrartcl}
+
+\makeatletter
+\@ifundefined{myDevelopVariable}{%
+  \xdef\myDevelopVariable{0}}{}
+\makeatother
+
+%\pagestyle{empty}		% keine Kopf und Fußzeile (k. Seitenzahl)
+%\pagestyle{headings}	% lebender Kolumnentitel  
+
+
+%% Deutsche Anpassungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath,amssymb,mathabx,mathtools,stmaryrd}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+%\usepackage[ansinew]{inputenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{lmodern} %Type1-Schriftart für nicht-englische Texte
+
+\usepackage{hyperref}
+
+\usepackage{xspace}
+
+
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows,fadings,decorations.markings}
+\usepackage{tikz-cd2}
+
+%% define colors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\colorlet{mycolor}{blue!80!black}
+\colorlet{col1}{mycolor}
+\colorlet{col1shade1}{mycolor!5}
+\colorlet{col1shade2}{mycolor!50}
+\colorlet{col2}{purple!80}
+\colorlet{col2shade1}{col2!5}
+\colorlet{col2shade2}{col2!50}
+
+%% tikz setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetikzlibrary{decorations.shapes, shapes.geometric}
+\tikzset{generic point/.style=
+	{star, star points=20, minimum size=#1, inner sep=0pt, outer sep=0pt}
+}
+
+
+%% Packages tikztitle and tikztheorem %%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[color=mycolor, style=elegant, withheadings=true,
+  backgroundcmd=titlepagebackground]{tikztitle}
+
+\ifnum\myDevelopVariable=1 
+  \RequirePackage[thref, hyperref, thmmarks]{ntheorem}
+  \usepackage{thmbox}
+  \theoremstyle{plain}% default
+  \newtheorem{thm}{Satz}[section]
+  \newtheorem{satz}[thm]{Satz}
+  \newtheorem{lemma}[thm]{Lemma}
+  \newtheorem{hilfslemma}[thm]{Hilfslemma}
+  \newtheorem{lem}[thm]{Lemma}
+  \newtheorem{kor}[thm]{Korollar}
+  \newtheorem{cor}[thm]{Korollar}
+  \newtheorem{korollar}[thm]{Korollar}
+  %\newtheorem{prop}[thm]{Proposition}
+
+  \theoremstyle{definition}
+  \newtheorem{defn}[thm]{Definition}
+  \newtheorem{definition}[thm]{Definition}
+  \newtheorem{bsp}[thm]{Beispiel}
+  \newtheorem{beispiel}[thm]{Beispiel}
+  \newtheorem{exmp}[thm]{Beispiel}
+  %\newtheorem{conj}[thm]{Conjecture}
+
+  \theoremstyle{remark}
+  \newtheorem{bem}[thm]{Bemerkung}
+  \newtheorem{bemerkung}[thm]{Bemerkung}
+  \newtheorem{rem}[thm]{Bemerkung}
+  \newtheorem{uebung}[thm]{Übung}
+  %\newtheorem{note}[thm]{Notiz}
+  %\newtheorem{case}{Fall}
+\else
+  \usepackage{tikztheorems}
+  \newtikztheorem[
+    style=elegantbreak,
+    color=mycolor,
+    font header=\normalfont\sffamily\bfseries,
+    counter zero=section
+    ]{satz}{Satz}
+    
+  \newtikztheorem[
+    style=elegantbreak,
+    color=mycolor,
+    font header=\normalfont\sffamily\bfseries,
+    font body=\normalfont,
+    counter parent=satz
+    ]{definition}{Definition}
+   
+  \newtikztheorem[
+    style=elegantinline,
+    color=mycolor,
+    font header=\normalfont\sffamily\bfseries,
+    counter parent=satz
+    ]{lemma}{Lemma}
+    
+  \newtikztheorem[
+    style=elegantinline,
+    color=mycolor,
+    font header=\normalfont\sffamily\bfseries,
+    counter parent=satz
+    ]{korollar}{Korollar}
+    
+  \newtikztheorem[
+    style=plain,
+    color=mycolor,
+    font header=\normalfont\sffamily\bfseries,
+    font body=\normalfont,
+    counter parent=satz
+    ]{beispiel}{Beispiel}
+    
+  \newtikztheorem[
+    style=plain,
+    color=mycolor,
+    font header=\normalfont\sffamily\bfseries,
+    font body=\normalfont,
+    counter parent=satz
+    ]{bemerkung}{Bemerkung}
+    
+    
+  \newtikztheorem[
+    style=plain,
+    color=mycolor,
+    font header=\normalfont\sffamily\bfseries,
+    font body=\normalfont,
+    counter parent=satz
+    ]{hilfslemma}{Hilfslemma}
+    
+  \newtikztheorem[
+    style=elegantbreak,
+    color=col2,
+    font header=\normalfont\sffamily\bfseries,
+    font body=\normalfont,
+    nocounter=true
+    ]{uebung}{Übung}
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tikzmargin}
+
+\usepackage{array, enumitem}
+
+%Buchstaben durchstreichen
+\usepackage{cancel}
+
+%% Packages für Grafiken & Abbildungen %%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx} %%Zum Laden von Grafiken
+%\usepackage{subfig} %%Teilabbildungen in einer Abbildung
+% \usepackage[ngerman, nameinlink]{cleveref}
+
+%% Math abbreviations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\let\bb\mathbb
+\let\cal\mathcal
+\let\fr\mathfrak
+\newcommand{\F}{\cal{F}}
+\newcommand{\G}{\cal{G}}
+\renewcommand{\O}{\cal{O}}
+\newcommand{\R}{\bb{R}}
+\newcommand{\N}{\bb{N}}
+\newcommand{\C}{\bb{C}}
+\newcommand{\Q}{\bb{Q}}
+\newcommand{\Z}{\bb{Z}}
+\newcommand{\A}{\bb{A}}
+\renewcommand{\P}{\bb{P}}
+\newcommand{\rest}[1]{\big|_{#1}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\fis}{^{\#}}
+\newcommand{\kat}[1]{\mathbf{#1}}
+\newcommand{\PSh}{\kat{PSh}}
+\newcommand{\Sh}{\kat{Sh}}
+\newcommand{\Ring}{\kat{Ring}}
+\newcommand{\Top}{\kat{Top}}
+\newcommand{\Sch}{\kat{Sch}}
+\newcommand{\affSch}{\kat{Sch}^\kat{aff}}
+\newcommand{\op}{^\mathrm{op}}
+\newcommand{\m}{\fr{m}}
+\newcommand{\p}{\fr{p}}
+\newcommand{\q}{\fr{q}}
+\renewcommand{\a}{\fr{a}}
+\renewcommand{\b}{\fr{b}}
+\newcommand{\ideal}{\vartriangleleft}
+\DeclareMathOperator{\Obj}{Obj}
+\DeclareMathOperator{\Morph}{Morph}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Nil}{Nil}
+\DeclareMathOperator{\Quot}{Quot}
+\DeclareMathOperator{\charak}{char}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\funcdef}[1]{%
+	\begin{array}[t]{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}
+	#1\end{array}}
+\let\xto\xrightarrow
+
+\newcommand{\obda}{{\small oBdA}\xspace}
+\newcommand{\Obda}{{\small OBdA}\xspace}
+
+%für doppelklammer eckig
+\newcommand{\dk}[1]{\ensuremath\ldbrack #1\rdbrack}
+% für doppelklammer rund
+\newcommand{\dr}[1]{\ensuremath(\!( #1 )\!)}
+
+\newenvironment{description sf}{%
+	\begin{description}[font=\normalfont\sffamily]}
+	{\end{description}}
+\newenvironment{description mathquote}{%
+	\renewcommand{\descriptionlabel}[1]{\glqq$##1$\grqq}
+	\begin{description}[font=\normalfont]}
+	{\end{description}}
+	
+\newcommand{\TODO}{\textcolor{red}{\sffamily\bfseries 
+    Leider noch nicht fertig :-(}}    
+
+%%  comment boxen  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifnum\myDevelopVariable=1 
+  \usepackage{xcolor}
+  \usepackage{color}
+  \usepackage{framed}
+
+  \newenvironment{fshaded}{%
+  \def\FrameCommand{\fcolorbox{framecolor}{shadecolor}}%
+  \MakeFramed{\FrameRestore}}%
+  {\endMakeFramed}
+
+  \newenvironment{comment}{\color{gray}%
+  \definecolor{shadecolor}{rgb}{.95,.95,.95}%
+  \definecolor{framecolor}{rgb}{.8,.8,.8}%
+  \fshaded%
+  \textbf{\tiny Kommentar: } }{\endfshaded}
+\else
+  \usepackage{verbatim}
+\fi
+
+%% Bibliographiestil %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{natbib}
+
+\begin{document}
+
+\ifnum\myDevelopVariable=0 
+  %% Titlepage Background cmd (lrbox must be after begin{document}) %%%%%
+  \tikzfading[name=fade down,
+    top color=transparent!90,
+    bottom color=transparent!0]
+  \def\titlepagebackground{
+      \begin{scope}[transform shape, rotate=40, scale=5, opacity=0.5,
+        ]
+      \node[scope fading=fade down] at (current page.center)
+      {\usebox{\diagbox}};
+      \end{scope}
+  }
+  \newsavebox{\diagbox}
+  \begin{lrbox}{\diagbox}
+  \begin{minipage}{\textwidth}
+  \[
+    \everymath{\displaystyle}
+    \begin{tikzcd}[row sep=large, column sep=large]
+      s \dar[mapsto] \symb{\in}
+        &[-1cm] \O_Y(U) \rar{f_U\fis} \dar[swap]{\rest W} 
+        & \O_X(f\inv(U)) \dar{\rest{f\inv(W)}} \symb{\ni}
+        & \dar[mapsto] f_U\fis(s)\\
+      s\rest W = t\rest W \symb{\in}
+        & \O_Y(W) \rar{f_W\fis}				
+        & \O_X(f\inv(W)) \symb{\ni}
+        & f_U\fis(s)\rest{f\inv(W)} = f_V\fis(t)\rest{f\inv(W)}\\
+      t \uar[mapsto] \symb{\in}
+        & \O_Y(V) \rar{f_W\fis} \uar{\rest W} 
+        & \O_X(f\inv(V)) \uar[swap]{\rest{f\inv(W)}} \symb{\ni}
+        & \uar[mapsto] f_V\fis(t)\\
+    \end{tikzcd}
+  \]
+  \end{minipage}
+  \end{lrbox}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fi
+
+\pagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ihr Artikel                                                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% eigene Titelseitengestaltung %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+%\begin{titlepage}
+%Einsetzen der TXC Vorlage "Deckblatt" möglich
+%\end{titlepage}
+
+%% Angaben zur Standardformatierung des Titels %%%%%%%%%%%%%%%%%%%%%%%%
+%\titlehead{Titelkopf }
+\subject{Vorlesungszusammenfassung}
+\title{Schematheorie}
+\author[erstellt von]{Stefan Hackenberg \and Maximilian Huber}
+%\thanks{Fuünote}			% entspr. \footnote im Flieütext
+\date{\today}				% falls anderes, als das aktuelle gewünscht
+\publishers[gelesen im WS 2012/2013 und SS 2013 von]{Prof. Dr. Marco Hien}
+
+%% Widmungsseite %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\dedication{Widmung}
+
+\maketitle 						% Titelei wird erzeugt
+
+
+%% Zusammenfassung nach Titel, vor Inhaltsverzeichnis %%%%%%%%%%%%%%%%%
+%\begin{abstract}
+% Für eine kurze Zusammenfassung des folgenden Artikels.
+% Für die überschrift s. \documentclass[abstracton].
+%\end{abstract}
+
+\KOMAoptions{twoside}
+\cleardoublepage
+
+%% Erzeugung von Verzeichnissen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{plain}
+\tableofcontents			% Inhaltsverzeichnis
+%\listoftables				% Tabellenverzeichnis
+%\listoffigures				% Abbildungsverzeichnis
+
+
+%% Der Text %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{scrheadings}
+
+%\part{Erstes Semester}
+\input{sec_1_lokal_geringte_raeume}
+\input{sec_2_affine_schemata}
+\input{sec_3_beispiele}
+\input{sec_4_projektive_schemata}
+\input{sec_5_eigenschaften_von_schemata}
+\input{sec_6_tensorprodukt}
+\input{sec_7_glatt_regulaer_und_normal}
+\input{sec_8_k-varietaet}
+\input{sec_9_der_punktefunktor}
+%\part{Zweites Semester}
+%\input{sec_10_...}
+
+\end{document}
+% vim: set ft=tex :
