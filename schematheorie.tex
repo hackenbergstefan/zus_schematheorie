@@ -32,7 +32,10 @@ DIV = 14,
 ]
 {scrartcl}
 
-\xdef\myDevelopVariable{1}
+\def\ifundefined#1{\expandafter\ifx\csname#1\endcsname\relax}
+\ifundefined{myDevelopVariable}
+  \xdef\myDevelopVariable{1}
+\fi
 
 %\pagestyle{empty}		% keine Kopf und Fußzeile (k. Seitenzahl)
 %\pagestyle{headings}	% lebender Kolumnentitel  
@@ -224,8 +227,7 @@ DIV = 14,
 \DeclareMathOperator{\Nil}{Nil}
 \DeclareMathOperator{\Quot}{Quot}
 \DeclareMathOperator{\charak}{char}
-\DeclareMathOperator{\dim}{dim}
-\DeclareMathOperator{\span}{span}
+\DeclareMathOperator{\Span}{span}
 \newcommand{\funcdef}[1]{%
 	\begin{array}[t]{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}
 	#1\end{array}}
