@@ -49,7 +49,7 @@
 				-| ($(tikzmargin#1.south west)-(3pt,0)$) |- +(6pt,-3pt); 
 			\path[->, line width=1.5pt, gray, opacity=0.3, 
 				shorten <=4pt, shorten >=5pt]
-				(tikzmargin#1) 
+				(tikzmargin#1.west) 
 				edge[in=\tikzmargin@inangle, out=180, looseness=0.7] 
 				(tikzmark#1);
 		}
@@ -58,7 +58,7 @@
 				-| ($(tikzmargin#1.south east)+(3pt,0)$) |- +(-6pt,-3pt); 
 			\path[->, line width=1.5pt, gray, opacity=0.3, 
 				shorten <=4pt, shorten >=5pt]
-				(tikzmargin#1) 
+				(tikzmargin#1.east) 
 				edge[in=\tikzmargin@inangle, out=0, looseness=0.7]
 				(tikzmark#1);
 		}

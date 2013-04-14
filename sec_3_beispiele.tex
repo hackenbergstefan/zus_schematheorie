@@ -211,12 +211,12 @@ Wir können dies in \autoref{fig:spec k xy 2} "`sehen"'.
 \end{figure}
 
 \subsection{Weiteres Beispiel}
-Betrachte $k\ldbrack X_1, \ldots, X_n\rdbrack = 
-	k\ldbrack X_1,\ldots,X_{n-1}\rdbrack\ldbrack X_n\rdbrack$
-mit $R\ldbrack X\rdbrack = \{\sum_{i=0}^\infty a_i X^i \mid a_i \in R\}$.
+Betrachte $k\dk{X_1, \ldots, X_n} = 
+	k\dk{X_1,\ldots,X_{n-1}}\dk{X_n}$
+mit $R\dk{ X} = \{\sum_{i=0}^\infty a_i X^i \mid a_i \in R\}$.
 
 \begin{bemerkung}
-	$g \in k\ldbrack X_1, \ldots, X_n\rdbrack \setminus (X_1,\ldots,X_n)$
+	$g \in k\dk{ X_1, \ldots, X_n} \setminus (X_1,\ldots,X_n)$
 	ist eine Einheit.
 \end{bemerkung}
 \begin{proof}
@@ -232,16 +232,17 @@ mit $R\ldbrack X\rdbrack = \{\sum_{i=0}^\infty a_i X^i \mid a_i \in R\}$.
 \paragraph{Funktor $\Spec$} Wir haben den Funktor $\Spec$:
 Die Ringhomomorphismen
 \[\everymath{\displaystyle} \begin{tikzcd}[row sep=tiny, outer sep=5pt]
-  k[X_1,\ldots,X_n] \rar & \tikzmark{k[X_1,\ldots,X_N]_{(X_1,\ldots,X_n)}} \rar
-  & k\ldbrack X_1,\ldots,X_n \rdbrack \rar & k \\
+  k[X_1,\ldots,X_n] \rar & \tikzmark{k[X_1,\ldots,X_N]_{(X_1,\ldots,X_n)}} 
+    \tikzmargin{south}{Lokalisierung an $\m=(X_1,\dots,X_n)$}
+    \rar
+  & k\dk{ X_1,\ldots,X_n } \rar & k \\
 	f \rar[mapsto] & \frac{f}{1} \\
 	& \frac f g \rar[mapsto] & f g\inv \\
 	&& h \rar[mapsto] & h(0)
 \end{tikzcd}\]
-\tikzmargin{south}{Lokalisierung an $\m=(X_1,\dots,X_n)$}
 induzieren 
 \[\everymath{\displaystyle} \begin{tikzcd}[row sep=tiny, outer sep=5pt]
-	&\Spec k \rar & k\ldbrack X_1,\ldots,X_n \rdbrack \rar & 
+	&\Spec k \rar & k\dk{ X_1,\ldots,X_n } \rar & 
 	k[X_1,\ldots,X_n]_{(X_1,\ldots,X_n)} \rar &
 	\Spec k[X_1,\ldots,X_n] \\
 	\text{topologisch:} &  
@@ -312,7 +313,7 @@ Was passiert aber auf Schemaniveau?
 \end{tikzcd}\end{center}
 Betrachte dazu
 \[\everymath{\displaystyle} \begin{tikzcd}[row sep=tiny, outer sep=5pt]
-	\Spec k \rar & k\ldbrack X_1,\ldots,X_n \rdbrack \big/ \p \rar & 
+	\Spec k \rar & k\dk{ X_1,\ldots,X_n } \big/ \p \rar & 
 	k[X_1,\ldots,X_N]_{(X_1,\ldots,X_n)} \big/ \p \rar &
 	\Spec k[X_1,\ldots,X_n]\big/\p \quad \approx\quad V(\p)
 	\end{tikzcd}
@@ -320,26 +321,26 @@ Betrachte dazu
 Nehmen wir das explizite Beispiel $\p = (Y^2 - X^2(X+1))$. Es ist $\p$ ein
 Primideal und $V(\p)$ irreduzibel.
 
-Beachte: $1+X \in k\ldbrack X \rdbrack$ hat eine Wurzel, wie man durch
+Beachte: $1+X \in k\dk{ X }$ hat eine Wurzel, wie man durch
 folgenden Ansatz mit $h(X) = a_0 + a_1 X + \ldots$ sieht:
 \[
 	1+ X = (h(X))^2 = a_0^2 + 2a_0a_1 X + \ldots
 \]
 Setze $a_0 := 1$ oder $-1$ und löse sukzessizve auf. Demnach ist
 $Y^2 - X^2(X+1) = (Y-Xh(X))(Y + X h(X))$ nicht mehr prim, also
-$V(\p) \subseteq k\ldbrack X,Y \rdbrack$ nicht mehr irreduziebel!
+$V(\p) \subseteq k\dk{ X,Y }$ nicht mehr irreduziebel!
 
 Betrachte genauer
 \[\begin{tikzcd}[row sep=tiny]
-	k \ldbrack u,v\rdbrack \big/(uv) \rar{\cong} & 
-	k \ldbrack z,w\rdbrack \big/(z^2-w^2) \rar{\cong} &
-	k \ldbrack X,Y\rdbrack \big/(Y^2 - X^2(h(X))^2)\\
+	k \dk{ u,v} \big/(uv) \rar{\cong} & 
+	k \dk{ z,w} \big/(z^2-w^2) \rar{\cong} &
+	k \dk{ X,Y} \big/(Y^2 - X^2(h(X))^2)\\
 	u \rar[mapsto] & z+w \qquad z \rar[mapsto] & Y\\
 	v \rar[mapsto] & z-w \qquad w \rar[mapsto] & Xh(X)\\
 \end{tikzcd}\]
 In Bildern:
 \[\begin{tikzcd}[row sep=-15pt]
-	\Spec k\ldbrack u,v\rdbrack \big/(uv) \rar & \Spec k\ldbrack X,Y\rdbrack
+	\Spec k\dk{ u,v} \big/(uv) \rar & \Spec k\dk{ X,Y}
 		\big/ (Y^2 - X^2(X+1)) \\
 	\node{\tikz{
 		\draw[->]
