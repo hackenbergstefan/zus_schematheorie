@@ -3,9 +3,10 @@ runlatexmk.sh:grep -r --exclude='TODO' "TODO" * > TODO
 schematheorie.tex:\newcommand{\TODO}{\textcolor{red}{\sffamily\bfseries 
 sec_2_affine_schemata.tex: TODO
 sec_3_beispiele.tex:	TODO.
-sec_4_projektive_schemata.tex:    fertig, bis auf rote randmarkierungen
-
-Ansatz des Pfeils bei tikzmargin wird nicht korrekt gesetzt bei 
-3.4 Weiteres Beispiel / Funktor Spec.
-
-Unklarheiten bei roten Randmarkierungen
+sec_4_projektive_schemata.tex:    \TODO
+sec_4_projektive_schemata.tex:	\TODO
+sec_4_projektive_schemata.tex:    \TODO
+sec_4_projektive_schemata.tex:    \TODO
+sec_4_projektive_schemata.tex:    \TODO
+sec_4_projektive_schemata.tex:    \TODO
+sec_4_projektive_schemata.tex:    \TODO
