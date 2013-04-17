@@ -228,6 +228,7 @@ $V_i \xto\cong U_i$ von (affinen) Schemata existiert.
 \end{proof}
 
 \begin{satz}
+    \label{satz:proj s eindeutige ringgarbe}
 	Auf $\Proj(S)$ gibt es eine (bis auf Isomorphie) eindeutige Ringgarbe
 	$\O_{\Proj(S)}$ mit:
 	\begin{enumerate}
@@ -323,4 +324,215 @@ $V_i \xto\cong U_i$ von (affinen) Schemata existiert.
 	\TODO
 \end{proof}
 
+wir definieren $\P_A^n := \Proj(A[X_0,\ldots,X_n])$ als Schema. Dabei stellen
+sich aber die Fragen, was dabei $D_+(X_i)$ sein soll und ob die beiden 
+Varianten übereinstimmen.
+
+\begin{lemma}
+    Die beiden Varianten der Definition von $\P_A^n$ stimmen überein
+    und es gilt
+    \[ D_+(X_i) \cong \Spec S_{(X_i)} \cong \A_A^n.\]
+\end{lemma}
+\begin{proof}
+    \TODO
+\end{proof}
+
+\subsection{Immersionen und projektive $A$-Schemata}
+
+\begin{definition}[offene und abgeschlossene Immersion]
+    Ein Morphismus $f: Y \to X$ von Schemata heißt
+    \begin{enumerate}
+      \item \emph{offene Immersion}, wenn es $U\osubset X$ gibt, so dass
+        \[ f: (Y,\O_Y) \xto\cong (U,\O_X\rest U) 
+            \xhookrightarrow{(\iota,\iota\fis)} (X,\O_X)\]
+      \item \emph{abgeschlossene Immerson}, wenn gilt:
+      \begin{itemize}
+        \item $f$ ist topologisch ein Homöomorphismus auf $\im f:= Z\subset X$
+            abgeschlossen,
+        \item $f\fis: \O_X \to f_\ast \O_Y$ ist ein surjektiver 
+            Garbenmorphismus, d.h. für alle $y \in Y$ ist
+            \[f_{(f(y))}\fis: \O_{X,f(y)} \to \O_{Y,y}\]
+            surjektiv.
+      \end{itemize}
+        Wir schreiben dann auch $Y \immersion X \rightarrow Y$. 
+    \end{enumerate}
+\end{definition}
+
+
+\begin{beispiel}
+    Ist $A$ ein Ring, $a\ideal A$, so induziert
+    \[A\xto{\pi} A\big/\a\]
+    eine abgeschlossene Immersion
+    \[ f:\Spec A\big/\a \to \Spec A\] 
+\end{beispiel}
+\begin{proof}
+    \TODO
+\end{proof}
+
+\begin{bemerkung}
+    Es ist $V(\a) = V(\sqrt\a) = V(\b)$ genau dann, wenn $\sqrt a = \sqrt b$.
+    Aber es folgt nicht notwendigerweise $A\big/\a \overset?\cong A\big/\b$!
+    
+    Dazu betrachte einen Ring $A$ mit nilpotenten Elementen, d.h.
+    $\Nil A := \sqrt{(0)} \neq (0)$ und
+    \[f:\Spec A\big/\Nil(A) \hookrightarrow \Spec A\]
+    ist eine abgeschlossene Immersion mit
+    \[\im f = V(\Nil(A)) = \{\p\in \Spec A \mid \Nil(A) \subseteq \p\}
+        = \Spec A.\]
+    Jedoch ist dies \emph{kein} Isomorphismus.  
+\end{bemerkung}
+
+
+\begin{definition}[abgeschlossenes Unterschema]
+    Ist $f:Y\to X$ eine abgeschlossene Immersion, so nennen wir $Y$ 
+    ein \emph{(bzgl. $f$) abgeschlossenes Unterschema von $X$}.
+\end{definition}
+
+\begin{definition}[projektives Schema über $A$]
+    Sei $A$ ein Ring. Ein \emph{projektives Schema über $A$} ist ein
+    $A$-Schema $X$ mit einer abgeschlossenen Immersion, so dass
+    \[\begin{tikzcd}
+        \iota: \ X \ar[immersion]{rr} \drar && \P_A^n \dlar\\
+        & \Spec A & 
+    \end{tikzcd}\]
+    für ein $n \in\N_0$ kommutiert.
+\end{definition}
+
+\begin{bemerkung}
+    \TODO
+\end{bemerkung}
+
+\subsubsection{Beispiele}
+Zunächst ein etwas abstrakteres Beispiel.
+\begin{satz}
+    Sei $S := A[X_0,\ldots, X_n]$. Ist $\b\ideal S$ ein homogenes Ideal, so ist
+    $B := S \big/\b$ in natürlicher Weise eine graduierte $A$-Algebra
+    und $\Proj(B)$ ein projektives $A$-Schema.
+\end{satz}
+\begin{proof}
+    \TODO
+\end{proof}
+
+Und nun einige konkrete!
+
+\newcommand{\Pnklass}{\P_{\text{klass}}^n}
+\newcommand{\Pn}{\P^n}
+\paragraph{1. $\Pnklass(k)$ und $\Pn_k$.} Sei $k$ ein Körper.
+Wir haben $\Pnklass(k) := k^{n+1}\setminus\{0\} \big/ \sim$ und
+dagegen $\Pn_k := \Proj k[T_0,\ldots, T_n]$.
+
+Eine algebraische Menge in $\Pnklass(k)$ ist per definitionem
+\[Z:= \{[x_0:\ldots:x_n] \in \Pnklass(k) \mid f_i(x_0,\ldots,x_n) = 0\}\]
+für $f_1(T_0,\ldots,T_n),\ldots,f_r(T_0,\ldots,T_n) \in k[T_0,\ldots,T_n]$ 
+homogen.
+
+\begin{satz}
+    Die Abbildung
+    \[ \rho: \funcdef{ \Pnklass(k) & \to & \Pn_k \\ {}
+        [x_0:\ldots:x_n] & \mapsto & 
+        \langle x_i T_j - x_j T_i \mid i,j \rangle
+        }
+     \]
+    ist eine Bijektion auf 
+    \[ \Pn_k(k) = \{\p \in \Pn_k \mid \p \text{ ist $k$-rational}\} = 
+        \Hom_{\Sch_k}(\Spec k, \Pn_k).\]
+\end{satz} 
+\begin{proof}
+    \TODO
+\end{proof}
+
+
+\begin{bemerkung}
+    Wir haben dies auch schon affin gesehen:
+    \[ \funcdef{ k^n = \A_{\text{klass}}^n(k) & \to & 
+        \A_k^n = \Spec k[X_1,\ldots,X_n]\\
+        (\alpha_1,\ldots,\alpha_n) & \mapsto & 
+        (X_1 - \alpha_1, \ldots, X_n - \alpha_n)}.\]  
+\end{bemerkung}
+
+
+\begin{bemerkung}
+    Sei $X$ ein Schema. Wir erinnern daran, dass
+    \[X(K) := \Hom_{\Sch}(\Spec k, X) = 
+        \{ (\varphi,\varphi\fis): \Spec k \to X\}\]
+    mit 
+    \[\varphi_\eta: \O_{X,x} \to \O_{\Spec k, \eta} = k\]
+    mit $x = \varphi(\eta)$, wobei topologisch $\Spec k = \{\eta\}$.
+    Damit haben wir
+    \[ \overline{\varphi_\eta^n}: \O_{X,x}\big/\m_x = k(x) 
+        \tikzmark{\hookrightarrow}
+        k \]
+    \tikzmargin{south}{\color{red} 
+        Wir folgern eine Seite später dass $k(x) \cong k$ 
+        kanonisch. Das ist mir nicht klar :-(}
+    (Körperhomomorphismen sind immer injektiv) und wir
+    erhalten folgende 1-1 Beziehung:
+    \[ X(k) \overset{\text{1-1}}{=} \{x\in X \text{ zusammen mit Inklusionen }
+        \iota: k(x) \hookrightarrow k\}. \]
+        
+    Beachte dabei:
+    \begin{align*}
+        X \in \Obj(\Sch) \quad&\leadsto\quad X(k) := \Hom_{\Sch}(\Spec k, X)\\
+        Y \in \Obj(\Sch\rest k) \quad&\leadsto\quad 
+            Y(k) := \Hom_{\Sch\rest k}(\Spec k, X) = 
+            \left\{\begin{tikzcd}[ampersand replacement=\&]
+                \varphi: \Spec k \ar{rr} \drar{\id} \&\& Y \dlar \\
+                \& \Spec k
+            \end{tikzcd}\right\}\\
+    \end{align*} 
+    In diesem Sinne ist $\P_k^n$ als $k$-Schema zu lesen mit 
+    $\P^n_k \to \Spec k$. 
+\end{bemerkung}
+
+\paragraph{2. Projektiver Abschluss}
+Sei $\a \ideal k[Y_1,\ldots, Y_n]$, so hat man die abgeschlossene Immersion
+\[ \Spec k[Y_1,\ldots,Y_n]\big/\a \immersion \A_k^n\]
+mit Bild $V(\a)$.
+
+Betrachte die Homogenisierung von $\a$ in $k[T_0,\ldots,T_n]$:
+Sei $\a = (f_1,\ldots,f_1)$. Definiere
+\[ f_i^\text{homo}(T_0,\ldots,T_n) := T_0^{\deg f_i} f_i(\tfrac{T_1}{T_0},
+    \ldots, \tfrac{T_n}{T_0}) \in k[T_0,\ldots,T_n].\]
+Damit können wir nun folgenden Satz formulieren.
+
+\begin{satz}
+    Ist $\iota: X\immersion \A_k^n$ eine abgeschlossene Immersion, 
+    $X = \Spec k[Y_1,\ldots,Y_n]\big/\a$ und $\a = (f_1,\ldots,f_r)$,
+    so nennen wir
+    \[ \bar X := \Proj k[T_0,\ldots,T_n] \big/ 
+        \a^\text{homo} \immersion \P^n_k\]
+    mit $\a^\text{homo} := (f_1^\text{homo}, \ldots, f_r^\text{homo})$
+    den \emph{projektiven Abschluss von $X$ in $\P^n_k$}. Es gilt 
+    \[ \begin{tikzcd}
+        \p^\text{homo} \symb{\ni} & 
+            D_+(T_0) \cap \bar X  \rar[offene immersion]{\tikzmark[1]{}} & \bar X 
+            \rar[immersion] & \P^n_k \\
+        \p \uar[mapsto] \symb{\ni} & 
+            X \uar{\cong}  \ar[immersion]{rr} &&
+            \Spec k[Y_1,\ldots,Y_n] = \A^n_k 
+            \tikzmark[2]{\ \cong\ } D_+(T_0)  \uar[hook]
+    \end{tikzcd}\]
+    wobei die Isomorphie an \tikzarrow[2]{mark above}{dieser} Stelle
+    durch die Definition der homogenen Polynome herrührt.
+\end{satz}
+\tikzmargin[1]{north}{\color{red} Bei mir steht "`offene Inklusion"',
+    soll wohl aber offene Immersion gemeint sein !?}
+\begin{proof}
+    klar.
+\end{proof}
+
+
+\begin{beispiel}
+    Sei $E = \Spec k[X,Y] \big/(Y^2-X^3-aX-b) \subseteq \A_k^2$, so ist
+    \[
+        \bar E = \Proj k[X,Y,Z]\big/ (Y^2Z - X^3 - aXZ^2 -bZ^3) 
+            \subseteq \P_k^2.
+    \]
+    Als Übung überlege man sich was $\bar E \cap (\P_k^2 \setminus D_+(T_0))$
+    ist.
+\end{beispiel}
+
+
+
+\pagebreak
 % vim: set ft=tex :
