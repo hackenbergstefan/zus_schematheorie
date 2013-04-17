@@ -1,11 +1,26 @@
 \RequirePackage{tikz-cd}
 
 \pgfkeys{/tikz/commutative diagrams/empty/.style={
-	/tikz/commutative diagrams/description,
-	/tikz/draw=\pgfkeysvalueof{/tikz/commutative diagrams/background color},
+    /tikz/draw opacity=0,
+	/tikz/anchor=center
 	}
 }
 
 \newcommand{\symb}[2][]{%
-	\rar[empty][description,#1]{#2}
+	\rar[empty][empty]{#2}
 }
+
+\usetikzlibrary{decorations.markings}
+\pgfkeys{/tikz/commutative diagrams/immersion/.style={
+    /tikz/commutative diagrams/hook,
+    /tikz/decoration={
+        markings,
+        mark=at position 0.5 with {\arrow{|}}},
+    /tikz/postaction={decorate}}}
+    
+\pgfkeys{/tikz/commutative diagrams/offene immersion/.style={
+    /tikz/commutative diagrams/hook,
+    /tikz/decoration={
+        markings,
+        mark=at position 0.5 with {\arrow{o}}},
+    /tikz/postaction={decorate}}}
