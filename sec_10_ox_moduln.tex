@@ -1,0 +1,171 @@
+\section{$\O_X$-Moduln}
+\newcommand{\OX}{$\O_X$-}
+
+\subsection{$\O_X$-Moduln}
+\begin{definition}[$\O_X$-Modul]
+    Ein \emph{$\O_X$-Modul} (oder eine \emph{$\O_X$-Modulgarbe}) ist eine 
+    Garbe $\M$ zusammen mit einer $\O_X(U)$-Modulstruktur auf $\M(U)$
+    für jedes offene $U\osubset X$, so dass für 
+    $V \osubset U \osubset X$ folgendes Diagramm kommutiert:
+    \[\begin{tikzcd}
+        \O_X(U) \times \M(U) \rar \dar{\cdot\rest V \times \cdot \rest V}
+        & \M(U) \dar{\cdot \rest V}\\
+        \O_X(V) \times \M(V) \rar & \M(V)
+    \end{tikzcd}\]
+    
+    Ein \emph{Morphismus} $\M \to \M'$ von solchen ist ein Garbenmorphismus
+    $\alpha: \M\to \M'$, so dass für jedes $U\osubset X$ 
+    $\alpha(U):\M(U) \to \M'(U)$ $\O_X(U)$-linear ist.
+\end{definition}
+
+
+\begin{bemerkung}
+    Man hat einige Konstruktionen aus der kommutativen Algebra auch für
+    $\O_X$-Moduln, wie z.B.
+    \begin{itemize}
+      \item $\M \otimes_{\O_X} \M': U \mapsto \M(U) \otimes_{\O_X(U)} \M'(U)$.
+      \item $\oplus_{i\in I} \M_i$ von $\O_X$-Moduln $\M_i$.
+      \item Für $\alpha:\M\to \M'$ $\O_X$-Modul-Morphismus haben wir
+        $\ker \alpha$ und $\im \alpha$,
+        wobei Kern und Bild in $\Sh_X$ zu lesen sind.
+    \end{itemize}
+\end{bemerkung}
+
+
+\begin{definition}[frei, lokal frei]
+    Ein \OX Modul $\M$ heißt
+    \begin{itemize}
+      \item \emph{frei}, wenn es eine Menge $I$ und einen 
+        \OX Modul-Isomorphismus 
+        \[ \O_X^{(I)} := \bigoplus_{i\in I} \O_X \xto{\cong} \M\]
+        gibt,
+      \item \emph{lokal frei} oder \emph{Vektorbündel von Rang $r$}, 
+        wenn es zu jedem $x\in X$ ein $x \in U\osubset X$ und einen
+        $\O_U$-Modul-Isomorphismus
+        \[ \O_U^r \xto{\cong} \M\rest U\]
+        gibt.
+    \end{itemize}
+\end{definition}
+
+\subsection{Exkurs: Vektorbündel in der Topologie}
+Sei $X$ ein topologischer Raum. Dann ist ein $\R$-Vektorbündel vom Rang $r$
+eine stetige Abbildung $\pi: E \to X$ mit einer $\R$-Vektorraumstruktur
+auf $E_x := \pi\inv(\{x\})$ zusammen mit einem sog Bündelatlas,
+bestehend aus Karten
+\[ \psi_U: E\rest U := \pi\inv(U) \to U\times \R^r\]
+mit $\pr_U \circ \psi_U = \pi\rest{\pi\inv(U)}$, d.h.
+\[\begin{tikzcd}
+    E\rest U = \pi\inv(U) \ar{rr}{\approx} 
+    \drar{\pi}& &  U\times \R \dlar{\pr_U}\\
+    & U &
+\end{tikzcd}\]
+kommutiert und die Karten sind
+\begin{itemize}
+  \item Homöomorphismen und so, dass
+  \item $\psi_x: E_x \to \{x\} \times \R^r$ ein linearer Isomorphismus ist.
+\end{itemize}
+
+\paragraph{Wie verstehen wir das als Garbe von Moduln?}
+
+Setze $\O_X := U \mapsto \O_X(U) := \{ f: U \to \R \mid f\text{ stetig}\}$,
+also die Garbe der stetigen Funktionen. Dann ist $(X, \O_X)$ ein lokal
+geringter Raum. Weiter haben wir $E \xto{\pi} X$ stetig.
+Setze 
+\[ \cal E : U \mapsto \cal E(U) := \{\sigma: U \to \pi\inv(U) \subseteq E \mid
+    \sigma\text{ stetig, } \pi \circ \sigma = \id_U\}.\]
+Dies ist eine Garbe. $\cal E$ ist sogar eine \OX-Modulgarbe:
+Für $U\osubset X$ gilt
+\[ \O_X(U) \times \cal E(U) \to \cal E(U),\ (f,\sigma) \mapsto f\cdot \sigma.\]
+wobei
+\[f\cdot \sigma : \funcdef{ U & \to & \pi\inv(U) \\
+    x & \mapsto & \underbrace{f(x)}_{\in \R} \cdot 
+    \underbrace{\sigma(x)}_{\in E_x}}
+\]
+und $E_x$ ein $\R$-Vektorraum ist.
+ 
+Bleibt nur noch zu klären, wie die Bündelkarten 
+$\psi_U: E\rest U = \pi\inv(U) \xto{\cong} U \times \R^r$ eingehen:
+\[\begin{tikzcd}
+    \pi\inv(U) \rar \drar[swap]{\pi} & U \times \R^r \dar[swap]{\pr_U} 
+        & \lar[empty][description]{\ni} 
+        (x,\alpha(x)) := (x, \pi_{\R^r} \circ \psi_U \circ \sigma(x)) \\
+    & U \ular[bend left, mapsto]{\cal E(U) \ni \sigma}
+        \uar[bend right,swap]{\psi_U \circ \sigma} & 
+        x \lar[empty][description]{\ni} \uar[mapsto]
+\end{tikzcd}\]
+
+$\alpha: U \to \R^r$ ist eine stetige Abbildung, also
+$\alpha \in \O_X(U)^r$. Weiter liefert $\psi_U$ einen 
+$\O_X(U)$-Modul-Isomorphismus
+\[
+    \funcdef{ \cal E(U) & \xto{\cong} & \O_X(U)^r \\ 
+        \sigma & \mapsto & \pr_{\R^r} \circ \psi_U \circ \sigma \\
+        \psi_U\inv \circ (\id_U \times \alpha)  & \mapsfrom & \alpha.}
+\]
+Schränkt man auf $V \osubset U$ ein, ist dies verträglich. Also
+\[ \cal E\rest U \cong \O_X(U)\]
+als $\O_X\rest U$-Modulgarben.
+
+\subsection{Quasi-Kohärenz}
+
+\begin{definition}[quasi-kohärent]
+    Eine $\O_X$-Modulgarbe $\M$ heißt \emph{quasi-kohärent}, wenn es
+    zu jedem $x\in X$ ein $x \in U \osubset X$ und Mengen $I,J$ und
+    eine exakte Sequenz von $\O_U$-Modulgarben
+    \[\begin{tikzcd}
+        \O_X\rest U^{(J)} \rar &\O_X\rest U^{(J)} \rar &
+        \M_U \rar & 0
+    \end{tikzcd}\]
+    gibt.
+\end{definition}
+
+\begin{definition}[von seinen globalen Schnitten erzeugt]
+    Ein \OX-Modul $\M$ wird \emph{von seinen globalen Schnitten erzeugt},
+    wenn für jedes $x\in X$ der Morphismus von $\O_{X,x}$-Moduln
+    \[ \M(X) \otimes_{\O_X(X)} \O_{X,x} \to \M_x\]
+    surjektiv ist.
+\end{definition}
+
+Mit anderen Worten: Jeder Keim $m_x \in \M_x$ lässt sich schreiben als
+\[ m_x = \sum_{\text{endl. viele }i} \lambda_i [\sigma_i]_x\]
+für $\lambda_i \in \O_{X,x}$ und $\sigma_i \in \M(X)$.
+
+Dies gilt nicht für $\O_X$ selbst; betrachte beispielsweise
+$X = \C\P^1$ und $\O_X$ die Garbe der holomorphen Funktionen.
+
+\begin{bemerkung}
+    Es existiert ein surjektives 
+    $\O_X\rest U^{(I)} \twoheadrightarrow \M\rest U$ genau dann, wenn
+    $\M\rest U$ durch seine auf $U$ globalen Schnitte erzeugt wird.
+    
+    $\M$ ist quasi-kohärent genau dann, wenn
+    $\M\rest U$ durch seine globalen Schnitte erzeugt wird und die Relationen
+    (also $\ker(\O_X\rest U^{(I)}) \to \M)$) auch.  
+\end{bemerkung}
+
+\subsection{Quasikohärente Garben auf $\Spec A$}
+
+\paragraph{Beachte folgende Konstruktion}
+Ist $M$ ein $A$-Modul, so betrachte
+\begin{itemize}
+  \item für $f \in A$: $M_f = M \otimes_A A_f$ 
+    als $A_f = \O_{\Spec A}(D(f))$-Modul.
+  \item für $\p \in \Spec A$: $M_\p = M\otimes_A A_\p$
+    als $\A_\p = \O_{\Spec A,\p}$-Modul.
+\end{itemize}
+Dies ist eine $\fr B$-Garbe für $\fr B = \{D(f)\mid f\in A\}$ der Basis 
+der Topologie auf $\Spec A$. Dann folgt analog zu 
+\thref{satz:spec a hat eindeutige ringgarbe} folgender Satz.
+
+\begin{satz}
+    \label{satz:a modul hat ein o spec a modulgarbe}
+    Zu gegebenem $A$-Modul $M$ existiert (bis auf Isomorphie) genau eine
+    $\O_{\Spec A}$-Modulgarbe $M^\sim$ auf $X = \Spec A$ mit
+    \begin{align*}
+        M^\sim (D(f)) &\cong M_f\\
+        (M^\sim)_\p &\cong M_\p
+    \end{align*} 
+    Insbesondere ist $M^\sim(\Spec A) = M$.
+\end{satz}
+
+\pagebreak
