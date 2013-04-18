@@ -1,2 +1,108 @@
 \section{Eigenschaften von Schemata} %Seite 79
+
+\subsection{Noethersch}
+
+\begin{definition}[(lokal) noethersch]
+    $X$ heißt \emph{noethersch}, wenn es eine endliche affine offene
+    Überdeckung gibt, d.h. 
+    \[X = \bigcup_{i=1}^r \Spec A_i\]
+    mit noetherschen Ringen $A_i$.
+    
+    $X$ heißt \emph{lokal noethersch}, wenn jeder Punkt $x \in X$ eine
+    affine offene Umgebung $\Spec A \subseteq X$ hat mit $A$ noethersch.
+\end{definition}
+
+\begin{bemerkung}
+    Aus $X$ lokal noethersch folgt $\O_{X,x}$ noethersch (Übungsaufgabe).
+    Die Umkehrung gilt i.A. jedoch nicht.
+\end{bemerkung}
+
+\subsection{$k$-Varietäten}
+
+\begin{definition}[algebraische/projektive $k$-Varietät]
+    Sei $k$ ein Körper. Eine \emph{algebraische $k$-Varietät} ist ein
+    $k$-Schema $X$, das eine endliche offene Überdeckung
+    \[ X=  \bigcup_{i=1}^r \Spec A_i\]
+    mit endlich erzeugten $k$-Algebren $A_i$ besitzt.
+    
+    Eine \emph{projektive $k$-Varietät} ist ein projektives $k$-Schema.
+\end{definition}
+
+\begin{bemerkung}
+    \begin{itemize}
+      \item Eine projektive $k$-Varietät ist eine algebraische 
+        $k$-Varietät, da wir die abgeschlossene Immersion
+        \[ X \immersion \P_k^n = \bigcup_{i=0}^n D_+(T_i) \cong
+            \Spec k[Y_0,\ldots, \cancel i, \ldots, Y_n]\]
+        haben.
+      \item Eine $k$-Alegbra $A$ ist \emph{endlich erzeugt}, wenn
+        es $n\in \N$ gibt und surjektive $k$-Algebrenhomomorphismen
+        \[  
+            \funcdef{k[Y_1,\ldots,Y_n] &\twoheadrightarrow& A\\
+                Y_i & \mapsto & a_i.}\]
+         Die $a_i$ sind dabei die Erzeuger von $A$.
+    \end{itemize}
+\end{bemerkung}
+
+
+\subsection{Reduzierte Schemata}
+
+\begin{definition}[reduzierte Ringe]
+    Ein Ring $A$ heißt \emph{reduziert}, wenn
+    \[ \sqrt{(0)} =: \Nil(A) = (0),\]
+    also wenn $A$ keine nilpotenten Elemente hat.
+\end{definition}
+
+\begin{definition}[reduzierte lokal geringte Räume]
+    $X$ heißt \emph{reduziert}, wenn $\O_{X,x}$ für jedes $x \in X$
+    reduziert ist.
+\end{definition}
+
+\begin{satz}
+    Es ist äquivalent:
+    \begin{enumerate}
+      \item $X$ ist reduziert.
+      \item Zu jedem $x \in X$ existiert eine affin offene Umgebung 
+        $U = \Spec A$ um $x$ mit $A$ reduziert.
+      \item $O_X(U)$ ist reduziert für alle offenen $U\osubset X$. 
+    \end{enumerate}
+\end{satz}
+\begin{proof}
+    \TODO
+\end{proof}
+
+
+\subsection{Garbifizierung}
+
+\begin{definition}[Garbifizierung]
+    \renewcommand{\P}{\cal P}
+    Sei $X$ ein topologischer Raum und $\P$ eine Prägarbe auf $X$.
+    Dann ist die \emph{Garbifizierung} von $\P$
+    \[
+        \P^\dagger := \left( U \mapsto \P^\dagger(U)
+            := \left\{f : U \to \coprod_{x \in U} \P_x \left|
+            \begin{array}{l} f(x) \in \P_x \ \forall x \in U \\
+            \forall x \in U \exists V \text{ mit } x\in V\osubset U\\
+            \text{ und }\exists s \in \P(V) \text{ mit }
+            \forall z\in V:\ f(z) = s_z := [s] \in \P_z.
+            \end{array}\right.\right\} \right)
+    \]
+\end{definition}
+
+\begin{satz}
+    \renewcommand{\P}{\cal P}
+    \begin{enumerate}
+      \item $\P^\dagger$ ist eine Garbe und man hat einen kanonischen
+        Prägarbenmorphismus $\P \to \P^\dagger$.
+      \item Ist $\F$ eine Garbe, so ist $\F^\dagger \cong \F$ kanonisch
+        via 1.
+      \item Für alle $x\in X$ ist $(\P^\dagger)_x \cong \P_x$ kanonisch
+        via 1.
+      \item $\P^\dagger$ erfüllt die offenbare universelle Eigenschaft.     
+    \end{enumerate}
+\end{satz}
+\begin{proof}
+    \TODO
+\end{proof}
+
 % vim: set ft=tex :
