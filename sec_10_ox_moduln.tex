@@ -168,4 +168,68 @@ der Topologie auf $\Spec A$. Dann folgt analog zu
     Insbesondere ist $M^\sim(\Spec A) = M$.
 \end{satz}
 
+
+% 18.04.2013
+
+\begin{satz}
+    Der Funktor
+    \[
+        ^\sim: \funcdef{ \Moduln{A} & \to & \Moduln{\O_{\Spec A}} \\
+            M & \mapsto & M^\sim\\
+            (M \xto{\varphi} N) & \mapsto &  (M^\sim \xto{\sim} N^\sim)}
+    \]
+    ist exakt.
+\end{satz}
+\begin{proof}
+    Es ist zu zeigen: Ist
+    \[ M' \xto\alpha M \xto\beta M''\]
+    eine exakte Sequenz in $\Moduln{A}$, so ist
+    \[ (M')^\sim \xto{\alpha^\sim} M^\sim \xto{\beta^\sim} (M'')^\sim\]
+    eine exakte Sequenz in $\Moduln{\O_{\Spec A}}$. Letzteres ist aber
+    äquivalent dazu, dass
+    \[ (M')_\p^\sim \xto{\alpha_\p^\sim} M_\p^\sim \xto{\beta_\p^\sim}
+         (M'')_\p^\sim\]
+    eine exakte Halmsequenz für alle $\p\in\Spec A$ ist.
+    Dies ist aber klar, weil $\A_\p$ flach über $A$ ist 
+    (\autocite[Example 9.1.1]{hartshorne1977algebraic} oder
+    \autocite[Abschnitt 7 Satz 8]{bosch2009algebra}) und
+    $M_\p^\sim = M_\p \cong M\otimes_A A_\p$. 
+\end{proof}
+
+\begin{korollar}
+    \label{kor:m a modul dann m sim quaiskohaerent}
+    Für einen $A$-Modul $M$ ist $M^\sim$ quasi-kohärent.
+\end{korollar}
+\begin{proof}
+    Für $M$ hat man
+    \[ A^{(J)} \to A^{(I)} \xto\varphi M \to 0.\]
+    Nun wähle beispielsweise $I := M$ und $J := \ker\varphi$.
+    Ferner ist 
+    \[ (A^{(J)})^\sim = (\bigoplus_{j\in J})^\sim = \bigoplus_{j\in J}
+        A^\sim = \bigoplus{j  \in J} \O_X = \O_X^{(J)}\]
+    und da $^\sim$ exakt ist, folgt die Exaktheit von
+    \[ \O_X^{(J)} \to \O_X^{(I)} \to M^\sim \to 0.\] 
+\end{proof}
+
+\begin{bemerkung}
+    Sind $M$ und $N$ $A$-Moduln, so ist
+    \[ (M\otimes_A N)^\sim = M^\sim \otimes_{\O_{\Spec A}} N^\sim.\]
+\end{bemerkung}
+
+\begin{satz}
+    Sei $(X,\O_X)$ ein Schema. Dann ist eine $\O_X$-Modulgarbe $\M$
+    genau dann quasi-kohärent, wenn für jede affin offene Teilmenge
+    $U$ ein Isomorphismus
+    \[ \M\rest U \cong (\M(U))^\sim\]
+    existiert.
+\end{satz}
+\begin{proof}
+    \begin{description mathquote}
+    \item[\Leftarrow] Folgt aus \thref{kor:m a modul dann m sim quaiskohaerent}.
+    \item[\Rightarrow]
+        Aus nachstehenden Hilfslemmas haben wir
+        für beliebiges $U = \Spec A \osubset X$ und $f\in A$ 
+    \end{description mathquote}
+\end{proof}
+
 \pagebreak

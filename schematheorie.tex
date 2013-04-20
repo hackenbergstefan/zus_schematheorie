@@ -187,6 +187,14 @@ DIV = 14,
 %\usepackage{subfig} %%Teilabbildungen in einer Abbildung
 % \usepackage[ngerman, nameinlink]{cleveref}
 
+
+%% Bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[style=numeric, backend=biber]{biblatex}
+\usepackage[babel,german=guillemets]{csquotes}
+\addbibresource{bib.bib}
+\setlength{\bibitemsep}{2ex}
+
+
 %% Math abbreviations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \let\bb\mathbb
 \let\cal\mathcal
@@ -211,6 +219,7 @@ DIV = 14,
 \newcommand{\Ring}{\kat{Ring}}
 \newcommand{\Top}{\kat{Top}}
 \newcommand{\Sch}{\kat{Sch}}
+\newcommand{\Moduln}[1]{#1\text{-}\kat{Mod}}
 \newcommand{\affSch}{\kat{Sch}^\kat{aff}}
 \newcommand{\op}{^\mathrm{op}}
 \newcommand{\m}{\fr{m}}
@@ -380,5 +389,8 @@ DIV = 14,
 %\part{Zweites Semester}
 \input{sec_10_ox_moduln}
 
+\pagebreak
+\nocite{*}
+\printbibliography
 \end{document}
 % vim: set ft=tex :
