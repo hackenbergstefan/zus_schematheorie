@@ -114,7 +114,7 @@ als $\O_X\rest U$-Modulgarben.
     eine exakte Sequenz von $\O_U$-Modulgarben
     \[\begin{tikzcd}
         \O_X\rest U^{(J)} \rar &\O_X\rest U^{(J)} \rar &
-        \M_U \rar & 0
+        \M\rest U \rar & 0
     \end{tikzcd}\]
     gibt.
 \end{definition}
@@ -151,7 +151,7 @@ Ist $M$ ein $A$-Modul, so betrachte
   \item für $f \in A$: $M_f = M \otimes_A A_f$ 
     als $A_f = \O_{\Spec A}(D(f))$-Modul.
   \item für $\p \in \Spec A$: $M_\p = M\otimes_A A_\p$
-    als $\A_\p = \O_{\Spec A,\p}$-Modul.
+    als $A_\p = \O_{\Spec A,\p}$-Modul.
 \end{itemize}
 Dies ist eine $\fr B$-Garbe für $\fr B = \{D(f)\mid f\in A\}$ der Basis 
 der Topologie auf $\Spec A$. Dann folgt analog zu 
@@ -172,11 +172,12 @@ der Topologie auf $\Spec A$. Dann folgt analog zu
 % 18.04.2013
 
 \begin{satz}
+    \label{satz:sim exakt}
     Der Funktor
     \[
         ^\sim: \funcdef{ \Moduln{A} & \to & \Moduln{\O_{\Spec A}} \\
             M & \mapsto & M^\sim\\
-            (M \xto{\varphi} N) & \mapsto &  (M^\sim \xto{\sim} N^\sim)}
+            (M \xto{\varphi} N) & \mapsto &  (M^\sim \xto{\varphi^\sim}N^\sim)}
     \]
     ist exakt.
 \end{satz}
@@ -217,6 +218,7 @@ der Topologie auf $\Spec A$. Dann folgt analog zu
 \end{bemerkung}
 
 \begin{satz}
+    \label{satz:modulgarbe quasikohaerent <=> iso auf einschraenkung}
     Sei $(X,\O_X)$ ein Schema. Dann ist eine $\O_X$-Modulgarbe $\M$
     genau dann quasi-kohärent, wenn für jede affin offene Teilmenge
     $U$ ein Isomorphismus
@@ -227,9 +229,159 @@ der Topologie auf $\Spec A$. Dann folgt analog zu
     \begin{description mathquote}
     \item[\Leftarrow] Folgt aus \thref{kor:m a modul dann m sim quaiskohaerent}.
     \item[\Rightarrow]
-        Aus nachstehenden Hilfslemmas haben wir
-        für beliebiges $U = \Spec A \osubset X$ und $f\in A$ 
+        Aus nachstehenden Hilfslemmas haben wir die Behauptung, da
+        $\M(U)^\sim$ durch die Eigenschaft auf den $D(f)$s festgelegt ist.
     \end{description mathquote}
 \end{proof}
+
+\begin{hilfslemma}
+    In der Situation von 
+    \thref{satz:modulgarbe quasikohaerent <=> iso auf einschraenkung} gilt:
+    Für jedes $x \in X$ existiert ein affin offenes $ x \in U\osubset X$
+    mit $\M\rest U \cong (\M(U))^\sim$.
+\end{hilfslemma}
+\begin{proof}
+    Man hat den kanonischen Garbenmorphismus
+    \[ (\M(U))^\sim \to \M\rest U.\]
+    Dieser rührt her von
+    \[(\M(U))^\sim (D(f)) = \M(U)_f \xto\varrho \M(D(f)),\]
+    welcher induziert wird von den beiden Restriktionen
+    $\res^\M: \M(U) \to \M(D(f))$ und
+    $\res^\O: \O_X(U) \to \O_X(D(f))$, da 
+    wird $\M(U)$ als einen $\O_X(U)$-Modul und $\M(D(f))$ als einen
+    $\O_X(D(f))$-Modul auffassen wollen. Demnach haben wir für
+    $\lambda \in \O_X(U)$ und $m\in \M(U)$
+    \[\res^\M(\lambda m) = \res^\O(\lambda) \res(m).\]
+    Weiter ist $f \in A_f^\times = (\O_U(D(f)))^\times$, also 
+    dort invertierbar und wir können setzen
+    \[\rho(\tfrac{m}{f^n}) := \res(m) f^{-n}.\]
+    
+    Da $\M$ quasi-kohärent existiert für alle $x \in X$ ein affin offenes
+    $x\in U\osubset X$, so dass
+    \[\O_X\rest U^{(J)} \xto\beta \O_X\rest U^{(I)} \xto\alpha 
+    \M\rest U \xto{} 0 \] 
+    exakt ist. Insbesondere haben wir
+    \[\O_X(U)^{(J)} \to \O_X(U)^{(I)} \to 
+    \M(U).\]
+    Setze nun $N:= \im(\alpha(U))\subseteq \M(U)$. $N$ ist ein 
+    $\O_X(U)$-Untermodul. Damit ist
+    \[\O_X(U)^{(J)} \to \O_X(U)^{(I)} \to 
+        N \to 0\]
+    eine exakte Sequenz von $\O_X(U)$-Moduln. Wir wenden $^\sim$ an 
+    und da $^\sim$ exakt (\thref{satz:sim exakt}) erhalten wir
+    \[\O_X\rest U^{(J)} \to \O_X\rest U^{(I)} \to
+        N^\sim \to 0.\]
+    Mit dem Homomorphiesatz folgt dann $\M\rest U \cong N^\sim$. 
+\end{proof}
+
+\begin{hilfslemma}
+    In der Situation von 
+    \thref{satz:modulgarbe quasikohaerent <=> iso auf einschraenkung} gilt:
+    Für beliebiges $U = \Spec A \osubset X$ und $f\in A = \O_X(U)$ gilt
+    \[ \M(U)_f \cong \M(D(f)).\]
+\end{hilfslemma}
+\begin{proof}
+    Wir überdecken $U = \bigcup_{i=1}^r U_i$ durch endlich viele affin 
+    offene $U_i$ (es reichen endlich viele, da $\Spec A$ quasi-kompakt!).
+    Die $U_i$ wählen wir dabei so, dass sie die Eigenschaften 
+    im ersten Hilfslemma genügen
+    und setzen $V_i = U_i \cap D(f) = D(f\rest{U_i})$.
+    Dann haben wir
+    \[\begin{tikzcd}
+        0 \rar & \M(U)_f \rar \dar{\alpha}[swap]{\text{kanonisch}} & 
+        \oplus_i \M(U_i)_f \rar \dar{\cong}[swap]{\beta} & 
+        \oplus_{(i,j)} \M(U_i \cap U_j)_f \dar{\cong}[swap]{\gamma}\\
+        0 \rar & \M(D(f)) \rar & \oplus_i \M(V_i) \rar & 
+        \oplus_{(i,j)} \M(V_i \cap V_j),
+    \end{tikzcd}\]
+    wobei die Zeilen jeweils exakt sind und die Isomorphismen sich aus
+    dem ersten Hilfslemma ergeben. Man erjagt sich aus $\beta$ ein 
+    Isomorphismus, dass $\alpha$ injektiv ist und zusammen mit $\gamma$
+    einem Isomorphismus, kann man erneut auf Jagd gehen und
+    die Surjektivität von $\alpha$ erlegen.    
+\end{proof}
+
+
+\begin{satz}
+    \label{satz:kurze exakte sequenz mit quasikohaerent bleibt exakt}
+    Ist $X = \Spec A$ affin und 
+    \[\begin{tikzcd}
+        0 \rar & \M' \rar & \M \rar & \M'' \rar & 0
+    \end{tikzcd}\]
+    eine kurze exakte Sequenz von $\O_X$-Modulgarben und ist
+    $\M'$ quasikohärent, so ist
+    \[\begin{tikzcd}
+        0 \rar & \M'(X) \rar & \M(X) \rar & \M''(X) \rar & 0
+    \end{tikzcd}\]
+    eine kurze exakte Sequenz von $A$-Moduln.
+\end{satz}
+\begin{proof}
+    fehlt.
+\end{proof}
+
+\begin{lemma}
+    \label{lemma:raum in garbe einsetzen ist linksexakt}
+    Für jeden topologischen Raum $X$ ist
+    \[\Gamma(X,\_): \Sh_X \to \Ab,\ \F \mapsto \F(X) =: \Gamma(X,\F)\] 
+    linksexakt,
+    d.h. ist
+    \[\begin{tikzcd}
+        0 \rar & \F \rar{\alpha} & \G \rar{\beta} & \cal H \rar & 0
+    \end{tikzcd}\]
+    eine kurze exakte Sequenz in $\Sh_X$, so ist
+    \[\begin{tikzcd}
+        0 \rar & \F(X) \rar{\alpha(X)} & \G(X) \rar{\beta(X)} & 
+        \cal H(X)
+    \end{tikzcd}\]
+    eine exakte Sequenz in $\Ab$.
+\end{lemma}
+\begin{proof}
+    Zeigen wir zunächst die Injektivität von $\alpha(X)$: Sei
+    $\sigma \in \F(X)$ mit $\alpha(X)\sigma = 0\in \G(X)$, so ist
+    $[\alpha(X)\sigma]_x  = 0 \in \G_x$ für alle $x \in X$, also ist
+    $\alpha_x([\sigma]_x) = 0$ mit $[\sigma]_x \in \F_x$
+    und da $\alpha_x$ injektiv nach Voraussetzung, folgt
+    $[\sigma]_x = 0$, ergo $\sigma = 0$.
+    
+    Als zweites folgern wir $\ker \beta(X) = \im \alpha(X)$:
+    Da $\beta \circ \alpha = 0$, folgt $\beta(X) \circ \alpha(X) = 0$,
+    also $\im\alpha(X) \subseteq \ker \beta (X)$.
+    Sei nun $\sigma \in \ker\beta (X)$. Insbesondere gilt für jedes 
+    $U \osubset X$, dass $\beta(U)\sigma\rest U = 0 \in \cal H(U)$.
+    Da $\ker \beta = \im\alpha$ nach Voraussetzung, existiert eine
+    offene Überdeckung $X = \cup_{i\in I} U_i$ mit 
+    $\ker\beta(U_i) = \im\alpha(U_i)$. Also finden wir zu jedem
+    $i \in I$ ein $\tau_i \in \F(U_i)$ mit 
+    $\alpha(U_i)\tau_i = \sigma\rest{U_i}$. Wir müssen nur noch sehen, 
+    dass diese geeignet verkleben:
+    Es gilt
+    \[\alpha(U_i \cap U_j)\tau_i\rest{U_i \cap U_j} = \sigma\rest{U_j\cap U_j}
+         = \alpha(U_i \cap U_j) \tau_j\rest{U_j \cap U_j}\]
+    und mit der Injektivität von $\alpha(U_i \cap U_j)$ folgt
+    \[\tau_i\rest{U_i \cap U_j} = \tau_j\rest{U_i \cap U_j}.\]
+    Also verkleben die $(\tau_i)_{i\in I}$ zu $\tau \in \F(X)$ mit
+    $\alpha(X)\tau = \sigma$.
+\end{proof}
+
+\begin{beispiel}
+    In \thref{lemma:raum in garbe einsetzen ist linksexakt} ist
+    die Rechtsexaktheit im Allgemeinen nicht gegeben, wie man am Beispiel
+    $X = \C\setminus\{0\}$ sieht: Setze $\G := \O_{\C^\times}$ die 
+    Garbe der holomorphen Funktionen und 
+    $\cal H := \O_{\C^\times}^\times$ die Garbe der nirgends verschwindenden
+    holomorphen Funktionen, so ist
+    \[\begin{tikzcd}
+        0 \rar & 2\pi i \Z \rar & \G \rar{\exp} & 
+        \cal H \rar & 0
+    \end{tikzcd}\]
+    eine kurze exakte Sequenz, aber
+    \[\begin{tikzcd}
+        0 \rar & 2\pi i \Z \rar & \G(X) = \O_{\C^\times}(\C\setminus\{0\}) 
+        \rar{\exp} & 
+        \cal H(X) =  \O_{\C^\times}^\times(\C\setminus\{0\})
+    \end{tikzcd}\]
+    ist alles, da die letzte Abbildung nicht surjektiv ist (es gibt keinen
+    komplexen Logarithmus auf $\C\setminus\{0\}$).
+\end{beispiel}
 
 \pagebreak
