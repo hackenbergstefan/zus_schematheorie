@@ -26,3 +26,5 @@
 *.inp
 *.sh
 *.thm
+*.run.xml
+*.bcf
