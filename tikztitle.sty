@@ -54,11 +54,22 @@
 			  		align=right]
 			  	(numbernode)
 				at (\linewidth,-2pt)
-				{\ifthenelse{\value{section}=0}{}{\thesection}};
+				{\thesection};
 			   \draw[very thick, maincolor] 
 			  		let \p1 = (numbernode.south west) in (0,0) -- ++(\x1, 0.0);
 			}]%
 		%
+		\titleformat{name=\section,numberless}[display]
+          {\pagebreak\normalfont\sffamily%
+            \Huge\bfseries\color{maincolor}%
+            \begin{minipage}{\linewidth}}%
+          {}{0pt}{}[\end{minipage}\vspace{-0.5ex}\newline
+              \tikz{
+                \path[use as bounding box] (0,0) rectangle (\linewidth, 0.1);
+               \draw[very thick, maincolor] 
+                    (0,0) -- (\linewidth, 0);
+            }]%
+         %
 		\titleformat{\subsection}
 			{\normalfont\sffamily\Large\bfseries%
 				\color{maincolor}}

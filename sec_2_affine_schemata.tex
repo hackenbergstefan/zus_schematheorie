@@ -6,6 +6,7 @@ Sei im Folgenden $A$ ein kommuativer Ring mit $1$ und
 $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 
 \begin{definition}[Zariski Topologie]
+    \index[def]{Definition!Zariski Topologie}
 	Ist $\a \ideal A$, ein Ideal, setze
 	\[
 		V(\a) := \{\p \in \Spec A \mid \a \subseteq \p \} \subseteq \Spec A\,.
@@ -87,6 +88,8 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{bemerkung}
 
 \begin{definition}[abgeschlossener Punkt, generischer Punkt]
+    \index[def]{Definition!Abgeschlossener Punkt}
+    \index[def]{Definition!Generischer Punkt}
 	Sei $X$ ein topologischer Raum.
 	Ein $x\in X$ heißt \emph{abgeschlossener Punkt}, wenn
 	$\overline{\{x\}} = \{x\}$.
@@ -148,6 +151,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 
 
 \begin{definition}[basisoffene Menge]
+    \index[def]{Definition!Basisoffene Menge}
 	Für $f\in A$ nennt man
 	\[ D(f) := \Spec A \setminus V((f)) = \{ \p \in \Spec A \mid f \notin \p\}
 	\]
@@ -200,6 +204,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{proof}
 
 \begin{definition}[Radikal]
+    \index[def]{Definition!Radikal}
 	Für $\a \ideal A$ heißt
 	\[
 		\sqrt \a := \{ f\in A \mid \exists n \in \N:\ f^n\in \a\}
@@ -232,6 +237,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{proof} 
 
 \begin{definition}[Radikalideal (radiziell)]
+    \index[def]{Definition!radiziell}
 	Ein Ideal $\fr b \ideal A$ heißt \emph{Radikalideal (radiziell)},
 	falls
 	\[\sqrt \fr b = \fr b.\]
@@ -328,6 +334,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{proof}
 
 \begin{definition}[irreduzibel]
+    \index[def]{Definition!irreduzibel}
 	Ein topologischer Raum $X$ heißt \emph{irreduzibel}, wenn gilt:
 	Ist $X = A_1 \cup A_2$ mit $A_{1,2}\subseteq X$ abgeschlossen, so ist
 	$X = A_1$ oder $X = A_2$.
@@ -387,6 +394,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 \end{proof}
 
 \begin{definition}[Nilradikal]
+    \index[def]{Definition!Nilradikal}
 	\[
 		\Nil(A) := \sqrt{(0)}
 	\]
@@ -625,6 +633,7 @@ $\Spec A := \{\p \ideal A \mid \p \text{ Primideal}\}$.
 
 
 \begin{definition}[(quasi)-kompakt]
+    \index[def]{Definition!(quasi)-kompakt}
 	Ein topologischer Raum $X$ heißt \emph{quasi-kompakt}, wenn gilt:
 	Ist $X = \bigcap_{i\in I} U_i$ mit $U_i$ offen, so existiert eine endliche
 	Teilmenge $F\subset I$ mit
@@ -675,6 +684,8 @@ Wir wollen $\O_{\Spec A}$ als die "`guten Funktionen"' auf $\Spec A$ auffassen,
 aber dazu müssen wir es besser verstehen. 
 
 \begin{definition}[multiplikative Teilmenge, Lokalisierung]
+    \index[def]{Definition!Lokalisierung}
+    \index[def]{Definition!Multiplikative Teilmenge}
 	\label{def:lokalisierung}
 	Sei $A$ ein Ring, dann heißt $S\subseteq A$ \emph{multiplikative Teilmenge},
 	wenn $1\in S$ ist und aus $a,b\in S$ auch $ab\in S$ folgt.
@@ -762,7 +773,8 @@ aber dazu müssen wir es besser verstehen.
 
 Für den Beweis benötigen wir noch eine Definition.
 
-\begin{definition}[$\cal B$-(Prä)Garbe]
+\begin{definition}[$\fr B$-(Prä)Garbe]
+    \index[def]{Definition!$\fr B$-(Prä-)Garbe}
 	$\F:D(f) \mapsto A_f$ heißt \emph{$\fr B$-Prügarbe} auf
 	$X = \Spec A$, wenn 
 	$\F$ eine Prägarbe auf 
@@ -796,6 +808,8 @@ Für den Beweis benötigen wir noch eine Definition.
  
  
 \begin{definition}[(affines) Schema]
+    \index[def]{Definition!affines Schema}
+    \index[def]{Definition!Schema}
 	Ein \emph{affines Schema} ist ein lokal geringter Raum
 	$(X,\O_X)$, der zu einem $(\Spec A, \O_{\Spec A})$ als lokal geringter
 	Raum isomorph ist.
@@ -816,6 +830,7 @@ Für den Beweis benötigen wir noch eine Definition.
 \end{bemerkung}
 
 \begin{definition}[Morphismus von Schemata]
+    \index[def]{Definition!Morphismus von Schemata}
 	Ein \emph{Morphismus von Schemata} ist ein
 	Morphismus von lokal geringten Räumen
 	\[

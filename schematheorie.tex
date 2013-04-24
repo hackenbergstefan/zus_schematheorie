@@ -50,6 +50,11 @@ DIV = 14,
 
 \usepackage{lmodern} %Type1-Schriftart für nicht-englische Texte
 
+%% Indexing %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{imakeidx}
+\makeindex[name=def, columns=2, columnsep=0pt, intoc]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{hyperref}
 
 \usepackage{xspace}
@@ -394,5 +399,7 @@ DIV = 14,
 \pagebreak
 \nocite{*}
 \printbibliography
+
+\printindex[def]
 \end{document}
 % vim: set ft=tex :

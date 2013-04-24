@@ -3,6 +3,7 @@
 \subsection{Garben}
 
 \begin{definition}[Prägarbe]
+    \index[def]{Definition!Prägarbe}
 	Sei $X$ ein topologischer Raum. Eine \emph{Prägarbe} $\F$ auf $X$
 	ist eine Zuordnung
 	$$\F: U\mapsto \F(U) \,,$$
@@ -63,6 +64,7 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
 \end{bemerkung}
 
 \begin{definition}[Morphismus von Prägarben]
+    \index[def]{Definition!Morphismus von Prägarben}
 	Ein \emph{Morphismus von Prägarben} $\F \xto{\phi} \G$ auf $X$ ist
 	eine natürliche Transformation der Funktoren $\F$ und $\G$, d.h.
 	für alle $U\subset X$ offen gibt es einen Morphismus
@@ -78,6 +80,7 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
 
 
 \begin{definition}[Garbe]
+    \index[def]{Definition!Garbe}
   Eine Prägarbe $\F$ auf $X$ heißt \emph{Garbe} (engl. sheaf), falls
   gilt: Ist $U\subset X$ offen und $U=\bigcup_{i\in I} U_i$ für 
 	offene $U_i\subset X$, so gilt
@@ -158,7 +161,9 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
 \tikzmargin{north}{Warum steht hier naiv??}
 
 
-\begin{definition}
+\begin{definition}[Kategorie der (Prä-)garben]
+    \index[def]{Definition!Kategorie der Prägarben}
+    \index[def]{Definition!Kategorie der Garben}
 	Für einen topologischen Raum $X$ bezeichne
 	\begin{align*}
 		\PSh_X & := \text{die Kategorie der Prägarben auf $X$},\\
@@ -173,6 +178,8 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
 \end{bemerkung}
 
 \begin{definition}[Halm, Keim]
+    \index[def]{Definition!Halm}
+    \index[def]{Definition!Keim}
 	Ist $\F$ eine (Prä)Garbe auf $X$ und $x_0 \in X$, so heißt
 	\[ \F_{x_0} := \varinjlim_{x_0 \in U \subset X\text{ offen}} \F(U)
 		 = \coprod_{U\subset X\text{ offen}} \F(U) \Big/ \sim\] 
@@ -232,6 +239,7 @@ Bei mir steht hier im Skript $s\rest U$. Offenbar ein Fehler!?}
 \end{proof}
 
 \begin{definition}[push-forward]
+    \index[def]{Definition!Garbe!push-forward}
 	Ist $f:X \to Y$ stetig und $\F$ eine Garbe auf $X$, so ist durch
 	\[ f_\ast \F: V \mapsto \F(f^{-1}(V))\]
 	für $V\subset Y \text{ offen}$ eine Garbe definiert, 
@@ -247,6 +255,7 @@ und entsprechend Garben
 \[\F:\Top_X\op \to \Ring.\]
 
 \begin{definition}[lokaler Ring]
+    \index[def]{Definition!Ring!lokal}
 	Sei  $R$ ein Ring. Dann heißt $R$ \emph{lokal}, wenn $R$ genau ein
 	maximales Ideal besitzt.
 \end{definition}
@@ -336,6 +345,7 @@ und entsprechend Garben
 \end{beispiel}
 
 \begin{definition}[lokal geringter Raum]
+    \index[def]{Definition!lokal geringter Raum}
 	Ein \emph{lokal geringter Raum} ist ein Paar $(X, \O_X)$ bestehend aus:
 	\begin{itemize}
 	  \item einem topologischen Raum $X$ und
@@ -400,6 +410,7 @@ und entsprechend Garben
 \end{proof}
 
 \begin{definition}[lokale Ringhomomorphismen]
+    \index[def]{Definition!Lokaler Ringhomomorphismus}
 	Sind $R,S$ lokale Ringe mit den maximalen Idealen
 	$\m_R \ideal R$, $\m_S \ideal S$, so heißt der Ringhomomorphismus
 	$\varphi: R\to S$ \emph{lokal},
@@ -410,6 +421,7 @@ und entsprechend Garben
 \end{definition}
 
 \begin{definition}[Morphismus lokal geringter Räume]
+    \index[def]{Definition!Morphismus lokal geringter Räume}
 	\label{def:morphismus lokal geringter raume}
 	Ein \emph{Morphismus $f:(X,\O_X) \to (Y,\O_Y)$ lokal geringter Räume}
 	ist ein Paar $(f,f\fis)$ bestehend aus
