@@ -311,18 +311,20 @@ der Topologie auf $\Spec A$. Dann folgt analog zu
     \label{satz:kurze exakte sequenz mit quasikohaerent bleibt exakt}
     Ist $X = \Spec A$ affin und 
     \[\begin{tikzcd}
-        0 \rar & \M' \rar & \M \rar & \M'' \rar & 0
+        0 \rar & \M' \rar{\alpha} & \M \rar{\beta} & \M'' \rar & 0
     \end{tikzcd}\]
     eine kurze exakte Sequenz von $\O_X$-Modulgarben und ist
     $\M'$ quasikohärent, so ist
     \[\begin{tikzcd}
-        0 \rar & \M'(X) \rar & \M(X) \rar & \M''(X) \rar & 0
+        0 \rar & \M'(X) \rar{\alpha(X)} & \M(X) \rar{\beta(X)} & 
+        \M''(X) \rar & 0
     \end{tikzcd}\]
     eine kurze exakte Sequenz von $A$-Moduln.
 \end{satz}
-\begin{proof}
-    fehlt.
-\end{proof}
+
+Bevor wir den Beweis des Satzes angeben, wollen wir in folgendem Lemma und 
+anschließendem Beispiel sehen, dass die Bedingung der Quasikohärenz wirklich
+notwendig ist, um Rechtsexaktheit zu garantieren.
 
 \begin{lemma}
     \label{lemma:raum in garbe einsetzen ist linksexakt}
@@ -390,5 +392,131 @@ der Topologie auf $\Spec A$. Dann folgt analog zu
 \end{beispiel}
 
 
+\begin{proof}[von 
+    \thref{satz:kurze exakte sequenz mit quasikohaerent bleibt exakt}]
+    Nach \thref{lemma:raum in garbe einsetzen ist linksexakt} bleibt noch
+    zu zeigen, dass $\M(X) \to \M''(X)$ surjektiv ist. Wir wählen 
+    eine Überdeckung $X = \cup_i U_i$, von offenen $\cal U = (U_i)_i$,
+    so dass auf den $U_i$ die 
+    Sequenz \tikzmark{exakt} ist. \tikzmargin{south}{\color{red}
+    Mir ist noch nicht ganz klar, warum das geht.}
+    Nun können wir \obda annehmen, dass 
+    \begin{enumerate}
+      \item $U_i$ basisoffen sind, also $U_i = D(f_i)$ für geeignete 
+        $f_i \in A$
+      \item und $\# I < \infty$, da $X = \Spec A$ quasikompakt ist.
+    \end{enumerate}
+    \newcommand{\Uij}{U_{ij}}
+    Sei $\sigma \in M''(X)$ beliebige. Zu jedem $i\in I$ 
+    wähle $\tau_i \in \M(U_i)$, so dass
+    $\beta(U_i)(\tau_i) = \sigma\rest{U_i}$. Wir führen die
+    Schreibweise $U_{ij} := U_i \cap U_j$ ein und damit ist
+    $\beta(U_{ij})(\tau_i\rest{U_{ij}}) = \sigma\rest{U_{ij}} = 
+    \beta(U_{ij})(\tau_j\rest{U_{ij}})$, also
+    \[\tau_i\rest{U_{ij}} - \tau_j\rest{U_{ij}} \in \ker\beta(U_{ij}) 
+        = \im\alpha(U_{ij}),\]
+     wobei wir die letzte Gleichheit aus der Linksexaktheit haben. Damit
+     können wir \obda $\M'\subseteq \M$ als untergarbe ansehen, also
+     $\M'(U) \subseteq \M(U)$ als Untermodul.
+     Setze nun $\eta_{ij} := \tau_i\rest{\Uij} - \tau_j\rest{\Uij} \in 
+     \M'(\Uij)$ für jedes Paar $(i,j)$.
+     
+     Diese $(\eta_{ij})_{i,j}$ sind also das "`Hindernis"', dass die $(\tau_i)_i$
+     verkleben zu einem $\tau \in \M(X)$!
+     Es ist
+     \newcommand{\ijk}{_{ijk}}
+     \renewcommand{\ij}{_{ij}}
+     \newcommand{\ik}{_{ik}}
+     \newcommand{\jk}{_{jk}}
+     \[0 = d(\eta_{ij})_{i,j} = \left(
+        \eta\ij\rest{U\ijk} - \eta\ik\rest{U\ijk} + \eta\jk\rest{U\ijk}
+        \right)_{i,j,k}.\]
+     Das $d$ werden wir später erklären!
+     Nach Wahl der $U_i = D(f_i)$, $U\ij = D(f_if_j)$ ist
+     \[\eta\ij = \frac{a\ij}{(f_if_j)^r} \in \M'(D(f_if_j))
+        \tikzmark{=} M'(X)^\sim(D(f_if_j)) = \M'(X)_{f_if_j}\]
+     mit $a\ij \in \M'(X)$, wobei die Gleichheit \tikzarrow{mark above}{hier}
+     durch die Quasikohärenz von $\M'$ mit 
+     \thref{satz:modulgarbe quasikohaerent <=> iso auf einschraenkung}
+     gegeben ist. Ferner ist zu bemerken, dass $r$ nicht von $i,j$ abhängt.
+     Dies können wir \obda erreichen, da $\# I < \infty$.
+     Damit haben wir:
+     \[0 = \frac{a\ij}{(f_if_j)^r}\rest{U\ijk} - 
+        \frac{a\ik}{(f_if_k)^r}\rest{U\ijk} + 
+        \frac{a\jk}{(f_jf_k)^r}\rest{U\ijk} \in \M'(X)_{f_if_jf_k}.\]
+    Die Restriktionen sind aber gerade gegeben durch    
+    \[ \begin{tikzcd} \M'(D(f_if_j)) \dar[empty]{\rotatebox{90}{=}}
+        \rar{\_\rest{U_{ijk}}} 
+        & M'(D(f_if_jf_k)) \dar[empty]{\rotatebox{90}{=}} \\
+        M'(X)_{f_if_j} \rar & \M'(X)_{f_if_jf_k} \\
+        \frac{a}{(f_if_j)^r} \rar[mapsto] & 
+        \frac{a f_k^r}{(f_if_jf_k)^r},
+    \end{tikzcd}\]
+    also haben wir
+    \[0 = \frac{a\ij f_k^r}{(f_if_jf_k)^r} - 
+        \frac{a\ik f_j^r}{(f_if_jf_k)^r} + 
+        \frac{a\jk f_i^r}{(f_if_jf_k)^r} \in \M'(X)_{f_if_jf_k}.\]
+    Da aber die Lokalisierung an $f_i f_j f_k$ gerade die Lokalisierung an
+    $f_k$ von der Lokalisierung an $f_if_j$ ist, existiert $l\in \N$, so dass
+    \[ 0 = f_k^{l+r} \frac{a\ij}{(f_if_j)^r} - 
+        f_k^l f_j^r\frac{a\ik}{(f_if_k)^r} + 
+        f_K^l f_i^r\frac{a\jk}{(f_jf_k)^r} \in \M'(X)_{f_if_j}\]
+    Da es nur endlich viele Indizes gibt, haben wir diese Gleichheit
+    für alle $k\in I$ und für alle $(i,j)\in I^2$.
+    
+    Nun ist $D(f_k) = D(f_k^{r+l})$ und $\Spec A = \cup_{k\in I} D(f_k^{r+l})$,
+    also
+    \[ \bigcap_{k\in I} V((f_k^{r+l})) = V\left(\sum_{k\in I} f_k^{r+l}\right)
+    = \emptyset = V(A) \quad\Leftrightarrow\quad 
+    1 \in \sum_{k\in I} (f_k^{r+l}).\]
+    Damit ist $1 = \sum_{k\in I} h_k f_k^{r+l}$ für geeignete $h_k \in A$.
+\end{proof}
+
+\subsection{Der \Cech-Komplex}
+\begin{definition}[\Cech-Komplex, \Cech-Kohomologie]
+    \index[def]{\Cech-Kohomologie!\Cech-Komplex}
+    \index[def]{\Cech-Kohomologie}
+     \newcommand{\ijk}{_{ijk}}
+     \renewcommand{\ij}{_{ij}}
+     \newcommand{\ik}{_{ik}}
+     \newcommand{\jk}{_{jk}}
+    Sie $X$ ein topologischer Raum. $\cal U = (U_i)_{i\in I}$ eine offene
+    Überdeckung, $\F \in \Sh_X$. Betrachte den folgenden Kettenkomplex
+    \[\everymath{\displaystyle}\begin{tikzcd}
+        \Cv^0 \dar[empty]{\rotatebox{90}{=}}\rar &
+             \Cv^1 \dar[empty]{\rotatebox{90}{=}}\rar &
+             \Cv^2 \dar[empty]{\rotatebox{90}{=}}\rar & \ldots\\
+        \prod_{i\in I} \F(U_i) \rar{d} & 
+            \prod_{(i,j)\in I^2} \F(U_{ij}) \rar{d} &
+            \prod_{(i,j,k)\in I^3} \F(U_{ijk}) \rar{d} & \ldots\\
+        (\eta_i)_i \rar[mapsto] & 
+            (\eta_i \rest{U_{ij}} - \eta_j \rest{U_{ij}})_{i,j} \\
+        &(y_{ij})_{i,j} \rar[mapsto] & 
+            (y\ij \rest{U\ijk} - y\ik  \rest{U\ijk} + y\jk\rest{U\ijk})_{i,j,k},
+    \end{tikzcd}\]
+    so heißt
+    \[\Hv^k(\cal U,\F) := \H^k(\text{\Cech-Komplex}) := 
+        \ker(d: \Cv^k \to \Cv^{k+1}) \big/ \im(d: \Cv^{k-1} \to \Cv^k)
+    \]
+    die $k$-te \emph{\Cech-Kohomologie von $\F$ bzgl. $\cal U$}.
+\end{definition}
+
+\begin{bemerkung}
+    \newcommand{\ijk}{_{ijk}}
+    \renewcommand{\ij}{_{ij}}
+    \newcommand{\ik}{_{ik}}
+    \newcommand{\jk}{_{jk}}
+    Da $\F$ eine Garbe ist, haben wir $\Hv^0(\cal U,\F) = \F(X)$!
+    Ferner gilt $d \circ d = 0$ und
+    für $[(y_{ij})_{i,j}] \in \Hv^1$ haben wir
+    $d(y_{ij})_{i,j} = 0$, d.h.
+    \[(y\ij \rest{U\ijk} - y\ik  \rest{U\ijk} + y\jk\rest{U\ijk})_{i,j,k}\]
+    Diese Bedingung nennen wir \emph{Ko-Zykel-Bedingnung}.
+    Ferner ist $[(y\ij)_{i,j}] \in \Hv^1$ per definitionem, falls
+    ein $(\eta_i)_i \in \Cv^0$ existiert, so dass
+    $(y\ij)_{i,j} = d(\eta_i)_i$, also
+    \[y\ij = \eta_i \rest{U\ij} - \eta_j \rest{U\ij}.\]
+    Daher nennen wir in dieser Situation $(y\ij)_{i,j}$ einen \emph{Ko-Rand}.
+\end{bemerkung}
 
 \pagebreak
