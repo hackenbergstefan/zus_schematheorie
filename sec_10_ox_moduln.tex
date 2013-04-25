@@ -458,9 +458,10 @@ notwendig ist, um Rechtsexaktheit zu garantieren.
         \frac{a\jk f_i^r}{(f_if_jf_k)^r} \in \M'(X)_{f_if_jf_k}.\]
     Da aber die Lokalisierung an $f_i f_j f_k$ gerade die Lokalisierung an
     $f_k$ von der Lokalisierung an $f_if_j$ ist, existiert $l\in \N$, so dass
-    \[ 0 = f_k^{l+r} \frac{a\ij}{(f_if_j)^r} - 
+    \begin{equation}\label{eq:1} 0 = f_k^{l+r} \frac{a\ij}{(f_if_j)^r} - 
         f_k^l f_j^r\frac{a\ik}{(f_if_k)^r} + 
-        f_K^l f_i^r\frac{a\jk}{(f_jf_k)^r} \in \M'(X)_{f_if_j}\]
+        f_K^l f_i^r\frac{a\jk}{(f_jf_k)^r} \in \M'(X)_{f_if_j}
+    \end{equation}
     Da es nur endlich viele Indizes gibt, haben wir diese Gleichheit
     für alle $k\in I$ und für alle $(i,j)\in I^2$.
     
@@ -470,9 +471,36 @@ notwendig ist, um Rechtsexaktheit zu garantieren.
     = \emptyset = V(A) \quad\Leftrightarrow\quad 
     1 \in \sum_{k\in I} (f_k^{r+l}).\]
     Damit ist $1 = \sum_{k\in I} h_k f_k^{r+l}$ für geeignete $h_k \in A$.
+    Setzen wir nun 
+    \[g_i := \sum_{k\in I} h_k f_k^l \frac{a\ik}{f_i^r} \in 
+        M'(X)_{f_i} = (M'(X))^\sim(D(f_i)) = \M'(U_i),\]
+    wobei sich letzte Gleichheit wieder aus der Quasikohärenz ergibt,
+    so haben wir
+    \[g_i\rest{U\ij} - g_j\rest{U\ij} = \sum_{k\in I} h_k f_k^l
+        \left(f_j^r\frac{a\ik}{(f_if_j)^r} - 
+        f_i^r\frac{a\jk}{(f_if_j)^r}\right)
+        \tikzmark[1]{=} \underbrace{\sum_{k\in I} h_k f_k^{r+l}}{=1} 
+        \frac{a\ij}{(f_if_j)^r} = \eta\ij \in \M'(U\ij),\]
+    wobei wir \tikzarrow{mark above}{diesen} Schritt durch Umformung von 
+    \autoref{eq:1} erhalten haben. Definieren wir nun
+    $\mu_i := \tau_i - g_i \in \M(U_i)$, so haben wir für alle $i,j \in I$
+    \[ \mu_i \rest{U\ij} - \mu_j \rest{U\ij} = \eta\ij - \eta\ij = 0\]
+    Also existiert ein eindeutiger globaler Schnitt $\mu \in \M(X)$ mit
+    $\mu\rest{U\ij} = \mu_i$ für alle $i\in I$.
+    
+    Benutzen wir nun alles bisherige, so erhalten wir für alle $i\in I$
+    \[ \beta(X)(\mu)\rest{U_i} = \beta(U_i)(\mu\rest{U_j}) = 
+        \beta(U_i)(\mu_i) = \beta(U_i)(\tau_i) = \sigma\rest{U_i}.\]
+    Damit stimmen $\beta(X)(\mu)$ und $\sigma \in \M''(X)$ auf 
+    $U_i$ überein. Daher sind sie gleich und wir haben die Surjektivität 
+    von $\beta$ gezeigt.
 \end{proof}
 
 \subsection{Der \Cech-Komplex}
+Wir gehen hier genauer auf die Verwendung des $d$ in vorherigem Beweis ein.
+Der Beweis liefert nämlich gerade, dass $\Hv^1(\cal U, \M'') = 0$,
+wie wir mit nachstehender Definition sehen.
+
 \begin{definition}[\Cech-Komplex, \Cech-Kohomologie]
     \index[def]{\Cech-Kohomologie!\Cech-Komplex}
     \index[def]{\Cech-Kohomologie}
@@ -518,5 +546,102 @@ notwendig ist, um Rechtsexaktheit zu garantieren.
     \[y\ij = \eta_i \rest{U\ij} - \eta_j \rest{U\ij}.\]
     Daher nennen wir in dieser Situation $(y\ij)_{i,j}$ einen \emph{Ko-Rand}.
 \end{bemerkung}
+
+
+
+\subsection{Kohärenz}
+\begin{definition}[endlich erzeugt, kohärent]
+    \index[def]{\OX Modul!endlich erzeugt}
+    \index[def]{\OX Modul!kohärent}
+    
+    \begin{itemize}
+      \item Eine \OX Modulgarbe $\M$ heißt \emph{endlich erzeugt}, 
+        falls es zu jedem $x\in X$ ein offenes $x\in U\osubset X$ gibt 
+        und eine exakte Sequenz
+        \[\O_X\rest U^n \to \M\rest U \to 0\]
+        für ein $n\in \N$ gibt.
+      \item $\M$ heißt \emph{kohärent}, falls $\M$ endlich erzeugt ist und
+        wenn für jedes $\alpha$ in
+        \[\O_X\rest U^n \xto\alpha \M\rest U \to 0\]
+        der $\ker \alpha$ als $\O_U$-Modulgarbe endlich erzeugt ist.
+    \end{itemize}
+\end{definition}
+
+\begin{bemerkung}
+    Sei $A$ ein Ring, so ist ein endlich erzeugter $A$-Modul $M$ nicht anderes, 
+    als dass analog zu oben eine exakte Sequenz
+    $ A^n \xto\alpha M \to 0$ für ein $n\in \N$ gibt. $M$ ist
+    kohärent (oder endlich präsentierter), falls $M$ endlich erzeugt ist
+    und $\ker \alpha$ endlich erzeugt ist. Letzteres ist bei immer der Fall,
+    falls $A$ noethersch ist.
+    
+    Der Unterschied zu Ringmoduln wird in nachstehendem Satz deutlich,
+    wo wir die Quasikohärenz fordern müssen, um garantieren zu können,
+    dass $\M(U)$ überhaupt erzeugbar ist.  
+\end{bemerkung}
+
+\begin{satz}
+    Sei $(X,\O_X)$ ein lokal noethersches Schema und $\F$ eine
+    quasikohärente $\O_X$-Modulgarbe. Dann ist äquivalent:
+    \begin{enumerate}[label=(\roman*)]
+      \item $\F$ ist kohärent.
+      \item $\F$ ist endlich erzeugt.
+      \item $\forall U \osubset X$ affin und offen ist
+        $\F(U)$ ein endlich erzeugter $\O_X(U)$-Modul. 
+    \end{enumerate}
+\end{satz}
+\begin{proof}
+    \begin{description mathquote}
+    \item[\text{(ii)}\Rightarrow\text{(iii)}]
+        Da $\F$ endlich erzeugt ist, existiert eine offene Überdeckung
+        $U = \cup_{i\in I} U_i$ für \obda $U_i = D(f_i)$ mit 
+        $f_i \in \O_U(U)$, so dass
+        \[\begin{tikzcd}[row sep=small]
+            0 \rar & \ker\alpha \rar & 
+            \O_U\rest{U_i}^n \rar{\alpha} & \F\rest{U_i} \rar & 0
+        \end{tikzcd}\]
+        eine kurze exakte Sequenz ist.
+        Aus nachstehendem Hilfslemma wissen wir, dass $\ker\alpha$ ebenfalls
+        quasikohärent ist und diese bleibt mit 
+        \thref{satz:kurze exakte sequenz mit quasikohaerent bleibt exakt}
+        beim Einsetzen von $U_i$ exakt, also
+        \[\begin{tikzcd}[row sep=small] 
+            \O_X(U_i)^{n_i} \rar{\alpha(U_i)} & \F(U_i) \rar & 0.
+        \end{tikzcd}\]
+        Damit ist $\F(U_i)$ ein endlich erzeugter $\O_X(U_i)$-Modul.
+        
+        Ferner gilt
+        \[\F(U_i) = \F(U) \otimes_{\O_X(U)} \O_X(U)_{f_i} = 
+            \F(U) \otimes_{\O_X(U)} \O_X(U_i)\]
+        und andererseits aufgrund der Quasikohärenz
+        \[\F(U_i) = \F(U)^\sim(U_i) = \F(U)^\sim(D(f_i)) = 
+            \F(U)_{f_i}.\]
+        Also existiert ein endlich erzeugter $\O_X(U)$-Untermodul
+        $M_i \subseteq \F(U)$ mit
+        \[\F(U_i) = M_i \otimes_{\O_X(U)} \O_X(U_i),\]
+        denn: Seien 
+        $\alpha_1, \ldots, \alpha_r \in \F(U)\otimes_{\O_X(U)}\O_X(U_i)$
+        ein Erzeugendensystem über $\O_X(U_i)$ mit
+        \[\alpha_k = \sum_{k \text{ endlich}} m_{kj} \otimes\lambda_j\]
+        mit $m_{kj} \in \F(U)$ und $\lambda_j \in \O_X(U_i)$.
+        Damit erzeugen $\{m_{kj}\}_{k,j}$ ein solches $M_i$.
+        
+        Da die anfangs gewählte Überdeckung \obda endlich ist 
+        ($U$ affin, also quasikompakt), existiert en endlich erzeugtes
+        $\O_X(U)$-Modul $M$ mit
+        \[ M\otimes_{\O_X(U)} \O_X(U_i) \to \F(U_i) \to 0\]
+        exakt als Sequenz von $\O_X(U_i)$-Moduln. Betrachte nun 
+        Dies ist aber gerade
+        $M^\sim(U_i) \to \F(U)^\sim(U_i) \to 0$,
+        was die Exaktheit von
+        $M^\sim \to \F(U)^\sim \to 0$ als Sequenz von $\O_U$-Modulgarben
+        zur Folge hat. Wir setzen wieder $U$ ein und erhalten mit
+        \thref{satz:kurze exakte sequenz mit quasikohaerent bleibt exakt}
+        $M(U) \to \F(U) \to 0$ exakt.
+        Damit ist $\F(U)$ endlich erzeugt.
+      \item[\text{(iii)}\Rightarrow\text{(i)}]
+    \end{description mathquote}
+\end{proof}
+
 
 \pagebreak
