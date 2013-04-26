@@ -3,7 +3,7 @@
 
 \subsection{$\O_X$-Moduln}
 \begin{definition}[$\O_X$-Modul]
-    \index[def]{$\O_X$-Modul|hypertarget{def:ox modul}{}}
+    \index[def]{O-Modul@\OX-Modul@\OX-Modul|hypertarget{def:ox modul}{}}
     Ein \emph{$\O_X$-Modul} (oder eine \emph{$\O_X$-Modulgarbe}) ist eine 
     Garbe $\M$ zusammen mit einer $\O_X(U)$-Modulstruktur auf $\M(U)$
     für jedes offene $U\osubset X$, so dass für 
@@ -34,8 +34,8 @@
 
 
 \begin{definition}[frei, lokal frei]
-    \index[def]{$\O_X$-Modul!frei}
-    \index[def]{$\O_X$-Modul!lokal frei}
+    \index[def]{O-Modul@\OX-Modul!frei}
+    \index[def]{O-Modul@\OX-Modul!lokal frei}
     Ein \hyperlink{def:ox modul}{\OX Modul} $\M$ heißt
     \begin{itemize}
       \item \emph{frei}, wenn es eine Menge $I$ und einen 
@@ -112,7 +112,7 @@ als $\O_X\rest U$-Modulgarben.
 \subsection{Quasi-Kohärenz}
 
 \begin{definition}[quasi-kohärent]
-    \index[def]{$\O_X$-Modul!quasi-kohärent}
+    \index[def]{O-Modul@\OX-Modul!quasi-kohärent}
     Eine $\O_X$-Modulgarbe $\M$ heißt \emph{quasi-kohärent}, wenn es
     zu jedem $x\in X$ ein $x \in U \osubset X$ und Mengen $I,J$ und
     eine exakte Sequenz von $\O_U$-Modulgarben
@@ -124,7 +124,7 @@ als $\O_X\rest U$-Modulgarben.
 \end{definition}
 
 \begin{definition}[von seinen globalen Schnitten erzeugt]
-    \index[def]{$\O_X$-Modul!von seinen globalen Schnitten erzeugt}
+    \index[def]{O-Modul@\OX-Modul!von seinen globalen Schnitten erzeugt}
     Ein \OX Modul $\M$ wird \emph{von seinen globalen Schnitten erzeugt},
     wenn für jedes $x\in X$ der Morphismus von $\O_{X,x}$-Moduln
     \[ \M(X) \otimes_{\O_X(X)} \O_{X,x} \to \M_x\]
@@ -551,8 +551,8 @@ wie wir mit nachstehender Definition sehen.
 
 \subsection{Kohärenz}
 \begin{definition}[endlich erzeugt, kohärent]
-    \index[def]{\OX Modul!endlich erzeugt}
-    \index[def]{\OX Modul!kohärent}
+    \index[def]{O-Modul@\OX-Modul!endlich erzeugt}
+    \index[def]{O-Modul@\OX-Modul!kohärent}
     
     \begin{itemize}
       \item Eine \OX Modulgarbe $\M$ heißt \emph{endlich erzeugt}, 
@@ -640,8 +640,36 @@ wie wir mit nachstehender Definition sehen.
         $M(U) \to \F(U) \to 0$ exakt.
         Damit ist $\F(U)$ endlich erzeugt.
       \item[\text{(iii)}\Rightarrow\text{(i)}]
+        Für jedes offene affine $U$ ist $\F(U)$ endlich erzeugt,
+        es existiert also eine exakte Sequenz der Form 
+        $\O_X(U)^n \to \F(U) \to 0$. Da $\F$ quasikohärent, ist 
+        $\F\rest U = \F(U)^\sim$, wobei  $^\sim$ auf $U = \Spec A$ zu lesen
+        ist. Ergo ist auch $\F\rest U$ endlich erzeugt als $\O_U$-Modul.
+        Zu zeigen bleibt: Ist $\O_X\rest U ^n \xto\alpha \F\rest U \to 0$ 
+        exakt, so ist $\ker \alpha$ endlich erzeugt. Dazu sei
+        \obda $U = \Spec A$ affin und $A$ noethersch. Dann
+        ist
+        \[0\to \ker\alpha\to \O_X\rest U^n \to \F\rest U \to 0\]
+        exakt. Mit der Linksexaktheit von $\Gamma(U,\_)$ ist
+        \[0\to \ker\alpha(U) \to \O_X(U)^n \to \F(U)\]
+        und wieder mit dex Exaktheit von $^\sim$ erhalten wir
+        \[0 \to (\ker\alpha(U))^\sim \to \O_X\rest U^n \to \F\rest U.\]
+        Also ist $\ker\alpha = (\ker\alpha(U))^\sim$. Weiter
+        ist $\ker(\alpha(U)) \subseteq \O_X(U)^n$ ein endlich erzeugter
+        $\O_X(U)$-Modul, da nach Voraussetzung $\O_X(U)$ noethersch ist.
+        Folglich ist $(\ker\alpha(U))^\sim$ eine endlich erzeugte
+        $\O_X\rest U$-Modulgarbe.
     \end{description mathquote}
 \end{proof}
 
+\begin{hilfslemma}
+    Ist 
+    \[0 \to \cal K \to \cal N \xto\alpha \M \to 0\]
+    eine kurze exakte Sequenz $\O_X$-Moduln und sind $\M$ und $\cal N$ 
+    quasikohärent, so ist $\cal K$ quasikohärent.
+\end{hilfslemma}
+\begin{proof}
+
+\end{proof}
 
 \pagebreak

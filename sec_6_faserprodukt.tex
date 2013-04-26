@@ -1,2 +1,116 @@
 \section{Faserprodukt} %Seite 105
+
+\begin{definition}[Faserprodukt]
+    \index[def]{Schema!Faserprodukt}
+    Seien $f: X\to Y$ und $g:Z\to Y$ Schemamorphismen.
+    Dann ist das \emph{Faserprodukt} $X\times_Y Z$ ein Schema
+    zusammen mit Morphismen $X\times_Y Z \xto\alpha X$ und
+    $X\times_Y Z \xto\beta Z$, so dass
+    \[\begin{tikzcd}
+        X \times_Y Z \rar{\alpha} \dar{\beta} & X \dar{f}\\
+        Z \rar{g} & Y
+    \end{tikzcd}\]
+    kommutiert und $(X\times_Y Z, \alpha, \beta)$ damit universell ist,
+    d.h. 
+    \[\begin{tikzcd}
+        T \ar[bend left]{drr} \ar[bend right]{ddr} \ar[dotted]{dr}{\exists!}&\\
+        &  X \times_Y Z \rar{\alpha} \dar{\beta} & X \dar{X} \\
+        & Z \rar{g} & Y.
+    \end{tikzcd}\]
+\end{definition}
+
+\subsection{Anwendungen}
+
+\subsubsection{Faser eines Morphismus}
+\begin{definition}[Faser eines Morphismus]
+    \label{def:faser eines morphismus}
+    \index[def]{Schema!Faserprodukt!Faser eines Morphismus}
+    Ist $f:X\to Y$, $\Spec k \o Y$ ein $k$-rationaler Punkt in $Y$ 
+    (beispielsweise $k:= k(y) := \O_{Y,y}\big/\m_y$),
+    so heißt
+    \[ X \times_Y \Spec k =: X_y\]
+    die \emph{Faser von $f$ über $y\in Y$}.
+\end{definition}
+
+
+\subsubsection{Basiswechsel}
+\begin{definition}
+    \label{def:basiswechsel}
+    \index[def]{Schema!Basiswechsel}
+    Sei $X$ ein $S$-Schema. Ist $T$ ein weiteres $S$-Schema, so heißt
+    \[X \times_S T =: X_T\]
+    der \emph{Basiswechsel vom $S$-Schema $X$ zum $T$-Schema $X_T$}.
+\end{definition}
+
+\begin{bemerkung}
+    In der Tat ist $X\times_S T$ in natürlicher Weise ein $T$-Schema.
+    Seien nämlich $f:X \to S$ und $g:T\to S$ die Strukturmorphismen,
+    so haben wir
+    \[\begin{tikzcd}
+        X\times_S T \rar{\alpha} \dar{\beta} & X \dar{f} \\
+        T \rar{g} & S.
+    \end{tikzcd}\]
+\end{bemerkung}
+
+\begin{bemerkung}
+    Man kann die Definition des Basiswechsels auch kategoriell lesen:
+    Zu $g:T\to S$ hat man einen Funktor
+    \[
+        \funcdef{\Sch_S & \to & \Sch_T \\
+            (X\xto f S) & \mapsto & (X\times_S T \xto\beta T).}
+    \]
+\end{bemerkung}
+
+\begin{definition}[pull-back von Schemata]
+    \label{def:pull-back}
+    \index[def]{Schema!pull-back}
+    In obiger Situation heißt ein $A$ mit 
+    \[\begin{tikzcd}[remember picture]
+        |[alias=mynode]| A \rar  \dar & X \dar \\
+        Z \rar  & Y
+    \end{tikzcd}
+    \tikz[remember picture, overlay]{ 
+        \draw[very thick] 
+            ($(mynode) + (10pt,-10pt)$) +(5pt,0) -| +(0,-5pt);}
+    \]
+    \emph{pull-back}, falls $A = X \times_Y Z$.
+\end{definition} 
+
+\begin{satz}
+    In $\Sch$ existiert zu jedem $X \xto f Y$, $Z \xto g Y$ ein Faserprodukt
+    $X\times_Y Z$. Es ist eindeutig bis auf eindeutige Isomorphie.
+    
+    Für $X = \Spec A$, $Y = \Spec B$, $Z = \Spec R$ gilt sogar
+    \[ X\times_Y Z = \Spec A\otimes_R B.\]
+\end{satz}
+\begin{proof}
+    \TODO
+\end{proof}
+
+\begin{bemerkung}
+    Es gilt:
+    \begin{itemize}
+      \item $X \times_S S = X$.
+      \item $X \times_S Y = Y \times_S X$.
+      \item $(X \times_S Y) \times_S Z = X \times_S (Y\times_S Z)$.
+      \item Für $X \to S$ und $Z\to Y \to S $ gilt
+        \[ (X \times_S Y) \times_Y Z = X \times_S Z.\]
+    \end{itemize}
+\end{bemerkung}
+
+\begin{lemma}
+    Sei $f:X \to Y$. $y\in Y$ mit Restklassenkörper $k(Y) = \O_{Y,y}\big/\m_y$.
+    In
+    \[\begin{tikzcd}
+        X \times_Y \Spec k(y) =: X_y \rar{p} \dar & X \dar\\
+        \Spec k(y) \rar & Y
+    \end{tikzcd}\]
+    ist $p$ ein Homöomorphismus auf $f\inv(y) \subseteq X$.
+\end{lemma}
+\begin{proof}
+    \TODO
+\end{proof}
+
+
+
 % vim: set ft=tex :

@@ -112,4 +112,135 @@
     \TODO
 \end{proof}
 
+\begin{bemerkung}
+    Für einen Ring $A$ und $\a \ideal A$ ist
+    \[ \Spec A\big/\a \to \Spec A\]
+    ein Homöomorphismus auf $V(\a) = V(\sqrt\a) \subseteq \Spec A$.
+\end{bemerkung}
+
+\begin{satz}
+    Sei $X$ ein Schema. Dann existiert eine eindeutig bestimmte
+    abgeschlossene Immersion eines reduzierten Schemas $X^\text{red}$
+    \[X^\text{red} \immersion X\]
+    mit $\operatorname{topRaum}(X^\text{red}) = 
+    \operatorname{topRaum}(X)$.
+\end{satz}
+
+\begin{definition}[Kern- und Bildgarbe]
+    \index[def]{Garbe!Garbenmorphismus!Kerngarbe}
+    \index[def]{Garbe!Garbenmorphismus!Bildgarbe}
+    \label{def:kern- bildgarbe}
+    Sei $\alpha: \F \to \G$ ein Garbenmorphismus. Dann heißen
+    \begin{align*}
+        \ker\alpha: &\big( U \mapsto \ker(\alpha(U))\big)\\
+        \im\alpha: &\big( U \mapsto \im(\alpha(U))\big)^\dagger
+    \end{align*}
+    \emph{Kern-} und \emph{Bildgarbe} von $\alpha$.
+\end{definition}
+
+\begin{bemerkung}
+    In der Tat ist $\ker\alpha$ bereits eine Garbe.
+\end{bemerkung}
+
+\subsection{Sequenzen von Garben und der Homomorphiesatz}
+
+\begin{definition}[Exakte Sequenz von Garben]
+    \index[def]{Garbe!exakte Sequenz}
+    Eine Sequenz von Garben
+    \[0\to \F \xto\alpha \G \xto\beta \cal H \to 0\]
+    heißt exakt, falls
+    \begin{itemize}
+        \item $\im\alpha = \ker\beta$
+        \item $\ker\alpha = 0$
+        \item $\im\beta = \cal H$         
+    \end{itemize}
+    im Sinne von \thref{def:kern- bildgarbe} gilt.
+\end{definition}
+
+\begin{satz}
+    \label{satz:garbensequenz exakt <=> halmweise exakt}
+    Eine Sequenz von Garben
+    \[0\to \F \xto\alpha \G \xto\beta \cal H \to 0\]
+    ist exakt genau dann, wenn sie halmweise exakt ist, d.h.
+    \[ 0 \to \F_x \xto{\alpha_x} \G_x \xto{\beta_x} \to 0\]
+    für jedes $x\in X$ exakt ist.
+\end{satz}
+\begin{proof}
+    Zur Übung.
+\end{proof}
+
+\begin{satz}
+    \label{satz:garbeniso <=> halmweise iso}
+    Ist $\alpha:\F \to \G$ ein Garbenmorphismus. Es ist äquivalent:
+    \begin{enumerate}
+    \item $\alpha$ ist ein Garbenisomorphismus ist, d.h.
+    für alle $U\osubset X$ ist $\alpha(U)$ ein Isomorphismus (von Ringen),
+    \item $\alpha_x : \F_x \to \G_x$ ist ein Isomorphismus.
+    \end{enumerate}   
+\end{satz}
+\begin{proof}
+    klar.
+\end{proof}
+
+\begin{satz}[Homomorphiesatz für Garben]
+    \label{satz:homomophiesatz garben}
+    Ist 
+    \[0 \to \cal N \to \cal F \xto\alpha \G \to 0\]
+    eine kurze exakte Sequenz von Garben,
+    so induziert $\alpha$ einen Isomorphismus
+    \[\bar\alpha: \F\big/\ker\alpha \xto\cong \G.\]
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+\subsection{Reduzierte Schemata II}
+
+\begin{satz}
+    Sei $X$ ein Schema, $Z\subseteq X$ eine abgeschlossene Teilmenge. Dann
+    kann man auf $Z$ eine Schemastruktur definieren, so dass
+    $(Z,\O_Z) \immersion (X,\O_X)$ eine abgeschlossene Immersion ist und
+    $(Z, \O_Z)$ reduziert ist. Diese ist eindeutig und heißt
+    \emph{reduzierte Unterschema-Strukur}.
+    \index[def]{Schema!Unterschema!reduzierte Unterschema-Struktur}
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+\subsection{Integere Schemata}
+
+\begin{definition}[integeres Schema]
+    \index[def]{Schema!integer}
+    Ein Schema $X$ heißt \emph{integer}, wenn für jedes $U\osubset X$
+    offen der Ring $\O_X(U)$ nullteilerfrei ist.
+\end{definition}
+
+\begin{bemerkung}
+    $X = \Spec A$ ist integer genau dann, wenn $A$ nullteilerfrei.
+\end{bemerkung}
+
+\begin{lemma}
+    \label{lemma:a nullteilerfrei. kanonischer morphismus nach quot a injektiv}
+    Ist $A$ nullteilerfrei, so ist für jedes $U \osubset X = \Spec A$
+    der kanonische Morphismus
+    \[ \O_X(U) \to \O_{X,\eta} = \Quot(A)\]
+    für $\eta = (0)$ injektiv.
+    Ferner ist für $V\osubset U$ die Restriktion $\O_X(U) \to \O_X(V)$
+    injektiv.
+\end{lemma}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{satz}
+    \label{satz:integer <=> reduziert und irreduzibel}
+    Ein Schema $X$ ist genau dann integer,
+    wenn $X$ reduziert und irreduzibel ist.
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+
 % vim: set ft=tex :
