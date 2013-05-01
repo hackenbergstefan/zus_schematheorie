@@ -664,12 +664,116 @@ wie wir mit nachstehender Definition sehen.
 
 \begin{hilfslemma}
     Ist 
-    \[0 \to \cal K \to \cal N \xto\alpha \M \to 0\]
+    \[0 \to \cal K \to \cal M \xto\alpha \cal N \to 0\]
     eine kurze exakte Sequenz $\O_X$-Moduln und sind $\M$ und $\cal N$ 
     quasikohärent, so ist $\cal K$ quasikohärent.
 \end{hilfslemma}
 \begin{proof}
-
+    Betrachte $0 \to \ker\alpha \to \M \to \cal N \to 0$. Sei
+    $U\osubset X$ offen,affin. Dann ist
+    \[0 \to \ker\alpha(U) \to \M(U) \to \cal N(U)\]
+    exakt und nach \thref{satz:sim exakt} ist auch
+    \[0 \to (\ker \alpha(U))^\sim \to \M\rest U 
+        \to \cal N\rest U\]
+    exakt. Da $0 \to \cal K\to \M \o \cal N \to 0$ exakt ist, existiert
+    eine offene Überdeckung $U = \cup D(f_i )$ mit
+    \[ 0 \to \cal K(D(f_i)) \to \M(D(f_i)) \to \cal N(D(f_i)) \to 0\]
+    exakt. Damit ist
+    \[\cal K(D(f_i)) = (\ker\alpha(U))^\sim (D(f_i))\qquad \forall i\]
+    und folglich 
+    $\cal K\rest{D(f_i)} = (\ker\alpha(U))^\sim\rest{D(f_i)}$ für alle $i$.
+    Also auch $\cal K\rest U =(\ker\alpha(U))^\sim$. Damit ist
+    $\cal K\rest U$ quasikohärent.  
 \end{proof}
 
+\subsection{Direktes und inverses Bild}
+
+\begin{definition}[direktes Bild]
+    \index[def]{O-Modul@\OX-Modul!direktes Bild}
+    \label{def:direktes bild von ox moduln}
+    $f_\ast: \Sh_X \to \Sh_Y$ ist in natürlicher Weise auch ein Funktor
+    \[
+        f_\ast: \Moduln{\O_X} \to \Moduln{\O_Y},
+    \]
+    denn für $V\osubset Y$ ist
+    \[ \O_Y(V) \times (f_\ast \F)(V) \to \funcdef{ 
+        \O_Y(V) \times \F(f\inv(V)) &\to& \F(f\inv(V))\\
+        (\lambda,\sigma) &\mapsto & (f\fis (V)(\lambda)) \cdot \sigma}\]
+    eine Modulstruktur.
+    $f_\ast$ heißt \emph{direktes Bild von  $\O_X$-Moduln}. 
+\end{definition}
+
+\subsubsection{Inverses Bild}
+Man hat 
+\[
+    (f\fis:\O_Y \to f_\ast \O_X) \in \Hom_{\Sh_Y} (\O_Y, f_\ast \O_X)
+    = \Hom_{\Sh_X}(f\inv \O_Y, \O_X)
+\]
+da $f\inv$ nach \autoref{uebung: } linksadjungiert zu $f_\ast$.
+Damit ist $f\inv \G$ ion natürlicher Weise ein $f\inv\O_Y$-Modul:
+\[\begin{tikzcd}
+    (f\inv\O_Y)(U) \times (f\inv \G)(U) \rar \dar[empty]{\rotatebox{90}{=}}
+        & (f\inv\G)(U) \dar[empty]{\rotatebox{90}{=}}\\
+    \varinjlim_{f(U)\subseteq V} \O_Y(V) \times
+        \varinjlim_{f(U)\subseteq V} \G(V) \rar & 
+        \varinjlim_{f(U)\subseteq V} \G(V)\\[5pt]
+    ([\lambda],[\sigma]) \rar[mapsto] & {}
+        [\lambda\rest{V\cap W} \sigma \rest{V\cap W}]
+\end{tikzcd}\]
+für $\lambda \in \O_Y(V)$ und $\sigma \in \G(W)$.
+Damit können wir definieren
+
+\begin{definition}[inverses Bild]
+    \index[def]{O-Modul@\OX-Modul!inverses Bild}
+    \label{def:inverses Bild von ox moduln}
+    Der \emph{inverse Bildfunktor} ist definiert als
+    \[ f^\ast: \funcdef{\Moduln{\O_Y} &\to& \Moduln{\O_X}\\
+        \G &\mapsto& f\inv \G \otimes_{f\inv\O_Y} \O_X}.
+    \] 
+\end{definition}
+
+\subsection{Abgeschlossene Unterschemata}
+
+Wir wiederholen zunächst ein paar Begriffe: Sei $X$ ein Scheam. 
+$Z\subset X$ mit Strukturgarbe $\O_Z$  auf $Z$ heißt abgeschlossenes 
+Unterschema, wenn $i: (Z,\O_Z) \immersion (X,\O_X)$ eine abgeschlossene
+Immersion ist. Zu bemerken sei, dass $Z\subset X$ als abgeschlossene Teilmgene
+noch keine Schemastruktur festlegt, wie folgendes Beispiel zeigt:
+Sei $A$ ein Ring und $\a, \b \ideal A$.
+\[\begin{tikzcd}[row sep=tiny]
+    \Spec A\big/\a \drar 
+        \arrow[empty]{dd}{\rotatebox{90}{$\not\cong$}}
+        \\
+    & V(\a) = V(\b) \Leftrightarrow \sqrt\a = \sqrt \b\\
+    \Spec A\big/\b \urar
+\end{tikzcd}\]
+Es gilt nämlich $A\big/\a \cong A\big/\b \Rightarrow \a = \b$.
+
+Das heißt, ein abgeschlossenes Unterschema definieren wir besser wie folgt:
+\begin{definition}[abgeschlossenes Unterschema]
+    Ein \emph{abgeschlossenes Unterschema in $X$} ist eine
+    Isomorphieklasse von abgeschlossenen Immersionen, 
+    wobei $(i: Z \immersion X) \cong (j: Y\immersion X)$, falls
+    \[\begin{tikzcd}[row sep=tiny]
+        Z \drar[immersion]{i} \ar{dd}{f}[swap]{\cong}\\
+        & X \\
+        Y \urar[immersion]{j}
+    \end{tikzcd}\]
+\end{definition}
+
+\begin{satz}
+    Sei $X$ ein Schema. Dann ist
+    \[
+        \funcdef{\left\{ \begin{tabular}{c} 
+            abgeschlossene Unterschemata \\ von $X$             
+            \end{tabular}\right\} & \to & 
+            \left\{ \begin{tabular}{c} 
+            quasikohärente Idealgarben\\ auf $X$             
+            \end{tabular}\right\} \\
+            Z\subsetneq^i X & \mapsto & \ker i\fis }\]
+    eine Bijektion.
+\end{satz}
+\begin{proof}
+
+\end{proof}
 \pagebreak
