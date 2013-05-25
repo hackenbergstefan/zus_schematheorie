@@ -102,6 +102,7 @@ DIV = 14,
   \theoremstyle{definition}
   \newtheorem{defn}[thm]{Definition}
   \newtheorem{definition}[thm]{Definition}
+  \newtheorem{notation}[thm]{Notation}
   \newtheorem{bsp}[thm]{Beispiel}
   \newtheorem{beispiel}[thm]{Beispiel}
   \newtheorem{exmp}[thm]{Beispiel}
@@ -130,6 +131,14 @@ DIV = 14,
     font body=\normalfont,
     counter parent=satz
     ]{definition}{Definition}
+    
+  \newtikztheorem[
+    style=elegantbreak,
+    color=mycolor,
+    font header=\normalfont\sffamily\bfseries,
+    font body=\normalfont,
+    counter parent=satz
+    ]{notation}{Notation}
    
   \newtikztheorem[
     style=elegantinline,
@@ -411,6 +420,7 @@ DIV = 14,
 \input{sec_9_der_punktefunktor}
 %\part{Zweites Semester}
 \input{sec_10_ox_moduln}
+\input{sec_11_divisoren}
 
 \pagebreak
 \nocite{*}

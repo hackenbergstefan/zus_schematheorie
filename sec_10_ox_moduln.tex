@@ -946,6 +946,157 @@ Das heißt, ein abgeschlossenes Unterschema definieren wir besser wie folgt:
     das \emph{zu $i$ gerhörige sehr ample Geradenbündel auf $X$}.
     Schreibe analog $\O_X(m) := \O_{\P^n_A}(m)$.
 \end{definition}
+
+%16.05.
+\begin{bemerkung}
+    Lokal betrachtet, falls $U$ klein genug ist, haben wir 
+    $\F(n)\rest U \cong \F\rest U$.
+\end{bemerkung}
+
+\subsection{Morphismen in den $\P^d_A$ und Geradenbündel}
+
+\begin{bemerkung}
+    Idee klassisch: \TODO.
+\end{bemerkung}
+
+\begin{definition}[global von Elementen erzeugt]
+    Ein $\O_X$-Modul $\F$ heißt \emph{global von $s_0,\ldots,s_d \in \F(X)$}
+    erzeugt, wenn für alle $x\in X$ gilt
+    \[\F_x = \Span_{\O_{X,x}}\{[s_0]_x,\ldots,[s_d]_x\} = 
+        \sum_{i=0}^d \O_{X,x} [s_i]_x.\]
+\end{definition}
+
+\begin{notation}
+    Ist $\L$ ein Geradenbündel auf $X$ und $s \in \L(X)$, so setze
+    \[ \tikzmark{X_s} := \{x \in X \mid \L_x = \O_{X,x}[s]_x\}\]
+\end{notation}
+\tikzmargin{south}{Die Stellen, wo $\L$ "`gut"' ist.}
+
+\begin{bemerkung}
+    $X_s \subseteq X$ offen.
+\end{bemerkung}
+
+\begin{bemerkung}
+    $\L$ wird von $s_0,\ldots,s_d \in \L(X)$ erzeugt, genau dann, wenn
+    $X = \cup_{i=0}^d X_{s_i}$.
+\end{bemerkung}
+
+\begin{satz}
+    \label{satz:fortsetzungen auf geradenbdln}
+    Sei $X$ ein Schema, $\L$ ein Geradenbündel, so dass es eine endliche affin
+    offene Überdeckung von $X$ gibt, $X = \cup_{i=0}^d U_i$, so dass
+    $\L\rest{U_i}$ frei ist. Sei $s \in \L(X)$ und $\F$ ein quasikohärenter
+    $\O_X$-Modul. 
+    \begin{enumerate}[label=(\roman*)]
+      \item Ist $f \in \F(X)$ und $f\rest{X_s} = 0$, so existiert
+        $n\geq 1$, so dass
+        \[f \otimes s^{\otimes n} = 0 \quad \in (\F \otimes \L^{\otimes n})(X).
+        \]
+      \item Ist $g\in \F(X)$, so existiert $n_0\geq 1$, so dass 
+        $\forall n \geq n_0$ gilt
+        \[ g\otimes s\rest{X_s}^{\otimes n} = \tilde f \rest{X_s}
+            \quad\text{für ein } \tilde f \in (\F\otimes \L^{\otimes n})(X).\]
+    \end{enumerate}
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+
+\begin{satz}
+    \label{satz:twist liefert genugend viele globale schnitte}
+    Ist $X$ ein projektives $A$-Schema und $\F$ ein endlich erzeugtes 
+    quasikohärenter $\O_X$-Modul. Dann existiert $n_0\geq 1$, so dass
+    \[ \F(n) := \F \otimes \O_X(n) = \F\otimes \O_X(1)^{\otimes n}
+    \]
+    für alle $n\geq n_0$ von globalen Schnitten erzeugt wird.
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{korollar}
+    Ist $\F$ endlich erzeugt und quasikohärent auf $X \immersion \P^d_A$, dann
+    existiert eine Surjektion $\O_X(m)^{\oplus r} \twoheadrightarrow \F$.
+\end{korollar}
+
+\begin{bemerkung}
+    Sei $\L$ ein Geradenbündel auf $X$. Dann entspricht $\O_X$ den 
+    zulässigen Funktionen auf $X$
+\end{bemerkung}
+
+\begin{satz}
+    \label{satz:schemamorphismus liefert geradenbdl und umgekehrt}
+    Sei $X$ ein $A$-Schema.
+    \begin{enumerate}[label=(\roman*)]
+      \item Ist $f:X\to \P^d_A$ ein $A$-Schemamorphismus, so ist
+        $f^\ast \O_{\P^d_A}(1)$ ein Geradenbündel, das von $d+1$ globalen
+        Schnitten erzeugt wird.
+      \item Ist $\L$ ein Geradenbündel auf $X$, das von $d+1$ globalen 
+        Schnitten $s_0,\ldots,s_d \in \L(X)$ erzeugt wird, so existiert
+        ein Morphismus $f:X\to \P^d_A$ mit
+        $\L\cong f^\ast\O_{\P^d_A}$ und $f^\ast T_i = s_i$.
+    \end{enumerate}
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{definition}[ampel]
+    Sei $X$ quasikohärent und $\L$ ein Geradenbündel auf $X$. Dann heißt
+    $\L$ \emph{ampel}, wenn gilt: Für jedes quasikohärente $\F$ auf $X$
+    existiert $n_0\in\N$, so dass
+    $\F \otimes_{\O_X} \L^{\otimes n}$ von globalen Schnitten erzeugt für
+    $n\geq n_0$.
+\end{definition}
+
+\begin{bemerkung}
+    Sei $X\immersion \P^d_A$ ein projektives $A$-Schema und $\L$ sehr ampel 
+    auf $X$. Dann ist $\L$ ampel auf $X$.
+    
+    Die Definition "`sehr ampel"' hängt in der Tat von $X\immersion \P^d_A$ ab,
+    die Definition "`ampel"' ist in dieser Hinsicht absolut.
+\end{bemerkung}
+
+
+\begin{definition}[von endlichem Typ]
+    Sei $X$ ein $A$-Schema mit Strukturmorphismus $f: X \to \Spec A$.
+    $X$ heißt \emph{von endlichem Typ}, falls für alle affin offenen 
+    $U \osubset \Spec A$ mit $U = \Spec \tilde A$ gilt
+    \[f\inv(U) = \bigcup_{i\text{ endl. viele}} \Spec B_i\]
+    mit endlich erzeugten $\tilde A$-Algebren $B_i$.
+\end{definition}
+
+
+
+\begin{satz}
+    \label{satz:ampel und endlicher typ und noethersch => sehr ampel}
+    Sei $X$ ein $A$-Schema von endlichen Typ und noethersch. Ist $\L$ ein
+    amples Geradenbündel auf $X$, so existiert $m\geq 1$, so dass
+    $\L^{\otimes m}$ sehr ampel ist. Insbesondere haben wir 
+    $X \oimmersion Z \immersion \P^d_A$.
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{lemma}
+    Ist $X$ noethersch und $\L$ ein Geradenbündel auf $X$. Weiter existieren 
+    $s_1,\ldots,s_r\in \L(X)$ mit $X_{s_i}$ affin und 
+    $X = \cup_{i=1}^r X_{s_i}$. Dann ist $\L$ ampel.
+\end{lemma}
+\begin{proof}
+    \autocite[5. 1.35]{liu2006algebraic}
+\end{proof}
+
+\begin{bemerkung}
+    Für $X = \P^d_A$ ist $\O_X(1)$ sehr ampel, da wir hier 
+    $\id: X\to \P^d_A$ haben.
+    
+    Ferner ist $\O_{\P^d_A}(n)$ sehr ampel, genau dann, wenn $n\geq 1$.
+    (vgl. Übungsaufgabe)
+\end{bemerkung}
+
 \pagebreak
 
 
