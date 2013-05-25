@@ -90,11 +90,11 @@ Bleibt nur noch zu klären, wie die Bündelkarten
 $\psi_U: E\rest U = \pi\inv(U) \xto{\cong} U \times \R^r$ eingehen:
 \[\begin{tikzcd}
     \pi\inv(U) \rar \drar[swap]{\pi} & U \times \R^r \dar[swap]{\pr_U} 
-        & \lar[empty][description]{\ni} 
+        & \lar[empty][empty]{\ni} 
         (x,\alpha(x)) := (x, \pi_{\R^r} \circ \psi_U \circ \sigma(x)) \\
     & U \ular[bend left, mapsto]{\cal E(U) \ni \sigma}
         \uar[bend right,swap]{\psi_U \circ \sigma} & 
-        x \lar[empty][description]{\ni} \uar[mapsto]
+        x \lar[empty][empty]{\ni} \uar[mapsto]
 \end{tikzcd}\]
 
 $\alpha: U \to \R^r$ ist eine stetige Abbildung, also
@@ -755,7 +755,7 @@ Das heißt, ein abgeschlossenes Unterschema definieren wir besser wie folgt:
     Isomorphieklasse von abgeschlossenen Immersionen, 
     wobei $(i: Z \immersion X) \cong (j: Y\immersion X)$, falls
     \[\begin{tikzcd}[row sep=tiny]
-        Z \drar[immersion]{i} \ar{dd}{f}[swap]{\cong}\\
+        Z \drar[immersion]{i} \ar{dd}{\cong}[swap]{\exists}\\
         & X \\
         Y \urar[immersion]{j}
     \end{tikzcd}\]
@@ -774,6 +774,179 @@ Das heißt, ein abgeschlossenes Unterschema definieren wir besser wie folgt:
     eine Bijektion.
 \end{satz}
 \begin{proof}
-
+\TODO
 \end{proof}
+
+\subsection{Quasikohärente Moduln auf projektiven Schemata}
+
+\begin{satz}
+    Sei $B = \oplus_{d\geq 0} B_d$ ein graduierter Ring, so dass
+    $B$ von $B_1$ als $B_0$-Algebra erzeugt ist, $M = \oplus_{n\in \Z} M_n$
+    ein graduierter $B$-Modul. Dann existiert auf $\Proj B$ eine
+    eindeutige $\O_{\Proj B}$-Modulgarbe $M^\sim$, die quasikohärent ist
+    und folgende Eigenschaften besitzt:
+    \begin{itemize}
+      \item Ist $f\in B_+$ homogen, nicht nilpotent, so ist
+        \[ M^\sim\rest{D_+(f)} \cong (M_{(f)})^\sim.\]
+      \item Für $\p\in \Proj B$ ist
+        \[ (M^\sim)_\p \cong M_{(\p)}.\]
+    \end{itemize}
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{lemma}
+    Sei $M = \oplus_{n\in\Z} M_n$ ein graduierter $B$-Modul. Setze
+    $N := \oplus_{n\geq n_0} M_n \subset M$ einen Untermodul. Dann ist
+    $M^\sim = N^\sim$ auf $\Proj B$. 
+\end{lemma}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{bemerkung}
+    Für das affine $^\sim$ hat man mehr: Ist $X = \Spec A$ affin und
+    $\M$ eine quasikohärente Modulgarbe auf $X$, so ist nach 
+    \thref{satz:a modul hat ein o spec a modulgarbe} 
+    $\M = (M(X))^\sim$, also ist $\M$ bereits durch seine globalen Schnitte
+    festgelegt. Im projektiven Fall sind diese zu wenig.  
+\end{bemerkung}
+
+
+\subsubsection{Wichtigstes Beispiel: Der Twist}
+\begin{definition}[$n$-Twist]
+    Sei $B = \oplus_{d\geq 0}$ ein graduierter Ring, so dass $B$ von 
+    $B_1$ als $B_0$-Algebra erzeugt wird. Für $n\in \Z$ setze
+    \[B(n) := \oplus_{d\in\Z} B(n)_d \qquad\text{mit } B(n)_d := B_{n+d}\]
+    den \emph{$n$-Twist von $B$}.
+    
+    Damit wird $B(n)$ zu einem graduierten $B$-Modul und induziert eine
+    quasikohärente $\O_X$-Modulgarbe auf $X = \Proj B$, nämlich
+    \[ \O_X(n) := (B(n))^\sim,\]
+    den \emph{$n$-Twist von $\O_X$}.
+\end{definition}
+
+
+\begin{bemerkung}
+    Es ist $\O_X(0) = \O_X$, denn
+    \begin{align*}
+        \O_X\rest{D_+(f)} = B_{(f)} = \{\tfrac{b}{f^r} \mid
+            b \in B_{r\deg f}\\
+        \O_X(0)\rest{D_+(f)} = B(0)_{(f)} = \{\tfrac{b}{f^r} \mid
+            b \in B_{r\deg f + 0}
+    \end{align*}
+\end{bemerkung}
+
+\begin{bemerkung}
+    Im affinen Fall ist $M$ bereits durch $\M$ festgelegt, da
+    \[ \M(X) = M^\sim(X) = M^\sim(D(1)) = M_1 = M.\]
+    Im projektiven Fall geht dies nicht, da sich kein $D_+(f)$ finden lässt,
+    das $X$ überdeckt!
+\end{bemerkung}
+
+\begin{satz}
+    Sei $X = \Proj B$, $B = \oplus_{n\geq 0} B_n$ von $B_1$ als 
+    $B_0$-Algebra erzeugt. Dann sind alle $\O_X(n)$ Geradenbündel
+    (d.h. lokal frei von Rang 1).
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+\subsubsection{Wiederholung Geradenbündel}
+\begin{definition}[Geradenbündel]
+    Ein Geradenbündel $\L$ ist eine lokal freie $\O_X$-Modulgarbe
+    von Rang 1, d.h. 
+    \begin{itemize}
+      \item es gibt eine Überdeckung $\U := (U_i)_{i\in I}$, $U_i\osubset X$,
+      \item mit Trivialisierungen
+        \[\L\rest{U_i} \xto[\cong]{\varphi} \O_X\rest{U_i} = \O_{U_i}\]
+      \item und Basiswechselisomorphismen
+        \[\begin{tikzcd}
+            \O_X\rest{U_i\cap U_j} 
+                \ar[bend left]{rr}{\omega_{ij} \in 
+                    \Aut_{\O_X|_{U_i\cap U_j}}(\O_X\rest{U_i\cap U_j})
+                    = \O_X(U_i\cap U_j)^\times} 
+                & \L\rest{U_i\cap U_j}
+                \lar{\varphi_i\rest{U_i\cap U_j}}[swap]{\cong}
+                \rar{\cong}[swap]{\varphi_j\rest{U_i\cap U_j}}
+            & \O_X\rest{U_i\cap U_j}
+        \end{tikzcd}\]
+    \end{itemize}
+\end{definition}
+
+\begin{lemma}
+    Bis auf Verfeinerung von $\U$ gilt: Sind $\L$ und $\L'$ zwei
+    Geradenbündel auf $X$, die über $\U$ trivialisieren, so gilt:
+    \begin{align*}
+        \L \cong \L' \quad&\Leftrightarrow\quad 
+            [\gamma_\L] = [\gamma_{\L'}] \in \Hv^1(\U,\O_X^\times)\\
+        &\Leftrightarrow\quad
+            \gamma_\L - \gamma_{\L'} \in \im d
+    \end{align*}
+\end{lemma}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{lemma}
+    Sei $B := A[T_0,\ldots,T_n]$. Dann gilt auf $X = \Proj B = \P^n_A$
+    \[\O_X(m)(X) = \Gamma(X,\O_X(m)) = \begin{cases} B_m & m\geq 0\\
+        0& \text{sonst}
+    \end{cases}\]
+\end{lemma}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{korollar}
+    Das tautologische Bündel $\O_X(-1)$ ist nicht trivial 
+    (d.h. $\not\cong \O_X$).
+\end{korollar}
+
+
+\begin{definition}[projektiv, projektives $S$-Schema]
+\begin{enumerate}[label=(\roman*)]
+  \item Sei $S$ ein Basisschema. Definiere
+    \[\P^n_S := \P_{\Spec \Z}^n \times_{\Spec \Z} S.\]
+  \item Ein Morphismus von Schemata $f:X\to Y$ heißt
+    \emph{projektiv}, wenn er als
+    \[\begin{tikzcd}
+        X \rar[immersion] \drar{f}& \P^n_Y \dar{\pi}\\
+            & Y
+    \end{tikzcd}\]
+    faktorisiert.
+  \item Ein $S$-Schema $X$ heißt \emph{projektives $S$-Schema}, wenn
+    der Strukturmorphismus $f: X \to S$ projektiv ist.
+\end{enumerate}
+\end{definition}
+
+\begin{bemerkung}
+    \begin{description}
+    \item[Zu (i).] Ist $S = \Spec A$, so ist 
+        $\P^n_A = \P^n_{\Spec A}$.
+    \item[Zu (iii).] Ein $\Proj A$-Schema ist ein abgeschlossenes
+        Unterschema von $\P_A^n = \Proj A[T_0,\ldots,T_n]$.
+    \end{description}
+\end{bemerkung}
+
+
+\begin{beispiel}
+    Sei $\a \ideal A[T_0,\ldots,T_n]$ homogen, dann ist
+    \[ \Proj A[T_0,\ldots,T_n] \big/\a \immersion
+        \Proj A[T_0,\ldots,T_n] = \P^n_A\]
+    ein projektives $A$-Schema.
+\end{beispiel}
+
+\begin{definition}[sehr ample Geradenbündel]
+    Sei $A$ ein Ring und $X$ ein $A$-Schema mit einer Immersion 
+    $i:X\to \P^n_A$ (d.h. $i: X \oimmersion Z \immersion \P^n_A$), dann heißt
+    \[ i^\ast \O_{\P^n_A}(1) =: \O_X(1)\]
+    das \emph{zu $i$ gerhörige sehr ample Geradenbündel auf $X$}.
+    Schreibe analog $\O_X(m) := \O_{\P^n_A}(m)$.
+\end{definition}
 \pagebreak
+
+
+
