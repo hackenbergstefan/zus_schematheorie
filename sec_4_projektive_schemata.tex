@@ -51,19 +51,26 @@ Statt einem Körper $k$ können wir einen Ring $A$ betrachten.
 Betrachte $U_i := \Spec A[x_0,\ldots,\cancel i,\ldots,x_n] = \A_A^n$.
 
 In $\R\P^n$ würden wir diese mit dem Kartenwechsel verkleben:
-\[\everymath{\displaystyle}\begin{tikzcd}
-	& [] [y_0,\ldots,\underset{i\text{-te}}{1},\ldots,y_n] & U_i \cap U_j & \\
-	(y_0,\ldots,\cancel i,\ldots,y_n) \urar[mapsto] & h_i(U_i \cap U_j)
-		\ar{rr}{\text{Kartenwechsel}} \urar 
-		&& h_j(U_i \cap U_j) \ular \\
-	&\{(y_0,\ldots,\cancel i,\ldots,y_n) \mid y_j \neq 0\} \ar{rr}
-	\uar[empty]{\rotatebox{90}{=}}
-	&&
-	\{(z_0,\ldots,\cancel j,\ldots,z_n) \mid z_i \neq 0\}
-	\uar[empty]{\rotatebox{90}{=}}\\
-	& (y_0,\ldots,\cancel i,\ldots,y_n) \ar[mapsto]{rr} &&
-		\left(\frac{y_0}{y_j},\ldots,\underset{i\text{-te}}{\frac{1}{y_j}},
-		\ldots,\cancel j,\ldots,\frac{y_n}{y_j}\right)
+\[\everymath{\displaystyle}\begin{tikzcd}[]
+    & [] [y_0,\ldots,\underset{i\text{-te}}{1},\ldots,y_n] 
+        & U_i \cap U_j 
+        & 
+        \\
+    (y_0,\ldots,\cancel i,\ldots,y_n) \urar[mapsto] 
+        & h_i(U_i \cap U_j) \ar{rr}{\text{Kartenwechsel}} \urar 
+        &
+        & h_j(U_i \cap U_j) \ular 
+        \\
+    & \{(y_0,\ldots,\cancel i,\ldots,y_n) \mid y_j \neq 0\} \ar{rr}
+            \uar[empty]{\rotatebox{90}{=}}
+        &
+        & \{(z_0,\ldots,\cancel j,\ldots,z_n) \mid z_i \neq 0\}
+            \uar[empty]{\rotatebox{90}{=}}
+        \\
+    & (y_0,\ldots,\cancel i,\ldots,y_n) \ar[mapsto]{rr} 
+        &
+        & \left(\frac{y_0}{y_j},\ldots,\underset{i\text{-te}}{\frac{1}{y_j}},
+            \ldots,\cancel j,\ldots,\frac{y_n}{y_j}\right)
 \end{tikzcd}\]
 Betrachte also
 \begin{align*}
@@ -274,7 +281,7 @@ $V_i \xto\cong U_i$ von (affinen) Schemata existiert.
 		D(f) \arrow{ur}{\lambda^\ast}[swap]{\approx}& \\
 		D_+(f) \uar[hook]{\text{stetig}} \rar{\phi} & \Spec(\Sf)
 	\end{tikzcd}\qquad
-	\begin{tikzcd}
+	\begin{tikzcd}[]
 		& \p S_f \ar{dd}\\
 		\p \urar[mapsto] & \\
 		\p \uar[mapsto] \rar[mapsto] 

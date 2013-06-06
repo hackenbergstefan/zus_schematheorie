@@ -89,12 +89,14 @@ und $E_x$ ein $\R$-Vektorraum ist.
 Bleibt nur noch zu klären, wie die Bündelkarten 
 $\psi_U: E\rest U = \pi\inv(U) \xto{\cong} U \times \R^r$ eingehen:
 \[\begin{tikzcd}
-    \pi\inv(U) \rar \drar[swap]{\pi} & U \times \R^r \dar[swap]{\pr_U} 
-        & \lar[empty][empty]{\ni} 
-        (x,\alpha(x)) := (x, \pi_{\R^r} \circ \psi_U \circ \sigma(x)) \\
+    \pi\inv(U) \rar \drar[swap]{\pi} 
+        & U \times \R^r \dar[swap]{\pr_U} 
+        & (x,\alpha(x)) := (x, \pi_{\R^r} \circ \psi_U \circ \sigma(x))
+            \lar[empty][empty]{\ni} 
+        \\
     & U \ular[bend left, mapsto]{\cal E(U) \ni \sigma}
-        \uar[bend right,swap]{\psi_U \circ \sigma} & 
-        x \lar[empty][empty]{\ni} \uar[mapsto]
+            \uar[bend right,swap]{\psi_U \circ \sigma} 
+        & x \lar[empty][empty]{\ni} \uar[mapsto]
 \end{tikzcd}\]
 
 $\alpha: U \to \R^r$ ist eine stetige Abbildung, also

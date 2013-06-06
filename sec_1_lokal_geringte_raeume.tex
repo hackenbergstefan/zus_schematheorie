@@ -451,19 +451,20 @@ und entsprechend Garben
 	$t\in \O_Y(V)$, $V\subset Y$, $y_0\in V$.
 	Da $f\fis$ ein Garbenmorphismus ist, kommutiert damit folgendes Diagramm:
 	\[
-		\begin{tikzcd}[row sep=large, column sep=large]
-		s \dar[mapsto] \symb{\in}
-			&[-1cm] \O_Y(U) \rar{f_U\fis} \dar[swap]{\rest W} 
-			& \O_X(f\inv(U)) \dar{\rest{f\inv(W)}} \symb{\ni}
-			& \dar[mapsto] f_U\fis(s)\\
-		s\rest W = t\rest W \symb{\in}
-			& \O_Y(W) \rar{f_W\fis}				
-			& \O_X(f\inv(W)) \symb{\ni}
-			& f_U\fis(s)\rest{f\inv(W)} = f_V\fis(t)\rest{f\inv(W)}\\
-		t \uar[mapsto] \symb{\in}
-			& \O_Y(V) \rar{f_W\fis} \uar{\rest W} 
-			& \O_X(f\inv(V)) \uar[swap]{\rest{f\inv(W)}} \symb{\ni}
-			& \uar[mapsto] f_V\fis(t)\\
-		\end{tikzcd}
-	\]
+        \everymath{\displaystyle}
+        \begin{tikzcd}[row sep=large, column sep=large]
+          s \dar[mapsto] \symb{\in}
+            &[-1cm] \O_Y(U) \rar{f_U\fis} \dar[swap]{\rest W} 
+            & \O_X(f\inv(U)) \dar{\rest{f\inv(W)}} \symb{\ni}
+            &  f_U\fis(s) \dar[mapsto] \\
+          s\rest W = t\rest W \symb{\in}
+            & \O_Y(W) \rar{f_W\fis}             
+            & \O_X(f\inv(W)) \symb{\ni}
+            & f_U\fis(s)\rest{f\inv(W)} = f_V\fis(t)\rest{f\inv(W)}\\
+          t \uar[mapsto] \symb{\in}
+            & \O_Y(V) \rar{f_W\fis} \uar{\rest W} 
+            & \O_X(f\inv(V)) \uar[swap]{\rest{f\inv(W)}} \symb{\ni}
+            & f_V\fis(t) \uar[mapsto]
+        \end{tikzcd}
+      \]
 \end{bemerkung}% vim: set ft=tex :
