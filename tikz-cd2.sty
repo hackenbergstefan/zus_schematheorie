@@ -7,7 +7,7 @@
 }
 
 \newcommand{\symb}[2][]{%
-	\rar[empty][empty]{#2}
+	\rar[empty][empty]{#2}%
 }
 
 \usetikzlibrary{decorations.markings}
@@ -17,7 +17,7 @@
         markings,
         mark=at position 0.5 with {\arrow{|}}},
     /tikz/postaction={decorate}}}
-    
+
 \pgfkeys{/tikz/commutative diagrams/offene immersion/.style={
     /tikz/commutative diagrams/hook,
     /tikz/decoration={

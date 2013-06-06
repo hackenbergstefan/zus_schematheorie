@@ -111,6 +111,7 @@ DIV = 14,
   \theoremstyle{remark}
   \newtheorem{bem}[thm]{Bemerkung}
   \newtheorem{bemerkung}[thm]{Bemerkung}
+  \newtheorem{folgerung}[thm]{Folgerung}
   \newtheorem{rem}[thm]{Bemerkung}
   \newtheorem{uebung}[thm]{Übung}
   %\newtheorem{note}[thm]{Notiz}
@@ -170,6 +171,14 @@ DIV = 14,
     counter parent=satz
     ]{bemerkung}{Bemerkung}
     
+    
+  \newtikztheorem[
+    style=plain,
+    color=mycolor,
+    font header=\normalfont\sffamily\bfseries,
+    font body=\normalfont,
+    counter parent=satz
+    ]{folgerung}{Folgerung}
     
   \newtikztheorem[
     style=plain,
@@ -265,12 +274,32 @@ DIV = 14,
 \DeclareMathOperator{\res}{res}
 \DeclareMathOperator{\pr}{pr}
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\mult}{mult}
+\makeatletter
+\let\div\@undefined
+\makeatother
+\DeclareMathOperator{\div}{div}
+\DeclareMathOperator{\CaCl}{CaCl}
 \newcommand{\funcdef}[1]{%
 	\begin{array}[t]{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}
 	#1\end{array}}
 \let\xto\xrightarrow
 
+\newcommand{\cl}[1]{\overline{\{#1\}}}
+
 \newcommand{\osubset}{\subseteq^\circ}
+
+\newenvironment{einschub}[1]{\subsubsection*{Einschub: }
+    \marginpar{\ifthenelse{\isodd{\thepage}}{}{\hfill}%
+        \tikz[baseline]{\fill[col1shade2]
+        (-2ex,1ex) -- (2ex,1ex) -- (0,-1ex) -- cycle;}}}
+    {\marginpar{\ifthenelse{\isodd{\thepage}}{}{\hfill}%
+        \tikz[baseline]{\fill[col1shade2]
+        (-2ex,0) -- (2ex,0) -- (0,2ex) -- cycle;}}}
 
 %Cech 
 \newcommand{\Cech}{\v Cech}

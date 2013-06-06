@@ -1,6 +1,166 @@
 \section{Divisoren}
 
 \subsection{Cartier-Divisoren}
+\newcommand{\KX}{\cal K_X}
+
+\begin{definition}[Garbe der Keime meromorpher Funktionen]
+    Die Garbe
+    \[ a(')\]
+    mit 
+    \[
+        \KX: U \mapsto \O_X(U)[S(U)\inv]
+    \]
+    für 
+    \[S(U) := \{\sigma \in \O_X(U) \mid [\sigma]_x \in \O_{X,x}
+        \text{ regulär }\forall x\in X\}\]
+    heißt \emph{Garbe der meromorphen Funktionen}.
+\end{definition}
+
+\begin{bemerkung}
+    Ist $X$ ganz, dann ist $\KX$ die konstante Garbe mit Wert $K(X)$, 
+    schreibe $\KX = \underline{K(X)}$.
+\end{bemerkung}
+
+
+\begin{definition}[Cartier-Divisor]
+    Sei $X$ ein Schema.
+    \begin{enumerate}[label=(\roman*)]
+      \item Dann heißt $\Div(X) := \Gamma(X, \KX^\times \big/ \O_X^\times)$
+        die Gruppe der \emph{Cartier-Divisoren auf $X$}.
+      \item Das Bild von $\div: \KX^\times(X) \to \Div(X),\ f \mapsto \div(f)$
+        sind die \emph{Hauptdivisoren}.
+      \item Zwei Divisoren $D_1,D_2 \in \Div(X)$ heißen 
+        \emph{linear äquivalent}, falls $D_1 - D_2$ ein Hauptdivisor ist.
+      \item Die \emph{Cartier-Divisoren-Klassengruppe von $X$} ist
+        \[ \CaCl(X) := \Div(X) \big/ \sim,\]
+         wobei $\sim$ lineare Äquivalenz ist.
+    \end{enumerate}
+\end{definition}
+
+\begin{bemerkung}
+    Ein 
+    \[
+        D\in \Div(X) = \KX^\times \big/ \O_X^\times (X) = 
+        \varinjlim_{\U} \Hv^0(\U, \KX^\times \big/^\text{pre} \O_X^\times)
+    \]
+    entspricht einer Familie 
+    \[ D= [(U_i,f_i)_{i\in I}]\] mit
+    $X = \cup_i U_i$ einer offenen Überdeckung und 
+    $\KX^\times(U_i) \ni f_i = \tfrac{a_i}{b_i}$ mit 
+    $a_i,b_i \in \O_X^\times (U_i)$ halmweise regulär.
+\end{bemerkung}
+
+\subsubsection{Cartier-Divisoren und Geradenbündel}
+
+\begin{lemma}
+    Es existiert eine eindeutig bestimmte Untergarbe ($\O_X$-Modul-Untergarbe)
+    $\O_X(D) \subseteq \KX$
+    mit \[\O_X(D) = f_i\inv \O_X\rest{U_i}.\]
+    Sie ist unanbhängig von der Darstellung $D = (U_i,f_i)_{i\in I}$.
+\end{lemma}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{satz}
+    Die Abbildung $\rho: \Div(X) \to\Pic(X),\ D \mapsto \O_X(D)$ ist additiv
+    und induziert einen injektiven Gruppenhomomorphismus
+    \[ \rho: \CaCl(X) \hookrightarrow \Pic(X).\]
+    Es ist $\im(\rho) = \{[\L] \in \Pic(X) \mid \L \subseteq \KX\}$.
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{satz}
+    Ist $X$ ganz, so ist $\rho: \CaCl(X) \xto{\cong} \Pic(X)$ ein 
+    Isomorphismus.
+\end{satz}
+
+\subsection{Weil-Divisoren}
+
+\begin{definition}[Primzykel, Zykel, Träger eines Zykels, 
+    Zykel von Kodimension 1]
+    Sei $X$ noethersch.
+    \begin{enumerate}[label=(\roman*)]
+      \item Ein \emph{Primzykel in $X$} ist eine irreduzible, abgeschlossene
+        Teilmenge.
+      \item Ein \emph{Zykel in $X$} ist ein Element der abelschen Gruppe
+        \[\Z^{(X)} := \{Z = \sum_{x\in X} n_x \cl x \mid
+            n_x \in \Z,\ n_x = 0\text{ für fast alle }x\}.\]
+      \item Für $Z = \sum n_x \cl x$ heißt
+        \[ \supp Z := \bigcup_{x\in X\atop n_x\neq 0}\]
+        der \emph{Träger von $Z$}.
+      \item Ein Zykel $Z$ heißt von \emph{Kodimension 1}, wenn alle $x$ mit
+        $n_x \neq 0$ von Kodimension 1 sind, d.h. 
+        $\codim_X \cl x = 1$. Äquivalent dazu ist zu fordern, dass
+        $\dim \O_{X,x} = 1$.\\
+        $Z^1(X) \subseteq \Z^{(X)}$ bezeichne die Untergruppe dieser.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Weil-Divisoren]
+    Sei $X$ noethersch und integer, so heißt $Z^1(X)$ die Gruppe der
+    \emph{Weil-Divisoren}.
+\end{definition}
+
+\begin{satz}
+    Sei $X$ noethersch und integer, $0\neq f \in K(X) = \O_{X,\eta}$.
+    Dann gilt $f \in \O_{X,x}^\times$ für fast alle $x\in X$ mit
+    $\dim \O_{X,x} = 1$.
+\end{satz}
+
+
+\begin{einschub}{Integere Schemata und Bewertungen}
+Sei $X$ integer.
+
+\begin{definition}[normal, ganzabgeschlossen]
+    $X$ heißt \emph{normal}, wenn für jedes $x \in X$ der lokale Ring
+    $\O_{X,x}$ in $\Quot(\O_{X,x})$ \emph{ganzabgeschlossen} ist,
+    d.h. ist $\sigma \in \Quot(\O_{X,x})$, welches einer Polynomgleichung
+    $f(\sigma) = 0$ mit $f \in \O_{X,x}[X]$, $f$ normiert, genügt,
+    so ist $\sigma \in \O_{X,x}$.
+\end{definition}
+
+\begin{bemerkung}
+    Ist $X$ lokal noethersch, integer, normal und $x \in X$ ein Punkt mit
+    Kodimension 1, so ist $\O_{X,x}$ ein lokaler Dedekindring.
+\end{bemerkung}
+
+\begin{lemma}
+    Jeder lokale Dedekindring $(A,\m)$ ist ein Hauptidealring. 
+\end{lemma}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{folgerung}
+    $\O_{X,x}$ trägt die kanonische diskrete Bewertung
+    \[ \nu_x: \funcdef{ \O_{X,x} & \to & \N \cup\{\infty\} \\
+        0\neq a = u \pi^r & \mapsto & r = \sup\{k \mid a \in \m^k\}\\
+        0 & \mapsto & \infty  }\]
+    wobei das maximale Ideal $\m = (\pi)$ sei. Fortgesetzt auf
+    $\Quot(\O_{X,x})$ ergibt sich
+    \[\nu_x: \Quot(\O_{X,x}) = K(X) \to \Z\cup \{\infty\}.\]
+    Das bedeutet, man hat die diskrete Bewertung
+    \[\mult_x: K(X) \to \Z\cup\{\infty\}\]
+    mit
+    \begin{itemize}
+      \item $\mult_x(f) = \infty$ $\Leftrightarrow$ $f=0$.
+      \item $\mult_x(fg) = \mult_x(f) + \mult_x(g)$.
+      \item $\mult_x(f+g) \geq \min\{\mult_x(f), \mult_x(g)\}$.
+    \end{itemize}
+\end{folgerung}
+\end{einschub}
+
+\begin{definition}[Hauptdivisor]
+    Sei $X$ noethersch und normal. Für $f \in K(X)\setminus\{0\}$ heißt
+    \[(f) := \sum_{x\in X\atop \dim\O_{X,x} = 1} \mult_x(f) \cdot \cl x
+        \quad \in Z^1(X)\]
+    der \emph{Hauptdivisor zu $f$}.
+\end{definition}
+
+
 
 \pagebreak
 
