@@ -1,2 +1,28 @@
 \section{Glatt, regulär \& normal} %Seite 125
+
+\begin{definition}[Zariski-Tangentialraum]
+    Der \emph{Zariski-Tangentialraum von $X$ bei $x_0$} ist
+    \[T_{x_0} X := \Hom_{k(x_0)}(\m\big/\m^2, k(x_0)).\]
+\end{definition}
+
+\subsection{Dimensionsbegriff}
+
+\begin{definition}[Krull-Dimension, lokale Dimension, Kodimension]
+\begin{enumerate}[label=(\roman*)]
+  \item Sei $X$ ein topologischer Raum. Die \emph{Krull-Dimension von $X$} ist
+    \[\dim X := \sup\{n\in\N_0 \mid
+        \exists Z_0 \subsetneq Z_1 \subsetneq \ldots \subsetneq Z_n
+        \text{ von irreduziblen Teilmengen von $X$}\}\]
+  \item Sei $X$ ein topologischer Raum. $x_0 \in X$. Die 
+    \emph{lokale Dimension bei $x_0$} ist
+    \[\dim_{x_0} X := \inf\{\dim U \mid x_0\in U \osubset X\}.\]
+  \item Sei $X$ ein topologischer Raum. $Y\subset X$ irreduzibel und
+    abgeschlossen. 
+    \[\codim(Y,X) := \sup\{n\in\N_0 \mid
+        \exists Y = Z_0 \subsetneq Z_1 \subsetneq \ldots \subsetneq Z_n
+        \text{ von irreduziblen Teilmengen von $X$}\}\]
+    heißt \emph{Kodimension von $Y$ in $X$}.
+\end{enumerate}
+\end{definition}
+
 % vim: set ft=tex :

@@ -112,5 +112,73 @@
 \end{proof}
 
 
+\begin{beispiel}
+    Sei $a \in \Z \setminus\{0\}$ und 
+    $X := \Spec\Z[T_1,T_2] \big/ (T_1T_2^2-a) \xto{f} \Spec \Z$. 
+    Die Fasern zu Punkten in $\Spec \Z$ sind:
+    \begin{itemize}
+      \item $(p) \in \Spec\Z$, $p$ Primzahl. Haben
+        \[\begin{tikzcd}
+            X_p \dar \rar  
+                & X \dar\\
+            \Spec\F_p \rar{\iota_p} 
+                & \Spec \Z 
+        \end{tikzcd}\]
+        mit
+        \[X_p = \Spec\left(\F_p[T_1,T_2 \big/ (T_1T_2^2 - \bar a\right)\]
+        \begin{description}
+        \item[1. Fall: $p\nmid a$.] Dann ist
+            \[X_p \cong \Spec \F_p[T,T\inv].\]
+        \item[2. Fall: $p \mid a$.] Dann hat $\F_p[T_1,T_2]\big/(T_1T_2^2)$
+            nilpotente Elemente, also ist $X_p$ nicht reduziert und 
+            nicht irreduzibel.
+        \end{description}
+        Man nennt $X_p$ auch oft die \emph{Reduktion von $X \mod p$}.
+        \item $(0)\in \Spec\Z$, so hat man
+            \[\begin{tikzcd}
+                X_\Q := X_0 \dar \rar  
+                    & X \dar\\
+                \Spec\Q \rar 
+                    & \Spec \Z 
+            \end{tikzcd}\]
+            und $X_\Q = \Spec(\Q[T_1,T_2]\big/(T_1T_2^2 - a)) \cong \G_{m,\Q}$.
+    \end{itemize}
+\end{beispiel}
 
+\begin{definition}[multiplikative Gruppe von $k$]
+    Ist $k$ ein Körper, so heißt
+    \[\bG_{m,k} := \Spec k[T,T\inv]\]
+    die \emph{multiplikative Gruppe von $k$} als $k$-SChema.
+    Man definiert auch
+    \[\bG_m := \Spec \Z[T,T\inv].\]
+\end{definition}
+
+\begin{bemerkung}
+    Man hat 
+    \[\bG_{m,k}= \Spec k[T,T\inv] \to \Spec k[T] = \A^1_k\]
+    einen Homöomorphismus auf $D(T) \osubset \A^1_k$.
+\end{bemerkung}
+
+\subsubsection{Basiswechsel und projektive Schemata}
+\begin{satz}
+    Sei $A$ ein Ring, $S = \oplus_{d\geq 0} S_d$ eine graduierte $A$-Algebra.
+    Sei $B$ eine $A$-Algebra via $\varphi:A\to B$ und 
+    \[T:= S \otimes_A B = \oplus_{d\geq 0} (S_d \otimes_A B)\]
+    eine graduierte $B$-Algebra. Dann gilt:
+    \[ \Proj(T) \cong \Proj(S) \times_{\Spec A} \Spec B.\]
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{definition}[$n$-dimensionale projektive Raum über $S$]
+    Ist $S$ ein Schema, so heißt
+    \[\P^n_S := \P^n_{\Spec \Z} \times_{\Spec \Z} S\]
+    der \emph{$n$-dimensionale projektive Raum über $S$}.
+\end{definition}
+
+\begin{bemerkung}
+    Ist $S= \Spec A$, so stimmen die Definitionen
+    von $\P^n_{\Spec A}$ überein.
+\end{bemerkung}
 % vim: set ft=tex :
