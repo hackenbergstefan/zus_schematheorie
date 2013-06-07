@@ -1,2 +1,78 @@
-\section{k-Varietät} %Seite 154
+\section{$k$-Varietät} %Seite 154
+
+\begin{beispiel}
+    Ein einführendes Beispiel einer $k$-Varietät ist gegeben durch
+    abgeschlossene Unterschemata, wie beispielsweise
+    \[ \Spec k[X_1,\ldots,X_n] \big/\a \to \Spec k[X_1,\ldots,X_n] = \A^n_k.\]
+\end{beispiel}
+
+
+\begin{definition}[endlich]
+    \label{def:ringhom endlich}
+    \index[def]{Ringhomormophismus!endlich}
+    Ein Ringhomomorphismus $\varphi: B \to A$ heißt \emph{endlich},
+    wenn $A$ dadurch zu einem endlich erzeugten $B$-Modul wird.
+\end{definition}
+
+\begin{satz}[Noether-Normalisierung]
+    Sei $A$ eine endlich erzeugte $k$-Algebr. Dann existiert $d\geq 0$ und
+    ein endlicher injektiver Ringhomomorphismus
+    \[k[T_1,\ldots,T_n] \hookrightarrow A.\]
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{korollar}
+    Ist $A$ eine endlich erzeugte $k$-Algebra und $\m \ideal A$ maximal,
+    dann ist $A\big/\m$ eine endliche Körpererweiterung von $k$.
+\end{korollar}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{korollar}
+    Sei $X$ eine $k$-Varietät und $x\in X$ ein abgeschlossener Punkt, so ist
+    $k(x)\mid k$ endlich.
+\end{korollar}
+\begin{proof}
+klar.
+\end{proof}
+
+\begin{satz}[(schwacher) Hilbertscher Nullstellensatz]
+    Sei $k$ algebraisch abgeschlossen, $\m\ideal k[X_1,\ldots,X_n]$ ein
+    maximales Ideal, so gilt
+    \[\m = (X_1-a_1,\ldots,X_n-a_n)\]
+    für geeignete $a_1,\ldots,a_n \in k$.
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+
+\begin{lemma}
+    Sei $X$ eine irreduzible algebraische $k$-Varietät, dann gilt für
+    $x\in |X|$:
+    \[\dim \O_{X,x} = \dim X.\]
+\end{lemma}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{lemma}
+    Ist $\m \ideal k[X_1,\ldots,X_n]$ ein maximales Ideal, so existieren
+    Polynome
+    \[f_1(X_1), f_2(X_1,X_2), \ldots, f_n(X_1,\ldots,X_n)\]
+    mit
+    \[\m = (f_1,\ldots,f_r).\]
+\end{lemma}
+\begin{proof}
+Induktion mit Noethernormalisierung.
+\end{proof}
+
+\begin{folgerung}
+    $\A^n_k$ ist regulär bei allen $x \in |\A^n_k|$.
+\end{folgerung}
+
+
 % vim: set ft=tex :

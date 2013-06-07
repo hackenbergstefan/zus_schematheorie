@@ -1,6 +1,7 @@
 \section{Glatt, regulär \& normal} %Seite 125
 
 \begin{definition}[Zariski-Tangentialraum]
+    \index[def]{Schema!Zariski-Tangentialraum}
     Der \emph{Zariski-Tangentialraum von $X$ bei $x_0$} ist
     \[T_{x_0} X := \Hom_{k(x_0)}(\m\big/\m^2, k(x_0)).\]
 \end{definition}
@@ -8,6 +9,9 @@
 \subsection{Dimensionsbegriff}
 
 \begin{definition}[Krull-Dimension, lokale Dimension, Kodimension]
+\index[def]{Krull-Dimension}
+\index[def]{Krull-Dimension!lokale Dimension}
+\index[def]{Krull-Dimension!Kodimension}
 \begin{enumerate}[label=(\roman*)]
   \item Sei $X$ ein topologischer Raum. Die \emph{Krull-Dimension von $X$} ist
     \[\dim X := \sup\{n\in\N_0 \mid
@@ -22,7 +26,323 @@
         \exists Y = Z_0 \subsetneq Z_1 \subsetneq \ldots \subsetneq Z_n
         \text{ von irreduziblen Teilmengen von $X$}\}\]
     heißt \emph{Kodimension von $Y$ in $X$}.
+  \item Sei $X$ ein topologischer Raum. Sei $Y\subset X$ abgeschlossen.
+    \[\codim(Y,X) := \inf\{ \codim(Z,X) \mid Z\subset Y 
+        \text{ abgeschlossen, irreduzibel}\}\]
+    heißt \emph{Kodimension von $Y$ in $X$}. 
 \end{enumerate}
 \end{definition}
+
+\begin{bemerkung}
+    Speziell für $X = \Spec A$ hat man
+    für $\p \in \Spec A$
+    \[\dim_\p A := \inf \{\dim A_f \mid f \in A, f\notin\p\}.\]
+\end{bemerkung}
+
+\begin{lemma}
+    Sei $X$ ein topologischer Raum. 
+    Ist $Z\subseteq X$ abgeschlossener Teilraum. Dann gilt
+    \[\codim(Z,X) + \dim Z \leq \dim X.\]
+\end{lemma}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{definition}[Höhe, Krull-Dimension von Ringen]
+    \index[def]{Ring!Höhe eines (Prim-)Ideals}
+    \index[def]{Ring!Krull-Dimension}
+    Sei $A$ ein Ring.
+    \begin{enumerate}[label=(\roman*)]
+      \item Für $\p \in \Spec A$ heißt
+        \[ \height(\p) := \sup\{n \in \N_0 \mid 
+            \exists \p_0 \subsetneq \p_1 \subsetneq \ldots \subsetneq \p_n = \p,
+             \p_i \ideal A \text{ Primideale}\}\]
+        die \emph{Höhe von $\p$}.
+      \item Für $\a \ideal A$ heißt 
+        \[\height(\a) := \inf\{\height(\p) \mid \a \subseteq \p \in \Spec A\}\]
+        die \emph{Höhe von $\a$}.
+      \item Die \emph{Krull-Dimension von $A$} ist
+        \begin{align*}
+            \dim A &:=\sup\{ n\in \N_0 \mid \exists \p_0 \subsetneq \ldots 
+                \subsetneq \p_n,\ \p_i\in\Spec A\}\\
+                &= \sup\{\height(\p)\mid \p \in \Spec A\}
+        \end{align*} 
+    \end{enumerate}
+\end{definition}
+
+\begin{satz}
+    Für einen Ring $A$ und $\p \in \Spec A$ gilt:
+    \begin{align*}
+        \dim A &= \dim\Spec A\\
+        \codim(V(\p), \Spec A) &= \height(\p)
+    \end{align*}
+\end{satz}
+\begin{proof}
+    Klar, Da $Z\subsetneq \Spec A$ irreduzibel abgeschlossen, genau dann, wenn
+    $ Z = V(\p)$.
+\end{proof}
+
+\begin{lemma}
+    \begin{enumerate}[label=(\roman*)]
+      \item Für $\p\in\Spec A$ gilt
+        \[\height(\p) = \dim A_\p.\]
+      \item 
+        \[\dim A = \sup\{ \dim A_\m \mid \m \ideal A\text{ maximal}\}.\] 
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+\TODO
+\end{proof}
+
+
+\begin{bemerkung}
+    Ist $A$ nullteilerfrei, so beginnt eine aufsteigende Kette von Primidealen
+    bei $\p_0 = (0)$. Hat $A$ Nullteiler, so ist $(0)$ kein Primideal. 
+\end{bemerkung}
+
+\begin{beispiel}
+    \begin{itemize}
+      \item Ist $k$ ein Körper, so ist $\dim k = 0$.
+      \item Ist $A$ ein nullteilerfreier Hauptidealring, so ist 
+        $\dim A = 1$.
+      \item Ist $K \mid \Q$ ein Zahlkörper, $\O_K \subseteq K$ der Ring
+        der ganzen Zahlen, so ist
+        $\dim \O_K = 1$.
+    \end{itemize}
+\end{beispiel}
+
+\begin{bemerkung}
+    In der Tat gilt für einen nullteilerfreien Ring $A$:
+    \[ \dim A = 1 \quad\Leftrightarrow\quad
+        \text{Jedes Primideal } \p\neq (0) \text{ ist maximal}.\]
+\end{bemerkung}
+
+\begin{satz}[Krulls-Hauptidealsatz]
+    Sei $A$ noethersch und $f\in A \setminus A^\times$. Ferner sei
+    $\p\in\Spec A$ mit $f\in \p$ und $\p$ minimal mit dieser Eigenschaft.
+    Dann gilt
+    \[\height(\p) \leq 1.\]
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+Zum Beweis benötigt man:
+
+\begin{lemma}[Nakajomas Lemma]
+    Sei $(A,\m)$ ein lokaler Ring und $M$ ein endlich erzeugter $A$-Modul
+    mit $M = \m M$. Dann gilt
+    \[M = (0)\] 
+\end{lemma}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{korollar}
+    Sei $(A,\m)$ ein lokaler Ring und $M$ ein endlich erzeugter $A$-Modul.
+    Sei $N\subseteq M$ ein $A$-Untermodul mit $M \subseteq N + \m M$.
+    Dann gilt
+    \[N = M\]
+\end{korollar}
+\begin{proof}
+    Wende Nakajomas Lemma auf $M/N$ an.
+\end{proof}
+
+\begin{lemma}
+    Sei $A$ noethersch und nullteilerfrei und $M$ ein endlich erzeugter
+    $A$-Modul. Ist ferner $\q \ideal A$ ein echtes Ideal, so gilt
+    \[\bigcap_{n\in\N} \q^n M = 0.\]
+\end{lemma}
+
+Ein Beispiel zu Krulls-Hauptidealsatz:
+
+\begin{beispiel}
+    Sei $A = k[X_1,\ldots,X_n]$, $f  = f(X_1,\ldots,X_n)$ und
+    $\p$ wie in Krulls-Hauptidealsatz, so ist $V((f)) \supseteq V(\p)$, 
+    d.h. $V(\p)$ ist maximal unter den abgeschlossenen Teilmengen von $V((f))$. 
+\end{beispiel}
+
+
+Ein Korollar zu Krulls-Hauptidealsatz:
+\begin{korollar}
+    Sei $A$ noethersch, $f\in A$ und
+    \[\p_0 \subsetneq \p_1 \subsetneq \ldots \subsetneq \p_n = \p\]
+    eine Primidealkette mit $f \in \p$. Dann existiert eine Primidealkette
+    \[\q_1 \subsetneq \q_2 \subsetneq \ldots \subsetneq \q_n = \p\]
+    mit $f \in \q_1$.
+\end{korollar}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{korollar}
+    Sei $A$ noethersch, $\a = (a_1,\ldots,a_r) \ideal A$. Dann gilt:
+    Ist $\p \in \Spec A$ minimal mit $a\subseteq \p$, so ist
+    \[\height(\p) \leq r.\]
+    Insbesondere ist also
+    \[\height(\p) \leq r.\]
+\end{korollar}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{korollar}
+    Ist $(A,\m)$ ein noetherscher, lokaler Ring, so ist $\dim A < \infty$ und
+    \[\dim A \leq \dim_{A/\m} \m\big/\m^2.\]
+\end{korollar}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{bemerkung}
+    Erinnern wir an den Tangentialraum, so haben wir in obigem Fall
+    \[T_\m\Spec A = (\m\big/\m^2)^\vee \]
+    wobei $^\vee$ den Dualraum als $A/\m$-Vektorraum meint.
+\end{bemerkung}
+
+\begin{folgerung}
+    Ist $X$ ein lokal, noethersches Schema und $x\in X$. Dann gilt
+    \[\dim \O_{X,x} \leq \dim_{k(x)} T_x X.\]
+\end{folgerung}
+
+
+\subsection{Regularität}
+
+\begin{definition}[regulär]
+    \label{def:regular}
+    \index[def]{Schema!regulär}
+    \index[def]{Ring!lokal!regulär}
+    \begin{enumerate}[label=(\roman*)]
+      \item Ein lokaler noetherscher Ring $(A,\m)$ heißt \emph{regulär},
+        wenn $\dim A = \dim_{A/\m} \m\big/\m^2$.
+      \item Ein lokal noethersches Schema $X$ heißt 
+        \emph{regulär bei $x \in X$}, wenn $\O_{X,x}$ regulär ist. 
+    \end{enumerate}
+\end{definition}
+
+
+\begin{lemma}
+    Sei $(A,\m)$ ein noetherscher, lokaler Ring. Dann gilt
+    \[A \text{ regulär} \quad\Leftrightarrow\quad
+        \m \text{ wird von } \dim A \text{-vielen Elementen erzeugt}.\]
+\end{lemma}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{bemerkung}
+    Im $C^\infty$ Fall haben wir
+    \[ C^\infty(\R^n)_0 = \{[f]\mid f: U \ni 0 \xto{C^\infty} \R^n\}\]
+    mit dem maximalen Ideal
+    \[ \m = \{[f] \mid f(0) = 0\}.\]
+    Dann kann man $g\in \m$ darstellen durch
+    \[ g(y) = \sum_{i=1}^n g_i(y) y_i\]
+    mit $y_i:(x_1,\ldots,x_n) \mapsto x_i$.
+\end{bemerkung}
+
+\begin{satz}
+    Sei $(A,\m)$ ein lokaler noetherscher Ring und $f\in \m$. Dann gilt:
+    \begin{enumerate}[label=(\roman*)]
+      \item $\dim A\big/(f) \geq \dim A -1$.
+      \item Ist $f$ nicht in einem minimalen Primideal enthalten, so gilt
+        \[\dim A\big/(f) = \dim A -1. \] 
+    \end{enumerate}
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{bemerkung}
+    Ist in obigem Fall $A$ nullteilerfrei, so gilt insbesondere
+    \[f \text{ nicht in einem Primideal enthalten }\quad\Leftrightarrow\quad 
+        f \neq 0\]
+\end{bemerkung}
+
+\begin{lemma}
+    Sei $(A,\m)$ ein lokaler noetherscher Ring und $\n \ideal A[T]$ maximal
+    mit $\n\cap A = \m$, so gilt
+    \[ \height^{A[T]} (\n) = \dim A + 1\]
+\end{lemma}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{korollar}
+    Ist $A$ noetherscher Ring, so folgt 
+    \[\dim A[T_1,\ldots,T_n] = \dim A + n.\]
+\end{korollar}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{korollar}
+    Es gilt
+    \[\dim \A^n_k = \dim k[T_1,\ldots,T_n] = n.\]
+\end{korollar}
+
+\begin{satz}
+    Jeder regulärer, lokaler, noetherscher Ring ist nullteilerfrei.
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{definition}[Koordinatensystem]
+    \label{def:koordinatensystem}
+    \index[def]{Ring!lokal!Koordinatensystem}
+    \index[def]{Ring!regulär!Koordinatensystem}
+    Ist $(A,\m)$ ein regulärer, lokaler, noetherscher Ring und $\dim A = d$,
+    dann nennt man ein Erzeugendensystem $\m = (x_1,\ldots,x_d)$
+    ein \emph{Koordinatensystem von $(A,\m)$} oder
+    \emph{System von Parametern}
+\end{definition}
+
+\begin{satz}
+    Sei $k$ ein Körper und 
+    \[X = \Spec k[X_1,\ldots,X_n]\big/\a \hookrightarrow \A^n_k\]
+    mit $\a = (f_1,\ldots,f_r)$, so gilt:
+    \[ X \text{ regulär bei }x\in X(k) \quad\Leftrightarrow\quad
+        \rk\left(\left.\frac{\partial f_i}{\partial x_j}\right|_a\right) = 
+        n - \dim \O_{X,x}\]
+    wobei $x = (X_1 - a_1,\ldots,X_n-a_n)$ und $a = (a_1,\ldots,a_n)$ ist.
+\end{satz}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{bemerkung}
+    In obiger Situation gilt:
+    \begin{align*}
+        x \in V(\a) \quad&\Leftrightarrow\quad (X_1-a_1,\ldots,X_n-a_n) 
+            \in V(\a)\\
+        &\Leftrightarrow\quad
+        f_i(a_1,\ldots,a_n) = 0\ \forall i=1,\ldots,r.
+    \end{align*}
+\end{bemerkung}
+
+\subsection{Glattheit}
+
+\begin{definition}[glatt]
+    Eine $k$-Varietät $X \in \Var_k$ heißt \emph{glatt bei $x\in X$}, wenn
+    die Punkte $\bar x \in X_{\bar k}$ regulär sind.
+\end{definition}
+
+\begin{bemerkung}
+    In obiger Situation ist dabei $\bar k \mid k$ ein algebraischer Abschluss
+    und 
+    \[\begin{tikzcd}
+        \bar x \rar[mapsto] 
+        & x\\[-15pt]
+        X_{\bar k} := X \times_{\Spec k} \Spec \bar k \rar \dar 
+        & X \dar
+        \\
+        \Spec \bar k \rar
+        & \Spec k
+    \end{tikzcd}\]
+    $\bar x$ ist dabei nicht eindeutig.
+\end{bemerkung}
+
+
+
 
 % vim: set ft=tex :

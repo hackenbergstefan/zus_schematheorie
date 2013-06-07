@@ -1,2 +1,107 @@
 \section{Der Punktefunktor} %Seite 159
+
+Ein wenig Kategorientheorie:
+\begin{definition}[treu, volltreu]
+    \label{def:treu}
+    \index[def]{Funktor!treu}
+    \index[def]{Funktor!volltreu}
+    Ein Funktor $F:\cal C \to \cal D$ heißt
+    \emph{treu}, falls für alle $X,Y \in \Obj(\cal C)$
+    \[F : \Hom_{\cal C}(X,Y) \to \Hom_{\cal D}(F(X),F(Y))\]
+    injektiv ist.
+    
+    Er heißt \emph{volltreu}, falls für alle $X,Y \in \Obj(\cal C)$
+    \[F :\Hom_{\cal C}(X,Y) \to \Hom_{\cal D}(F(X),F(Y))\]
+    eine Bijektion ist.
+\end{definition}
+
+
+\begin{notation}
+    Sind $\cal A$, $\cal B$ Kategorien, so definieren wir
+    \[\cal B^{\cal A} := 
+        \begin{cases}
+            \Obj: \text{ Funktoren }F:\cal A \to \cal B\\
+            \Morph: \Hom_{\cal B^{\cal A}} = 
+                \text{ natürliche Transformationen}
+        \end{cases}\]
+\end{notation}
+
+
+\begin{definition}[Punktefunktor, darstellbar]
+    \label{def:punktefunktor}
+    \index[def]{Punktefunktor}
+    \index[def]{Funktor!darstellbar}
+    Zu $X \in \Obj \cC$ heißt
+    \[h_X: \funcdef{ \cC\op &\to& \Set \\
+        T & \mapsto & \Hom_\cC(T,X)}\]
+    der \emph{Punktefunktor zu $X$}.
+    Es ist $h_X \in \Obj(\Set^{\cC\op})$.
+    
+    Ein Funktor $F \in \Obj(\Set^{\cC\op})$ heißt \emph{darstellbar}, 
+    wenn es ein $X \in \Obj(\cC)$ gibt, so dass
+    \[F \cong h_X\]
+    in $\Set^{\cC\op}$ gilt.
+\end{definition}
+
+
+\begin{lemma}[Yoneda Lemma]
+    \begin{enumerate}[label=(\roman*)]
+      \item Ist $F: \cC\op \to \Set$ beliebig, so ist für $X\in \Obj\cC$:
+          \[ \funcdef{ \Hom_{\Set^{\cC\op}}(h_X,F) &\to& F(X) \\
+            \tau &\mapsto & \tau_X(\id_X) }\]
+          eine Bijektion, wobei 
+          \[\tau_X: 
+          h_X(X) = \Hom(X,X) \to F(X).\]
+      \item Es ist
+        \[ h: \funcdef{ \C & \to & \Set^{\cC\op} \\
+            X &\mapsto & h_X}\]
+        eine Äquivalenz von $\cC$ zur vollen Unterkategorie der darstellbaren
+        Funktoren, d.h. $h$ ist volltreu und jeder darstellbare Funktor
+        ist insomorph zu einem $h_X$. Insbesondere gilt:
+        \[h_X \cong h_{\widetilde X} \text{ als Funktoren}
+            \quad\Rightarrow\quad
+            X \cong \widetilde X \text{ in }\cC\]
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{definition}[Gruppenschema]
+    \label{def:Gruppenschema}
+    \index[def]{Schema!Gruppenschema}
+    Ein \emph{Gruppenschema} ist ein Schema $G$, so dass
+    \[ \begin{tikzcd}
+        h_G:  \Sch\op \rar \drar{\exists} 
+        &\Set
+        \\
+        & \Gr \uar
+    \end{tikzcd}\]
+    über $\Gr$ faktorisiert.
+\end{definition}
+
+\begin{bemerkung}
+    Das bedeutet: Für jedes $T\in \Sch$ ist $G(T) = \Hom(T,G)$ ein Gruppe.
+\end{bemerkung}
+
+\begin{beispiel}
+    Sei $k$ ein algebraisch abgeschlossener Körper, $X \in \Sch|_k$ so 
+    hat man den Funktor
+    \[ \Hilb_{X|k,n}: \funcdef{ \Sch|_k\op &\to& \Set \\
+        T &\mapsto& \left\{ Z \immersion X \times_{\Spec k} T \left|
+            \parbox{5cm}{$Z$ ist abgeschlossenes Unterschema;
+            $Z\to T$ flach; jede Faster $Z_t$ für einen
+            $k$-rationalen Punkt $t$ ist $0$-dimensional von Länge $n$}
+             \right.\right\}}\]
+             
+    Betrachte nun 
+    \[\Hilb_{X|_k,n}(\Spec k) = \{ Z \immersion X \mid 
+        Z \text{ abgeschlossenes Unterschema }, \dim Z = 0, \dim_k \O_Z(Z) = n\}
+    \]
+    so stellt sich die Frage: Gibt es ein Schema $H$ mit
+    \[H(\Spec k) = \Hilb_{X|_k,n}(\Spec k).\]
+    Die Antwort sei vorweg genommen: Ja, falls $X$ gewisse Voraussetzungen 
+    erfüllt.
+\end{beispiel}
+
 % vim: set ft=tex :
