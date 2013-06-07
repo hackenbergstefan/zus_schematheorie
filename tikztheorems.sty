@@ -5,8 +5,19 @@
 \RequirePackage{tikz}
 \RequirePackage{calc}
 \usetikzlibrary{calc}
+\RequirePackage{kvoptions}
+\RequirePackage{comment}
 
-\makeatletter
+%Option to hide or show proofs
+\DeclareBoolOption[false]{hideproof}
+
+
+% process options
+\ProcessKeyvalOptions*
+
+
+
+
 % %% Improve key handling ------------------------------------------------------
 % \newcommand{\createpgfvaluekey}[1]{
 % 	\pgfkeys{/ttm/#1/.code={\pgfkeyssetvalue{/ttm/#1}{##1}}}
@@ -585,10 +596,6 @@
 
 
 
-\makeatother
-%%%%%%%%%%%%%%%%%%%%%%%
-
-
 
 %% Preconfig ntheorem ---------------------------------------------------------
 \theoremstyle{nonumberplain}
@@ -600,11 +607,14 @@
 \RequirePackage{amssymb}
 \newtheorem{proof}{Beweis}
 \qedsymbol{\ensuremath{_\square}}
+
+\iftikztheorems@hideproof
+    \excludecomment{proof}
+\fi
 %% ----------------------------------------------------------------------------
 
 
 %% Hacking ntheorem, i.e. redefine some commands ------------------------------
-\makeatletter
 \newtoks\theoremcolor
 \global\theoremcolor{black}
 \def\theorem@color{black}
