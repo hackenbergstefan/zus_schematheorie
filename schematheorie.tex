@@ -117,7 +117,7 @@ DIV = 14,
   %\newtheorem{note}[thm]{Notiz}
   %\newtheorem{case}{Fall}
 \else
-  \usepackage{tikztheorems}
+  \usepackage[hideproof=true]{tikztheorems}
   \newtikztheorem[
     style=elegantbreak,
     color=mycolor,
@@ -222,12 +222,15 @@ DIV = 14,
 \let\bb\mathbb
 \let\cal\mathcal
 \let\fr\mathfrak
+%Calligraphy
 \newcommand{\F}{\cal{F}}
 \newcommand{\G}{\cal{G}}
 \renewcommand{\O}{\cal{O}}
 \renewcommand{\L}{\cal{L}}
 \newcommand{\U}{\cal{U}}
 \newcommand{\M}{\cal{M}}
+\newcommand{\cC}{\cal{C}}
+%BB
 \newcommand{\R}{\bb{R}}
 \newcommand{\N}{\bb{N}}
 \newcommand{\C}{\bb{C}}
@@ -236,9 +239,11 @@ DIV = 14,
 \newcommand{\A}{\bb{A}}
 \newcommand{\bG}{\bb{G}}
 \renewcommand{\P}{\bb{P}}
+%Misc
 \newcommand{\rest}[1]{\big|_{#1}}
 \newcommand{\inv}{^{-1}}
 \newcommand{\fis}{^{\#}}
+%Categories
 \newcommand{\kat}[1]{\mathbf{#1}}
 \newcommand{\PSh}{\kat{PSh}}
 \newcommand{\Sh}{\kat{Sh}}
@@ -246,10 +251,15 @@ DIV = 14,
 \newcommand{\Ab}{\kat{Ab}}
 \newcommand{\Top}{\kat{Top}}
 \newcommand{\Sch}{\kat{Sch}}
+\newcommand{\Set}{\kat{Set}}
+\newcommand{\Gr}{\kat{Gr}}
 \newcommand{\Moduln}[1]{#1\text{-}\kat{Mod}}
 \newcommand{\affSch}{\kat{Sch}^\kat{aff}}
+\newcommand{\Var}{\kat{Var}}
 \newcommand{\op}{^\mathrm{op}}
+%Fracturs
 \newcommand{\m}{\fr{m}}
+\newcommand{\n}{\fr{n}}
 \newcommand{\p}{\fr{p}}
 \newcommand{\q}{\fr{q}}
 \renewcommand{\a}{\fr{a}}
@@ -285,6 +295,10 @@ DIV = 14,
 \makeatother
 \DeclareMathOperator{\div}{div}
 \DeclareMathOperator{\CaCl}{CaCl}
+\DeclareMathOperator{\height}{ht}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Hilb}{Hilb}
+
 \newcommand{\funcdef}[1]{%
 	\begin{array}[t]{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}
 	#1\end{array}}
