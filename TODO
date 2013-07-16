@@ -1,6 +1,22 @@
+Übereinstimmungen in Binärdatei develop.dvi.
+Übereinstimmungen in Binärdatei final.dvi.
 runlatexmk.sh:touch TODO
 runlatexmk.sh:grep -r --exclude='TODO' "TODO" * > TODO
 schematheorie.tex:\newcommand{\TODO}{\textcolor{red}{\sffamily\bfseries 
+sec_10_ox_moduln.tex:\TODO
+sec_10_ox_moduln.tex:\TODO
+sec_10_ox_moduln.tex:\TODO
+sec_10_ox_moduln.tex:\TODO
+sec_10_ox_moduln.tex:\TODO
+sec_10_ox_moduln.tex:\TODO
+sec_10_ox_moduln.tex:    Idee klassisch: \TODO.
+sec_10_ox_moduln.tex:\TODO
+sec_10_ox_moduln.tex:\TODO
+sec_10_ox_moduln.tex:\TODO
+sec_10_ox_moduln.tex:\TODO
+sec_11_divisoren.tex:\TODO
+sec_11_divisoren.tex:\TODO
+sec_11_divisoren.tex:\TODO
 sec_2_affine_schemata.tex: TODO
 sec_3_beispiele.tex:	TODO.
 sec_4_projektive_schemata.tex:    \TODO
@@ -18,3 +34,22 @@ sec_5_eigenschaften_von_schemata.tex:\TODO
 sec_5_eigenschaften_von_schemata.tex:\TODO
 sec_6_faserprodukt.tex:    \TODO
 sec_6_faserprodukt.tex:    \TODO
+sec_6_faserprodukt.tex:\TODO
+sec_7_glatt_regulaer_und_normal.tex:\TODO
+sec_7_glatt_regulaer_und_normal.tex:\TODO
+sec_7_glatt_regulaer_und_normal.tex:\TODO
+sec_7_glatt_regulaer_und_normal.tex:\TODO
+sec_7_glatt_regulaer_und_normal.tex:\TODO
+sec_7_glatt_regulaer_und_normal.tex:\TODO
+sec_7_glatt_regulaer_und_normal.tex:\TODO
+sec_7_glatt_regulaer_und_normal.tex:\TODO
+sec_7_glatt_regulaer_und_normal.tex:\TODO
+sec_7_glatt_regulaer_und_normal.tex:\TODO
+sec_7_glatt_regulaer_und_normal.tex:\TODO
+sec_7_glatt_regulaer_und_normal.tex:\TODO
+sec_7_glatt_regulaer_und_normal.tex:\TODO
+sec_8_k-varietaet.tex:\TODO
+sec_8_k-varietaet.tex:\TODO
+sec_8_k-varietaet.tex:\TODO
+sec_8_k-varietaet.tex:\TODO
+sec_9_der_punktefunktor.tex:\TODO
