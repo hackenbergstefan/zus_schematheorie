@@ -1,1 +1,35 @@
 \section{Differentiale} %Seite 139
+
+\begin{defn}
+Eine \emph{$A$-Derivation von $B$ nach $M$} ist eine Abb
+\[
+  D:B\rightarrow M
+\]
+die
+\begin{itemize}
+\item $A$-linear ist
+\item die Leibnitz-Regel $D(b\cdot\tilde b)=bD(\tilde b)+\tilde bD(b)$
+erfüllt
+\end{itemize}
+\end{defn}
+
+\begin{defn}
+Der \emph{$B$-Modul der $1$-Formen} $\Omega_{B\mid A}^1$ ist ein $B$-Modul
+zusammen mit einer Derivation
+\[
+  d:B\rightarrow \Omega_{B\mid A}^1
+\]
+die universell unter allen $A$-Derivationen von $B$ nach $M$ ist.
+	\[\begin{tikzcd}
+		d:B \rar{\text{univ.}} \arrow{dr}{\text{Deriv.}} & \Omega_{B\mid A}^1 \dar{\exists!} \\
+		                                                 & M
+	\end{tikzcd}\]
+\end{defn}
+\begin{bem}
+Auch bezeichnet als \emph{Kähler-1-Formen}
+\end{bem}
+
+\paragraph{Nachtrag}\\
+\begin{thm}[Thm B von Serre]
+$X$ affin, $\cF$ qua.koh. Modulgarbe $\Rightarrow$ $H^q(X,\cF)=0$ für $q\geq 1$
+\end{thm}
