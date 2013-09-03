@@ -29,7 +29,87 @@ die universell unter allen $A$-Derivationen von $B$ nach $M$ ist.
 Auch bezeichnet als \emph{Kähler-1-Formen}
 \end{bem}
 
-\paragraph{Nachtrag}\\
+\begin{einschub}{Nachtrag}
 \begin{thm}[Thm B von Serre]
 $X$ affin, $\cF$ qua.koh. Modulgarbe $\Rightarrow$ $H^q(X,\cF)=0$ für $q\geq 1$
 \end{thm}
+\TODO
+\end{einschub}
+\paragraph{Kähler-Differentialformen}
+$A\rightarrow B$, $M$ ein $B$-Modul:
+\[
+Der_A(M):=\{
+D:B\rightarrow M\mid A\text{ linear}, D(b\tilde b)=D(b)\tilde b + bD(\tilde b)
+\}
+\]
+\begin{defn}
+\emph{Kähler-1-Formen} $:=$ univ. Derivationen $=:$ $(\Omega_{B|A}^1,d)$
+	\[\begin{tikzcd}
+		d:B \rar{\text{d}} \arrow{dr}{\text{D}} & \Omega_{B\mid A}^1
+    \dar{\exists! \text{$B$-lin}} \\
+		                                                 & M
+	\end{tikzcd}\]
+\end{defn}
+\begin{thm}
+$(\Omega_{B|A}^1,d)$ existiert immer.
+\end{thm}
+\begin{bem}
+ist $D$ eine $A$-Derivation, so ist:
+\begin{align*}
+D(a)=D(a\cdot 1)=a D(1) && \text{sowie} && D(a)=1D(a)+aD(1)
+\end{align*}
+und damit $D(a)=0$
+\end{bem}
+\begin{lem}
+ist $B=A[X_i]_{i\in\{1,\dots,n\}}$, dann ist
+$\Omega_{B|A}^1=\bigoplus_{i=1}^nB\cdot dX_i$
+\end{lem}
+Betrachte $\mu:B\otimes_A B\rightarrow B,b\otimes b'\mapsto bb'$, welches
+$B$-linear ist. $B\otimes_A B$ ein $B$-Modul (links-Multiplikation).\\
+Sei $I:=\ker\mu\vartriangleleft B\otimes_A B$ und $I^2\vartriangleleft
+B\otimes_A B$.\\
+Wir haben damit: $d:B\rightarrow I/I^2,b\mapsto 1\otimes b-b\otimes 1\mod I^2$.
+\begin{bem}
+$d$ ist eine $A$-Derivation. (Beweis leicht)
+\end{bem}
+\begin{thm}
+$(I/I^2,d)\cong(\Omega_{B|A}^1,d)$
+\end{thm}
+\begin{thm}{Erste und zweite Fundamentale-Sequenz}
+  \begin{itemize}
+    \item \textbf{1. fund-Sequenz:}
+      für $A\rightarrow B\rightarrow C$ ex. Sequenz von $C$-Moduln
+      \[\begin{tikzcd}
+        \Omega_{B|A}^1\otimes_BC\rar{\alpha} & \Omega_{C|A}^1 \rar{\beta}
+          & \Omega_{C|B}^1 \rar & 0\\
+          db\otimes c \rar[mapsto] & c\cdot db\\
+                                   & dc \rar[mapsto] & dc
+      \end{tikzcd}\]
+    \item \textbf{2. fund-Sequenz:} Ist $J\vartriangleleft B$, so hat man die
+    ex. Sequenz von $C:=B/J$-Moduln
+      \[\begin{tikzcd}
+        J/J^2 \rar{\delta} & \Omega_{B|A}^1\otimes_BC\rar{\alpha} 
+          & \Omega_{C|A}^1 \rar & 0\\
+          b\mod J^2 \rar[mapsto] & db\otimes 1 \\
+      \end{tikzcd}\]
+  \end{itemize}
+\end{thm}
+\begin{lem}
+Ist $A\rightarrow B$ und $S\subset B$ multiplikative Teilmenge in $B$, so gilt
+\[
+\Omega_{S^{-1}B|A}^1=S^{-1}\Omega_{B|A}^1
+\]
+(Beweis leicht)
+\end{lem}
+Ü.Aufg: $L=K(\alpha)|K$ und damit: $\Omega_{L|K}^1=\begin{cases}
+L\cdot d\alpha & \text{$\alpha$ transzendent}\\
+0 & \text{$\alpha$ alg. und sep.}\\
+L\cdot d\alpha & \text{$\alpha$ alg. und nicht sep.}\\
+\end{cases}$\\
+Idee: \TODO
+\begin{bem}
+$X\rightarrow \spec k$ von endlichem Typ:
+\[
+X\text{ glatt}\Leftrightarrow\Omega_{X|k}^1\text{ lokal frei von Rang $\dim X$}
+\]
+\end{bem}
